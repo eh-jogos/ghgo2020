@@ -9,6 +9,26 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "StaticBody2D",
+"class": "CheckPoint",
+"language": "GDScript",
+"path": "res://hookshot_prototype/gameplay_elements/checkpoint/Checkpoint.gd"
+}, {
+"base": "HookTarget",
+"class": "CheckPointHookTarget",
+"language": "GDScript",
+"path": "res://hookshot_prototype/gameplay_elements/checkpoint/CheckopointHookTarget.gd"
+}, {
+"base": "Position2D",
+"class": "HookShot",
+"language": "GDScript",
+"path": "res://hookshot_prototype/gameplay_elements/hookshot/HookShot.gd"
+}, {
+"base": "Area2D",
+"class": "HookTarget",
+"language": "GDScript",
+"path": "res://hookshot_prototype/gameplay_elements/hook_points/safe/HootkTarget.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Player",
 "language": "GDScript",
@@ -40,6 +60,10 @@ _global_script_classes=[ {
 "path": "res://addons/eh_jogos.transitions/custom_resources/eh_TransitionData.gd"
 } ]
 _global_script_class_icons={
+"CheckPoint": "",
+"CheckPointHookTarget": "",
+"HookShot": "",
+"HookTarget": "",
 "Player": "",
 "State": "",
 "StateMachine": "",
@@ -53,12 +77,17 @@ _global_script_class_icons={
 config/name="Moonshot"
 run/main_scene="res://PrototypeMenu.tscn"
 config/icon="res://icon.png"
-config/version="0.0.2"
-config/build_folder="v0.0.1"
+config/version="0.1.1"
+config/build_folder="v0.1.0"
 
 [autoload]
 
 eh_Transitions="*res://addons/eh_jogos.transitions/eh_Transitions.tscn"
+Events="*res://scripts/Events.gd"
+
+[debug]
+
+shapes/collision/shape_color=Color( 1, 1, 1, 0.501961 )
 
 [display]
 
@@ -93,6 +122,18 @@ move_right={
 , Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":0,"axis_value":1.0,"script":null)
  ]
 }
+hook={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+
+[layer_names]
+
+2d_physics/layer_1="world"
+2d_physics/layer_2="player"
+2d_physics/layer_3="hook_targets"
+2d_physics/layer_4="hookshot_detection"
 
 [rendering]
 

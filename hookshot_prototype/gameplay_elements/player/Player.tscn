@@ -64,3 +64,5 @@ script = ExtResource( 10 )
 [node name="Air" type="Node" parent="PlayerStateMachine/Move"]
 script = ExtResource( 9 )
 
+[node name="Win" type="Node" parent="PlayerStateMachine"]
+script = ExtResource( 11 )
