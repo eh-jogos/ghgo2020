@@ -1,40 +1,48 @@
 # Write your doc string for this file here
-class_name Player
-extends KinematicBody2D
+class_name HookShot
+extends Position2D
 
 ### Member Variables and Dependencies -------------------------------------------------------------
 #--- signals --------------------------------------------------------------------------------------
+
+signal hooked_onto_target(target_global_position)
 
 #--- enums ----------------------------------------------------------------------------------------
 
 #--- constants ------------------------------------------------------------------------------------
 
-const FLOOR_NORMAL: = Vector2.UP
-
 #--- public variables - order: export > normal var > onready --------------------------------------
 
-var is_active: = false setget _set_is_active
+var is_active: = true setget _set_is_active
 
-onready var state_machine: StateMachine = $PlayerStateMachine
-onready var collider: CollisionShape2D = $CollisionShape2D
-onready var skin: Node2D = $Skin
-onready var hookshot: HookShot = $HookShot
-onready var floor_scanner: RayCast2D = $FloorScanner
+onready var ray_cast: RayCast2D = $RayCast2D
+onready var arrow: Node2D = $Arrow
+onready var snap_detector: Area2D = $SnapDetector
+onready var cooldown: Timer = $Cooldown
 
 #--- private variables - order: export > normal var > onready -------------------------------------
+
+onready var _state_machine: StateMachine = $HookshotStateMachine
 
 ### -----------------------------------------------------------------------------------------------
 
 
 ### Built in Engine Methods -----------------------------------------------------------------------
 
-func _ready():
-	pass
-
 ### -----------------------------------------------------------------------------------------------
 
 
 ### Public Methods --------------------------------------------------------------------------------
+
+func can_hook() -> bool:
+	var has_target = snap_detector.has_target()
+	var is_cooldown_ready = cooldown.is_stopped()
+	return is_active and has_target and is_cooldown_ready
+
+
+func get_aim_direction() -> Vector2:
+	var direction: = get_local_mouse_position().normalized()
+	return direction
 
 ### -----------------------------------------------------------------------------------------------
 
@@ -43,6 +51,8 @@ func _ready():
 
 func _set_is_active(value: bool) -> void:
 	is_active = value
-	collider.disabled = not is_active
+	visible = value
+	_state_machine.set_physics_process(value)
+	_state_machine.set_process_input(value)
 
 ### -----------------------------------------------------------------------------------------------

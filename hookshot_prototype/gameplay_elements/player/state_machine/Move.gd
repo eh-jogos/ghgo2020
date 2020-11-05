@@ -70,12 +70,12 @@ func physics_process(delta: float) -> void:
 
 
 func enter(msg: Dictionary = {}) -> void:
-#	player.hook.connect("hooked_onto_target", self, "_on_hook_hooked_onto_target")
+	player.hookshot.connect("hooked_onto_target", self, "_on_hook_hooked_onto_target")
 	pass
 
 
 func exit() -> void:
-#	player.hook.disconnect("hooked_onto_target", self, "_on_hook_hooked_onto_target")
+	player.hookshot.disconnect("hooked_onto_target", self, "_on_hook_hooked_onto_target")
 	pass
 
 ### -----------------------------------------------------------------------------------------------

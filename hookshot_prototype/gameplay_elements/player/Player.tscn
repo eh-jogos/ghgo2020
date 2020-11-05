@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://hookshot_prototype/gameplay_elements/hookshot/HookShot.tscn" type="PackedScene" id=1]
 [ext_resource path="res://hookshot_prototype/gameplay_elements/player/player.png" type="Texture" id=2]
@@ -10,16 +10,23 @@
 [ext_resource path="res://hookshot_prototype/gameplay_elements/player/state_machine/Move.gd" type="Script" id=8]
 [ext_resource path="res://hookshot_prototype/gameplay_elements/player/state_machine/Air.gd" type="Script" id=9]
 [ext_resource path="res://hookshot_prototype/gameplay_elements/player/state_machine/Run.gd" type="Script" id=10]
+[ext_resource path="res://hookshot_prototype/gameplay_elements/player/state_machine/Win.gd" type="Script" id=11]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 26.6498
 height = 29.2538
 
 [node name="Player" type="KinematicBody2D"]
+collision_layer = 2
+collision_mask = 5
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_group_": true
 }
+
+[node name="FloorScanner" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( 0, 15 )
 
 [node name="Skin" type="Node2D" parent="."]
 
@@ -43,6 +50,7 @@ script = ExtResource( 4 )
 
 [node name="Hook" type="Node" parent="PlayerStateMachine"]
 script = ExtResource( 6 )
+hook_max_speed = 700.0
 
 [node name="Move" type="Node" parent="PlayerStateMachine"]
 script = ExtResource( 8 )
@@ -55,3 +63,4 @@ script = ExtResource( 10 )
 
 [node name="Air" type="Node" parent="PlayerStateMachine/Move"]
 script = ExtResource( 9 )
+

@@ -1,6 +1,5 @@
 # Write your doc string for this file here
-class_name Player
-extends KinematicBody2D
+extends Area2D
 
 ### Member Variables and Dependencies -------------------------------------------------------------
 #--- signals --------------------------------------------------------------------------------------
@@ -9,19 +8,14 @@ extends KinematicBody2D
 
 #--- constants ------------------------------------------------------------------------------------
 
-const FLOOR_NORMAL: = Vector2.UP
-
 #--- public variables - order: export > normal var > onready --------------------------------------
+var target: HookTarget setget _set_target
 
-var is_active: = false setget _set_is_active
-
-onready var state_machine: StateMachine = $PlayerStateMachine
-onready var collider: CollisionShape2D = $CollisionShape2D
-onready var skin: Node2D = $Skin
-onready var hookshot: HookShot = $HookShot
-onready var floor_scanner: RayCast2D = $FloorScanner
+onready var ray_cast: RayCast2D = $RayCast2D
 
 #--- private variables - order: export > normal var > onready -------------------------------------
+
+onready var _hooking_hint: Position2D = $HookingHint
 
 ### -----------------------------------------------------------------------------------------------
 
@@ -29,20 +23,56 @@ onready var floor_scanner: RayCast2D = $FloorScanner
 ### Built in Engine Methods -----------------------------------------------------------------------
 
 func _ready():
-	pass
+	ray_cast.set_as_toplevel(true)
+
+
+func _physics_process(delta: float) -> void:
+	var tentative_target = _find_best_target()
+	if target != tentative_target:
+		self.target = _find_best_target()
 
 ### -----------------------------------------------------------------------------------------------
 
 
 ### Public Methods --------------------------------------------------------------------------------
 
+func has_target() -> bool:
+	return target != null
+
 ### -----------------------------------------------------------------------------------------------
 
 
 ### Private Methods -------------------------------------------------------------------------------
 
-func _set_is_active(value: bool) -> void:
-	is_active = value
-	collider.disabled = not is_active
+func _find_best_target() -> HookTarget:
+	var closest_taget: HookTarget = null
+	var targets: = get_overlapping_areas()
+	for target in targets:
+		if not target is HookTarget:
+			continue
+		
+		if not target.is_active:
+			continue
+		
+		ray_cast.global_position = global_position
+		ray_cast.cast_to = target.global_position - ray_cast.global_position
+		if ray_cast.is_colliding():
+			continue
+		
+		closest_taget = target
+		break
+	
+	return closest_taget
+
+
+func _set_target(value: HookTarget) -> void:
+	target = value
+	_hooking_hint.visible = has_target()
+	_hooking_hint.global_position = target.global_position if target else _hooking_hint.global_position
+
 
 ### -----------------------------------------------------------------------------------------------
+
+
+
+

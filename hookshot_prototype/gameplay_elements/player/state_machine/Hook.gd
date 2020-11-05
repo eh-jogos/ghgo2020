@@ -48,7 +48,7 @@ func physics_process(delta: float) -> void:
 	var distance: = vector_to_target.length()
 	var distance_traveled_in_one_frame = velocity.length() * delta
 	
-	if distance < distance_traveled_in_one_frame:
+	if distance < distance_traveled_in_one_frame or not Input.is_action_pressed("hook"):
 		velocity = velocity.normalized() * arrive_push
 		_state_machine.transition_to("Move/Air", {"velocity": velocity})
 
@@ -58,15 +58,22 @@ func enter(msg: Dictionary = {}) -> void:
 		{"target_global_position": var tgp, "velocity": var v}:
 			target_global_position = tgp
 			velocity = v
+	
+	player.hookshot.connect("hooked_onto_target", self, "_on_hook_hooked_onto_target")
 
 
 func exit() -> void:
 	target_global_position = Vector2(INF, INF)
 	velocity = Vector2.ZERO
+	
+	player.hookshot.disconnect("hooked_onto_target", self, "_on_hook_hooked_onto_target")
 
 ### -----------------------------------------------------------------------------------------------
 
 
 ### Private Methods -------------------------------------------------------------------------------
+
+func _on_hook_hooked_onto_target(p_target_global_position: Vector2) -> void:
+	target_global_position = p_target_global_position
 
 ### -----------------------------------------------------------------------------------------------

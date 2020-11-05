@@ -1,6 +1,5 @@
 # Write your doc string for this file here
-class_name Player
-extends KinematicBody2D
+extends State
 
 ### Member Variables and Dependencies -------------------------------------------------------------
 #--- signals --------------------------------------------------------------------------------------
@@ -9,17 +8,9 @@ extends KinematicBody2D
 
 #--- constants ------------------------------------------------------------------------------------
 
-const FLOOR_NORMAL: = Vector2.UP
-
 #--- public variables - order: export > normal var > onready --------------------------------------
 
-var is_active: = false setget _set_is_active
-
-onready var state_machine: StateMachine = $PlayerStateMachine
-onready var collider: CollisionShape2D = $CollisionShape2D
-onready var skin: Node2D = $Skin
-onready var hookshot: HookShot = $HookShot
-onready var floor_scanner: RayCast2D = $FloorScanner
+onready var hookshot: HookShot = owner as HookShot
 
 #--- private variables - order: export > normal var > onready -------------------------------------
 
@@ -28,21 +19,27 @@ onready var floor_scanner: RayCast2D = $FloorScanner
 
 ### Built in Engine Methods -----------------------------------------------------------------------
 
-func _ready():
-	pass
-
 ### -----------------------------------------------------------------------------------------------
 
 
 ### Public Methods --------------------------------------------------------------------------------
 
+func physics_process(delta: float) -> void:
+	if not Input.is_action_pressed("hook"):
+		hookshot.arrow.release_hook()
+		_state_machine.transition_to("Aim")
+
+
+func enter(msg: Dictionary = {}) -> void:
+	var target: HookTarget = hookshot.snap_detector.target
+	hookshot.arrow.hook_position = target.global_position
+	target.hooked_from(hookshot.global_position)
+
+	hookshot.emit_signal("hooked_onto_target", target.global_position)
+
 ### -----------------------------------------------------------------------------------------------
 
 
 ### Private Methods -------------------------------------------------------------------------------
-
-func _set_is_active(value: bool) -> void:
-	is_active = value
-	collider.disabled = not is_active
 
 ### -----------------------------------------------------------------------------------------------
