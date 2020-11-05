@@ -1,0 +1,37 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://hookshot_prototype/gameplay_elements/hookshot/Arrow.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/state_machines/State.gd" type="Script" id=2]
+[ext_resource path="res://scripts/state_machines/StateMachine.gd" type="Script" id=3]
+[ext_resource path="res://hookshot_prototype/gameplay_elements/hookshot/HookShot.gd" type="Script" id=4]
+[ext_resource path="res://hookshot_prototype/gameplay_elements/hookshot/SnapDetector.tscn" type="PackedScene" id=5]
+[ext_resource path="res://hookshot_prototype/gameplay_elements/hookshot/states/Aim.gd" type="Script" id=6]
+[ext_resource path="res://hookshot_prototype/gameplay_elements/hookshot/states/Fire.gd" type="Script" id=7]
+
+[node name="HookShot" type="Position2D"]
+script = ExtResource( 4 )
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+
+[node name="Arrow" parent="." instance=ExtResource( 1 )]
+
+[node name="SnapDetector" parent="." instance=ExtResource( 5 )]
+collision_layer = 8
+collision_mask = 4
+
+[node name="Cooldown" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+
+[node name="HookshotStateMachine" type="Node" parent="."]
+script = ExtResource( 3 )
+initial_state = NodePath("Aim")
+
+[node name="Aim" type="Node" parent="HookshotStateMachine"]
+script = ExtResource( 6 )
+
+[node name="Fire" type="Node" parent="HookshotStateMachine/Aim"]
+script = ExtResource( 7 )
+
+[node name="Snap\?" type="Node" parent="HookshotStateMachine/Aim"]
+script = ExtResource( 2 )
