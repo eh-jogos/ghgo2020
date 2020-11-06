@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 project_settings="../project.godot"
 export_configs="../export_presets.cfg"
