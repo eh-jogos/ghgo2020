@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/white_block.png-a31b7012b79506662a957353db34329e.stex"
+path="res://.import/white_block.png-746d5e3c4a1ff839f13702eb6caa93bd.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://hookshot_prototype/resources/white_block.png"
-dest_files=[ "res://.import/white_block.png-a31b7012b79506662a957353db34329e.stex" ]
+source_file="res://resources/white_block.png"
+dest_files=[ "res://.import/white_block.png-746d5e3c4a1ff839f13702eb6caa93bd.stex" ]
 
 [params]
 
