@@ -1,4 +1,7 @@
-#!/bin/zsh
+#!/bin/bash
+
+main_folder=${PWD##*/}
+
 cd "$(dirname "$0")"
 cd ..
 
@@ -32,6 +35,16 @@ case $builds_to_push in
 	"html" | "web")
 		builds_to_push="html"
 		;;
+	"-h" | "help" | "--help")
+		echo "possible commansd are:"
+		echo "all --------------------- publish on itch to all platforms"
+		echo "linux | lin ------------- publish on itch to linux"
+		echo "windows | win ----------- publish on itch to windows"
+		echo "max | osx --------------- publish on itch to mac"
+		echo "html | web -------------- publish on itch for web"
+		echo "help -------------------- shows this help menu"
+		exit 1
+		;;
 	*)
 		echo "Unrecognized option for builds_to_push: $builds_to_push | changing to default ('all')"
 		builds_to_push="all"
@@ -43,23 +56,28 @@ esac
 # for OSX you can just send the zip directly
 function push_linux {
 	echo $itch_game_adress
-	butler push --userversion=$game_version $base_builds_path/$project_name+Linux32 $itch_game_adress\:linux32
-	butler push --userversion=$game_version $base_builds_path/$project_name+Linux64 $itch_game_adress\:linux64
+	./butler push --userversion=$game_version $base_builds_path/$project_name+Linux32 $itch_game_adress\:linux32
+	./butler push --userversion=$game_version $base_builds_path/$project_name+Linux64 $itch_game_adress\:linux64
 }
 
 function push_windows {
-	butler push --userversion=$game_version $base_builds_path/$project_name+Windows32 $itch_game_adress\:windows32
-	butler push --userversion=$game_version $base_builds_path/$project_name+Windows64 $itch_game_adress\:windows64
+	echo $itch_game_adress
+	./butler push --userversion=$game_version $base_builds_path/$project_name+Windows32 $itch_game_adress\:windows32
+	./butler push --userversion=$game_version $base_builds_path/$project_name+Windows64 $itch_game_adress\:windows64
 }
 
 function push_osx {
-	butler push --userversion=$game_version $base_builds_path/$project_name+OSX $itch_game_adress\:osx-universal
+	echo $itch_game_adress
+	./butler push --userversion=$game_version $base_builds_path/$project_name+OSX $itch_game_adress\:osx-universal
 }
 
 function push_html {
-	butler push --userversion=$game_version $base_builds_path/$project_name"HTML5" $itch_game_adress\:html
+	echo $itch_game_adress
+	./butler push --userversion=$game_version $base_builds_path/$project_name"HTML5" $itch_game_adress\:html
 }
 
+cd $main_folder
+cd butler
 
 case $builds_to_push in
 	"linux")
