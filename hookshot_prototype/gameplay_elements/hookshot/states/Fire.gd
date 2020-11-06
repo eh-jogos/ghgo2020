@@ -26,7 +26,6 @@ onready var hookshot: HookShot = owner as HookShot
 
 func physics_process(delta: float) -> void:
 	if not Input.is_action_pressed("hook"):
-		hookshot.arrow.release_hook()
 		_state_machine.transition_to("Aim")
 
 
@@ -34,12 +33,22 @@ func enter(msg: Dictionary = {}) -> void:
 	var target: HookTarget = hookshot.snap_detector.target
 	hookshot.arrow.hook_position = target.global_position
 	target.hooked_from(hookshot.global_position)
-
+	
 	hookshot.emit_signal("hooked_onto_target", target.global_position)
+	Events.connect("hookshot_released", self, "_on_Events_hookshot_released")
+
+
+func exit() -> void:
+	hookshot.arrow.release_hook()
+	Events.disconnect("hookshot_released", self, "_on_Events_hookshot_released")
+
 
 ### -----------------------------------------------------------------------------------------------
 
 
 ### Private Methods -------------------------------------------------------------------------------
+
+func _on_Events_hookshot_released() -> void:
+	_state_machine.transition_to("Aim")
 
 ### -----------------------------------------------------------------------------------------------

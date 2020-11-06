@@ -30,10 +30,6 @@ onready var player: Player = owner as Player
 
 ### Public Methods --------------------------------------------------------------------------------
 
-func unhandled_input(event: InputEvent) -> void:
-	pass
-
-
 func physics_process(delta: float) -> void:
 	velocity = Steering.arrive_to(
 		velocity,
@@ -50,6 +46,7 @@ func physics_process(delta: float) -> void:
 	
 	if distance < distance_traveled_in_one_frame or not Input.is_action_pressed("hook"):
 		velocity = velocity.normalized() * arrive_push
+		Events.emit_signal("hookshot_released")
 		_state_machine.transition_to("Move/Air", {"velocity": velocity})
 
 

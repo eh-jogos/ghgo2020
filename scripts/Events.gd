@@ -3,6 +3,10 @@ extends Node
 
 ### Hookshot Prototype ----------------------------------------------------------------------------
 
+# warning-ignore:unused_signal
 signal hookshot_level_won
+
+# warning-ignore:unused_signal
+signal hookshot_released
 
 ### -----------------------------------------------------------------------------------------------
