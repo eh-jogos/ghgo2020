@@ -1,26 +1,25 @@
 # Write your doc string for this file here
-extends StaticBody2D
+tool
+extends Control
 
 ### Member Variables and Dependencies -------------------------------------------------------------
 #--- signals --------------------------------------------------------------------------------------
 
 #--- enums ----------------------------------------------------------------------------------------
 
-enum WallPosition {
-	LEFT,
-	RIGHT
-}
-
 #--- constants ------------------------------------------------------------------------------------
 
 #--- public variables - order: export > normal var > onready --------------------------------------
 
+export(float, -0.5, 0.5, 0.01) var center: float = 0.0 setget _set_center
+export(float, 0.0, 1.0, 0.01) var open_area: float = 0.0 setget _set_open_area
 
 #--- private variables - order: export > normal var > onready -------------------------------------
-export(WallPosition) var reference_position: = WallPosition.LEFT 
-export var _path_reference: NodePath = NodePath()
 
-onready var _refefence_black_bar: Control = get_node(_path_reference) as Control
+var midpoint: float = 0.5
+
+onready var _left: ColorRect = $Left
+onready var _right: ColorRect = $Right
 
 ### -----------------------------------------------------------------------------------------------
 
@@ -28,30 +27,38 @@ onready var _refefence_black_bar: Control = get_node(_path_reference) as Control
 ### Built in Engine Methods -----------------------------------------------------------------------
 
 func _ready():
-	yield(owner, "ready")
-	match_reference_position()
-	_refefence_black_bar.connect("item_rect_changed", self, 
-			"_on_refefence_black_bar_item_rect_changed")
-	
+	midpoint = 0.5 + center
+	pass
 
 ### -----------------------------------------------------------------------------------------------
 
 
 ### Public Methods --------------------------------------------------------------------------------
 
-func match_reference_position() -> void:
-	match reference_position:
-		WallPosition.LEFT:
-			position.x = _refefence_black_bar.rect_size.x + _refefence_black_bar.rect_position.x
-		WallPosition.RIGHT:
-			position.x = _refefence_black_bar.rect_position.x
-
 ### -----------------------------------------------------------------------------------------------
 
 
 ### Private Methods -------------------------------------------------------------------------------
 
-func _on_refefence_black_bar_item_rect_changed() -> void:
-	match_reference_position()
+func _set_center(value: float) -> void:
+	center = value
+	midpoint = 0.5 + center
+	
+	if not is_inside_tree():
+		yield(self, "ready")
+	
+	_set_open_area(open_area)
+
+
+func _set_open_area(value: float) -> void:
+	open_area = value
+	
+	if not is_inside_tree():
+		yield(self, "ready")
+	
+	_left.anchor_right = midpoint - open_area / 2
+	_left.margin_right = 0
+	_right.anchor_left = midpoint + open_area /2
+	_right.margin_left = 0
 
 ### -----------------------------------------------------------------------------------------------
