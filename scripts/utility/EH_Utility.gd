@@ -1,5 +1,6 @@
 # Write your doc string for this file here
-extends State
+class_name eh_Utility
+extends Reference
 
 ### Member Variables and Dependencies -------------------------------------------------------------
 #--- signals --------------------------------------------------------------------------------------
@@ -9,8 +10,6 @@ extends State
 #--- constants ------------------------------------------------------------------------------------
 
 #--- public variables - order: export > normal var > onready --------------------------------------
-
-onready var hookshot: HookShot = owner as HookShot
 
 #--- private variables - order: export > normal var > onready -------------------------------------
 
@@ -24,31 +23,23 @@ onready var hookshot: HookShot = owner as HookShot
 
 ### Public Methods --------------------------------------------------------------------------------
 
-func physics_process(delta: float) -> void:
-	if not Input.is_action_pressed("hook"):
-		_state_machine.transition_to("Aim")
-
-
-func enter(msg: Dictionary = {}) -> void:
-	var target: HookTarget = hookshot.snap_detector.target
-	hookshot.arrow.hook_position = target.global_position
-	target.hooked_from(hookshot.global_position)
+static func set_node_as_toplevel(node: CanvasItem, to_toplevel: bool) -> void:
+	var current_pos: Vector2 = Vector2.ZERO
+	if node is Control:
+		current_pos = node.rect_global_position
+	else:
+		current_pos = node.global_position
 	
-	hookshot.emit_signal("hooked_onto_target", target.global_position)
-	Events.connect("hookshot_released", self, "_on_Events_hookshot_released")
-
-
-func exit() -> void:
-	hookshot.arrow.release_hook()
-	Events.disconnect("hookshot_released", self, "_on_Events_hookshot_released")
-
+	node.set_as_toplevel(true)
+	
+	if node is Control:
+		node.rect_global_position = current_pos
+	else:
+		node.global_position = current_pos
 
 ### -----------------------------------------------------------------------------------------------
 
 
 ### Private Methods -------------------------------------------------------------------------------
-
-func _on_Events_hookshot_released() -> void:
-	_state_machine.transition_to("Aim")
 
 ### -----------------------------------------------------------------------------------------------

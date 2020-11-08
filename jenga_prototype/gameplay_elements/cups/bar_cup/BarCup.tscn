@@ -1,0 +1,89 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/bar_cup/BarCupSkin.tscn" type="PackedScene" id=1]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/bar_cup/states/Spawn.gd" type="Script" id=2]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/bar_cup/states/Dropped.gd" type="Script" id=5]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/BaseCup.gd" type="Script" id=6]
+[ext_resource path="res://scripts/state_machines/StateMachine.gd" type="Script" id=8]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/bar_cup/states/Draging.gd" type="Script" id=9]
+
+
+
+[sub_resource type="PhysicsMaterial" id=1]
+rough = true
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 43.9859, 13.1148 )
+
+[sub_resource type="PhysicsMaterial" id=4]
+rough = true
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 47.1429, 15.2357 )
+
+[node name="BarCup" type="Node2D"]
+script = ExtResource( 6 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Skin" parent="." instance=ExtResource( 1 )]
+scale = Vector2( 0.987553, 0.987553 )
+
+[node name="CupSides" type="RigidBody2D" parent="."]
+collision_layer = 2048
+collision_mask = 11264
+physics_material_override = SubResource( 1 )
+continuous_cd = 2
+linear_damp = 2.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="SideLeft" type="CollisionPolygon2D" parent="CupSides"]
+polygon = PoolVector2Array( -49.1661, -84.8987, -49, -31.9412, -29.5443, 83.2254, -43.9634, 82.9281, -61, -33.25, -61.0582, -85.0473 )
+
+[node name="SideRight" type="CollisionPolygon2D" parent="CupSides"]
+polygon = PoolVector2Array( 32.4432, 82.9281, 48, -32.6484, 47.7542, -85.196, 59.6463, -85.0473, 60, -34.5, 44.6325, 82.6308 )
+
+[node name="Bottom" type="CollisionShape2D" parent="CupSides"]
+position = Vector2( 0, 70 )
+shape = SubResource( 2 )
+
+[node name="CupTop" type="RigidBody2D" parent="."]
+position = Vector2( -0.28061, -70 )
+collision_layer = 4096
+collision_mask = 2147488768
+physics_material_override = SubResource( 4 )
+continuous_cd = 2
+linear_damp = 1.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Top" type="CollisionShape2D" parent="CupTop"]
+shape = SubResource( 5 )
+
+[node name="LeftJoint" type="PinJoint2D" parent="CupTop"]
+position = Vector2( -48.611, -13.6896 )
+node_a = NodePath("../../CupSides")
+node_b = NodePath("../../CupTop")
+
+[node name="RightJoint" type="PinJoint2D" parent="CupTop"]
+position = Vector2( 47.6494, -14.1356 )
+node_a = NodePath("../../CupSides")
+node_b = NodePath("../../CupTop")
+
+[node name="CupStateMachine" type="Node" parent="."]
+script = ExtResource( 8 )
+initial_state = NodePath("Spawn")
+
+[node name="Spawn" type="Node" parent="CupStateMachine"]
+script = ExtResource( 2 )
+
+[node name="Dragging" type="Node" parent="CupStateMachine"]
+script = ExtResource( 9 )
+
+[node name="Dropped" type="Node" parent="CupStateMachine"]
+script = ExtResource( 5 )
+
+[editable path="Skin"]

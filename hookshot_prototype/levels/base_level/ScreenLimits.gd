@@ -42,7 +42,7 @@ func _ready():
 func match_reference_position() -> void:
 	match reference_position:
 		WallPosition.LEFT:
-			position.x = _refefence_black_bar.rect_size.x
+			position.x = _refefence_black_bar.rect_size.x + _refefence_black_bar.rect_position.x
 		WallPosition.RIGHT:
 			position.x = _refefence_black_bar.rect_position.x
 

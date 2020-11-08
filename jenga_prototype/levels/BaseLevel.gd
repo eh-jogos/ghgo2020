@@ -1,5 +1,5 @@
 # Write your doc string for this file here
-extends State
+extends Node2D
 
 ### Member Variables and Dependencies -------------------------------------------------------------
 #--- signals --------------------------------------------------------------------------------------
@@ -10,45 +10,43 @@ extends State
 
 #--- public variables - order: export > normal var > onready --------------------------------------
 
-onready var hookshot: HookShot = owner as HookShot
+var scale_factor = 1.0
 
 #--- private variables - order: export > normal var > onready -------------------------------------
+
+onready var _resource_preloader: ResourcePreloader = $ResourcePreloader
+onready var _cup_spawn_point = $HUDLayer/SpawnPivot/CupSpawnPoint
+onready var _cups_layer: Node2D = $Cups
 
 ### -----------------------------------------------------------------------------------------------
 
 
 ### Built in Engine Methods -----------------------------------------------------------------------
 
+func _ready():
+	pass
+
 ### -----------------------------------------------------------------------------------------------
 
 
 ### Public Methods --------------------------------------------------------------------------------
-
-func physics_process(delta: float) -> void:
-	if not Input.is_action_pressed("hook"):
-		_state_machine.transition_to("Aim")
-
-
-func enter(msg: Dictionary = {}) -> void:
-	var target: HookTarget = hookshot.snap_detector.target
-	hookshot.arrow.hook_position = target.global_position
-	target.hooked_from(hookshot.global_position)
-	
-	hookshot.emit_signal("hooked_onto_target", target.global_position)
-	Events.connect("hookshot_released", self, "_on_Events_hookshot_released")
-
-
-func exit() -> void:
-	hookshot.arrow.release_hook()
-	Events.disconnect("hookshot_released", self, "_on_Events_hookshot_released")
-
 
 ### -----------------------------------------------------------------------------------------------
 
 
 ### Private Methods -------------------------------------------------------------------------------
 
-func _on_Events_hookshot_released() -> void:
-	_state_machine.transition_to("Aim")
-
 ### -----------------------------------------------------------------------------------------------
+
+
+func _on_SpawnCups_pressed():
+	var new_cup: BaseCup = _resource_preloader.get_resource("cup").instance()
+	new_cup.scale *= scale_factor
+	new_cup.global_position = _cup_spawn_point.global_position
+	_cups_layer.add_child(new_cup, true)
+
+
+func _on_TargetLine_level_completed():
+	for cup in _cups_layer.get_children():
+		cup.queue_free()
+	pass # Replace with function body.

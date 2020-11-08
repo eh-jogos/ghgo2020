@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/white_block.png-a31b7012b79506662a957353db34329e.stex"
+path="res://.import/bar_cup_liquid.png-584a768ee1cd82bf4a6efee8ba4e4609.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://hookshot_prototype/resources/white_block.png"
-dest_files=[ "res://.import/white_block.png-a31b7012b79506662a957353db34329e.stex" ]
+source_file="res://jenga_prototype/gameplay_elements/cups/bar_cup/bar_cup_liquid.png"
+dest_files=[ "res://.import/bar_cup_liquid.png-584a768ee1cd82bf4a6efee8ba4e4609.stex" ]
 
 [params]
 

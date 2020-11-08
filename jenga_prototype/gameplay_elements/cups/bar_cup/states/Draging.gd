@@ -10,9 +10,9 @@ extends State
 
 #--- public variables - order: export > normal var > onready --------------------------------------
 
-onready var hookshot: HookShot = owner as HookShot
-
 #--- private variables - order: export > normal var > onready -------------------------------------
+
+onready var _cup: BaseCup = owner as BaseCup
 
 ### -----------------------------------------------------------------------------------------------
 
@@ -24,31 +24,26 @@ onready var hookshot: HookShot = owner as HookShot
 
 ### Public Methods --------------------------------------------------------------------------------
 
-func physics_process(delta: float) -> void:
-	if not Input.is_action_pressed("hook"):
-		_state_machine.transition_to("Aim")
+func unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("jenga_drop"):
+		_state_machine.transition_to("Dropped")
+		get_tree().set_input_as_handled()
+	if event.is_action_pressed("jenga_rotate_clockwise"):
+		_cup.main_rigid_body.rotation_degrees += 6
+	elif event.is_action_pressed("jenga_rotate_anti_clockwise"):
+		_cup.main_rigid_body.rotation_degrees -= 6
+
+
+func physics_process(_delta: float) -> void:
+	_cup.main_rigid_body.global_position = _cup.mouse_guide.global_position
 
 
 func enter(msg: Dictionary = {}) -> void:
-	var target: HookTarget = hookshot.snap_detector.target
-	hookshot.arrow.hook_position = target.global_position
-	target.hooked_from(hookshot.global_position)
-	
-	hookshot.emit_signal("hooked_onto_target", target.global_position)
-	Events.connect("hookshot_released", self, "_on_Events_hookshot_released")
-
-
-func exit() -> void:
-	hookshot.arrow.release_hook()
-	Events.disconnect("hookshot_released", self, "_on_Events_hookshot_released")
-
+	_cup.set_collisons(true)
 
 ### -----------------------------------------------------------------------------------------------
 
 
 ### Private Methods -------------------------------------------------------------------------------
-
-func _on_Events_hookshot_released() -> void:
-	_state_machine.transition_to("Aim")
 
 ### -----------------------------------------------------------------------------------------------

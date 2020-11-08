@@ -10,9 +10,9 @@ extends State
 
 #--- public variables - order: export > normal var > onready --------------------------------------
 
-onready var hookshot: HookShot = owner as HookShot
-
 #--- private variables - order: export > normal var > onready -------------------------------------
+
+onready var _cup: BaseCup = owner as BaseCup
 
 ### -----------------------------------------------------------------------------------------------
 
@@ -24,31 +24,24 @@ onready var hookshot: HookShot = owner as HookShot
 
 ### Public Methods --------------------------------------------------------------------------------
 
-func physics_process(delta: float) -> void:
-	if not Input.is_action_pressed("hook"):
-		_state_machine.transition_to("Aim")
-
-
 func enter(msg: Dictionary = {}) -> void:
-	var target: HookTarget = hookshot.snap_detector.target
-	hookshot.arrow.hook_position = target.global_position
-	target.hooked_from(hookshot.global_position)
-	
-	hookshot.emit_signal("hooked_onto_target", target.global_position)
-	Events.connect("hookshot_released", self, "_on_Events_hookshot_released")
-
-
-func exit() -> void:
-	hookshot.arrow.release_hook()
-	Events.disconnect("hookshot_released", self, "_on_Events_hookshot_released")
-
+	_cup.is_active = false
+	_cup.skin.spawn()
+	yield(_cup.skin, "animation_finished")
+	_cup.skin.drink()
+	_cup.mouse_guide.increase_drunkness()
+	yield(_cup.skin, "animation_finished")
+	_cup.tween.follow_property(
+			_cup.main_rigid_body, "global_position", _cup.main_rigid_body.global_position,
+			_cup.mouse_guide, "global_position", 0.5, Tween.TRANS_BACK, Tween.EASE_OUT
+	)
+	_cup.tween.start()
+	yield(_cup.tween, "tween_all_completed")
+	_state_machine.transition_to("Dragging")
 
 ### -----------------------------------------------------------------------------------------------
 
 
 ### Private Methods -------------------------------------------------------------------------------
-
-func _on_Events_hookshot_released() -> void:
-	_state_machine.transition_to("Aim")
 
 ### -----------------------------------------------------------------------------------------------

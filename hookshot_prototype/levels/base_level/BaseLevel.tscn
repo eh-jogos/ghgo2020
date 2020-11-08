@@ -1,0 +1,118 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://fonts/MavenProRegularl_36.tres" type="DynamicFont" id=1]
+[ext_resource path="res://addons/eh_jogos.transitions/custom_nodes/eh_SceneChanger.gd" type="Script" id=2]
+[ext_resource path="res://hookshot_prototype/levels/base_level/Level.gd" type="Script" id=3]
+[ext_resource path="res://hookshot_prototype/levels/base_level/ScreenLimits.gd" type="Script" id=4]
+[ext_resource path="res://addons/eh_jogos.transitions/transitions_data/sweep_up.tres" type="Resource" id=5]
+[ext_resource path="res://resources/white_block.png" type="Texture" id=6]
+[ext_resource path="res://hookshot_prototype/levels/base_level/BlackStrips.gd" type="Script" id=7]
+[ext_resource path="res://hookshot_prototype/gameplay_elements/player/Player.tscn" type="PackedScene" id=8]
+[ext_resource path="res://hookshot_prototype/gameplay_elements/checkpoint/Checkpoint.tscn" type="PackedScene" id=9]
+[ext_resource path="res://hookshot_prototype/gameplay_elements/ground/Ground.tscn" type="PackedScene" id=10]
+
+[sub_resource type="LineShape2D" id=1]
+normal = Vector2( 1, 0 )
+
+[sub_resource type="LineShape2D" id=2]
+normal = Vector2( -1, 0 )
+
+[node name="BaseLevel" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="eh_SceneChanger" type="Node" parent="."]
+script = ExtResource( 2 )
+transition_data = ExtResource( 5 )
+
+[node name="LevelDecorations" type="Node2D" parent="."]
+
+[node name="BG" type="Sprite" parent="LevelDecorations"]
+self_modulate = Color( 0.0392157, 0.105882, 0.270588, 1 )
+texture = ExtResource( 6 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 1920, 1080 )
+
+[node name="Ground" parent="LevelDecorations" instance=ExtResource( 10 )]
+
+[node name="LevelWalls" type="Node2D" parent="."]
+
+[node name="Left" type="StaticBody2D" parent="LevelWalls"]
+position = Vector2( 640, 0 )
+collision_mask = 2
+script = ExtResource( 4 )
+_path_reference = NodePath("../../CanvasLayer/BlackStrips/Left")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelWalls/Left"]
+shape = SubResource( 1 )
+
+[node name="Right" type="StaticBody2D" parent="LevelWalls"]
+position = Vector2( 1280, 0 )
+collision_mask = 2
+script = ExtResource( 4 )
+reference_position = 1
+_path_reference = NodePath("../../CanvasLayer/BlackStrips/Right")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelWalls/Right"]
+shape = SubResource( 2 )
+
+[node name="Targets" type="Node2D" parent="."]
+
+[node name="Checkpoint" parent="." instance=ExtResource( 9 )]
+
+[node name="Player" parent="." instance=ExtResource( 8 )]
+position = Vector2( 975.18, 970.14 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="BlackStrips" type="Control" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 1437.85, 510.53 )
+mouse_filter = 2
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+open_area = 0.33
+
+[node name="Left" type="ColorRect" parent="CanvasLayer/BlackStrips"]
+anchor_left = -0.5
+anchor_right = 0.335
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 647.54, 77.804 )
+mouse_filter = 2
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Right" type="ColorRect" parent="CanvasLayer/BlackStrips"]
+anchor_left = 0.665
+anchor_right = 1.5
+anchor_bottom = 1.0
+grow_horizontal = 0
+mouse_filter = 2
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -7.0
+margin_right = 20.0
+margin_bottom = 7.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 1 )
+text = "Hookshot Prototype"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

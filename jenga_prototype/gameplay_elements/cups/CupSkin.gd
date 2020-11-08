@@ -1,8 +1,11 @@
 # Write your doc string for this file here
-extends State
+class_name CupSkin
+extends Node2D
 
 ### Member Variables and Dependencies -------------------------------------------------------------
 #--- signals --------------------------------------------------------------------------------------
+
+signal animation_finished
 
 #--- enums ----------------------------------------------------------------------------------------
 
@@ -10,9 +13,9 @@ extends State
 
 #--- public variables - order: export > normal var > onready --------------------------------------
 
-onready var hookshot: HookShot = owner as HookShot
-
 #--- private variables - order: export > normal var > onready -------------------------------------
+
+onready var _animation_player: AnimationPlayer = $AnimationPlayer
 
 ### -----------------------------------------------------------------------------------------------
 
@@ -24,31 +27,21 @@ onready var hookshot: HookShot = owner as HookShot
 
 ### Public Methods --------------------------------------------------------------------------------
 
-func physics_process(delta: float) -> void:
-	if not Input.is_action_pressed("hook"):
-		_state_machine.transition_to("Aim")
+func spawn() -> void:
+	_animation_player.play("spawn")
 
 
-func enter(msg: Dictionary = {}) -> void:
-	var target: HookTarget = hookshot.snap_detector.target
-	hookshot.arrow.hook_position = target.global_position
-	target.hooked_from(hookshot.global_position)
-	
-	hookshot.emit_signal("hooked_onto_target", target.global_position)
-	Events.connect("hookshot_released", self, "_on_Events_hookshot_released")
-
-
-func exit() -> void:
-	hookshot.arrow.release_hook()
-	Events.disconnect("hookshot_released", self, "_on_Events_hookshot_released")
-
+func drink() -> void:
+	_animation_player.play("drink")
 
 ### -----------------------------------------------------------------------------------------------
 
 
 ### Private Methods -------------------------------------------------------------------------------
 
-func _on_Events_hookshot_released() -> void:
-	_state_machine.transition_to("Aim")
-
 ### -----------------------------------------------------------------------------------------------
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name != "BASE":
+		emit_signal("animation_finished")
