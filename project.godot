@@ -77,8 +77,8 @@ _global_script_class_icons={
 config/name="Moonshot"
 run/main_scene="res://PrototypeMenu.tscn"
 config/icon="res://icon.png"
-config/version="0.1.2"
-config/build_folder="v0.1.0"
+config/version="0.1.4"
+config/build_folder="v0.2.0"
 
 [autoload]
 
@@ -123,6 +123,16 @@ hook={
 "events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
  ]
 }
+jenga_rotate_clockwise={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":5,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+jenga_rotate_anti_clockwise={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":4,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
 
 [layer_names]
 
@@ -130,6 +140,10 @@ hook={
 2d_physics/layer_2="player"
 2d_physics/layer_3="hook_targets"
 2d_physics/layer_4="hookshot_detection"
+
+[physics]
+
+2d/default_gravity=980
 
 [rendering]
 

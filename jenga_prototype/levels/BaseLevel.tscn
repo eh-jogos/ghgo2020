@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/bar_cup/BarCup.tscn" type="PackedScene" id=1]
+[ext_resource path="res://jenga_prototype/gameplay_elements/tables/bar_table/mesa_de_bar.png" type="Texture" id=2]
+[ext_resource path="res://resources/white_block.png" type="Texture" id=4]
+
+[sub_resource type="PhysicsMaterial" id=1]
+rough = true
+bounce = 1.0
+absorbent = true
+
+[node name="BaseLevel" type="Node2D"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scroll_base_scale = Vector2( 0, 0 )
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+self_modulate = Color( 1, 0.933333, 0.756863, 1 )
+texture = ExtResource( 4 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 1920, 1080 )
+
+[node name="BarTable" type="StaticBody2D" parent="."]
+position = Vector2( 960, 1081.5 )
+collision_layer = 1024
+collision_mask = 2147484672
+physics_material_override = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="BarTable"]
+texture = ExtResource( 2 )
+offset = Vector2( 0, -91 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BarTable"]
+polygon = PoolVector2Array( -960, 0, -800, -105, 800, -105, 960, 0 )
+
+[node name="Cups" type="Node2D" parent="."]
+
+[node name="BarCup" parent="Cups" instance=ExtResource( 1 )]
+position = Vector2( 936.567, 587.338 )
+
+[node name="BarCup2" parent="Cups" instance=ExtResource( 1 )]
+position = Vector2( 936.567, 252.392 )
+rotation = -6.28318
+
+[node name="BarCup3" parent="Cups" instance=ExtResource( 1 )]
+position = Vector2( 936.567, -53.4232 )
+rotation = -3.14159
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 960, 540 )
+current = true

@@ -1,6 +1,5 @@
 # Write your doc string for this file here
-tool
-extends Label
+extends Node2D
 
 ### Member Variables and Dependencies -------------------------------------------------------------
 #--- signals --------------------------------------------------------------------------------------
@@ -9,9 +8,9 @@ extends Label
 
 #--- constants ------------------------------------------------------------------------------------
 
-const VERSION_TEXT = "v%s"
-
 #--- public variables - order: export > normal var > onready --------------------------------------
+
+onready var rigid_body: RigidBody2D = $CupSides
 
 #--- private variables - order: export > normal var > onready -------------------------------------
 
@@ -20,8 +19,8 @@ const VERSION_TEXT = "v%s"
 
 ### Built in Engine Methods -----------------------------------------------------------------------
 
-func _ready() -> void:
-	text = VERSION_TEXT%[ProjectSettings.get("application/config/version")]
+func _ready():
+	pass
 
 ### -----------------------------------------------------------------------------------------------
 

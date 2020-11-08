@@ -5,7 +5,7 @@
 [ext_resource path="res://hookshot_prototype/levels/base_level/Level.gd" type="Script" id=3]
 [ext_resource path="res://hookshot_prototype/levels/base_level/ScreenLimits.gd" type="Script" id=4]
 [ext_resource path="res://addons/eh_jogos.transitions/transitions_data/sweep_up.tres" type="Resource" id=5]
-[ext_resource path="res://hookshot_prototype/resources/white_block.png" type="Texture" id=6]
+[ext_resource path="res://resources/white_block.png" type="Texture" id=6]
 [ext_resource path="res://hookshot_prototype/levels/base_level/BlackStrips.gd" type="Script" id=7]
 [ext_resource path="res://hookshot_prototype/gameplay_elements/player/Player.tscn" type="PackedScene" id=8]
 [ext_resource path="res://hookshot_prototype/gameplay_elements/checkpoint/Checkpoint.tscn" type="PackedScene" id=9]
@@ -23,6 +23,17 @@ script = ExtResource( 3 )
 [node name="eh_SceneChanger" type="Node" parent="."]
 script = ExtResource( 2 )
 transition_data = ExtResource( 5 )
+
+[node name="LevelDecorations" type="Node2D" parent="."]
+
+[node name="BG" type="Sprite" parent="LevelDecorations"]
+self_modulate = Color( 0.0392157, 0.105882, 0.270588, 1 )
+texture = ExtResource( 6 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 1920, 1080 )
+
+[node name="Ground" parent="LevelDecorations" instance=ExtResource( 10 )]
 
 [node name="LevelWalls" type="Node2D" parent="."]
 
@@ -45,17 +56,6 @@ _path_reference = NodePath("../../CanvasLayer/BlackStrips/Right")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelWalls/Right"]
 shape = SubResource( 2 )
 
-[node name="LevelDecorations" type="Node2D" parent="."]
-
-[node name="BG" type="Sprite" parent="LevelDecorations"]
-self_modulate = Color( 0.0392157, 0.105882, 0.270588, 1 )
-texture = ExtResource( 6 )
-centered = false
-region_enabled = true
-region_rect = Rect2( 0, 0, 1920, 1080 )
-
-[node name="Ground" parent="LevelDecorations" instance=ExtResource( 10 )]
-
 [node name="Targets" type="Node2D" parent="."]
 
 [node name="Checkpoint" parent="." instance=ExtResource( 9 )]
@@ -66,6 +66,7 @@ position = Vector2( 975.18, 970.14 )
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="BlackStrips" type="Control" parent="CanvasLayer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_pivot_offset = Vector2( 1437.85, 510.53 )
