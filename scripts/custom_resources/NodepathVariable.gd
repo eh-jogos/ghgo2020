@@ -1,8 +1,11 @@
 # Write your doc string for this file here
-extends Node2D
+class_name NodePathVariable
+extends Resource
 
 ### Member Variables and Dependencies -------------------------------------------------------------
 #--- signals --------------------------------------------------------------------------------------
+
+signal value_updated
 
 #--- enums ----------------------------------------------------------------------------------------
 
@@ -10,7 +13,7 @@ extends Node2D
 
 #--- public variables - order: export > normal var > onready --------------------------------------
 
-onready var rigid_body: RigidBody2D = $CupSides
+export var value: NodePath = NodePath("") setget _set_value
 
 #--- private variables - order: export > normal var > onready -------------------------------------
 
@@ -18,9 +21,6 @@ onready var rigid_body: RigidBody2D = $CupSides
 
 
 ### Built in Engine Methods -----------------------------------------------------------------------
-
-func _ready():
-	pass
 
 ### -----------------------------------------------------------------------------------------------
 
@@ -31,5 +31,9 @@ func _ready():
 
 
 ### Private Methods -------------------------------------------------------------------------------
+
+func _set_value(p_value: NodePath) -> void:
+	value = p_value
+	emit_signal("value_updated")
 
 ### -----------------------------------------------------------------------------------------------

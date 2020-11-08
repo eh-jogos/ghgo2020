@@ -1,0 +1,29 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/bar_cup/bar_cup_liquid.png" type="Texture" id=1]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/bar_cup/bar_cup.png" type="Texture" id=2]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/CupSkin.gd" type="Script" id=3]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/bar_cup/animations/bar_cup_BASE.tres" type="Animation" id=4]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/bar_cup/animations/bar_cup_spawn.tres" type="Animation" id=5]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/bar_cup/animations/bar_cup_drink.tres" type="Animation" id=6]
+
+[node name="Skin" type="Node2D"]
+scale = Vector2( 1e-05, 1e-05 )
+script = ExtResource( 3 )
+
+[node name="Liquid" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+centered = false
+offset = Vector2( -55, -58 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 111, 147 )
+
+[node name="Cup" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "BASE"
+anims/BASE = ExtResource( 4 )
+anims/drink = ExtResource( 6 )
+anims/spawn = ExtResource( 5 )
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
