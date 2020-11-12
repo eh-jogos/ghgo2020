@@ -9,10 +9,20 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "SharedVariable",
+"class": "ArrayVariable",
+"language": "GDScript",
+"path": "res://scripts/eh_jogos.shared_variables/Array/ArrayVariable.gd"
+}, {
 "base": "Node2D",
 "class": "BaseCup",
 "language": "GDScript",
 "path": "res://jenga_prototype/gameplay_elements/cups/BaseCup.gd"
+}, {
+"base": "SharedVariable",
+"class": "BoolVariable",
+"language": "GDScript",
+"path": "res://scripts/eh_jogos.shared_variables/BoolVariable.gd"
 }, {
 "base": "StaticBody2D",
 "class": "CheckPoint",
@@ -29,6 +39,26 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://jenga_prototype/gameplay_elements/cups/CupSkin.gd"
 }, {
+"base": "SharedVariable",
+"class": "DictionaryVariable",
+"language": "GDScript",
+"path": "res://scripts/eh_jogos.shared_variables/DictionaryVariable.gd"
+}, {
+"base": "VBoxContainer",
+"class": "FloatRangeVariableDebugLine",
+"language": "GDScript",
+"path": "res://jenga_prototype/ui_elements/debug_menu/float_lines/FloatRangeVariableLine.gd"
+}, {
+"base": "SharedVariable",
+"class": "FloatVariable",
+"language": "GDScript",
+"path": "res://scripts/eh_jogos.shared_variables/FloatVariable.gd"
+}, {
+"base": "VBoxContainer",
+"class": "FloatVariableDebugLine",
+"language": "GDScript",
+"path": "res://jenga_prototype/ui_elements/debug_menu/float_lines/FloatVariableLine.gd"
+}, {
 "base": "Position2D",
 "class": "HookShot",
 "language": "GDScript",
@@ -39,15 +69,30 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://hookshot_prototype/gameplay_elements/hook_points/safe/HootkTarget.gd"
 }, {
-"base": "Resource",
+"base": "SharedVariable",
+"class": "IntVariable",
+"language": "GDScript",
+"path": "res://scripts/eh_jogos.shared_variables/IntVariable.gd"
+}, {
+"base": "SharedVariable",
 "class": "NodePathVariable",
 "language": "GDScript",
-"path": "res://scripts/custom_resources/NodepathVariable.gd"
+"path": "res://scripts/eh_jogos.shared_variables/NodepathVariable.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "Player",
 "language": "GDScript",
 "path": "res://hookshot_prototype/gameplay_elements/player/Player.gd"
+}, {
+"base": "Reference",
+"class": "ReadOnlyDebugLine",
+"language": "GDScript",
+"path": "res://jenga_prototype/ui_elements/debug_menu/read_only_lines/ReadOnlyVariableLine.gd"
+}, {
+"base": "Resource",
+"class": "SharedVariable",
+"language": "GDScript",
+"path": "res://scripts/eh_jogos.shared_variables/_Variable.gd"
 }, {
 "base": "Node",
 "class": "State",
@@ -64,6 +109,26 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/utility/Steering.gd"
 }, {
+"base": "SharedVariable",
+"class": "StringArrayVariable",
+"language": "GDScript",
+"path": "res://scripts/eh_jogos.shared_variables/Array/StringArrayVariable.gd"
+}, {
+"base": "SharedVariable",
+"class": "StringVariable",
+"language": "GDScript",
+"path": "res://scripts/eh_jogos.shared_variables/StringVariable.gd"
+}, {
+"base": "SharedVariable",
+"class": "StringVariableArray",
+"language": "GDScript",
+"path": "res://scripts/eh_jogos.shared_variables/StringVariableArray.gd"
+}, {
+"base": "Area2D",
+"class": "TargetLine",
+"language": "GDScript",
+"path": "res://jenga_prototype/gameplay_elements/target_line/TargetLine.gd"
+}, {
 "base": "Node",
 "class": "eh_SceneChanger",
 "language": "GDScript",
@@ -77,20 +142,33 @@ _global_script_classes=[ {
 "base": "Reference",
 "class": "eh_Utility",
 "language": "GDScript",
-"path": "res://scripts/utility/EH_Utility.gd"
+"path": "res://scripts/utility/eh_Utility.gd"
 } ]
 _global_script_class_icons={
+"ArrayVariable": "",
 "BaseCup": "",
+"BoolVariable": "",
 "CheckPoint": "",
 "CheckPointHookTarget": "",
 "CupSkin": "",
+"DictionaryVariable": "",
+"FloatRangeVariableDebugLine": "",
+"FloatVariable": "",
+"FloatVariableDebugLine": "",
 "HookShot": "",
 "HookTarget": "",
+"IntVariable": "",
 "NodePathVariable": "",
 "Player": "",
+"ReadOnlyDebugLine": "",
+"SharedVariable": "",
 "State": "",
 "StateMachine": "",
 "Steering": "",
+"StringArrayVariable": "",
+"StringVariable": "",
+"StringVariableArray": "",
+"TargetLine": "",
 "eh_SceneChanger": "",
 "eh_TransitionData": "",
 "eh_Utility": ""
@@ -101,7 +179,7 @@ _global_script_class_icons={
 config/name="Moonshot"
 run/main_scene="res://jenga_prototype/levels/BaseLevel.tscn"
 config/icon="res://icon.png"
-config/version="0.2.0"
+config/version="0.2.3"
 config/build_folder="v0.2.0"
 run/main_scene.HTML5="res://PrototypeMenu.tscn"
 
@@ -168,6 +246,11 @@ jenga_drop={
 jenga_concentrate={
 "deadzone": 0.5,
 "events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":2,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+debug_show_menu={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777218,"unicode":0,"echo":false,"script":null)
  ]
 }
 
