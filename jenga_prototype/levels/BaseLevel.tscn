@@ -1,19 +1,27 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://jenga_prototype/gameplay_elements/cups/bar_cup/BarCup.tscn" type="PackedScene" id=1]
 [ext_resource path="res://jenga_prototype/gameplay_elements/tables/bar_table/mesa_de_bar.png" type="Texture" id=2]
 [ext_resource path="res://jenga_prototype/gameplay_elements/mouse_guide/MouseGuide.tscn" type="PackedScene" id=3]
-[ext_resource path="res://resources/white_block.png" type="Texture" id=4]
+[ext_resource path="res://jenga_prototype/gameplay_elements/DeugMenus/JengaDebugMenu.tscn" type="PackedScene" id=4]
 [ext_resource path="res://jenga_prototype/levels/BaseLevel.gd" type="Script" id=5]
 [ext_resource path="res://jenga_prototype/gameplay_elements/cups/bar_cup/bar_cup.png" type="Texture" id=6]
 [ext_resource path="res://jenga_prototype/gameplay_elements/target_line/TargetLine.tscn" type="PackedScene" id=7]
+[ext_resource path="res://jenga_prototype/ui_elements/AlteredStateProgressBar.tscn" type="PackedScene" id=8]
 
-[sub_resource type="PhysicsMaterial" id=1]
+[sub_resource type="Gradient" id=1]
+colors = PoolColorArray( 1, 0.933333, 0.756863, 1, 0.4, 0.501961, 1, 1 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+width = 4320
+
+[sub_resource type="PhysicsMaterial" id=3]
 rough = true
 bounce = 1.0
 absorbent = true
 
-[sub_resource type="StyleBoxFlat" id=2]
+[sub_resource type="StyleBoxFlat" id=4]
 bg_color = Color( 0.713726, 0.976471, 1, 1 )
 corner_radius_top_left = 30
 corner_radius_top_right = 30
@@ -24,7 +32,7 @@ expand_margin_right = 30.0
 expand_margin_top = 30.0
 expand_margin_bottom = 30.0
 
-[sub_resource type="StyleBoxFlat" id=3]
+[sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 0.713726, 0.721569, 1, 1 )
 corner_radius_top_left = 30
 corner_radius_top_right = 30
@@ -35,7 +43,7 @@ expand_margin_right = 30.0
 expand_margin_top = 30.0
 expand_margin_bottom = 30.0
 
-[sub_resource type="StyleBoxFlat" id=4]
+[sub_resource type="StyleBoxFlat" id=6]
 bg_color = Color( 1, 1, 1, 1 )
 corner_radius_top_left = 30
 corner_radius_top_right = 30
@@ -46,6 +54,23 @@ expand_margin_right = 30.0
 expand_margin_top = 30.0
 expand_margin_bottom = 30.0
 
+[sub_resource type="Animation" id=7]
+resource_name = "teste"
+length = 5.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Camera2D:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 4, 4 ) ]
+}
+
 [node name="BaseLevel" type="Node2D"]
 script = ExtResource( 5 )
 
@@ -53,22 +78,24 @@ script = ExtResource( 5 )
 resources = [ PoolStringArray( "cup" ), [ ExtResource( 1 ) ] ]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-scroll_base_scale = Vector2( 0, 0 )
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
 self_modulate = Color( 1, 0.933333, 0.756863, 1 )
-texture = ExtResource( 4 )
+position = Vector2( -2888, 0 )
+rotation = -1.5708
+texture = SubResource( 2 )
 centered = false
+offset = Vector2( -1080, 0 )
 region_enabled = true
-region_rect = Rect2( 0, 0, 1920, 1080 )
+region_rect = Rect2( 0, 0, 4320, 7696 )
 
 [node name="BarTable" type="StaticBody2D" parent="."]
 position = Vector2( 960, 1081.5 )
 collision_layer = 1024
 collision_mask = 2147484672
-physics_material_override = SubResource( 1 )
+physics_material_override = SubResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="BarTable"]
 texture = ExtResource( 2 )
@@ -85,6 +112,7 @@ position = Vector2( 960, 880 )
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 960, 540 )
 current = true
+limit_bottom = 1080
 
 [node name="MouseGuide" parent="." instance=ExtResource( 3 )]
 
@@ -109,30 +137,33 @@ margin_top = -210.0
 margin_right = -60.0
 margin_bottom = -60.0
 rect_min_size = Vector2( 100, 150 )
-custom_styles/hover = SubResource( 2 )
-custom_styles/pressed = SubResource( 3 )
-custom_styles/normal = SubResource( 4 )
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
 icon = ExtResource( 6 )
 expand_icon = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SpawnPivot" type="Control" parent="HUDLayer"]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -111.949
-margin_top = -242.165
-margin_right = -111.949
-margin_bottom = -242.165
+[node name="SpawnPivot" type="Control" parent="HUDLayer/HUD/SpawnCups"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_top = -30.0
+margin_bottom = -30.0
 mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CupSpawnPoint" type="Position2D" parent="HUDLayer/SpawnPivot"]
+[node name="CupSpawnPoint" type="Position2D" parent="HUDLayer/HUD/SpawnCups/SpawnPivot"]
 position = Vector2( 0, -187 )
+
+[node name="AlteredStateProgressBar" parent="HUDLayer/HUD" instance=ExtResource( 8 )]
+
+[node name="JengaDebugMenu" parent="HUDLayer" instance=ExtResource( 4 )]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/teste = SubResource( 7 )
 [connection signal="level_completed" from="TargetLine" to="." method="_on_TargetLine_level_completed"]
 [connection signal="pressed" from="HUDLayer/HUD/SpawnCups" to="." method="_on_SpawnCups_pressed"]
