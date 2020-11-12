@@ -20,8 +20,8 @@ onready var scene_changer: eh_SceneChanger = $eh_SceneChanger
 ### Built in Engine Methods -----------------------------------------------------------------------
 
 func _ready():
-	Events.connect("hookshot_level_won", self, "_on_Events_hookshot_level_won")
-	pass
+	eh_Utility.connect_signal(Events, "hookshot_level_won", self, "_on_Events_hookshot_level_won")
+
 
 ### -----------------------------------------------------------------------------------------------
 

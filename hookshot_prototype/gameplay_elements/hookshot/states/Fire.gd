@@ -35,12 +35,12 @@ func enter(msg: Dictionary = {}) -> void:
 	target.hooked_from(hookshot.global_position)
 	
 	hookshot.emit_signal("hooked_onto_target", target.global_position)
-	Events.connect("hookshot_released", self, "_on_Events_hookshot_released")
+	eh_Utility.connect_signal(Events, "hookshot_released", self, "_on_Events_hookshot_released")
 
 
 func exit() -> void:
 	hookshot.arrow.release_hook()
-	Events.disconnect("hookshot_released", self, "_on_Events_hookshot_released")
+	eh_Utility.disconnect_signal(Events, "hookshot_released", self, "_on_Events_hookshot_released")
 
 
 ### -----------------------------------------------------------------------------------------------
