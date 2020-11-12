@@ -1,10 +1,11 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://fonts/MavenProRegularl_36.tres" type="DynamicFont" id=1]
+[ext_resource path="res://fonts/MavenProRegular_36.tres" type="DynamicFont" id=1]
 [ext_resource path="res://addons/eh_jogos.transitions/custom_nodes/eh_SceneChanger.gd" type="Script" id=2]
 [ext_resource path="res://addons/eh_jogos.transitions/transitions_data/sweep_right.tres" type="Resource" id=3]
 [ext_resource path="res://scripts/utility/VersionLabel.gd" type="Script" id=4]
 [ext_resource path="res://addons/eh_jogos.transitions/transitions_data/sweep_left.tres" type="Resource" id=5]
+
 
 [sub_resource type="Theme" id=1]
 default_font = ExtResource( 1 )
