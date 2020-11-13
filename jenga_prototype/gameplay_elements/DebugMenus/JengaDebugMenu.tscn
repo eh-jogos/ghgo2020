@@ -1,0 +1,162 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://jenga_prototype/ui_elements/debug_menu/DebugMenu.tscn" type="PackedScene" id=1]
+[ext_resource path="res://jenga_prototype/ui_elements/debug_menu/read_only_lines/ReadOnlyVariableLine.tscn" type="PackedScene" id=2]
+[ext_resource path="res://jenga_prototype/gameplay_elements/DebugMenus/AlteredLevel.gd" type="Script" id=3]
+[ext_resource path="res://jenga_prototype/ui_elements/debug_menu/float_lines/FloatVariableField.tscn" type="PackedScene" id=4]
+[ext_resource path="res://jenga_prototype/ui_elements/debug_menu/debug_group/DebugGroup.tscn" type="PackedScene" id=5]
+[ext_resource path="res://jenga_prototype/ui_elements/debug_menu/float_lines/FloatRangeVariableField.tscn" type="PackedScene" id=6]
+[ext_resource path="res://jenga_prototype/gameplay_elements/DebugMenus/SaveDialog.gd" type="Script" id=7]
+[ext_resource path="res://fonts/MavenProRegular_36.tres" type="DynamicFont" id=8]
+[ext_resource path="res://jenga_prototype/gameplay_elements/DebugMenus/LoadDialog.gd" type="Script" id=9]
+[ext_resource path="res://jenga_prototype/gameplay_elements/DebugMenus/JengaDebugMenu.gd" type="Script" id=10]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.164706, 0.164706, 0.188235, 1 )
+border_width_left = 2
+border_width_top = 40
+border_width_right = 2
+border_width_bottom = 2
+expand_margin_top = 40.0
+
+[sub_resource type="Theme" id=2]
+default_font = ExtResource( 8 )
+WindowDialog/colors/title_color = Color( 0, 0, 0, 1 )
+WindowDialog/constants/close_h_ofs = 18
+WindowDialog/constants/close_v_ofs = 25
+WindowDialog/constants/scaleborder_size = 4
+WindowDialog/constants/title_height = 40
+WindowDialog/fonts/title_font = null
+WindowDialog/icons/close = null
+WindowDialog/icons/close_highlight = null
+WindowDialog/styles/panel = SubResource( 1 )
+
+[node name="JengaDebugMenu" instance=ExtResource( 1 )]
+script = ExtResource( 10 )
+
+[node name="ProfileButtons" type="HBoxContainer" parent="Panel" index="0"]
+anchor_right = 1.0
+margin_left = 30.0
+margin_top = 30.0
+margin_right = -15.0
+custom_constants/separation = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SaveProfile" type="Button" parent="Panel/ProfileButtons" index="0"]
+margin_right = 219.0
+margin_bottom = 44.0
+size_flags_horizontal = 3
+text = "Salvar Perfil"
+
+[node name="Load Profile" type="Button" parent="Panel/ProfileButtons" index="1"]
+margin_left = 229.0
+margin_right = 455.0
+margin_bottom = 44.0
+size_flags_horizontal = 3
+text = "Carregar Perfil"
+
+[node name="ScrollContainer" parent="Panel" index="1"]
+margin_top = 90.0
+
+[node name="DebugList" parent="Panel/ScrollContainer" index="0"]
+margin_right = 443.0
+margin_bottom = 1009.0
+
+[node name="ProgressionGroup" parent="Panel/ScrollContainer/DebugList" index="0" instance=ExtResource( 5 )]
+margin_right = 443.0
+margin_bottom = 199.0
+title = "Progressão"
+nodes_to_collapse = [ NodePath("DebugGroupTitle/Content/Buttons"), NodePath("IncrementLine") ]
+
+[node name="IncrementLine" parent="Panel/ScrollContainer/DebugList/ProgressionGroup" index="2" instance=ExtResource( 6 )]
+margin_top = 109.0
+margin_right = 443.0
+margin_bottom = 199.0
+field_name = "Drunk/Sugar Increment:"
+float_variable_path = "res://jenga_prototype/shared_variables/float_increment_step.tres"
+
+[node name="TargetLineGroup" parent="Panel/ScrollContainer/DebugList" index="1" instance=ExtResource( 5 )]
+margin_top = 209.0
+margin_right = 443.0
+margin_bottom = 504.0
+title = "Linha de Meta"
+nodes_to_collapse = [ NodePath("DebugGroupTitle/Content/Buttons"), NodePath("TargetLineSensibility") ]
+
+[node name="ReadOnlyVariableLine" parent="Panel/ScrollContainer/DebugList/TargetLineGroup" index="2" instance=ExtResource( 2 )]
+margin_top = 109.0
+margin_right = 443.0
+margin_bottom = 195.0
+field_name = "State da Linha"
+shared_variable_path = "res://jenga_prototype/shared_variables/string_target_line_current_state.tres"
+
+[node name="TargetLineSensibility" parent="Panel/ScrollContainer/DebugList/TargetLineGroup" index="3" instance=ExtResource( 4 )]
+margin_top = 205.0
+margin_right = 443.0
+margin_bottom = 295.0
+field_name = "Sensibilidade de detecção de movimento"
+float_variable_path = "res://jenga_prototype/shared_variables/float_target_line_sensibility.tres"
+
+[node name="AlteredStateGroup" parent="Panel/ScrollContainer/DebugList" index="2" instance=ExtResource( 5 )]
+margin_top = 514.0
+margin_right = 443.0
+margin_bottom = 1009.0
+title = "Estado Alterado"
+nodes_to_collapse = [ NodePath("DebugGroupTitle/Content/Buttons"), NodePath("AlteredOffset"), NodePath("AlteredLinearDuration"), NodePath("AlteredAngularDuration") ]
+
+[node name="AlteredLevel" parent="Panel/ScrollContainer/DebugList/AlteredStateGroup" index="2" instance=ExtResource( 2 )]
+margin_top = 109.0
+margin_right = 443.0
+margin_bottom = 195.0
+script = ExtResource( 3 )
+field_name = "Nível de Estado Alterado"
+shared_variable_path = "res://jenga_prototype/shared_variables/altered_status/float_altered_factor.tres"
+
+[node name="AlteredOffset" parent="Panel/ScrollContainer/DebugList/AlteredStateGroup" index="3" instance=ExtResource( 4 )]
+margin_top = 205.0
+margin_right = 443.0
+margin_bottom = 295.0
+hint_tooltip = "Máximo de pixels de distancia do mouse vai ser a posição do copo quando o nivel de Alterado for 1"
+field_name = "Unidade de Offset"
+float_variable_path = "res://jenga_prototype/shared_variables/altered_status/float_altered_offset_unit.tres"
+
+[node name="AlteredLinearDuration" parent="Panel/ScrollContainer/DebugList/AlteredStateGroup" index="4" instance=ExtResource( 4 )]
+margin_top = 305.0
+margin_right = 443.0
+margin_bottom = 395.0
+hint_tooltip = "Máximo de pixels de distancia do mouse vai ser a posição do copo quando o nivel de Alterado for 1"
+field_name = "Duração do Loop do Movimento Linear"
+float_variable_path = "res://jenga_prototype/shared_variables/altered_status/float_altered_linear_loop_duration.tres"
+
+[node name="AlteredAngularDuration" parent="Panel/ScrollContainer/DebugList/AlteredStateGroup" index="5" instance=ExtResource( 4 )]
+margin_top = 405.0
+margin_right = 443.0
+margin_bottom = 495.0
+hint_tooltip = "Máximo de pixels de distancia do mouse vai ser a posição do copo quando o nivel de Alterado for 1"
+field_name = "Duração do Loop do Movimento Angular"
+float_variable_path = "res://jenga_prototype/shared_variables/altered_status/float_altered_angular_loop_duration.tres"
+
+[node name="SaveDialog" parent="Popups" index="0"]
+margin_left = -828.0
+margin_top = -417.0
+margin_right = 772.0
+margin_bottom = 383.0
+theme = SubResource( 2 )
+filters = PoolStringArray(  )
+script = ExtResource( 7 )
+
+[node name="LoadDialog" parent="Popups" index="1"]
+margin_right = 1100.0
+margin_bottom = 450.0
+theme = SubResource( 2 )
+filters = PoolStringArray(  )
+script = ExtResource( 9 )
+[connection signal="pressed" from="Panel/ProfileButtons/SaveProfile" to="." method="_on_SaveProfile_pressed"]
+[connection signal="pressed" from="Panel/ProfileButtons/Load Profile" to="." method="_on_Load_Profile_pressed"]
+[connection signal="data_saved" from="Panel/ScrollContainer/DebugList/ProgressionGroup" to="." method="_on_ProgressionGroup_data_saved"]
+[connection signal="loda_data_requested" from="Panel/ScrollContainer/DebugList/ProgressionGroup" to="." method="_on_ProgressionGroup_loda_data_requested"]
+[connection signal="data_saved" from="Panel/ScrollContainer/DebugList/TargetLineGroup" to="." method="_on_TargetLineGroup_data_saved"]
+[connection signal="loda_data_requested" from="Panel/ScrollContainer/DebugList/TargetLineGroup" to="." method="_on_TargetLineGroup_loda_data_requested"]
+[connection signal="data_saved" from="Panel/ScrollContainer/DebugList/AlteredStateGroup" to="." method="_on_AlteredStateGroup_data_saved"]
+[connection signal="loda_data_requested" from="Panel/ScrollContainer/DebugList/AlteredStateGroup" to="." method="_on_AlteredStateGroup_loda_data_requested"]
