@@ -56,14 +56,16 @@ func enter(msg: Dictionary = {}) -> void:
 			target_global_position = tgp
 			velocity = v
 	
-	player.hookshot.connect("hooked_onto_target", self, "_on_hook_hooked_onto_target")
+	eh_Utility.connect_signal(
+			player.hookshot, "hooked_onto_target", self, "_on_hook_hooked_onto_target")
 
 
 func exit() -> void:
 	target_global_position = Vector2(INF, INF)
 	velocity = Vector2.ZERO
 	
-	player.hookshot.disconnect("hooked_onto_target", self, "_on_hook_hooked_onto_target")
+	eh_Utility.disconnect_signal(
+			player.hookshot, "hooked_onto_target", self, "_on_hook_hooked_onto_target")
 
 ### -----------------------------------------------------------------------------------------------
 

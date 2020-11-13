@@ -30,9 +30,8 @@ onready var _refefence_black_bar: Control = get_node(_path_reference) as Control
 func _ready():
 	yield(owner, "ready")
 	match_reference_position()
-	_refefence_black_bar.connect("item_rect_changed", self, 
+	eh_Utility.connect_signal(_refefence_black_bar, "item_rect_changed", self, 
 			"_on_refefence_black_bar_item_rect_changed")
-	
 
 ### -----------------------------------------------------------------------------------------------
 

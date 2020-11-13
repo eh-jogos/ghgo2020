@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://jenga_prototype/ui_elements/debug_menu/read_only_lines/ReadOnlyVariableLine.gd" type="Script" id=1]
+[ext_resource path="res://jenga_prototype/ui_elements/debug_menu/read_only_lines/Value.gd" type="Script" id=2]
+[ext_resource path="res://fonts/MavenProBold_36.tres" type="DynamicFont" id=3]
+
+[node name="ReadOnlyVariableLine" type="VBoxContainer"]
+margin_right = 455.0
+margin_bottom = 57.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_right = 455.0
+margin_bottom = 14.0
+text = "Field Name:"
+autowrap = true
+
+[node name="Value" type="RichTextLabel" parent="."]
+margin_top = 18.0
+margin_right = 455.0
+margin_bottom = 57.0
+size_flags_horizontal = 3
+custom_fonts/bold_font = ExtResource( 3 )
+bbcode_enabled = true
+bbcode_text = "[right][b]Value[/b][/right]"
+text = "Value"
+fit_content_height = true
+scroll_active = false
+script = ExtResource( 2 )

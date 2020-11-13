@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://fonts/MavenProRegularl_36.tres" type="DynamicFont" id=1]
+[ext_resource path="res://fonts/MavenProRegular_36.tres" type="DynamicFont" id=1]
 [ext_resource path="res://addons/eh_jogos.transitions/custom_nodes/eh_SceneChanger.gd" type="Script" id=2]
 [ext_resource path="res://hookshot_prototype/levels/base_level/Level.gd" type="Script" id=3]
 [ext_resource path="res://hookshot_prototype/levels/base_level/ScreenLimits.gd" type="Script" id=4]
@@ -10,6 +10,7 @@
 [ext_resource path="res://hookshot_prototype/gameplay_elements/player/Player.tscn" type="PackedScene" id=8]
 [ext_resource path="res://hookshot_prototype/gameplay_elements/checkpoint/Checkpoint.tscn" type="PackedScene" id=9]
 [ext_resource path="res://hookshot_prototype/gameplay_elements/ground/Ground.tscn" type="PackedScene" id=10]
+
 
 [sub_resource type="LineShape2D" id=1]
 normal = Vector2( 1, 0 )

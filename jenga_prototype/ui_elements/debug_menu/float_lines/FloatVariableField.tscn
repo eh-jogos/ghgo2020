@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://jenga_prototype/ui_elements/debug_menu/float_lines/FloatVariableLine.gd" type="Script" id=1]
+
+[node name="FloatVariableLine" type="VBoxContainer"]
+margin_right = 455.0
+margin_bottom = 90.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_right = 455.0
+margin_bottom = 14.0
+text = "Field Name:"
+autowrap = true
+
+[node name="SpinBox" type="SpinBox" parent="."]
+margin_left = 255.0
+margin_top = 18.0
+margin_right = 455.0
+margin_bottom = 42.0
+rect_min_size = Vector2( 200, 0 )
+size_flags_horizontal = 8

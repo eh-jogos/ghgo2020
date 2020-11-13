@@ -1,0 +1,49 @@
+# Write your doc string for this file here
+class_name ReadOnlyDebugLine
+extends VBoxContainer
+
+### Member Variables and Dependencies -------------------------------------------------------------
+#--- signals --------------------------------------------------------------------------------------
+
+#--- enums ----------------------------------------------------------------------------------------
+
+#--- constants ------------------------------------------------------------------------------------
+
+#--- public variables - order: export > normal var > onready --------------------------------------
+
+export var field_name: String = ""
+export(String, FILE, "*.tres") var shared_variable_path: String = ""
+
+#--- private variables - order: export > normal var > onready -------------------------------------
+
+onready var _label: Label = $Label
+onready var _value_label: RichTextLabel = $Value
+onready var _shared_variable: SharedVariable = load(shared_variable_path) as SharedVariable
+
+### -----------------------------------------------------------------------------------------------
+
+
+### Built in Engine Methods -----------------------------------------------------------------------
+
+func _ready():
+	_label.text = field_name
+	update_value()
+	_shared_variable.connect_to(self, "_on_shared_variable_updated")
+
+### -----------------------------------------------------------------------------------------------
+
+
+### Public Methods --------------------------------------------------------------------------------
+
+func update_value() -> void:
+	_value_label.set_value(_shared_variable.value)
+
+### -----------------------------------------------------------------------------------------------
+
+
+### Private Methods -------------------------------------------------------------------------------
+
+func _on_shared_variable_updated():
+	update_value()
+
+### -----------------------------------------------------------------------------------------------

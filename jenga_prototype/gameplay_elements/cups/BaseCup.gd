@@ -48,11 +48,7 @@ func _ready():
 	
 	_main_mouse_reference = load(MAIN_MOUSE_GUIDE_PATH) as NodePathVariable
 	_update_mouse_guide()
-	if not _main_mouse_reference.is_connected(
-			"value_updated", self, "_on_main_mouse_reference_value_changed"
-	):
-		_main_mouse_reference.connect(
-			"value_updated", self, "_on_main_mouse_reference_value_changed")
+	_main_mouse_reference.connect_to(self, "_on_main_mouse_reference_value_changed")
 
 
 func _physics_process(delta):
