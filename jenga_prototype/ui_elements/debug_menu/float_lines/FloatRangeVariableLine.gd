@@ -36,6 +36,7 @@ func _ready():
 	_spin_box.step = step
 	_spin_box.value = _float_variable.value
 	
+	_float_variable.connect_to(self, "_on_float_variable_value_updated")
 	eh_Utility.connect_signal(_spin_box, "value_changed", self, "_on_spin_box_value_changed")
 
 ### -----------------------------------------------------------------------------------------------
@@ -50,5 +51,9 @@ func _ready():
 
 func _on_spin_box_value_changed(p_value: float) -> void:
 	_float_variable.value = p_value
+
+
+func _on_float_variable_value_updated() -> void:
+	_spin_box.value = _float_variable.value
 
 ### -----------------------------------------------------------------------------------------------
