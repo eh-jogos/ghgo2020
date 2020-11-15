@@ -158,8 +158,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CupSpawnPoint" type="Position2D" parent="HUDLayer/HUD/SpawnCups/SpawnPivot"]
-position = Vector2( 0, -187 )
+[node name="CupSpawnPoint" type="Control" parent="HUDLayer/HUD/SpawnCups/SpawnPivot"]
+margin_top = -187.0
+margin_bottom = -187.0
+rect_min_size = Vector2( 25, 25 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="HUDLayer/HUD/SpawnCups/SpawnPivot/CupSpawnPoint"]
+margin_right = 40.0
+margin_bottom = 40.0
+color = Color( 0.972549, 0.160784, 0.160784, 1 )
 
 [node name="AlteredStateProgressBar" parent="HUDLayer/HUD" instance=ExtResource( 8 )]
 
