@@ -18,14 +18,15 @@ var is_active: = false setget _set_is_active
 
 var mouse_guide: Sprite = null
 
+onready var resources: ResourcePreloader = $ResourcePreloader
 onready var state_machine: StateMachine = $CupStateMachine
 onready var skin: CupSkin = $Skin
 onready var tween: Tween = $Tween
 onready var main_rigid_body: RigidBody2D = $CupSides
 onready var top_rigid_body: RigidBody2D = $CupTop
 onready var rigid_bodies: Array = [
-	$CupSides,
-	$CupTop,
+	main_rigid_body,
+	top_rigid_body,
 ]
 onready var collision_shapes: Array = [
 	$CupSides/SideLeft,
@@ -34,9 +35,12 @@ onready var collision_shapes: Array = [
 	$CupTop/Top
 ]
 
+
 #--- private variables - order: export > normal var > onready -------------------------------------
 
 var _main_mouse_reference: NodePathVariable
+
+onready var _scale_factor: FloatVariable = resources.get_resource("float_scale_factor")
 
 ### -----------------------------------------------------------------------------------------------
 
@@ -49,6 +53,8 @@ func _ready():
 	_main_mouse_reference = load(MAIN_MOUSE_GUIDE_PATH) as NodePathVariable
 	_update_mouse_guide()
 	_main_mouse_reference.connect_to(self, "_on_main_mouse_reference_value_changed")
+	
+	_handle_scale_factor()
 
 
 func _physics_process(delta):
@@ -72,6 +78,22 @@ func set_collisons(to_active: bool) -> void:
 
 
 ### Private Methods -------------------------------------------------------------------------------
+
+func _handle_scale_factor() -> void:
+	skin.scale_factor = _scale_factor.value
+	
+	for shape in collision_shapes:
+		var scaled_polygon: PoolVector2Array = shape.polygon
+		for index in scaled_polygon.size():
+			scaled_polygon[index] *= _scale_factor.value
+		shape.polygon = scaled_polygon
+	
+	for child in top_rigid_body.get_children():
+		if child is CollisionPolygon2D:
+			continue
+		
+		child.position *= _scale_factor.value
+
 
 func _set_is_active(value: bool) -> void:
 	is_active = value
