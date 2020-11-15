@@ -99,7 +99,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://hookshot_prototype/gameplay_elements/player/Player.gd"
 }, {
-"base": "Reference",
+"base": "VBoxContainer",
 "class": "ReadOnlyDebugLine",
 "language": "GDScript",
 "path": "res://jenga_prototype/ui_elements/debug_menu/read_only_lines/ReadOnlyVariableLine.gd"
@@ -197,8 +197,8 @@ _global_script_class_icons={
 config/name="Moonshot"
 run/main_scene="res://jenga_prototype/levels/BaseLevel.tscn"
 config/icon="res://icon.png"
-config/version="0.2.4"
-config/build_folder="v0.2.0"
+config/version="0.3.0"
+config/build_folder="v0.3.0"
 run/main_scene.HTML5="res://PrototypeMenu.tscn"
 
 [autoload]

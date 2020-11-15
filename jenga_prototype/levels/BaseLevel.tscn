@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://jenga_prototype/gameplay_elements/cups/bar_cup/BarCup.tscn" type="PackedScene" id=1]
 [ext_resource path="res://jenga_prototype/gameplay_elements/tables/bar_table/mesa_de_bar.png" type="Texture" id=2]
@@ -8,6 +8,11 @@
 [ext_resource path="res://jenga_prototype/gameplay_elements/cups/bar_cup/bar_cup.png" type="Texture" id=6]
 [ext_resource path="res://jenga_prototype/gameplay_elements/target_line/TargetLine.tscn" type="PackedScene" id=7]
 [ext_resource path="res://jenga_prototype/ui_elements/AlteredStateProgressBar.tscn" type="PackedScene" id=8]
+[ext_resource path="res://jenga_prototype/shared_variables/float_scale_factor.tres" type="Resource" id=9]
+[ext_resource path="res://jenga_prototype/shared_variables/float_scale_increment.tres" type="Resource" id=10]
+[ext_resource path="res://jenga_prototype/gameplay_elements/camera/JengaCamera.tscn" type="PackedScene" id=11]
+[ext_resource path="res://jenga_prototype/shared_variables/nodepath_target_line_guide.tres" type="Resource" id=12]
+[ext_resource path="res://jenga_prototype/levels/TargetLineGuide.gd" type="Script" id=13]
 
 [sub_resource type="Gradient" id=1]
 colors = PoolColorArray( 1, 0.933333, 0.756863, 1, 0.4, 0.501961, 1, 1 )
@@ -59,7 +64,7 @@ resource_name = "teste"
 length = 5.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Camera2D:zoom")
+tracks/0/path = NodePath("JengaCamera:zoom")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -75,7 +80,7 @@ tracks/0/keys = {
 script = ExtResource( 5 )
 
 [node name="ResourcePreloader" type="ResourcePreloader" parent="."]
-resources = [ PoolStringArray( "cup" ), [ ExtResource( 1 ) ] ]
+resources = [ PoolStringArray( "cup", "scale_factor", "scale_increment" ), [ ExtResource( 1 ), ExtResource( 9 ), ExtResource( 10 ) ] ]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -104,15 +109,12 @@ offset = Vector2( 0, -91 )
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BarTable"]
 polygon = PoolVector2Array( -960, 0, -800, -105, 800, -105, 960, 0 )
 
+[node name="TargetLine" parent="." instance=ExtResource( 7 )]
+position = Vector2( 960, 900 )
+
 [node name="Cups" type="Node2D" parent="."]
 
-[node name="TargetLine" parent="." instance=ExtResource( 7 )]
-position = Vector2( 960, 880 )
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 960, 540 )
-current = true
-limit_bottom = 1080
+[node name="JengaCamera" parent="." instance=ExtResource( 11 )]
 
 [node name="MouseGuide" parent="." instance=ExtResource( 3 )]
 
@@ -156,10 +158,41 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CupSpawnPoint" type="Position2D" parent="HUDLayer/HUD/SpawnCups/SpawnPivot"]
-position = Vector2( 0, -187 )
+[node name="CupSpawnPoint" type="Control" parent="HUDLayer/HUD/SpawnCups/SpawnPivot"]
+margin_top = -187.0
+margin_bottom = -187.0
+rect_min_size = Vector2( 25, 25 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="HUDLayer/HUD/SpawnCups/SpawnPivot/CupSpawnPoint"]
+margin_right = 40.0
+margin_bottom = 40.0
+color = Color( 0.972549, 0.160784, 0.160784, 1 )
 
 [node name="AlteredStateProgressBar" parent="HUDLayer/HUD" instance=ExtResource( 8 )]
+
+[node name="TargetLineGuide" type="Control" parent="HUDLayer/HUD"]
+anchor_left = 1.0
+anchor_top = 0.4
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+_node_path_variable = ExtResource( 12 )
+
+[node name="ColorRect" type="ColorRect" parent="HUDLayer/HUD/TargetLineGuide"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0, 0.298039, 0.560784, 0.384314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="JengaDebugMenu" parent="HUDLayer" instance=ExtResource( 4 )]
 

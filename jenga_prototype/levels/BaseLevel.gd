@@ -14,9 +14,14 @@ var scale_factor = 1.0
 
 #--- private variables - order: export > normal var > onready -------------------------------------
 
-onready var _resource_preloader: ResourcePreloader = $ResourcePreloader
+onready var _resources: ResourcePreloader = $ResourcePreloader
 onready var _cup_spawn_point = $HUDLayer/HUD/SpawnCups/SpawnPivot/CupSpawnPoint
 onready var _cups_layer: Node2D = $Cups
+onready var _mouse_guide: Sprite = $MouseGuide
+onready var _camera: Camera2D = $JengaCamera
+
+onready var _scale_factor: FloatVariable = _resources.get_resource("scale_factor")
+onready var _scale_increment: FloatVariable = _resources.get_resource("scale_increment")
 
 ### -----------------------------------------------------------------------------------------------
 
@@ -33,9 +38,12 @@ func _ready():
 ### Public Methods --------------------------------------------------------------------------------
 
 func add_cup() -> void:
-	var new_cup: BaseCup = _resource_preloader.get_resource("cup").instance()
-	new_cup.scale *= scale_factor
-	new_cup.global_position = _cup_spawn_point.global_position
+	var new_cup: BaseCup = _resources.get_resource("cup").instance()
+	var canvas_transform = get_canvas_transform()
+	var canvas_origin = -canvas_transform.origin * _scale_factor.value
+	var guide_position = _cup_spawn_point.rect_global_position * _scale_factor.value
+	
+	new_cup.global_position = canvas_origin + guide_position
 	_cups_layer.add_child(new_cup, true)
 
 
@@ -55,6 +63,9 @@ func _on_SpawnCups_pressed():
 
 func _on_TargetLine_level_completed():
 	clear_cups()
+	_scale_factor.value += _scale_increment.value
+	_camera.update_zoom()
+
 
 ### -----------------------------------------------------------------------------------------------
 

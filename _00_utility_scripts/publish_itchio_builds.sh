@@ -56,19 +56,19 @@ esac
 # for OSX you can just send the zip directly
 function push_linux {
 	echo $itch_game_adress
-	./butler push --userversion=$game_version $base_builds_path/$project_name+Linux32 $itch_game_adress\:linux32
-	./butler push --userversion=$game_version $base_builds_path/$project_name+Linux64 $itch_game_adress\:linux64
+	./butler push --userversion=$game_version $base_builds_path/$project_name"Linux32" $itch_game_adress\:linux32
+	./butler push --userversion=$game_version $base_builds_path/$project_name"Linux64" $itch_game_adress\:linux64
 }
 
 function push_windows {
 	echo $itch_game_adress
-	./butler push --userversion=$game_version $base_builds_path/$project_name+Windows32 $itch_game_adress\:windows32
-	./butler push --userversion=$game_version $base_builds_path/$project_name+Windows64 $itch_game_adress\:windows64
+	./butler push --userversion=$game_version $base_builds_path/$project_name"Windows32" $itch_game_adress\:windows32
+	./butler push --userversion=$game_version $base_builds_path/$project_name"Windows64" $itch_game_adress\:windows64
 }
 
 function push_osx {
 	echo $itch_game_adress
-	./butler push --userversion=$game_version $base_builds_path/$project_name+OSX $itch_game_adress\:osx-universal
+	./butler push --userversion=$game_version $base_builds_path/$project_name"OSX" $itch_game_adress\:osx-universal
 }
 
 function push_html {
