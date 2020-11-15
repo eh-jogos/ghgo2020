@@ -35,7 +35,8 @@ func unhandled_input(event: InputEvent) -> void:
 
 
 func physics_process(_delta: float) -> void:
-	_cup.main_rigid_body.global_position = _cup.mouse_guide.global_position
+	if _cup.mouse_guide:
+		_cup.main_rigid_body.global_position = _cup.mouse_guide.global_position
 
 
 func enter(msg: Dictionary = {}) -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://jenga_prototype/gameplay_elements/target_line/target_line.png" type="Texture" id=1]
 [ext_resource path="res://jenga_prototype/gameplay_elements/target_line/TargetLine.gd" type="Script" id=2]
@@ -8,7 +8,8 @@
 [ext_resource path="res://jenga_prototype/shared_variables/float_target_line_sensibility.tres" type="Resource" id=6]
 [ext_resource path="res://jenga_prototype/gameplay_elements/target_line/states/CountDown.gd" type="Script" id=7]
 [ext_resource path="res://jenga_prototype/shared_variables/string_target_line_current_state.tres" type="Resource" id=8]
-
+[ext_resource path="res://jenga_prototype/shared_variables/float_scale_factor.tres" type="Resource" id=9]
+[ext_resource path="res://jenga_prototype/shared_variables/nodepath_target_line_guide.tres" type="Resource" id=10]
 
 [sub_resource type="SegmentShape2D" id=1]
 a = Vector2( -1060, 0 )
@@ -132,7 +133,9 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
 }
-sensibility = ExtResource( 6 )
+
+[node name="ResourcePreloader" type="ResourcePreloader" parent="."]
+resources = [ PoolStringArray( "scale_factor", "target_line_guide", "target_line_sensibility" ), [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 6 ) ] ]
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
