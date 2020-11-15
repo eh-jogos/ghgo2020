@@ -21,6 +21,8 @@ var drunk_rotate_loop_duration:FloatVariable
 var altered_factor: FloatVariable
 var altered_increment_step: FloatVariable
 
+var scale_factor: FloatVariable
+
 var new_global_position: Vector2 = Vector2.ZERO
 
 
@@ -41,6 +43,7 @@ onready var _tween: Tween = $Tween
 func _ready():
 	_setup_shared_variables()
 	global_position = get_global_mouse_position()
+	eh_Utility.connect_signal(Events, "cup_drinked", self, "_on_Events_cup_drinked")
 
 
 func _physics_process(delta):
@@ -56,7 +59,8 @@ func _physics_process(delta):
 			_movement_time_count -= FULL_CIRCLE
 		
 		var new_position = Vector2.ZERO
-		new_position = Vector2(altered_factor.value * drunk_offset_range.value * movement_sine, 0)
+		new_position = Vector2(
+			altered_factor.value * drunk_offset_range.value * scale_factor.value * movement_sine, 0)
 		new_position = new_position.rotated(_rotation_time_count)
 		global_position = get_global_mouse_position() + new_position
 
@@ -65,7 +69,7 @@ func _physics_process(delta):
 
 ### Public Methods --------------------------------------------------------------------------------
 
-func increase_drunkness() -> void:
+func increase_altered_factor() -> void:
 	_tween.interpolate_property(altered_factor, "value", 
 			altered_factor.value, 
 			altered_factor.value + altered_increment_step.value, 
@@ -84,10 +88,15 @@ func _setup_shared_variables() -> void:
 	
 	altered_increment_step = _resources.get_resource("increment_step")
 	altered_factor = _resources.get_resource("altered_factor")
-	altered_factor.value = 0
+	
+	scale_factor = _resources.get_resource("scale_factor")
 	
 	_node_path_variable = _resources.get_resource("main_mouse_guide")
 	_node_path_variable.value = self.get_path()
+
+
+func _on_Events_cup_drinked() -> void:
+	increase_altered_factor()
 
 ### -----------------------------------------------------------------------------------------------
 

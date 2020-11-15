@@ -29,7 +29,7 @@ func enter(msg: Dictionary = {}) -> void:
 	_cup.skin.spawn()
 	yield(_cup.skin, "animation_finished")
 	_cup.skin.drink()
-	_cup.mouse_guide.increase_drunkness()
+	Events.emit_signal("cup_drinked")
 	yield(_cup.skin, "animation_finished")
 	_cup.tween.follow_property(
 			_cup.main_rigid_body, "global_position", _cup.main_rigid_body.global_position,

@@ -10,3 +10,8 @@ signal hookshot_level_won
 signal hookshot_released
 
 ### -----------------------------------------------------------------------------------------------
+
+### Jenga Prototype ----------------------------------------------------------------------------
+
+# warning-ignore:unused_signal
+signal cup_drinked
