@@ -1,10 +1,5 @@
-# Float that can be saved in disk like a custom resource. 
-# Used as [Shared Variables] so that the data it holds can be accessed and modified from multiple 
-# parts of the code. Based on the idea of Unity's Scriptable Objects and Ryan Hipple's Unite Talk.
-# @category: Shared Variables
-tool
-class_name FloatVariable
-extends SharedVariable
+# Write your doc string for this file here
+extends VBoxContainer
 
 ### Member Variables and Dependencies -------------------------------------------------------------
 #--- signals --------------------------------------------------------------------------------------
@@ -15,23 +10,31 @@ extends SharedVariable
 
 #--- public variables - order: export > normal var > onready --------------------------------------
 
-export var default_value: float = 0.0 setget _set_default_value
-# Shared Variable value
-export var value: float = 0.0 setget _set_value
+export var field_name: String = ""
+export(String, FILE, "*.tres") var int_variable_path: String = ""
+export var step: int = 1 setget _set_step
 
 #--- private variables - order: export > normal var > onready -------------------------------------
+
+onready var _label: Label = $Label
+onready var _spin_box: SpinBox = $SpinBox
+onready var _int_variable: IntVariable = load(int_variable_path) as IntVariable
 
 ### -----------------------------------------------------------------------------------------------
 
 
 ### Built in Engine Methods -----------------------------------------------------------------------
 
-func is_class(p_class: String) -> bool:
-	return p_class == "FloatVariable" or .is_class(p_class)
-
-
-func get_class() -> String:
-	return "FloatVariable"
+func _ready():
+	_label.text = field_name
+	
+	_spin_box.min_value = -INF
+	_spin_box.max_value = INF
+	_spin_box.step = 0.01
+	_spin_box.value = _int_variable.value
+	
+	_int_variable.connect_to(self, "_on_int_variable_value_updated")
+	eh_Utility.connect_signal(_spin_box, "value_changed", self, "_on_spin_box_value_changed")
 
 ### -----------------------------------------------------------------------------------------------
 
@@ -43,17 +46,15 @@ func get_class() -> String:
 
 ### Private Methods -------------------------------------------------------------------------------
 
-func _set_default_value(value: float) -> void:
-	default_value = value
+func _set_step(value: int) -> void:
+	_spin_box.step = value
 
 
-func _set_value(p_value: float) -> void:
-	if is_first_run_in_session:
-		is_first_run_in_session = false
-		if should_reset_value:
-			p_value = default_value
-	value = p_value
-	emit_signal("value_updated")
-	ResourceSaver.save(resource_path, self)
+func _on_spin_box_value_changed(p_value: int) -> void:
+	_int_variable.value = p_value
+
+
+func _on_int_variable_value_updated() -> void:
+	_spin_box.value = _int_variable.value
 
 ### -----------------------------------------------------------------------------------------------

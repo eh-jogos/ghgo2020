@@ -19,6 +19,10 @@ signal value_updated
 
 #--- public variables - order: export > normal var > onready --------------------------------------
 
+export var should_reset_value: bool = false setget _set_should_reset_value
+
+var is_first_run_in_session: bool = true
+
 #--- private variables - order: export > normal var > onready -------------------------------------
 
 ### -----------------------------------------------------------------------------------------------
@@ -51,5 +55,8 @@ func disconnect_from(object: Object, func_name: String) -> void:
 
 
 ### Private Methods -------------------------------------------------------------------------------
+
+func _set_should_reset_value(value: bool) -> void:
+	should_reset_value = value
 
 ### -----------------------------------------------------------------------------------------------

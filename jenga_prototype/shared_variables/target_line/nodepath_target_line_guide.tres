@@ -4,4 +4,5 @@
 
 [resource]
 script = ExtResource( 1 )
+should_reset_value = false
 value = NodePath("")

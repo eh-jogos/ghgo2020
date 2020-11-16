@@ -11,7 +11,7 @@
 [ext_resource path="res://jenga_prototype/shared_variables/float_scale_factor.tres" type="Resource" id=9]
 [ext_resource path="res://jenga_prototype/shared_variables/float_scale_increment.tres" type="Resource" id=10]
 [ext_resource path="res://jenga_prototype/gameplay_elements/camera/JengaCamera.tscn" type="PackedScene" id=11]
-[ext_resource path="res://jenga_prototype/shared_variables/nodepath_target_line_guide.tres" type="Resource" id=12]
+[ext_resource path="res://jenga_prototype/shared_variables/target_line/nodepath_target_line_guide.tres" type="Resource" id=12]
 [ext_resource path="res://jenga_prototype/levels/TargetLineGuide.gd" type="Script" id=13]
 
 [sub_resource type="Gradient" id=1]
