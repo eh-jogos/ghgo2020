@@ -197,7 +197,7 @@ _global_script_class_icons={
 config/name="Moonshot"
 run/main_scene="res://jenga_prototype/levels/BaseLevel.tscn"
 config/icon="res://icon.png"
-config/version="0.3.0"
+config/version="0.3.1"
 config/build_folder="v0.3.0"
 run/main_scene.HTML5="res://PrototypeMenu.tscn"
 
