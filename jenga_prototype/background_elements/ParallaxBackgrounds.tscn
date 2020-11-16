@@ -1,0 +1,61 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://jenga_prototype/background_elements/pngs/background.png" type="Texture" id=1]
+[ext_resource path="res://jenga_prototype/background_elements/ParallaxBackgrounds.gd" type="Script" id=2]
+[ext_resource path="res://jenga_prototype/background_elements/pngs/park.png" type="Texture" id=3]
+[ext_resource path="res://jenga_prototype/gameplay_elements/tables/ground/ground.png" type="Texture" id=4]
+[ext_resource path="res://jenga_prototype/background_elements/pngs/cityscape.png" type="Texture" id=5]
+[ext_resource path="res://jenga_prototype/gameplay_elements/camera/JengaCamera.tscn" type="PackedScene" id=6]
+
+[node name="ParallaxBackgrounds" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Layer0" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Layer0"]
+position = Vector2( 960, 1080 )
+
+[node name="Sprite" type="Sprite" parent="Layer0/ParallaxLayer"]
+self_modulate = Color( 1, 0.933333, 0.756863, 1 )
+position = Vector2( 10.6787, -5.33936 )
+texture = ExtResource( 1 )
+centered = false
+offset = Vector2( -2028, -2283 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 4057, 2383 )
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="Layer0"]
+position = Vector2( 960, 875 )
+motion_scale = Vector2( 1, 0.7 )
+motion_offset = Vector2( 0, 162 )
+
+[node name="City" type="Sprite" parent="Layer0/ParallaxLayer3"]
+self_modulate = Color( 1, 0.933333, 0.756863, 1 )
+texture = ExtResource( 5 )
+centered = false
+offset = Vector2( -2028.5, -890 )
+region_rect = Rect2( 0, 0, 4320, 7696 )
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="Layer0"]
+position = Vector2( 960, 1080 )
+motion_scale = Vector2( 1, 0.9 )
+motion_offset = Vector2( 0, -54 )
+
+[node name="Park" type="Sprite" parent="Layer0/ParallaxLayer2"]
+self_modulate = Color( 1, 0.933333, 0.756863, 1 )
+texture = ExtResource( 3 )
+centered = false
+offset = Vector2( -776, -215 )
+region_rect = Rect2( 0, 0, 4320, 7696 )
+
+[node name="Ground" type="Sprite" parent="Layer0/ParallaxLayer2"]
+self_modulate = Color( 1, 0.933333, 0.756863, 1 )
+position = Vector2( 0, 53 )
+texture = ExtResource( 4 )
+centered = false
+offset = Vector2( -2028, -55 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 4057, 100 )
+
+[node name="JengaCamera" parent="." instance=ExtResource( 6 )]
+limit_bottom = 1080
