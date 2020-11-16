@@ -15,12 +15,9 @@ extends SharedVariable
 
 #--- public variables - order: export > normal var > onready --------------------------------------
 
-# Shared Variable value
-export var should_reset_value: bool = false setget _set_should_reset_value
 export var default_value: float = 0.0 setget _set_default_value
+# Shared Variable value
 export var value: float = 0.0 setget _set_value
-
-var is_first_run_in_session: bool = true
 
 #--- private variables - order: export > normal var > onready -------------------------------------
 
@@ -45,10 +42,6 @@ func get_class() -> String:
 
 
 ### Private Methods -------------------------------------------------------------------------------
-
-func _set_should_reset_value(value: bool) -> void:
-	should_reset_value = value
-
 
 func _set_default_value(value: float) -> void:
 	default_value = value

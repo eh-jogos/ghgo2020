@@ -15,6 +15,7 @@ extends SharedVariable
 
 #--- public variables - order: export > normal var > onready --------------------------------------
 
+export var default_value: int = 0 setget set_default_value
 # Shared Variable value
 export var value: int = 0 setget _set_value
 
@@ -42,7 +43,15 @@ func get_class() -> String:
 
 ### Private Methods -------------------------------------------------------------------------------
 
+func set_default_value(p_value: int) -> void:
+	default_value = p_value
+
+
 func _set_value(p_value: int) -> void:
+	if is_first_run_in_session:
+		is_first_run_in_session = false
+		if should_reset_value:
+			p_value = default_value
 	value = p_value
 	emit_signal("value_updated")
 	ResourceSaver.save(resource_path, self)
