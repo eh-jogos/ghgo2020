@@ -19,7 +19,7 @@ var drunk_shake_loop_duration: FloatVariable
 var drunk_rotate_loop_duration:FloatVariable
 
 var altered_factor: FloatVariable
-var altered_increment_step: FloatVariable
+var altered_increment_step: IntVariable
 
 var scale_factor: FloatVariable
 
@@ -72,7 +72,7 @@ func _physics_process(delta):
 func increase_altered_factor() -> void:
 	_tween.interpolate_property(altered_factor, "value", 
 			altered_factor.value, 
-			altered_factor.value + altered_increment_step.value, 
+			altered_factor.value + altered_increment_step.value/10.0, 
 			0.5, Tween.TRANS_LINEAR, Tween.EASE_IN)
 	_tween.start()
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://jenga_prototype/ui_elements/debug_menu/DebugMenu.tscn" type="PackedScene" id=1]
 [ext_resource path="res://jenga_prototype/ui_elements/debug_menu/read_only_lines/ReadOnlyVariableLine.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://fonts/MavenProRegular_36.tres" type="DynamicFont" id=8]
 [ext_resource path="res://jenga_prototype/gameplay_elements/DebugMenus/LoadDialog.gd" type="Script" id=9]
 [ext_resource path="res://jenga_prototype/gameplay_elements/DebugMenus/JengaDebugMenu.gd" type="Script" id=10]
+[ext_resource path="res://jenga_prototype/ui_elements/debug_menu/int_lines/IntVariableField.tscn" type="PackedScene" id=11]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.164706, 0.164706, 0.188235, 1 )
@@ -62,62 +63,72 @@ margin_top = 90.0
 
 [node name="DebugList" parent="Panel/ScrollContainer" index="0"]
 margin_right = 443.0
-margin_bottom = 1205.0
+margin_bottom = 1305.0
 
 [node name="ProgressionGroup" parent="Panel/ScrollContainer/DebugList" index="0" instance=ExtResource( 5 )]
 margin_right = 443.0
-margin_bottom = 395.0
+margin_bottom = 495.0
 title = "Progressão"
+title_font_size = 32
 nodes_to_collapse = [ NodePath("DebugGroupTitle/Content/Buttons"), NodePath("IncrementLine") ]
 
-[node name="SacleFactor" parent="Panel/ScrollContainer/DebugList/ProgressionGroup" index="2" instance=ExtResource( 2 )]
+[node name="ScaleFactor" parent="Panel/ScrollContainer/DebugList/ProgressionGroup" index="2" instance=ExtResource( 2 )]
 margin_top = 109.0
 margin_right = 443.0
 margin_bottom = 195.0
 field_name = "Fator de Escala"
 shared_variable_path = "res://jenga_prototype/shared_variables/float_scale_factor.tres"
 
-[node name="IncrementLine" parent="Panel/ScrollContainer/DebugList/ProgressionGroup" index="3" instance=ExtResource( 6 )]
+[node name="MaxSubdivisions" parent="Panel/ScrollContainer/DebugList/ProgressionGroup" index="3" instance=ExtResource( 11 )]
 margin_top = 205.0
 margin_right = 443.0
 margin_bottom = 295.0
-field_name = "Incremento de Bebdia"
-float_variable_path = "res://jenga_prototype/shared_variables/float_increment_step.tres"
+field_name = "Máximo de Gominhos"
+int_variable_path = "res://jenga_prototype/shared_variables/altered_state_bar/int_max_value.tres"
 
-[node name="ScaleIncrementLine" parent="Panel/ScrollContainer/DebugList/ProgressionGroup" index="4" instance=ExtResource( 6 )]
+[node name="SubIncrement" parent="Panel/ScrollContainer/DebugList/ProgressionGroup" index="4" instance=ExtResource( 11 )]
 margin_top = 305.0
 margin_right = 443.0
 margin_bottom = 395.0
+field_name = "incremento de Gominhos"
+int_variable_path = "res://jenga_prototype/shared_variables/altered_state_bar/int_increment_step.tres"
+
+[node name="ScaleIncrementLine" parent="Panel/ScrollContainer/DebugList/ProgressionGroup" index="5" instance=ExtResource( 6 )]
+margin_top = 405.0
+margin_right = 443.0
+margin_bottom = 495.0
 field_name = "Incremento de Escala"
 float_variable_path = "res://jenga_prototype/shared_variables/float_scale_increment.tres"
 max_value = 5.0
 
 [node name="TargetLineGroup" parent="Panel/ScrollContainer/DebugList" index="1" instance=ExtResource( 5 )]
-margin_top = 405.0
+margin_top = 505.0
 margin_right = 443.0
-margin_bottom = 700.0
+margin_bottom = 800.0
 title = "Linha de Meta"
+title_font_size = 32
 nodes_to_collapse = [ NodePath("DebugGroupTitle/Content/Buttons"), NodePath("TargetLineSensibility") ]
 
-[node name="ReadOnlyVariableLine" parent="Panel/ScrollContainer/DebugList/TargetLineGroup" index="2" instance=ExtResource( 2 )]
+[node name="LineState" parent="Panel/ScrollContainer/DebugList/TargetLineGroup" index="2" instance=ExtResource( 2 )]
 margin_top = 109.0
 margin_right = 443.0
 margin_bottom = 195.0
 field_name = "State da Linha"
-shared_variable_path = "res://jenga_prototype/shared_variables/string_target_line_current_state.tres"
+shared_variable_path = "res://jenga_prototype/shared_variables/target_line/string_target_line_current_state.tres"
 
 [node name="TargetLineSensibility" parent="Panel/ScrollContainer/DebugList/TargetLineGroup" index="3" instance=ExtResource( 4 )]
 margin_top = 205.0
 margin_right = 443.0
 margin_bottom = 295.0
 field_name = "Sensibilidade de detecção de movimento"
-float_variable_path = "res://jenga_prototype/shared_variables/float_target_line_sensibility.tres"
+float_variable_path = "res://jenga_prototype/shared_variables/target_line/float_target_line_sensibility.tres"
 
 [node name="AlteredStateGroup" parent="Panel/ScrollContainer/DebugList" index="2" instance=ExtResource( 5 )]
-margin_top = 710.0
+margin_top = 810.0
 margin_right = 443.0
-margin_bottom = 1205.0
+margin_bottom = 1305.0
 title = "Estado Alterado"
+title_font_size = 32
 nodes_to_collapse = [ NodePath("DebugGroupTitle/Content/Buttons"), NodePath("AlteredOffset"), NodePath("AlteredLinearDuration"), NodePath("AlteredAngularDuration") ]
 
 [node name="AlteredLevel" parent="Panel/ScrollContainer/DebugList/AlteredStateGroup" index="2" instance=ExtResource( 2 )]
