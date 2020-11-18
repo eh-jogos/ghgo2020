@@ -63,11 +63,11 @@ margin_top = 90.0
 
 [node name="DebugList" parent="Panel/ScrollContainer" index="0"]
 margin_right = 443.0
-margin_bottom = 1305.0
+margin_bottom = 1405.0
 
 [node name="ProgressionGroup" parent="Panel/ScrollContainer/DebugList" index="0" instance=ExtResource( 5 )]
 margin_right = 443.0
-margin_bottom = 495.0
+margin_bottom = 595.0
 title = "Progressão"
 title_font_size = 32
 nodes_to_collapse = [ NodePath("DebugGroupTitle/Content/Buttons"), NodePath("IncrementLine") ]
@@ -101,10 +101,19 @@ field_name = "Incremento de Escala"
 float_variable_path = "res://jenga_prototype/shared_variables/float_scale_increment.tres"
 max_value = 5.0
 
-[node name="TargetLineGroup" parent="Panel/ScrollContainer/DebugList" index="1" instance=ExtResource( 5 )]
+[node name="CameraLevel" parent="Panel/ScrollContainer/DebugList/ProgressionGroup" index="6" instance=ExtResource( 6 )]
 margin_top = 505.0
 margin_right = 443.0
-margin_bottom = 800.0
+margin_bottom = 595.0
+field_name = "Nivel da Camera"
+float_variable_path = "res://jenga_prototype/shared_variables/float_camera_level.tres"
+max_value = 1.0
+step = 0.01
+
+[node name="TargetLineGroup" parent="Panel/ScrollContainer/DebugList" index="1" instance=ExtResource( 5 )]
+margin_top = 605.0
+margin_right = 443.0
+margin_bottom = 900.0
 title = "Linha de Meta"
 title_font_size = 32
 nodes_to_collapse = [ NodePath("DebugGroupTitle/Content/Buttons"), NodePath("TargetLineSensibility") ]
@@ -124,9 +133,9 @@ field_name = "Sensibilidade de detecção de movimento"
 float_variable_path = "res://jenga_prototype/shared_variables/target_line/float_target_line_sensibility.tres"
 
 [node name="AlteredStateGroup" parent="Panel/ScrollContainer/DebugList" index="2" instance=ExtResource( 5 )]
-margin_top = 810.0
+margin_top = 910.0
 margin_right = 443.0
-margin_bottom = 1305.0
+margin_bottom = 1405.0
 title = "Estado Alterado"
 title_font_size = 32
 nodes_to_collapse = [ NodePath("DebugGroupTitle/Content/Buttons"), NodePath("AlteredOffset"), NodePath("AlteredLinearDuration"), NodePath("AlteredAngularDuration") ]

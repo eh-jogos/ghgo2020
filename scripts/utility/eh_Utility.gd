@@ -23,6 +23,10 @@ extends Reference
 
 ### Public Methods --------------------------------------------------------------------------------
 
+static func is_standalone_run(node: Node) -> bool:
+	return node.get_tree().current_scene == node
+
+
 static func set_node_as_toplevel(node: CanvasItem, to_toplevel: bool) -> void:
 	var current_pos: Vector2 = Vector2.ZERO
 	if node is Control:

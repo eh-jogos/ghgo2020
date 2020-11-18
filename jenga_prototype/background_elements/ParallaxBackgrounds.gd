@@ -10,18 +10,9 @@ extends Node2D
 
 #--- public variables - order: export > normal var > onready --------------------------------------
 
-var scale_factor = 1.0
-
 #--- private variables - order: export > normal var > onready -------------------------------------
 
-onready var _resources: ResourcePreloader = $ResourcePreloader
-onready var _cup_spawn_point = $HUDLayer/HUD/SpawnCups/SpawnPivot/CupSpawnPoint
-onready var _cups_layer: Node2D = $Cups
-onready var _mouse_guide: Sprite = $MouseGuide
-onready var _camera: Camera2D = $JengaCamera
-
-onready var _scale_factor: FloatVariable = _resources.get_resource("scale_factor")
-onready var _scale_increment: FloatVariable = _resources.get_resource("scale_increment")
+var _debug_camera: Camera2D = null
 
 ### -----------------------------------------------------------------------------------------------
 
@@ -29,44 +20,38 @@ onready var _scale_increment: FloatVariable = _resources.get_resource("scale_inc
 ### Built in Engine Methods -----------------------------------------------------------------------
 
 func _ready():
+	set_process_input(false)
 	
-	pass
+	if eh_Utility.is_standalone_run(self):
+		_debug_camera = \
+				load("res://jenga_prototype/gameplay_elements/camera/JengaCamera.tscn").instance()
+		add_child(_debug_camera)
+		_debug_camera.make_current()
+		set_process_input(true)
+
+
+func _input(event):
+	
+	if event.is_action_pressed("jenga_rotate_clockwise"):
+		_debug_camera.zoom += Vector2.ONE * 0.1
+	elif event.is_action_pressed("jenga_rotate_anti_clockwise"):
+		if _debug_camera.zoom > Vector2.ONE * 0.15:
+			_debug_camera.zoom -= Vector2.ONE * 0.05
+	
+	var direction = Vector2(
+		event.get_action_strength("ui_right") - event.get_action_strength("ui_left"),
+		event.get_action_strength("ui_down") - event.get_action_strength("ui_up")
+	)
+	_debug_camera.position += direction.normalized() * 100
 
 ### -----------------------------------------------------------------------------------------------
 
 
 ### Public Methods --------------------------------------------------------------------------------
 
-func add_cup() -> void:
-	var new_cup: BaseCup = _resources.get_resource("cup").instance()
-	var canvas_transform = get_canvas_transform()
-	var canvas_origin = -canvas_transform.origin * _camera.zoom
-	var guide_position = _cup_spawn_point.rect_global_position * _camera.zoom
-	
-	new_cup.global_position = canvas_origin + guide_position
-	_cups_layer.add_child(new_cup, true)
-
-
-func clear_cups() -> void:
-	for cup in _cups_layer.get_children():
-		_cups_layer.remove_child(cup)
-		cup.queue_free()
-
 ### -----------------------------------------------------------------------------------------------
 
 
 ### Private Methods -------------------------------------------------------------------------------
 
-func _on_SpawnCups_pressed():
-	add_cup()
-
-
-func _on_TargetLine_level_completed():
-	clear_cups()
-	_scale_factor.value += _scale_increment.value
-	_camera.update_zoom()
-
-
 ### -----------------------------------------------------------------------------------------------
-
-

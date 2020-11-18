@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://jenga_prototype/gameplay_elements/target_line/target_line.png" type="Texture" id=1]
 [ext_resource path="res://jenga_prototype/gameplay_elements/target_line/TargetLine.gd" type="Script" id=2]
@@ -8,8 +8,9 @@
 [ext_resource path="res://jenga_prototype/shared_variables/target_line/float_target_line_sensibility.tres" type="Resource" id=6]
 [ext_resource path="res://jenga_prototype/gameplay_elements/target_line/states/CountDown.gd" type="Script" id=7]
 [ext_resource path="res://jenga_prototype/shared_variables/target_line/string_target_line_current_state.tres" type="Resource" id=8]
-[ext_resource path="res://jenga_prototype/shared_variables/float_scale_factor.tres" type="Resource" id=9]
 [ext_resource path="res://jenga_prototype/shared_variables/target_line/nodepath_target_line_guide.tres" type="Resource" id=10]
+[ext_resource path="res://jenga_prototype/shared_variables/nodepath_main_camera.tres" type="Resource" id=11]
+[ext_resource path="res://jenga_prototype/shared_variables/float_camera_level.tres" type="Resource" id=12]
 
 [sub_resource type="SegmentShape2D" id=1]
 a = Vector2( -1060, 0 )
@@ -69,7 +70,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0.3 ),
 "transitions": PoolRealArray( 1 ),
 "update": 3,
-"values": [ Color( 1, 1, 1, 0.3 ) ]
+"values": [ Color( 1, 1, 1, 0.301961 ) ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -82,10 +83,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0.3 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0.3, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 3,
-"values": [ Color( 1, 1, 1, 1 ) ]
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.301961 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("ScaleEffect:modulate")
@@ -135,13 +136,14 @@ __meta__ = {
 }
 
 [node name="ResourcePreloader" type="ResourcePreloader" parent="."]
-resources = [ PoolStringArray( "scale_factor", "target_line_guide", "target_line_sensibility" ), [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 6 ) ] ]
+resources = [ PoolStringArray( "camera_level", "main_camera", "target_line_guide", "target_line_sensibility" ), [ ExtResource( 12 ), ExtResource( 11 ), ExtResource( 10 ), ExtResource( 6 ) ] ]
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 
 [node name="ScaleEffect" type="Sprite" parent="."]
 modulate = Color( 1, 1, 1, 0 )
+scale = Vector2( 2, 6 )
 texture = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -158,6 +160,7 @@ autoplay = "idle"
 anims/countdown = SubResource( 2 )
 anims/idle = SubResource( 3 )
 anims/win = SubResource( 4 )
+next/win = "idle"
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource( 3 )
