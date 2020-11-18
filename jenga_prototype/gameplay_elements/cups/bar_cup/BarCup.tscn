@@ -11,7 +11,7 @@
 [sub_resource type="PhysicsMaterial" id=1]
 rough = true
 
-[sub_resource type="PhysicsMaterial" id=3]
+[sub_resource type="PhysicsMaterial" id=2]
 rough = true
 
 [node name="BarCup" type="Node2D"]
@@ -23,6 +23,7 @@ resources = [ PoolStringArray( "float_scale_factor" ), [ ExtResource( 3 ) ] ]
 [node name="Tween" type="Tween" parent="."]
 
 [node name="Skin" parent="." instance=ExtResource( 1 )]
+custom_scale = Vector2( 1, 1 )
 
 [node name="CupSides" type="RigidBody2D" parent="."]
 collision_layer = 2048
@@ -46,7 +47,7 @@ polygon = PoolVector2Array( 30, 84, -30, 84, -35, 54, 35, 54 )
 [node name="CupTop" type="RigidBody2D" parent="."]
 collision_layer = 4096
 collision_mask = 2147488768
-physics_material_override = SubResource( 3 )
+physics_material_override = SubResource( 2 )
 continuous_cd = 2
 linear_damp = 1.0
 __meta__ = {
@@ -64,7 +65,7 @@ node_a = NodePath("../../CupSides")
 node_b = NodePath("..")
 
 [node name="Top" type="CollisionPolygon2D" parent="CupTop"]
-polygon = PoolVector2Array( -48, -85, 48, -85, 48, -55, -48, -55 )
+polygon = PoolVector2Array( -49, -85, 49, -85, 49, -55, -49, -55 )
 
 [node name="CupStateMachine" type="Node" parent="."]
 script = ExtResource( 8 )

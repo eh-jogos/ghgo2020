@@ -5,4 +5,4 @@
 [resource]
 script = ExtResource( 1 )
 should_reset_value = false
-value = "Win"
+value = "Idle"

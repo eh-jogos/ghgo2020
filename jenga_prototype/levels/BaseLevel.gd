@@ -40,8 +40,8 @@ func _ready():
 func add_cup() -> void:
 	var new_cup: BaseCup = _resources.get_resource("cup").instance()
 	var canvas_transform = get_canvas_transform()
-	var canvas_origin = -canvas_transform.origin * _scale_factor.value
-	var guide_position = _cup_spawn_point.rect_global_position * _scale_factor.value
+	var canvas_origin = -canvas_transform.origin * _camera.zoom
+	var guide_position = _cup_spawn_point.rect_global_position * _camera.zoom
 	
 	new_cup.global_position = canvas_origin + guide_position
 	_cups_layer.add_child(new_cup, true)

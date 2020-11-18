@@ -20,14 +20,14 @@ var _debug_camera: Camera2D = null
 ### Built in Engine Methods -----------------------------------------------------------------------
 
 func _ready():
-	_debug_camera = $JengaCamera
 	set_process_input(false)
 	
 	if eh_Utility.is_standalone_run(self):
+		_debug_camera = \
+				load("res://jenga_prototype/gameplay_elements/camera/JengaCamera.tscn").instance()
+		add_child(_debug_camera)
 		_debug_camera.make_current()
 		set_process_input(true)
-	else:
-		_debug_camera.queue_free()
 
 
 func _input(event):
