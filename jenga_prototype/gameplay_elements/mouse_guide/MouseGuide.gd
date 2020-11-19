@@ -19,7 +19,7 @@ var drunk_shake_loop_duration: FloatVariable
 var drunk_rotate_loop_duration:FloatVariable
 
 var altered_factor: FloatVariable
-var altered_increment_step: IntVariable
+var altered_increment: FloatVariable
 
 var scale_factor: FloatVariable
 
@@ -43,7 +43,8 @@ onready var _tween: Tween = $Tween
 func _ready():
 	_setup_shared_variables()
 	global_position = get_global_mouse_position()
-	eh_Utility.connect_signal(Events, "cup_drinked", self, "_on_Events_cup_drinked")
+	eh_Utility.connect_signal(Events,
+			"altered_level_raised", self, "_on_Events_altered_level_raised")
 
 
 func _physics_process(delta):
@@ -72,7 +73,7 @@ func _physics_process(delta):
 func increase_altered_factor() -> void:
 	_tween.interpolate_property(altered_factor, "value", 
 			altered_factor.value, 
-			altered_factor.value + altered_increment_step.value/10.0, 
+			altered_factor.value + altered_increment.value, 
 			0.5, Tween.TRANS_LINEAR, Tween.EASE_IN)
 	_tween.start()
 
@@ -86,7 +87,7 @@ func _setup_shared_variables() -> void:
 	drunk_rotate_loop_duration = _resources.get_resource("altered_angular_loop_duration")
 	drunk_shake_loop_duration = _resources.get_resource("altered_linear_loop_duration")
 	
-	altered_increment_step = _resources.get_resource("increment_step")
+	altered_increment = _resources.get_resource("altered_increment")
 	altered_factor = _resources.get_resource("altered_factor")
 	
 	scale_factor = _resources.get_resource("scale_factor")
@@ -95,7 +96,7 @@ func _setup_shared_variables() -> void:
 	_node_path_variable.value = self.get_path()
 
 
-func _on_Events_cup_drinked() -> void:
+func _on_Events_altered_level_raised() -> void:
 	increase_altered_factor()
 
 ### -----------------------------------------------------------------------------------------------

@@ -14,4 +14,7 @@ signal hookshot_released
 ### Jenga Prototype ----------------------------------------------------------------------------
 
 # warning-ignore:unused_signal
+signal altered_level_raised
+
+# warning-ignore:unused_signal
 signal cup_drinked

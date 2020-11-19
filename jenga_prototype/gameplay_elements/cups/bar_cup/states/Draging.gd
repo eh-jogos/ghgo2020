@@ -40,7 +40,7 @@ func physics_process(_delta: float) -> void:
 
 
 func enter(msg: Dictionary = {}) -> void:
-	_cup.set_collisons(true)
+	_cup.set_collisons(false)
 
 ### -----------------------------------------------------------------------------------------------
 
