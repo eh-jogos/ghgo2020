@@ -88,11 +88,8 @@ func _handle_scale_factor() -> void:
 			scaled_polygon[index] *= _scale_factor.value
 		shape.polygon = scaled_polygon
 	
-	for child in top_rigid_body.get_children():
-		if child is CollisionPolygon2D:
-			continue
-		
-		child.position *= _scale_factor.value
+	for body in rigid_bodies:
+		body.mass = 1 * _scale_factor.value
 
 
 func _set_is_active(value: bool) -> void:

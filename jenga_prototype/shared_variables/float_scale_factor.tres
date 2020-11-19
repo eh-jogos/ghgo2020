@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource( 1 )
 should_reset_value = true
-default_value = 1.0
-value = 1.0
+default_value = 0.5
+value = 0.5

@@ -23,7 +23,6 @@ resources = [ PoolStringArray( "float_scale_factor" ), [ ExtResource( 3 ) ] ]
 [node name="Tween" type="Tween" parent="."]
 
 [node name="Skin" parent="." instance=ExtResource( 1 )]
-custom_scale = Vector2( 1, 1 )
 
 [node name="CupSides" type="RigidBody2D" parent="."]
 collision_layer = 2048

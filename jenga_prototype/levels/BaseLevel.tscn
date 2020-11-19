@@ -79,20 +79,19 @@ resources = [ PoolStringArray( "cup", "scale_factor", "scale_increment" ), [ Ext
 [node name="ParallaxBackgrounds" parent="." instance=ExtResource( 14 )]
 
 [node name="BarTable" type="StaticBody2D" parent="."]
-visible = false
-position = Vector2( 960, 1067.5 )
+position = Vector2( 960, 1011.5 )
 scale = Vector2( 0.15, 0.15 )
 collision_layer = 1024
 collision_mask = 2147484672
 physics_material_override = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="BarTable"]
+scale = Vector2( 3, 3 )
 texture = ExtResource( 2 )
 offset = Vector2( 0, -91 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BarTable"]
-polygon = PoolVector2Array( -960, 0, -800, -105, 800, -105, 960, 0 )
-disabled = true
+polygon = PoolVector2Array( -2880, 0, -2400, -315, 2400, -315, 2880, 0 )
 
 [node name="TargetLine" parent="." instance=ExtResource( 7 )]
 position = Vector2( 960, 900 )
@@ -100,6 +99,8 @@ position = Vector2( 960, 900 )
 [node name="Cups" type="Node2D" parent="."]
 
 [node name="JengaCamera" parent="." instance=ExtResource( 11 )]
+anchor_start = Vector2( 960, 795 )
+anchor_min_zoom = 0.4
 
 [node name="MouseGuide" parent="." instance=ExtResource( 3 )]
 
@@ -159,8 +160,8 @@ color = Color( 0.972549, 0.160784, 0.160784, 1 )
 [node name="AlteredStateProgressBar" parent="HUDLayer/HUD" instance=ExtResource( 8 )]
 
 [node name="TargetLineGuide" type="Control" parent="HUDLayer/HUD"]
-anchor_left = 0.95
-anchor_top = 0.9
+anchor_left = 1.0
+anchor_top = 0.4
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2

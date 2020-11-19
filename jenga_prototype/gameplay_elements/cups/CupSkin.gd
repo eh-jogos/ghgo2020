@@ -15,11 +15,13 @@ signal animation_finished
 #--- public variables - order: export > normal var > onready --------------------------------------
 
 export var custom_scale: Vector2 = Vector2.ONE setget _set_custom_scale
-export var altered_state_factor: Resource
+export var drink_count: Resource
 
 var scale_factor: float = 1.0
 
 #--- private variables - order: export > normal var > onready -------------------------------------
+
+var _drink_increment: float = 0.2 
 
 onready var _animation_player: AnimationPlayer = $AnimationPlayer
 
@@ -34,12 +36,14 @@ onready var _animation_player: AnimationPlayer = $AnimationPlayer
 ### Public Methods --------------------------------------------------------------------------------
 
 func spawn() -> void:
-	_animation_player.playback_speed = 1.0 + altered_state_factor.value
+	drink_count.value += 1
+	var increment = _drink_increment * drink_count.value
+	var new_speed = clamp(_animation_player.playback_speed + increment, 1.0, 3.0)
+	_animation_player.playback_speed = new_speed
 	_animation_player.play("spawn")
 
 
 func drink() -> void:
-	_animation_player.playback_speed = 1.0 + altered_state_factor.value
 	_animation_player.play("drink")
 
 ### -----------------------------------------------------------------------------------------------
