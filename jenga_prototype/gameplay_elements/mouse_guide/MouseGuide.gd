@@ -13,6 +13,8 @@ const HALF_CIRCLE = PI
 
 #--- public variables - order: export > normal var > onready --------------------------------------
 
+var is_full: = false
+
 var drunk_offset: = Vector2.ZERO
 var drunk_offset_range: FloatVariable
 var drunk_shake_loop_duration: FloatVariable

@@ -26,8 +26,9 @@ onready var _cup: BaseCup = owner as BaseCup
 
 func unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("jenga_drop"):
-		_state_machine.transition_to("Dropped")
-		get_tree().set_input_as_handled()
+		if not _cup.is_over_other_cups:
+			_state_machine.transition_to("Dropped")
+			get_tree().set_input_as_handled()
 	if event.is_action_pressed("jenga_rotate_clockwise"):
 		_cup.main_rigid_body.rotation_degrees += 6
 	elif event.is_action_pressed("jenga_rotate_anti_clockwise"):

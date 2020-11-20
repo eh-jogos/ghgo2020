@@ -38,13 +38,16 @@ func _ready():
 ### Public Methods --------------------------------------------------------------------------------
 
 func add_cup() -> void:
-	var new_cup: BaseCup = _resources.get_resource("cup").instance()
-	var canvas_transform = get_canvas_transform()
-	var canvas_origin = -canvas_transform.origin * _camera.zoom
-	var guide_position = _cup_spawn_point.rect_global_position * _camera.zoom
-	
-	new_cup.global_position = canvas_origin + guide_position
-	_cups_layer.add_child(new_cup, true)
+	if not _mouse_guide.is_full:
+		_mouse_guide.is_full = true
+		
+		var new_cup: BaseCup = _resources.get_resource("cup").instance()
+		var canvas_transform = get_canvas_transform()
+		var canvas_origin = -canvas_transform.origin * _camera.zoom
+		var guide_position = _cup_spawn_point.rect_global_position * _camera.zoom
+		
+		new_cup.global_position = canvas_origin + guide_position
+		_cups_layer.add_child(new_cup, true)
 
 
 func clear_cups() -> void:

@@ -15,6 +15,7 @@ const MAIN_MOUSE_GUIDE_PATH = \
 #--- public variables - order: export > normal var > onready --------------------------------------
 
 var is_active: = false setget _set_is_active
+var is_over_other_cups: = false setget _set_is_over_other_cups
 
 var mouse_guide: Sprite = null
 
@@ -22,6 +23,9 @@ onready var resources: ResourcePreloader = $ResourcePreloader
 onready var state_machine: StateMachine = $CupStateMachine
 onready var skin: CupSkin = $Skin
 onready var tween: Tween = $Tween
+
+onready var cup_detector: Area2D = $CupDetector
+onready var cup_detector_polygon: CollisionPolygon2D = $CupDetector/CollisionPolygon2D
 onready var main_rigid_body: RigidBody2D = $CupSides
 onready var top_rigid_body: RigidBody2D = $CupTop
 onready var rigid_bodies: Array = [
@@ -32,7 +36,7 @@ onready var collision_shapes: Array = [
 	$CupSides/SideLeft,
 	$CupSides/SideRight,
 	$CupSides/Bottom,
-	$CupTop/Top
+	$CupTop/Top,
 ]
 
 
@@ -55,11 +59,22 @@ func _ready():
 	_main_mouse_reference.connect_to(self, "_on_main_mouse_reference_value_changed")
 	
 	_handle_scale_factor()
+	
 
 
 func _physics_process(delta):
 	global_position = main_rigid_body.global_position
 	rotation_degrees = main_rigid_body.rotation_degrees
+	
+	if cup_detector:
+		var overlapping_cups: Array = cup_detector.get_overlapping_areas()
+		
+		var names = []
+		
+		if overlapping_cups.empty():
+			self.is_over_other_cups = false
+		else:
+			self.is_over_other_cups = true
 
 ### -----------------------------------------------------------------------------------------------
 
@@ -79,17 +94,25 @@ func set_collisons(to_active: bool) -> void:
 
 ### Private Methods -------------------------------------------------------------------------------
 
+func _scale_collision_polygon(polygon: PoolVector2Array) -> PoolVector2Array:
+	for index in polygon.size():
+		polygon[index] *= _scale_factor.value
+	return polygon
+
 func _handle_scale_factor() -> void:
 	skin.scale_factor = _scale_factor.value
 	
+	cup_detector_polygon.polygon = _scale_collision_polygon(cup_detector_polygon.polygon)
+	
 	for shape in collision_shapes:
-		var scaled_polygon: PoolVector2Array = shape.polygon
-		for index in scaled_polygon.size():
-			scaled_polygon[index] *= _scale_factor.value
-		shape.polygon = scaled_polygon
+		shape.polygon = _scale_collision_polygon(shape.polygon)
 	
 	for body in rigid_bodies:
 		body.mass = 1 * _scale_factor.value
+	
+	for joint in top_rigid_body.get_children():
+		if joint is PinJoint2D:
+			joint.position *= _scale_factor.value
 
 
 func _set_is_active(value: bool) -> void:
@@ -118,8 +141,6 @@ func _set_drag_mode() -> void:
 	
 	for body in rigid_bodies:
 		body.mode = RigidBody2D.MODE_STATIC
-	
-	modulate = Color.red
 
 
 func _update_mouse_guide() -> void:
@@ -131,5 +152,13 @@ func _update_mouse_guide() -> void:
 
 func _on_main_mouse_reference_value_changed() -> void:
 	_update_mouse_guide()
+
+
+func _set_is_over_other_cups(value: bool) -> void:
+	is_over_other_cups = value
+	if is_over_other_cups:
+		modulate = Color.red
+	else:
+		modulate = Color.white
 
 ### -----------------------------------------------------------------------------------------------

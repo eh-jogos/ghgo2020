@@ -26,7 +26,7 @@ resources = [ PoolStringArray( "float_scale_factor" ), [ ExtResource( 3 ) ] ]
 
 [node name="CupSides" type="RigidBody2D" parent="."]
 collision_layer = 2048
-collision_mask = 11264
+collision_mask = 3072
 physics_material_override = SubResource( 1 )
 continuous_cd = 2
 linear_damp = 2.0
@@ -65,6 +65,13 @@ node_b = NodePath("..")
 
 [node name="Top" type="CollisionPolygon2D" parent="CupTop"]
 polygon = PoolVector2Array( -49, -85, 49, -85, 49, -55, -49, -55 )
+
+[node name="CupDetector" type="Area2D" parent="."]
+collision_layer = 8192
+collision_mask = 8192
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CupDetector"]
+polygon = PoolVector2Array( -63, -87, 63, -87, 63, 87, -63, 87 )
 
 [node name="CupStateMachine" type="Node" parent="."]
 script = ExtResource( 8 )

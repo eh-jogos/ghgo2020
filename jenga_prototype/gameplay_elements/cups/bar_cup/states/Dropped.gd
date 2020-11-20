@@ -26,6 +26,8 @@ onready var _cup: BaseCup = owner as BaseCup
 
 func enter(msg: Dictionary = {}) -> void:
 	_cup.is_active = true
+	_cup.mouse_guide.is_full = false
+	_cup.cup_detector = null
 
 ### -----------------------------------------------------------------------------------------------
 
