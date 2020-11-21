@@ -1,4 +1,5 @@
 # Write your doc string for this file here
+tool
 class_name FloatRangeVariableDebugLine
 extends VBoxContainer
 
@@ -11,7 +12,7 @@ extends VBoxContainer
 
 #--- public variables - order: export > normal var > onready --------------------------------------
 
-export var field_name: String = ""
+export var field_name: String = "" setget _set_field_name
 export(String, FILE, "*.tres") var float_variable_path: String = ""
 export var min_value: float = 0
 export var max_value: float = 1
@@ -31,13 +32,14 @@ onready var _float_variable: FloatVariable = load(float_variable_path)
 func _ready():
 	_label.text = field_name
 	
-	_spin_box.min_value = min_value
-	_spin_box.max_value = max_value
-	_spin_box.step = step
-	_spin_box.value = _float_variable.value
-	
-	_float_variable.connect_to(self, "_on_float_variable_value_updated")
-	eh_Utility.connect_signal(_spin_box, "value_changed", self, "_on_spin_box_value_changed")
+	if not Engine.editor_hint:
+		_spin_box.min_value = min_value
+		_spin_box.max_value = max_value
+		_spin_box.step = step
+		_spin_box.value = _float_variable.value
+		
+		_float_variable.connect_to(self, "_on_float_variable_value_updated")
+		eh_Utility.connect_signal(_spin_box, "value_changed", self, "_on_spin_box_value_changed")
 
 ### -----------------------------------------------------------------------------------------------
 
@@ -49,11 +51,20 @@ func _ready():
 
 ### Private Methods -------------------------------------------------------------------------------
 
+func _set_field_name(value: String) -> void:
+	field_name = value
+	
+	if is_inside_tree():
+		_label.text = field_name
+
+
 func _on_spin_box_value_changed(p_value: float) -> void:
-	_float_variable.value = p_value
+	if not Engine.editor_hint:
+		_float_variable.value = p_value
 
 
 func _on_float_variable_value_updated() -> void:
-	_spin_box.value = _float_variable.value
+	if not Engine.editor_hint:
+		_spin_box.value = _float_variable.value
 
 ### -----------------------------------------------------------------------------------------------
