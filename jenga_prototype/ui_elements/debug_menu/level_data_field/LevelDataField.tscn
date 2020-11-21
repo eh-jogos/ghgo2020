@@ -1,0 +1,189 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://scripts/custom_nodes/collpasible/Collapsible.gd" type="Script" id=1]
+[ext_resource path="res://scripts/custom_nodes/collpasible/icons/triangle_expanded.png" type="Texture" id=2]
+[ext_resource path="res://scripts/custom_nodes/collpasible/icons/triangle_collapsed.png" type="Texture" id=3]
+[ext_resource path="res://resources/icons/icon_arrow_down.svg" type="Texture" id=4]
+[ext_resource path="res://resources/icons/icon_remove.svg" type="Texture" id=5]
+[ext_resource path="res://resources/icons/icon_arrow_up.svg" type="Texture" id=6]
+[ext_resource path="res://jenga_prototype/ui_elements/debug_menu/level_data_field/LevelDataField.gd" type="Script" id=7]
+
+[sub_resource type="StyleBoxFlat" id=1]
+content_margin_left = 10.0
+content_margin_right = 10.0
+content_margin_top = 10.0
+content_margin_bottom = 10.0
+bg_color = Color( 0.152941, 0.34902, 0.458824, 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+content_margin_left = 10.0
+content_margin_right = 10.0
+content_margin_top = 10.0
+content_margin_bottom = 10.0
+bg_color = Color( 0.262745, 0.603922, 0.792157, 1 )
+
+[node name="LevelDataField" type="VBoxContainer"]
+margin_right = 413.0
+margin_bottom = 663.0
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Buttons" type="HBoxContainer" parent="."]
+margin_right = 413.0
+margin_bottom = 34.0
+custom_constants/separation = 5
+
+[node name="Button" type="Button" parent="Buttons"]
+margin_right = 248.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/normal = SubResource( 1 )
+custom_colors/font_color_hover = Color( 0.00392157, 1, 0.835294, 1 )
+custom_constants/hseparation = 25
+toggle_mode = true
+text = "Level 0"
+align = 0
+
+[node name="Collapsible" type="Node" parent="Buttons/Button"]
+script = ExtResource( 1 )
+collapsible_node_paths = [ NodePath("../../../LevelData") ]
+expanded_icon = ExtResource( 2 )
+collapsed_icon = ExtResource( 3 )
+
+[node name="Up" type="Button" parent="Buttons"]
+margin_left = 253.0
+margin_right = 303.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 50, 0 )
+icon = ExtResource( 6 )
+expand_icon = true
+
+[node name="Down" type="Button" parent="Buttons"]
+margin_left = 308.0
+margin_right = 358.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 50, 0 )
+icon = ExtResource( 4 )
+expand_icon = true
+
+[node name="Delete" type="Button" parent="Buttons"]
+margin_left = 363.0
+margin_right = 413.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 50, 0 )
+icon = ExtResource( 5 )
+expand_icon = true
+
+[node name="LevelData" type="VBoxContainer" parent="."]
+margin_top = 38.0
+margin_right = 413.0
+margin_bottom = 376.0
+custom_constants/separation = 10
+
+[node name="TargetHeight" type="Label" parent="LevelData"]
+margin_right = 413.0
+margin_bottom = 14.0
+text = "Altura da Linha de Meta"
+
+[node name="TargetHeightSpinBox" type="SpinBox" parent="LevelData"]
+margin_left = 213.0
+margin_top = 24.0
+margin_right = 413.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 200, 0 )
+size_flags_horizontal = 8
+max_value = 1.0
+step = 0.01
+
+[node name="CameraLevel" type="Label" parent="LevelData"]
+margin_top = 58.0
+margin_right = 413.0
+margin_bottom = 72.0
+text = "Nível da Camera"
+
+[node name="CameraLevelSpinBox" type="SpinBox" parent="LevelData"]
+margin_left = 213.0
+margin_top = 82.0
+margin_right = 413.0
+margin_bottom = 106.0
+rect_min_size = Vector2( 200, 0 )
+size_flags_horizontal = 8
+max_value = 1.0
+step = 0.01
+
+[node name="BarTotal" type="Label" parent="LevelData"]
+margin_top = 116.0
+margin_right = 413.0
+margin_bottom = 130.0
+text = "Total de Gominhos"
+
+[node name="BarTotalSpinBox" type="SpinBox" parent="LevelData"]
+margin_left = 213.0
+margin_top = 140.0
+margin_right = 413.0
+margin_bottom = 164.0
+rect_min_size = Vector2( 200, 0 )
+size_flags_horizontal = 8
+max_value = 1e+09
+
+[node name="BarIncrement" type="Label" parent="LevelData"]
+margin_top = 174.0
+margin_right = 413.0
+margin_bottom = 188.0
+text = "Incremento de Gominhos"
+
+[node name="BarIncrementSpinBox" type="SpinBox" parent="LevelData"]
+margin_left = 213.0
+margin_top = 198.0
+margin_right = 413.0
+margin_bottom = 222.0
+rect_min_size = Vector2( 200, 0 )
+size_flags_horizontal = 8
+max_value = 1e+09
+
+[node name="AlteredIncrement" type="Label" parent="LevelData"]
+margin_top = 232.0
+margin_right = 413.0
+margin_bottom = 246.0
+text = "Incremento de \"Embriaguez\""
+autowrap = true
+
+[node name="AlteredIncrementSpinBox" type="SpinBox" parent="LevelData"]
+margin_left = 213.0
+margin_top = 256.0
+margin_right = 413.0
+margin_bottom = 280.0
+rect_min_size = Vector2( 200, 0 )
+size_flags_horizontal = 8
+max_value = 5.0
+step = 0.1
+
+[node name="CupScale" type="Label" parent="LevelData"]
+margin_top = 290.0
+margin_right = 413.0
+margin_bottom = 304.0
+text = "Escala do Copo"
+autowrap = true
+
+[node name="CupScaleSpinBox" type="SpinBox" parent="LevelData"]
+margin_left = 213.0
+margin_top = 314.0
+margin_right = 413.0
+margin_bottom = 338.0
+rect_min_size = Vector2( 200, 0 )
+size_flags_horizontal = 8
+max_value = 15.0
+step = 0.01
+[connection signal="pressed" from="Buttons/Up" to="." method="_on_Up_pressed"]
+[connection signal="pressed" from="Buttons/Down" to="." method="_on_Down_pressed"]
+[connection signal="pressed" from="Buttons/Delete" to="." method="_on_Delete_pressed"]
+[connection signal="value_changed" from="LevelData/TargetHeightSpinBox" to="." method="_on_TargetHeightSpinBox_value_changed"]
+[connection signal="value_changed" from="LevelData/CameraLevelSpinBox" to="." method="_on_CameraLevelSpinBox_value_changed"]
+[connection signal="value_changed" from="LevelData/BarTotalSpinBox" to="." method="_on_BarTotalSpinBox_value_changed"]
+[connection signal="value_changed" from="LevelData/BarIncrementSpinBox" to="." method="_on_BarIncrementSpinBox_value_changed"]
+[connection signal="value_changed" from="LevelData/AlteredIncrementSpinBox" to="." method="_on_AlteredIncrementSpinBox_value_changed"]
+[connection signal="value_changed" from="LevelData/CupScaleSpinBox" to="." method="_on_CupScaleSpinBox_value_changed"]

@@ -13,7 +13,6 @@ __meta__ = {
 [node name="Label" type="Label" parent="."]
 margin_right = 455.0
 margin_bottom = 14.0
-text = "Field Name:"
 autowrap = true
 
 [node name="SpinBox" type="SpinBox" parent="."]

@@ -21,6 +21,9 @@ var difference_zoom: float
 
 #--- private variables - order: export > normal var > onready -------------------------------------
 
+var _target_line: TargetLine
+var _target_line_path: NodePathVariable
+
 onready var _resources: ResourcePreloader = $ResourcePreloader
 onready var _tween: Tween = $Tween
 
@@ -46,7 +49,11 @@ func _ready():
 ### Public Methods --------------------------------------------------------------------------------
 
 func update_zoom() -> void:
-	_tween.interpolate_property(_camera_level, "value", camera_level, camera_level+0.2, \
+	if _tween.is_active():
+		_tween.remove_all()
+	
+	var new_camera_level = _camera_level.value
+	_tween.interpolate_property(self, "camera_level", camera_level, new_camera_level, 
 			0.3, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	_tween.start()
 
@@ -67,6 +74,6 @@ func _set_camera_level(p_value: float) -> void:
 
 
 func _on_camera_level_changed() -> void:
-	_set_camera_level(_camera_level.value)
+	update_zoom()
 
 ### -----------------------------------------------------------------------------------------------

@@ -1,6 +1,4 @@
 # Write your doc string for this file here
-tool
-class_name FloatVariableDebugLine
 extends VBoxContainer
 
 ### Member Variables and Dependencies -------------------------------------------------------------
@@ -12,14 +10,12 @@ extends VBoxContainer
 
 #--- public variables - order: export > normal var > onready --------------------------------------
 
-export var field_name: String = "" setget _set_field_name
-export(String, FILE, "*.tres") var float_variable_path: String = ""
-
 #--- private variables - order: export > normal var > onready -------------------------------------
 
-onready var _label: Label = $Label
-onready var _spin_box: SpinBox = $SpinBox
-onready var _float_variable: FloatVariable = load(float_variable_path) as FloatVariable
+onready var _resources: ResourcePreloader = $ResourcePreloader
+onready var _levels: VBoxContainer = $LevelsIdentation/Levels
+onready var _levels_list: ArrayVariable = _resources.get_resource("array_levels_list")
+onready var _current_level: IntVariable = _resources.get_resource("int_level_current")
 
 ### -----------------------------------------------------------------------------------------------
 
@@ -27,41 +23,50 @@ onready var _float_variable: FloatVariable = load(float_variable_path) as FloatV
 ### Built in Engine Methods -----------------------------------------------------------------------
 
 func _ready():
-	_label.text = field_name
-	
-	if not Engine.editor_hint:
-		_spin_box.min_value = -INF
-		_spin_box.max_value = INF
-		_spin_box.step = 0.01
-		_spin_box.value = _float_variable.value
-		
-		_float_variable.connect_to(self, "_on_float_variable_value_updated")
-		eh_Utility.connect_signal(_spin_box, "value_changed", self, "_on_spin_box_value_changed")
+	populate_levels_list()
 
 ### -----------------------------------------------------------------------------------------------
 
 
 ### Public Methods --------------------------------------------------------------------------------
 
+func populate_levels_list() -> void:
+	for level_data in _levels_list.value:
+		var new_instance = _resources.get_resource("LevelDataField").instance()
+		_levels.add_child(new_instance, true)
+		new_instance.index = _levels.get_child_count() - 1
+		new_instance.level_data = level_data
+		new_instance.connect("levels_reordered", self, "_on_levels_reordered")
+		new_instance.connect("level_updated", self, "_on_level_updated")
+
+
+func refresh_level_list() -> void:
+	_levels_list.value.clear()
+	
+	var new_list = []
+	for child in _levels.get_children():
+		new_list.append(child.level_data)
+	
+	_levels_list.value = new_list
+
 ### -----------------------------------------------------------------------------------------------
 
 
 ### Private Methods -------------------------------------------------------------------------------
 
-func _set_field_name(value: String) -> void:
-	field_name = value
+func _on_levels_reordered() -> void:
+	for index in _levels.get_child_count():
+		_levels.get_child(index).index = index
+		if index == _current_level.value:
+			_current_level.value = index
 	
-	if is_inside_tree():
-		_label.text = field_name
+	refresh_level_list()
 
 
-func _on_spin_box_value_changed(p_value: float) -> void:
-	if not Engine.editor_hint:
-		_float_variable.value = p_value
-
-
-func _on_float_variable_value_updated() -> void:
-	if not Engine.editor_hint:
-		_spin_box.value = _float_variable.value
+func _on_level_updated(index) -> void:
+	_levels_list.value[index] = _levels.get_child(index).level_data
+	_levels_list.auto_save()
+	if index == _current_level.value:
+		_current_level.value = index
 
 ### -----------------------------------------------------------------------------------------------

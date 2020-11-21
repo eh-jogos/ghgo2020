@@ -37,6 +37,10 @@ func get_class() -> String:
 
 ### Public Methods --------------------------------------------------------------------------------
 
+func auto_save() -> void:
+	ResourceSaver.save(resource_path, self)
+	emit_signal("value_updated")
+
 ### -----------------------------------------------------------------------------------------------
 
 
@@ -44,7 +48,6 @@ func get_class() -> String:
 
 func _set_value(p_value: Array) -> void:
 	value = p_value
-	ResourceSaver.save(resource_path, self)
-	emit_signal("value_updated")
+	auto_save()
 
 ### -----------------------------------------------------------------------------------------------

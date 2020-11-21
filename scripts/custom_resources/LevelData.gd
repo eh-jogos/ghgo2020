@@ -1,7 +1,6 @@
 # Write your doc string for this file here
-tool
-class_name FloatVariableDebugLine
-extends VBoxContainer
+class_name LevelData
+extends Resource
 
 ### Member Variables and Dependencies -------------------------------------------------------------
 #--- signals --------------------------------------------------------------------------------------
@@ -12,31 +11,19 @@ extends VBoxContainer
 
 #--- public variables - order: export > normal var > onready --------------------------------------
 
-export var field_name: String = "" setget _set_field_name
-export(String, FILE, "*.tres") var float_variable_path: String = ""
+export(float, 0.0, 1.0, 0.01) var target_height: float = 0.6 setget _set_target_height
+export(float, 0.0, 1.0, 0.01) var camera_level: float = 0.0 setget _set_camera_level
+export(int) var altered_bar_total: int = 5 setget _set_altered_bar_total
+export(int) var altered_bar_increment: int = 1 setget _set_altered_bar_increment
+export(float) var cup_scale: float = 1.0 setget _set_cup_scale
+export(float) var altered_state_increment: float = 0.5 setget _set_altered_state_increment
 
 #--- private variables - order: export > normal var > onready -------------------------------------
-
-onready var _label: Label = $Label
-onready var _spin_box: SpinBox = $SpinBox
-onready var _float_variable: FloatVariable = load(float_variable_path) as FloatVariable
 
 ### -----------------------------------------------------------------------------------------------
 
 
 ### Built in Engine Methods -----------------------------------------------------------------------
-
-func _ready():
-	_label.text = field_name
-	
-	if not Engine.editor_hint:
-		_spin_box.min_value = -INF
-		_spin_box.max_value = INF
-		_spin_box.step = 0.01
-		_spin_box.value = _float_variable.value
-		
-		_float_variable.connect_to(self, "_on_float_variable_value_updated")
-		eh_Utility.connect_signal(_spin_box, "value_changed", self, "_on_spin_box_value_changed")
 
 ### -----------------------------------------------------------------------------------------------
 
@@ -48,20 +35,37 @@ func _ready():
 
 ### Private Methods -------------------------------------------------------------------------------
 
-func _set_field_name(value: String) -> void:
-	field_name = value
-	
-	if is_inside_tree():
-		_label.text = field_name
+func auto_save() -> void:
+	ResourceSaver.save(resource_path, self)
 
 
-func _on_spin_box_value_changed(p_value: float) -> void:
-	if not Engine.editor_hint:
-		_float_variable.value = p_value
+func _set_target_height(p_value: float) -> void:
+	target_height = p_value
+	auto_save()
 
 
-func _on_float_variable_value_updated() -> void:
-	if not Engine.editor_hint:
-		_spin_box.value = _float_variable.value
+func _set_camera_level(p_value: float) -> void:
+	camera_level = p_value
+	auto_save()
+
+
+func _set_altered_bar_total(p_value: int) -> void:
+	altered_bar_total = p_value
+	auto_save()
+
+
+func _set_altered_bar_increment(p_value: int) -> void:
+	altered_bar_increment = p_value
+	auto_save()
+
+
+func _set_cup_scale(p_value: float) -> void:
+	cup_scale = p_value
+	auto_save()
+
+
+func _set_altered_state_increment(p_value: float) -> void:
+	altered_state_increment = p_value
+	auto_save()
 
 ### -----------------------------------------------------------------------------------------------

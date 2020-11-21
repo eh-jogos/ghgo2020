@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://jenga_prototype/gameplay_elements/target_line/target_line.png" type="Texture" id=1]
 [ext_resource path="res://jenga_prototype/gameplay_elements/target_line/TargetLine.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://jenga_prototype/shared_variables/target_line/float_target_line_sensibility.tres" type="Resource" id=6]
 [ext_resource path="res://jenga_prototype/gameplay_elements/target_line/states/CountDown.gd" type="Script" id=7]
 [ext_resource path="res://jenga_prototype/shared_variables/target_line/string_target_line_current_state.tres" type="Resource" id=8]
+[ext_resource path="res://jenga_prototype/shared_variables/target_line/nodepath_target_line.tres" type="Resource" id=9]
 [ext_resource path="res://jenga_prototype/shared_variables/target_line/nodepath_target_line_guide.tres" type="Resource" id=10]
 [ext_resource path="res://jenga_prototype/shared_variables/nodepath_main_camera.tres" type="Resource" id=11]
 [ext_resource path="res://jenga_prototype/shared_variables/float_camera_level.tres" type="Resource" id=12]
@@ -136,7 +137,7 @@ __meta__ = {
 }
 
 [node name="ResourcePreloader" type="ResourcePreloader" parent="."]
-resources = [ PoolStringArray( "camera_level", "main_camera", "target_line_guide", "target_line_sensibility" ), [ ExtResource( 12 ), ExtResource( 11 ), ExtResource( 10 ), ExtResource( 6 ) ] ]
+resources = [ PoolStringArray( "camera_level", "main_camera", "target_line", "target_line_guide", "target_line_sensibility" ), [ ExtResource( 12 ), ExtResource( 11 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 6 ) ] ]
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
