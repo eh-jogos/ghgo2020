@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://jenga_prototype/gameplay_elements/camera/JengaCamera.gd" type="Script" id=1]
 [ext_resource path="res://jenga_prototype/shared_variables/nodepath_main_camera.tres" type="Resource" id=2]
 [ext_resource path="res://jenga_prototype/shared_variables/float_camera_level.tres" type="Resource" id=3]
+[ext_resource path="res://jenga_prototype/shared_variables/target_line/nodepath_target_line.tres" type="Resource" id=4]
 
 [node name="JengaCamera" type="Camera2D"]
 position = Vector2( 960, 540 )
@@ -12,10 +13,8 @@ script = ExtResource( 1 )
 __meta__ = {
 "_editor_description_": ""
 }
-anchor_min_zoom = 0.5
-anchor_max_zoom = 8.45
 
 [node name="ResourcePreloader" type="ResourcePreloader" parent="."]
-resources = [ PoolStringArray( "camera_level", "main_camera" ), [ ExtResource( 3 ), ExtResource( 2 ) ] ]
+resources = [ PoolStringArray( "camera_level", "main_camera", "target_line" ), [ ExtResource( 3 ), ExtResource( 2 ), ExtResource( 4 ) ] ]
 
 [node name="Tween" type="Tween" parent="."]

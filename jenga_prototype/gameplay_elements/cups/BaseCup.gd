@@ -59,7 +59,6 @@ func _ready():
 	_main_mouse_reference.connect_to(self, "_on_main_mouse_reference_value_changed")
 	
 	_handle_scale_factor()
-	
 
 
 func _physics_process(delta):

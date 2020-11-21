@@ -19,6 +19,7 @@ var camera_level: FloatVariable
 
 #--- private variables - order: export > normal var > onready -------------------------------------
 
+var _target_line_path: NodePathVariable
 var _guide_path: NodePathVariable
 var _target_line_guide: Control
 
@@ -43,6 +44,7 @@ func _process(_delta):
 		var canvas_transform = get_canvas_transform()
 		var canvas_origin = -canvas_transform.origin.y * camera.zoom.y
 		var guide_position = _target_line_guide.rect_global_position.y * camera.zoom.y
+		scale = camera.zoom
 		global_position.y = canvas_origin + guide_position
 
 ### -----------------------------------------------------------------------------------------------
@@ -83,6 +85,8 @@ func _setup_shared_variables() -> void:
 	_guide_path = _resources.get_resource("target_line_guide")
 	_camera_path = _resources.get_resource("main_camera")
 	
+	_target_line_path = _resources.get_resource("target_line")
+	_target_line_path.value = self.get_path()
 	
 	_target_line_guide = get_node_or_null(_guide_path.value)
 	if not _target_line_guide:
@@ -92,9 +96,6 @@ func _setup_shared_variables() -> void:
 	if not camera:
 		_camera_path.connect_to(self, "_on_camera_path_value_updated")
 	
-	camera_level = _resources.get_resource("camera_level")
-	camera_level.connect_to(self, "_on_camera_level_value_updated")
-
 
 func _on_guide_path_value_updated() -> void:
 	_target_line_guide = get_node_or_null(_guide_path.value)
@@ -102,9 +103,5 @@ func _on_guide_path_value_updated() -> void:
 
 func _on_camera_path_value_updated() -> void:
 	camera = get_node_or_null(_camera_path.value)
-
-
-func _on_camera_level_value_updated() -> void:
-	scale = camera.zoom
 
 ### -----------------------------------------------------------------------------------------------

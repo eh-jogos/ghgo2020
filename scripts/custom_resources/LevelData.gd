@@ -1,5 +1,6 @@
 # Write your doc string for this file here
-extends Control
+class_name LevelData
+extends Resource
 
 ### Member Variables and Dependencies -------------------------------------------------------------
 #--- signals --------------------------------------------------------------------------------------
@@ -10,24 +11,19 @@ extends Control
 
 #--- public variables - order: export > normal var > onready --------------------------------------
 
+export(float, 0.0, 1.0, 0.01) var target_height: float = 0.6 setget _set_target_height
+export(float, 0.0, 1.0, 0.01) var camera_level: float = 0.0 setget _set_camera_level
+export(int) var altered_bar_total: int = 5 setget _set_altered_bar_total
+export(int) var altered_bar_increment: int = 1 setget _set_altered_bar_increment
+export(float) var cup_scale: float = 1.0 setget _set_cup_scale
+export(float) var altered_state_increment: float = 0.5 setget _set_altered_state_increment
+
 #--- private variables - order: export > normal var > onready -------------------------------------
-
-export var _target_line_height: Resource
-export var _node_path_variable: Resource
-
-onready var _tween: Tween = $Tween
 
 ### -----------------------------------------------------------------------------------------------
 
 
 ### Built in Engine Methods -----------------------------------------------------------------------
-
-func _ready():
-	_node_path_variable.value = self.get_path()
-	
-	anchor_top = 1 - _target_line_height.value
-	eh_Utility.connect_signal(_target_line_height, "value_updated", 
-			self, "_on_target_line_value_updated")
 
 ### -----------------------------------------------------------------------------------------------
 
@@ -39,13 +35,37 @@ func _ready():
 
 ### Private Methods -------------------------------------------------------------------------------
 
-func _on_target_line_value_updated() -> void:
-	if _tween.is_active():	
-		_tween.remove_all()
-	
-	var new_anchor = 1 - _target_line_height.value
-	_tween.interpolate_property(self, "anchor_top", anchor_top, new_anchor, 
-			0.3, Tween.TRANS_LINEAR, Tween.EASE_IN)
-	_tween.start()
+func auto_save() -> void:
+	ResourceSaver.save(resource_path, self)
+
+
+func _set_target_height(p_value: float) -> void:
+	target_height = p_value
+	auto_save()
+
+
+func _set_camera_level(p_value: float) -> void:
+	camera_level = p_value
+	auto_save()
+
+
+func _set_altered_bar_total(p_value: int) -> void:
+	altered_bar_total = p_value
+	auto_save()
+
+
+func _set_altered_bar_increment(p_value: int) -> void:
+	altered_bar_increment = p_value
+	auto_save()
+
+
+func _set_cup_scale(p_value: float) -> void:
+	cup_scale = p_value
+	auto_save()
+
+
+func _set_altered_state_increment(p_value: float) -> void:
+	altered_state_increment = p_value
+	auto_save()
 
 ### -----------------------------------------------------------------------------------------------
