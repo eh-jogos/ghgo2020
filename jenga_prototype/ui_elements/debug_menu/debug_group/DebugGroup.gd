@@ -69,7 +69,10 @@ func build_save_data() -> Dictionary:
 		if index == 0:
 			save_data["collapsed_state"] = inst2dict(shared_variable)
 		else:
-			save_data[shared_variable.resource_path] = inst2dict(shared_variable)
+			if shared_variable is ArrayVariable:
+				save_data[shared_variable.resource_path] = shared_variable.get_dict()
+			else:
+				save_data[shared_variable.resource_path] = inst2dict(shared_variable)
 	return save_data
 
 
@@ -81,7 +84,11 @@ func load_save_data(data: Dictionary) -> void:
 			_title_button.emit_signal("toggled", _title_button.pressed)
 		else:
 			var shared_variable = load(path)
-			shared_variable.value = dict2inst(data[path]).value
+			if shared_variable is ArrayVariable:
+				shared_variable.load_dict(dict2inst(data[path]).value)
+			else:
+				shared_variable.value = dict2inst(data[path]).value
+	
 
 ### -----------------------------------------------------------------------------------------------
 

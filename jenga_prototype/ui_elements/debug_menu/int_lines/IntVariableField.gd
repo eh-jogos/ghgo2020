@@ -1,5 +1,6 @@
 # Write your doc string for this file here
 tool
+class_name InteVariableField
 extends VBoxContainer
 
 ### Member Variables and Dependencies -------------------------------------------------------------
@@ -14,6 +15,7 @@ extends VBoxContainer
 export var field_name: String = "" setget _set_field_name
 export(String, FILE, "*.tres") var int_variable_path: String = ""
 export var step: int = 1 setget _set_step
+export var allow_negative: bool = true
 
 #--- private variables - order: export > normal var > onready -------------------------------------
 
@@ -30,7 +32,10 @@ func _ready():
 	_label.text = field_name
 	
 	if not Engine.editor_hint:
-		_spin_box.min_value = -INF
+		if allow_negative:
+			_spin_box.min_value = -INF
+		else:
+			_spin_box.min_value = 0
 		_spin_box.max_value = INF
 		_spin_box.step = step
 		_spin_box.value = _int_variable.value

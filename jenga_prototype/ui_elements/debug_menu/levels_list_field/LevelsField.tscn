@@ -6,9 +6,8 @@
 [ext_resource path="res://jenga_prototype/shared_variables/levels/int_level_current.tres" type="Resource" id=4]
 
 [node name="LevelsField" type="VBoxContainer"]
-margin_top = 209.0
 margin_right = 443.0
-margin_bottom = 986.0
+margin_bottom = 777.0
 custom_constants/separation = 10
 script = ExtResource( 3 )
 __meta__ = {
@@ -32,3 +31,10 @@ custom_constants/margin_left = 30
 [node name="Levels" type="VBoxContainer" parent="LevelsIdentation"]
 margin_left = 30.0
 margin_right = 443.0
+
+[node name="Add" type="Button" parent="."]
+margin_top = 34.0
+margin_right = 443.0
+margin_bottom = 54.0
+text = "Adicionar"
+[connection signal="pressed" from="Add" to="." method="_on_Add_pressed"]

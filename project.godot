@@ -89,6 +89,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/eh_jogos.shared_variables/IntVariable.gd"
 }, {
+"base": "VBoxContainer",
+"class": "InteVariableField",
+"language": "GDScript",
+"path": "res://jenga_prototype/ui_elements/debug_menu/int_lines/IntVariableField.gd"
+}, {
 "base": "Resource",
 "class": "LevelData",
 "language": "GDScript",
@@ -181,6 +186,7 @@ _global_script_class_icons={
 "HookShot": "",
 "HookTarget": "",
 "IntVariable": "",
+"InteVariableField": "",
 "LevelData": "",
 "NodePathVariable": "",
 "Player": "",

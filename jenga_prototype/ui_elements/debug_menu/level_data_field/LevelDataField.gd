@@ -39,6 +39,15 @@ onready var _cup_scale_field: SpinBox = $LevelData/CupScaleSpinBox
 
 ### Public Methods --------------------------------------------------------------------------------
 
+func expand() -> void:
+	if not _level_button.pressed:
+		_level_button.pressed = true
+
+
+func collapse() -> void:
+	if _level_button.pressed:
+		_level_button.pressed = false
+
 ### -----------------------------------------------------------------------------------------------
 
 
