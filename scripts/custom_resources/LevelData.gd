@@ -1,4 +1,5 @@
 # Write your doc string for this file here
+tool
 class_name LevelData
 extends Resource
 
@@ -36,7 +37,9 @@ export(float) var altered_state_increment: float = 0.5 setget _set_altered_state
 ### Private Methods -------------------------------------------------------------------------------
 
 func auto_save() -> void:
-	ResourceSaver.save(resource_path, self)
+	property_list_changed_notify()
+	if resource_path != "":
+		ResourceSaver.save(resource_path, self, ResourceSaver.FLAG_REPLACE_SUBRESOURCE_PATHS)
 
 
 func _set_target_height(p_value: float) -> void:

@@ -65,13 +65,13 @@ margin_top = 90.0
 
 [node name="DebugList" parent="Panel/ScrollContainer" index="0"]
 margin_right = 443.0
-margin_bottom = 1190.0
+margin_bottom = 1244.0
 
 [node name="ProgressionGroup" parent="Panel/ScrollContainer/DebugList" index="0" instance=ExtResource( 5 )]
 margin_right = 443.0
-margin_bottom = 257.0
+margin_bottom = 311.0
 title = "Progressão"
-nodes_to_collapse = [ NodePath("DebugGroupTitle/Content/Buttons"), NodePath("IncrementLine") ]
+nodes_to_collapse = [ NodePath("DebugGroupTitle/Content/Buttons"), NodePath("LevelsField") ]
 
 [node name="CurrentLevel" parent="Panel/ScrollContainer/DebugList/ProgressionGroup" index="2" instance=ExtResource( 11 )]
 margin_top = 109.0
@@ -79,14 +79,16 @@ margin_right = 443.0
 margin_bottom = 199.0
 field_name = "Level atual"
 int_variable_path = "res://jenga_prototype/shared_variables/levels/int_level_current.tres"
+allow_negative = false
 
 [node name="LevelsField" parent="Panel/ScrollContainer/DebugList/ProgressionGroup" index="3" instance=ExtResource( 6 )]
-margin_bottom = 257.0
+margin_top = 209.0
+margin_bottom = 311.0
 
 [node name="TargetLineGroup" parent="Panel/ScrollContainer/DebugList" index="1" instance=ExtResource( 5 )]
-margin_top = 267.0
+margin_top = 321.0
 margin_right = 443.0
-margin_bottom = 603.0
+margin_bottom = 657.0
 title = "Linha de Meta"
 nodes_to_collapse = [ NodePath("DebugGroupTitle/Content/Buttons"), NodePath("TargetLineSensibility") ]
 
@@ -105,9 +107,9 @@ field_name = "Sensibilidade de detecção de movimento"
 float_variable_path = "res://jenga_prototype/shared_variables/target_line/float_target_line_sensibility.tres"
 
 [node name="AlteredStateGroup" parent="Panel/ScrollContainer/DebugList" index="2" instance=ExtResource( 5 )]
-margin_top = 613.0
+margin_top = 667.0
 margin_right = 443.0
-margin_bottom = 1190.0
+margin_bottom = 1244.0
 title = "Estado Alterado"
 nodes_to_collapse = [ NodePath("DebugGroupTitle/Content/Buttons"), NodePath("AlteredOffset"), NodePath("AlteredLinearDuration"), NodePath("AlteredAngularDuration") ]
 

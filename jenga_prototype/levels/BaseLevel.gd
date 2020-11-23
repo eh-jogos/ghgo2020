@@ -39,7 +39,7 @@ onready var _scale_factor: FloatVariable = _resources.get_resource("scale_factor
 
 func _ready():
 	level_current = _resources.get_resource("level_current")
-	level_list = _resources.get_resource("levels_list")
+	level_list = load("res://jenga_prototype/shared_variables/levels/array_levels_list.tres")
 	setup_current_level()
 	level_current.connect_to(self, "_on_level_current_value_updated")
 
