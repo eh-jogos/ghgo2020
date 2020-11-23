@@ -14,7 +14,7 @@ extends VBoxContainer
 
 onready var _resources: ResourcePreloader = $ResourcePreloader
 onready var _levels: VBoxContainer = $LevelsIdentation/Levels
-onready var _levels_list: ArrayVariable = _resources.get_resource("array_levels_list")
+var _levels_list: ArrayVariable
 onready var _current_level: IntVariable = _resources.get_resource("int_level_current")
 
 ### -----------------------------------------------------------------------------------------------
@@ -23,6 +23,7 @@ onready var _current_level: IntVariable = _resources.get_resource("int_level_cur
 ### Built in Engine Methods -----------------------------------------------------------------------
 
 func _ready():
+	_levels_list = load("res://jenga_prototype/shared_variables/levels/array_levels_list.tres")
 	_levels_list.connect_to(self, "_on_levels_list_value_updated")
 	_current_level.connect_to(self, "_on_current_level_value_updated")
 	

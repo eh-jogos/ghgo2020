@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://jenga_prototype/gameplay_elements/cups/bar_cup/BarCup.tscn" type="PackedScene" id=1]
 [ext_resource path="res://jenga_prototype/gameplay_elements/tables/bar_table/mesa_de_bar.png" type="Texture" id=2]
@@ -13,7 +13,6 @@
 [ext_resource path="res://jenga_prototype/shared_variables/target_line/nodepath_target_line_guide.tres" type="Resource" id=12]
 [ext_resource path="res://jenga_prototype/levels/TargetLineGuide.gd" type="Script" id=13]
 [ext_resource path="res://jenga_prototype/background_elements/ParallaxBackgrounds.tscn" type="PackedScene" id=14]
-[ext_resource path="res://jenga_prototype/shared_variables/levels/array_levels_list.tres" type="Resource" id=15]
 [ext_resource path="res://jenga_prototype/shared_variables/levels/int_level_current.tres" type="Resource" id=16]
 [ext_resource path="res://jenga_prototype/shared_variables/target_line/float_target_height.tres" type="Resource" id=17]
 [ext_resource path="res://jenga_prototype/shared_variables/float_camera_level.tres" type="Resource" id=18]
@@ -80,7 +79,7 @@ tracks/0/keys = {
 script = ExtResource( 5 )
 
 [node name="ResourcePreloader" type="ResourcePreloader" parent="."]
-resources = [ PoolStringArray( "altered_increment", "camera_level", "cup", "increment_step", "level_current", "levels_list", "max_value", "scale_factor", "target_height" ), [ ExtResource( 19 ), ExtResource( 18 ), ExtResource( 1 ), ExtResource( 20 ), ExtResource( 16 ), ExtResource( 15 ), ExtResource( 21 ), ExtResource( 9 ), ExtResource( 17 ) ] ]
+resources = [ PoolStringArray( "altered_increment", "camera_level", "cup", "increment_step", "level_current", "max_value", "scale_factor", "target_height" ), [ ExtResource( 19 ), ExtResource( 18 ), ExtResource( 1 ), ExtResource( 20 ), ExtResource( 16 ), ExtResource( 21 ), ExtResource( 9 ), ExtResource( 17 ) ] ]
 
 [node name="ParallaxBackgrounds" parent="." instance=ExtResource( 14 )]
 

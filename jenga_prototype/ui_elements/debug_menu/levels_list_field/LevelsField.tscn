@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://jenga_prototype/ui_elements/debug_menu/level_data_field/LevelDataField.tscn" type="PackedScene" id=1]
-[ext_resource path="res://jenga_prototype/shared_variables/levels/array_levels_list.tres" type="Resource" id=2]
 [ext_resource path="res://jenga_prototype/ui_elements/debug_menu/levels_list_field/LevelsField.gd" type="Script" id=3]
 [ext_resource path="res://jenga_prototype/shared_variables/levels/int_level_current.tres" type="Resource" id=4]
 
@@ -15,7 +14,7 @@ __meta__ = {
 }
 
 [node name="ResourcePreloader" type="ResourcePreloader" parent="."]
-resources = [ PoolStringArray( "LevelDataField", "array_levels_list", "int_level_current" ), [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 4 ) ] ]
+resources = [ PoolStringArray( "LevelDataField", "int_level_current" ), [ ExtResource( 1 ), ExtResource( 4 ) ] ]
 
 [node name="LevelsLabel" type="Label" parent="."]
 margin_right = 443.0
