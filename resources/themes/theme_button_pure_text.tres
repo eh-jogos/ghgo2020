@@ -1,0 +1,18 @@
+[gd_resource type="Theme" load_steps=3 format=2]
+
+[ext_resource path="res://fonts/MavenProRegular_54.tres" type="DynamicFont" id=1]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[resource]
+Button/colors/font_color = Color( 1, 1, 1, 1 )
+Button/colors/font_color_disabled = Color( 1, 1, 1, 0.439216 )
+Button/colors/font_color_hover = Color( 0, 0.929412, 1, 1 )
+Button/colors/font_color_pressed = Color( 0.152941, 0.329412, 0.458824, 1 )
+Button/constants/hseparation = 2
+Button/fonts/font = ExtResource( 1 )
+Button/styles/disabled = SubResource( 1 )
+Button/styles/focus = SubResource( 1 )
+Button/styles/hover = SubResource( 1 )
+Button/styles/normal = SubResource( 1 )
+Button/styles/pressed = SubResource( 1 )

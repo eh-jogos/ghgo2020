@@ -6,7 +6,6 @@
 [ext_resource path="res://scripts/utility/VersionLabel.gd" type="Script" id=4]
 [ext_resource path="res://addons/eh_jogos.transitions/transitions_data/sweep_left.tres" type="Resource" id=5]
 
-
 [sub_resource type="Theme" id=1]
 default_font = ExtResource( 1 )
 
@@ -24,7 +23,7 @@ anchor_top = 1.0
 anchor_bottom = 1.0
 margin_top = -38.0
 margin_right = 262.0
-text = "v0.1.4"
+text = "v0.4.1"
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
