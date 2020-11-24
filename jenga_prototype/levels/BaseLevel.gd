@@ -63,8 +63,14 @@ func add_cup() -> void:
 
 func clear_cups() -> void:
 	for cup in _cups_layer.get_children():
-		_cups_layer.remove_child(cup)
-		cup.queue_free()
+		if cup.state_machine._state_name == "Dropped":
+			_cups_layer.remove_child(cup)
+			cup.queue_free()
+
+
+func update_cup_scale() -> void:
+	for cup in _cups_layer.get_children():
+		cup._handle_scale_factor()
 
 
 func setup_current_level() -> void:
@@ -80,7 +86,8 @@ func setup_current_level() -> void:
 		if _scale_factor.value != current_level.cup_scale:
 			clear_cups()
 		
-		_scale_factor.value = current_level.cup_scale
+		_scale_factor.value = current_level.cup_scale 
+		update_cup_scale()
 
 ### -----------------------------------------------------------------------------------------------
 

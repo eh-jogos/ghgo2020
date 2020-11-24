@@ -68,7 +68,7 @@ polygon = PoolVector2Array( -49, -85, 49, -85, 49, -55, -49, -55 )
 
 [node name="CupDetector" type="Area2D" parent="."]
 collision_layer = 8192
-collision_mask = 8192
+collision_mask = 9216
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CupDetector"]
 polygon = PoolVector2Array( -63, -87, 63, -87, 63, 87, -63, 87 )

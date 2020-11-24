@@ -5,47 +5,47 @@
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 2 )
-target_height = 0.87
+target_height = 0.15
 camera_level = 0.0
 altered_bar_total = 5
 altered_bar_increment = 1
-cup_scale = 1.0
+cup_scale = 0.5
 altered_state_increment = 0.5
 
 [sub_resource type="Resource" id=2]
 script = ExtResource( 2 )
-target_height = 0.6
-camera_level = 0.0
+target_height = 0.5
+camera_level = 0.25
 altered_bar_total = 5
 altered_bar_increment = 1
-cup_scale = 1.0
+cup_scale = 2.0
 altered_state_increment = 0.5
 
 [sub_resource type="Resource" id=3]
 script = ExtResource( 2 )
 target_height = 0.6
-camera_level = 0.0
+camera_level = 0.5
 altered_bar_total = 5
-altered_bar_increment = 1
-cup_scale = 1.0
+altered_bar_increment = 2
+cup_scale = 4.0
 altered_state_increment = 0.5
 
 [sub_resource type="Resource" id=4]
 script = ExtResource( 2 )
-target_height = 0.6
-camera_level = 0.0
+target_height = 0.7
+camera_level = 0.75
 altered_bar_total = 5
 altered_bar_increment = 1
-cup_scale = 1.0
+cup_scale = 6.0
 altered_state_increment = 0.5
 
 [sub_resource type="Resource" id=5]
 script = ExtResource( 2 )
-target_height = 0.6
-camera_level = 0.0
+target_height = 0.8
+camera_level = 1.0
 altered_bar_total = 5
 altered_bar_increment = 1
-cup_scale = 1.0
+cup_scale = 8.0
 altered_state_increment = 0.5
 
 [resource]
