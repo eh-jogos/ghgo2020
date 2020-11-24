@@ -27,12 +27,14 @@ var scale_factor: FloatVariable
 
 var new_global_position: Vector2 = Vector2.ZERO
 
-
 #--- private variables - order: export > normal var > onready -------------------------------------
 
 var _node_path_variable: NodePathVariable
 var _movement_time_count: float = 0
 var _rotation_time_count: float = 0
+
+var _node_path_camera: NodePathVariable
+var _camera: Camera2D
 
 onready var _resources: ResourcePreloader = $ResourcePreloader
 onready var _tween: Tween = $Tween
@@ -66,6 +68,9 @@ func _physics_process(delta):
 			altered_factor.value * drunk_offset_range.value * scale_factor.value * movement_sine, 0)
 		new_position = new_position.rotated(_rotation_time_count)
 		global_position = get_global_mouse_position() + new_position
+	
+	if _camera:
+		scale = Vector2.ONE * scale_factor.value
 
 ### -----------------------------------------------------------------------------------------------
 
@@ -96,10 +101,19 @@ func _setup_shared_variables() -> void:
 	
 	_node_path_variable = _resources.get_resource("main_mouse_guide")
 	_node_path_variable.value = self.get_path()
+	
+	_node_path_camera = _resources.get_resource("main_camera")
+	_camera = get_node_or_null(_node_path_camera.value)
+	if not _camera:
+		_node_path_camera.connect_to(self, "_on_node_path_camera_value_updated")
 
 
 func _on_Events_altered_level_raised() -> void:
 	increase_altered_factor()
+
+
+func _on_node_path_camera_value_updated() -> void:
+	_camera = get_node_or_null(_node_path_camera.value)
 
 ### -----------------------------------------------------------------------------------------------
 

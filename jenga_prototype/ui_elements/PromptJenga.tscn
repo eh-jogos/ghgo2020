@@ -1,0 +1,88 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://fonts/MavenProRegular_36.tres" type="DynamicFont" id=1]
+[ext_resource path="res://scripts/eh_jogos.joypad_support/Prompts/PromptInputAction.tscn" type="PackedScene" id=2]
+
+[sub_resource type="Theme" id=1]
+Label/colors/font_color = Color( 1, 1, 1, 1 )
+Label/colors/font_color_shadow = Color( 0, 0, 0, 0 )
+Label/colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+Label/constants/line_spacing = 3
+Label/constants/shadow_as_outline = 0
+Label/constants/shadow_offset_x = 1
+Label/constants/shadow_offset_y = 1
+Label/fonts/font = ExtResource( 1 )
+Label/styles/normal = null
+
+[node name="PromptLegendConfirmCancel" type="HBoxContainer"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -80.0
+margin_right = 726.0
+grow_vertical = 2
+mouse_filter = 2
+theme = SubResource( 1 )
+custom_constants/separation = 30
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DropPrompt" type="HBoxContainer" parent="."]
+margin_right = 225.0
+margin_bottom = 80.0
+mouse_filter = 2
+custom_constants/separation = 10
+
+[node name="Prompt" parent="DropPrompt" instance=ExtResource( 2 )]
+margin_right = 80.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 80, 80 )
+input_action = "jenga_drop"
+
+[node name="Drop" type="Label" parent="DropPrompt"]
+margin_left = 90.0
+margin_top = 21.0
+margin_right = 225.0
+margin_bottom = 59.0
+text = "Drop Cup"
+
+[node name="Rotate" type="HBoxContainer" parent="."]
+margin_left = 255.0
+margin_right = 509.0
+margin_bottom = 80.0
+mouse_filter = 2
+custom_constants/separation = 10
+
+[node name="Prompt" parent="Rotate" instance=ExtResource( 2 )]
+margin_right = 80.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 80, 80 )
+input_action = "jenga_rotate_clockwise"
+force_type = 3
+
+[node name="Rotate" type="Label" parent="Rotate"]
+margin_left = 90.0
+margin_top = 21.0
+margin_right = 254.0
+margin_bottom = 59.0
+text = "Rotate Cup"
+
+[node name="Pause" type="HBoxContainer" parent="."]
+margin_left = 539.0
+margin_right = 719.0
+margin_bottom = 80.0
+mouse_filter = 2
+custom_constants/separation = 10
+
+[node name="Prompt" parent="Pause" instance=ExtResource( 2 )]
+margin_right = 80.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 80, 80 )
+input_action = "pause_game"
+
+[node name="Pause" type="Label" parent="Pause"]
+margin_left = 90.0
+margin_top = 21.0
+margin_right = 180.0
+margin_bottom = 59.0
+text = "Pause"

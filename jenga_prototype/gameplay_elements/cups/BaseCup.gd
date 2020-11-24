@@ -19,6 +19,8 @@ var is_over_other_cups: = false setget _set_is_over_other_cups
 
 var mouse_guide: Sprite = null
 
+var default_measures: = {}
+
 onready var resources: ResourcePreloader = $ResourcePreloader
 onready var state_machine: StateMachine = $CupStateMachine
 onready var skin: CupSkin = $Skin
@@ -58,6 +60,15 @@ func _ready():
 	_update_mouse_guide()
 	_main_mouse_reference.connect_to(self, "_on_main_mouse_reference_value_changed")
 	
+	default_measures["cup_detector_polygon"] = cup_detector_polygon.polygon
+	
+	for shape in collision_shapes:
+		default_measures[shape.name] = shape.polygon
+	
+	for joint in top_rigid_body.get_children():
+		if joint is PinJoint2D:
+			default_measures[joint.name] = joint.position
+	
 	_handle_scale_factor()
 
 
@@ -67,10 +78,9 @@ func _physics_process(delta):
 	
 	if cup_detector:
 		var overlapping_cups: Array = cup_detector.get_overlapping_areas()
+		var overlapping_ground: Array = cup_detector.get_overlapping_bodies()
 		
-		var names = []
-		
-		if overlapping_cups.empty():
+		if overlapping_cups.empty() and overlapping_ground.empty():
 			self.is_over_other_cups = false
 		else:
 			self.is_over_other_cups = true
@@ -100,18 +110,21 @@ func _scale_collision_polygon(polygon: PoolVector2Array) -> PoolVector2Array:
 
 func _handle_scale_factor() -> void:
 	skin.scale_factor = _scale_factor.value
+	if state_machine._state_name == "Dragging":
+		skin.scale = Vector2.ONE * _scale_factor.value
 	
-	cup_detector_polygon.polygon = _scale_collision_polygon(cup_detector_polygon.polygon)
+	cup_detector_polygon.polygon = \
+			_scale_collision_polygon(default_measures["cup_detector_polygon"])
 	
 	for shape in collision_shapes:
-		shape.polygon = _scale_collision_polygon(shape.polygon)
+		shape.polygon = _scale_collision_polygon(default_measures[shape.name])
 	
 	for body in rigid_bodies:
 		body.mass = 1 * _scale_factor.value
 	
 	for joint in top_rigid_body.get_children():
 		if joint is PinJoint2D:
-			joint.position *= _scale_factor.value
+			joint.position = default_measures[joint.name] * _scale_factor.value
 
 
 func _set_is_active(value: bool) -> void:

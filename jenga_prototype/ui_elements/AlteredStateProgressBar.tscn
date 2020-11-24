@@ -3,10 +3,11 @@
 [ext_resource path="res://jenga_prototype/shared_variables/altered_status/float_altered_factor.tres" type="Resource" id=1]
 [ext_resource path="res://jenga_prototype/ui_elements/AlteredStateProgressBar.gd" type="Script" id=2]
 [ext_resource path="res://jenga_prototype/ui_elements/altered_state_proigress_bar/Subdivisions.gd" type="Script" id=3]
-[ext_resource path="res://Subdivision1.tscn" type="PackedScene" id=4]
+[ext_resource path="res://jenga_prototype/ui_elements/altered_state_proigress_bar/Subdivision1.tscn" type="PackedScene" id=4]
 [ext_resource path="res://jenga_prototype/shared_variables/altered_state_bar/int_max_value.tres" type="Resource" id=5]
 [ext_resource path="res://jenga_prototype/shared_variables/altered_state_bar/int_increment_step.tres" type="Resource" id=6]
 [ext_resource path="res://fonts/font_files/MavenPro-Black.ttf" type="DynamicFontData" id=7]
+
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.92, 0.5244, 0.887033, 1 )
