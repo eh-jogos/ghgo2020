@@ -94,6 +94,31 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://jenga_prototype/ui_elements/debug_menu/int_lines/IntVariableField.gd"
 }, {
+"base": "Node",
+"class": "JS_Config",
+"language": "GDScript",
+"path": "res://scripts/eh_jogos.joypad_support/ComponentScripts/JS_Config.gd"
+}, {
+"base": "Resource",
+"class": "JS_InputMapAction",
+"language": "GDScript",
+"path": "res://scripts/eh_jogos.joypad_support/Resources/JS_InputMapAction.gd"
+}, {
+"base": "Node",
+"class": "JS_InputMapProfiles",
+"language": "GDScript",
+"path": "res://scripts/eh_jogos.joypad_support/ComponentScripts/JS_InputMapProfiles.gd"
+}, {
+"base": "Node",
+"class": "JS_JoypadIdentifier",
+"language": "GDScript",
+"path": "res://scripts/eh_jogos.joypad_support/ComponentScripts/JS_JoypadIdentifier.gd"
+}, {
+"base": "Node",
+"class": "JS_JoypadMapButton",
+"language": "GDScript",
+"path": "res://scripts/eh_jogos.joypad_support/ComponentScripts/JS_JoypadMapButton.gd"
+}, {
 "base": "Resource",
 "class": "LevelData",
 "language": "GDScript",
@@ -187,6 +212,11 @@ _global_script_class_icons={
 "HookTarget": "",
 "IntVariable": "",
 "InteVariableField": "",
+"JS_Config": "",
+"JS_InputMapAction": "",
+"JS_InputMapProfiles": "",
+"JS_JoypadIdentifier": "",
+"JS_JoypadMapButton": "",
 "LevelData": "",
 "NodePathVariable": "",
 "Player": "",
@@ -211,12 +241,13 @@ run/main_scene="res://jenga_prototype/levels/BaseLevel.tscn"
 config/icon="res://icon.png"
 config/version="0.4.1"
 config/build_folder="v0.4.0"
-run/main_scene.HTML5="res://PrototypeMenu.tscn"
+run/main_scene.HTML5="res://jenga_prototype/screens/DrinkSelection.tscn"
 
 [autoload]
 
 eh_Transitions="*res://addons/eh_jogos.transitions/eh_Transitions.tscn"
 Events="*res://scripts/Events.gd"
+JoypadSupport="*res://scripts/eh_jogos.joypad_support/JoypadSupport.tscn"
 
 [display]
 
