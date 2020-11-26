@@ -16,8 +16,8 @@ export(float, 0.0, 1.0, 0.01) var target_height: float = 0.6 setget _set_target_
 export(float, 0.0, 1.0, 0.01) var camera_level: float = 0.0 setget _set_camera_level
 export(int) var altered_bar_total: int = 5 setget _set_altered_bar_total
 export(int) var altered_bar_increment: int = 1 setget _set_altered_bar_increment
+export(int) var altered_bar_win_bonus: int = -1 setget _set_altered_bar_win_bonus
 export(float) var cup_scale: float = 1.0 setget _set_cup_scale
-export(float) var altered_state_increment: float = 0.5 setget _set_altered_state_increment
 
 #--- private variables - order: export > normal var > onready -------------------------------------
 
@@ -62,13 +62,14 @@ func _set_altered_bar_increment(p_value: int) -> void:
 	auto_save()
 
 
+func _set_altered_bar_win_bonus(p_value: int) -> void:
+	altered_bar_win_bonus = min(p_value, 0)
+	auto_save()
+
+
 func _set_cup_scale(p_value: float) -> void:
 	cup_scale = p_value
 	auto_save()
 
-
-func _set_altered_state_increment(p_value: float) -> void:
-	altered_state_increment = p_value
-	auto_save()
 
 ### -----------------------------------------------------------------------------------------------

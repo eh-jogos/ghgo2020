@@ -21,6 +21,7 @@
 [ext_resource path="res://jenga_prototype/shared_variables/altered_status/float_altered_increment.tres" type="Resource" id=19]
 [ext_resource path="res://jenga_prototype/shared_variables/altered_state_bar/int_increment_step.tres" type="Resource" id=20]
 [ext_resource path="res://jenga_prototype/shared_variables/altered_state_bar/int_max_value.tres" type="Resource" id=21]
+[ext_resource path="res://jenga_prototype/shared_variables/altered_status/float_altered_factor.tres" type="Resource" id=22]
 [ext_resource path="res://resources/white_block.png" type="Texture" id=23]
 
 [sub_resource type="PhysicsMaterial" id=1]
@@ -88,7 +89,7 @@ tracks/0/keys = {
 script = ExtResource( 5 )
 
 [node name="ResourcePreloader" type="ResourcePreloader" parent="."]
-resources = [ PoolStringArray( "altered_increment", "camera_level", "cup", "increment_step", "level_current", "max_value", "scale_factor", "target_height" ), [ ExtResource( 19 ), ExtResource( 18 ), ExtResource( 1 ), ExtResource( 20 ), ExtResource( 16 ), ExtResource( 21 ), ExtResource( 9 ), ExtResource( 17 ) ] ]
+resources = [ PoolStringArray( "altered_factor", "altered_increment", "camera_level", "cup", "increment_step", "level_current", "max_value", "scale_factor", "target_height" ), [ ExtResource( 22 ), ExtResource( 19 ), ExtResource( 18 ), ExtResource( 1 ), ExtResource( 20 ), ExtResource( 16 ), ExtResource( 21 ), ExtResource( 9 ), ExtResource( 17 ) ] ]
 
 [node name="ParallaxBackgrounds" parent="." instance=ExtResource( 14 )]
 
