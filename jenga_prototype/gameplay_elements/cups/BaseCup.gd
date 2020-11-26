@@ -25,6 +25,9 @@ onready var resources: ResourcePreloader = $ResourcePreloader
 onready var state_machine: StateMachine = $CupStateMachine
 onready var skin: CupSkin = $Skin
 onready var tween: Tween = $Tween
+onready var sfx_hits: SfxLibrary = $SfxHit
+onready var sfx_table: SfxLibrary = $SfxTable
+onready var sfx_fit: SfxLibrary = $SfxFit
 
 onready var cup_detector: Area2D = $CupDetector
 onready var cup_detector_polygon: CollisionPolygon2D = $CupDetector/CollisionPolygon2D
@@ -174,3 +177,31 @@ func _set_is_over_other_cups(value: bool) -> void:
 		modulate = Color.white
 
 ### -----------------------------------------------------------------------------------------------
+
+
+func _on_SfxHitDetector_body_entered(body) -> void:
+	if body == main_rigid_body or body == top_rigid_body:
+		return
+	
+	if body.is_in_group("cup"):
+		sfx_hits.play()
+	else:
+		sfx_table.play()
+
+
+func _on_SfxFitDetector_body_entered(body):
+	if body.is_in_group("cup"):
+		sfx_fit.play()
+
+
+func _on_BreakArea_body_exited(body):
+	if body.is_in_group("cup"):
+		if not break_timer.is_stopped():
+			break_timer.stop()
+
+
+func _on_BreakArea_body_entered(body):
+	if body.is_in_group("cup"):
+		if break_timer.is_stopped():
+			break_timer.start()
+
