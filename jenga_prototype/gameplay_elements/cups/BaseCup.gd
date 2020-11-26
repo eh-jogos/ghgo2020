@@ -188,8 +188,6 @@ func _set_is_over_other_cups(value: bool) -> void:
 	else:
 		modulate = Color.white
 
-### -----------------------------------------------------------------------------------------------
-
 
 func _on_SfxHitDetector_body_entered(body) -> void:
 	if body == main_rigid_body or body == top_rigid_body:
@@ -225,3 +223,5 @@ func _on_BreakTimer_timeout():
 			var rigid_body: RigidBody2D = body as RigidBody2D
 			rigid_body.apply_impulse(Vector2.ZERO, Vector2.UP.rotated(rotation) * 2000 * _scale_factor.value  * _camera.zoom.y)
 	queue_free()
+
+### -----------------------------------------------------------------------------------------------
