@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://jenga_prototype/gameplay_elements/cups/bar_cup/BarCup.tscn" type="PackedScene" id=1]
 [ext_resource path="res://jenga_prototype/gameplay_elements/tables/bar_table/mesa_de_bar.png" type="Texture" id=2]
@@ -21,6 +21,7 @@
 [ext_resource path="res://jenga_prototype/shared_variables/altered_status/float_altered_increment.tres" type="Resource" id=19]
 [ext_resource path="res://jenga_prototype/shared_variables/altered_state_bar/int_increment_step.tres" type="Resource" id=20]
 [ext_resource path="res://jenga_prototype/shared_variables/altered_state_bar/int_max_value.tres" type="Resource" id=21]
+[ext_resource path="res://resources/white_block.png" type="Texture" id=23]
 
 [sub_resource type="PhysicsMaterial" id=1]
 rough = true
@@ -114,6 +115,9 @@ position = Vector2( 960, 900 )
 [node name="JengaCamera" parent="." instance=ExtResource( 11 )]
 
 [node name="MouseGuide" parent="." instance=ExtResource( 3 )]
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="MouseGuide"]
+remote_path = NodePath("../../CanvasLayer/MouseGuide2")
 
 [node name="HUDLayer" type="CanvasLayer" parent="."]
 
@@ -224,5 +228,13 @@ visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/teste = SubResource( 7 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+follow_viewport_enable = true
+
+[node name="MouseGuide2" type="Sprite" parent="CanvasLayer"]
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 23 )
 [connection signal="level_completed" from="TargetLine" to="." method="_on_TargetLine_level_completed"]
 [connection signal="pressed" from="HUDLayer/HUD/SpawnCups" to="." method="_on_SpawnCups_pressed"]

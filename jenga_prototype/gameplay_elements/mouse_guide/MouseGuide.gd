@@ -45,6 +45,7 @@ onready var _tween: Tween = $Tween
 ### Built in Engine Methods -----------------------------------------------------------------------
 
 func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	_setup_shared_variables()
 	global_position = get_global_mouse_position()
 	eh_Utility.connect_signal(Events,
