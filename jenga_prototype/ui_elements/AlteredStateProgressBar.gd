@@ -71,7 +71,6 @@ func popuplate_progress_bar() -> void:
 func _setup_shared_variables() -> void:
 	altered_state_factor = _resource_preloader.get_resource("altered_factor")
 	value = altered_state_factor.value
-	altered_state_factor.connect_to(self, "_on_altered_state_factor_value_updated")
 	
 	subdivision_increment_step = _resource_preloader.get_resource("increment_step")
 	
