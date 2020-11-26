@@ -88,6 +88,7 @@ custom_constants/separation = 10
 margin_right = 413.0
 margin_bottom = 14.0
 text = "Altura da Linha de Meta"
+autowrap = true
 
 [node name="TargetHeightSpinBox" type="SpinBox" parent="LevelData"]
 margin_left = 213.0
@@ -104,6 +105,7 @@ margin_top = 58.0
 margin_right = 413.0
 margin_bottom = 72.0
 text = "Nível da Camera"
+autowrap = true
 
 [node name="CameraLevelSpinBox" type="SpinBox" parent="LevelData"]
 margin_left = 213.0
@@ -120,6 +122,7 @@ margin_top = 116.0
 margin_right = 413.0
 margin_bottom = 130.0
 text = "Total de Gominhos"
+autowrap = true
 
 [node name="BarTotalSpinBox" type="SpinBox" parent="LevelData"]
 margin_left = 213.0
@@ -135,6 +138,7 @@ margin_top = 174.0
 margin_right = 413.0
 margin_bottom = 188.0
 text = "Incremento de Gominhos"
+autowrap = true
 
 [node name="BarIncrementSpinBox" type="SpinBox" parent="LevelData"]
 margin_left = 213.0
@@ -145,22 +149,23 @@ rect_min_size = Vector2( 200, 0 )
 size_flags_horizontal = 8
 max_value = 1e+09
 
-[node name="AlteredIncrement" type="Label" parent="LevelData"]
+[node name="BarDecrement" type="Label" parent="LevelData"]
 margin_top = 232.0
 margin_right = 413.0
 margin_bottom = 246.0
-text = "Incremento de \"Embriaguez\""
+text = "Gominhos de \"Refresco\" ao ganhar o level"
 autowrap = true
 
-[node name="AlteredIncrementSpinBox" type="SpinBox" parent="LevelData"]
+[node name="WinLevelBonusSpinBox" type="SpinBox" parent="LevelData"]
 margin_left = 213.0
 margin_top = 256.0
 margin_right = 413.0
 margin_bottom = 280.0
 rect_min_size = Vector2( 200, 0 )
 size_flags_horizontal = 8
-max_value = 5.0
-step = 0.1
+min_value = -1e+09
+max_value = 0.0
+step = 1.0
 
 [node name="CupScale" type="Label" parent="LevelData"]
 margin_top = 290.0
@@ -185,5 +190,5 @@ step = 0.01
 [connection signal="value_changed" from="LevelData/CameraLevelSpinBox" to="." method="_on_CameraLevelSpinBox_value_changed"]
 [connection signal="value_changed" from="LevelData/BarTotalSpinBox" to="." method="_on_BarTotalSpinBox_value_changed"]
 [connection signal="value_changed" from="LevelData/BarIncrementSpinBox" to="." method="_on_BarIncrementSpinBox_value_changed"]
-[connection signal="value_changed" from="LevelData/AlteredIncrementSpinBox" to="." method="_on_AlteredIncrementSpinBox_value_changed"]
+[connection signal="value_changed" from="LevelData/WinLevelBonusSpinBox" to="." method="_on_WinLevelBonusSpinBox_value_changed"]
 [connection signal="value_changed" from="LevelData/CupScaleSpinBox" to="." method="_on_CupScaleSpinBox_value_changed"]

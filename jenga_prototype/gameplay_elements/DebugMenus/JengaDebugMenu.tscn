@@ -65,7 +65,7 @@ margin_top = 90.0
 
 [node name="DebugList" parent="Panel/ScrollContainer" index="0"]
 margin_right = 443.0
-margin_bottom = 1244.0
+margin_bottom = 1344.0
 
 [node name="ProgressionGroup" parent="Panel/ScrollContainer/DebugList" index="0" instance=ExtResource( 5 )]
 margin_right = 443.0
@@ -109,7 +109,7 @@ float_variable_path = "res://jenga_prototype/shared_variables/target_line/float_
 [node name="AlteredStateGroup" parent="Panel/ScrollContainer/DebugList" index="2" instance=ExtResource( 5 )]
 margin_top = 667.0
 margin_right = 443.0
-margin_bottom = 1244.0
+margin_bottom = 1344.0
 title = "Estado Alterado"
 nodes_to_collapse = [ NodePath("DebugGroupTitle/Content/Buttons"), NodePath("AlteredOffset"), NodePath("AlteredLinearDuration"), NodePath("AlteredAngularDuration") ]
 
@@ -121,26 +121,34 @@ script = ExtResource( 3 )
 field_name = "Nível de Estado Alterado"
 shared_variable_path = "res://jenga_prototype/shared_variables/altered_status/float_altered_factor.tres"
 
-[node name="AlteredOffset" parent="Panel/ScrollContainer/DebugList/AlteredStateGroup" index="3" instance=ExtResource( 4 )]
+[node name="AlteredIncrement" parent="Panel/ScrollContainer/DebugList/AlteredStateGroup" index="3" instance=ExtResource( 4 )]
 margin_top = 205.0
 margin_right = 443.0
 margin_bottom = 295.0
 hint_tooltip = "Máximo de pixels de distancia do mouse vai ser a posição do copo quando o nivel de Alterado for 1"
+field_name = "Incremento de \"Embriaguez\""
+float_variable_path = "res://jenga_prototype/shared_variables/altered_status/float_altered_increment.tres"
+
+[node name="AlteredOffset" parent="Panel/ScrollContainer/DebugList/AlteredStateGroup" index="4" instance=ExtResource( 4 )]
+margin_top = 305.0
+margin_right = 443.0
+margin_bottom = 395.0
+hint_tooltip = "Máximo de pixels de distancia do mouse vai ser a posição do copo quando o nivel de Alterado for 1"
 field_name = "Unidade de Offset"
 float_variable_path = "res://jenga_prototype/shared_variables/altered_status/float_altered_offset_unit.tres"
 
-[node name="AlteredLinearDuration" parent="Panel/ScrollContainer/DebugList/AlteredStateGroup" index="4" instance=ExtResource( 4 )]
-margin_top = 305.0
+[node name="AlteredLinearDuration" parent="Panel/ScrollContainer/DebugList/AlteredStateGroup" index="5" instance=ExtResource( 4 )]
+margin_top = 405.0
 margin_right = 443.0
-margin_bottom = 436.0
+margin_bottom = 536.0
 hint_tooltip = "Máximo de pixels de distancia do mouse vai ser a posição do copo quando o nivel de Alterado for 1"
 field_name = "Duração do Loop do Movimento Linear"
 float_variable_path = "res://jenga_prototype/shared_variables/altered_status/float_altered_linear_loop_duration.tres"
 
-[node name="AlteredAngularDuration" parent="Panel/ScrollContainer/DebugList/AlteredStateGroup" index="5" instance=ExtResource( 4 )]
-margin_top = 446.0
+[node name="AlteredAngularDuration" parent="Panel/ScrollContainer/DebugList/AlteredStateGroup" index="6" instance=ExtResource( 4 )]
+margin_top = 546.0
 margin_right = 443.0
-margin_bottom = 577.0
+margin_bottom = 677.0
 hint_tooltip = "Máximo de pixels de distancia do mouse vai ser a posição do copo quando o nivel de Alterado for 1"
 field_name = "Duração do Loop do Movimento Angular"
 float_variable_path = "res://jenga_prototype/shared_variables/altered_status/float_altered_angular_loop_duration.tres"
