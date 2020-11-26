@@ -29,6 +29,8 @@ onready var sfx_hits: SfxLibrary = $SfxHit
 onready var sfx_table: SfxLibrary = $SfxTable
 onready var sfx_fit: SfxLibrary = $SfxFit
 
+onready var break_timer: Timer = $BreakArea/BreakTimer
+
 onready var cup_detector: Area2D = $CupDetector
 onready var cup_detector_polygon: CollisionPolygon2D = $CupDetector/CollisionPolygon2D
 onready var main_rigid_body: RigidBody2D = $CupSides
@@ -42,14 +44,19 @@ onready var collision_shapes: Array = [
 	$CupSides/SideRight,
 	$CupSides/Bottom,
 	$CupTop/Top,
+	$SfxHitDetector/SfxCollision,
+	$SfxFitDetector/SfxFitArea,
+	$BreakArea/BreakPolygon,
 ]
 
 
 #--- private variables - order: export > normal var > onready -------------------------------------
 
 var _main_mouse_reference: NodePathVariable
+var _camera: Camera2D
 
 onready var _scale_factor: FloatVariable = resources.get_resource("float_scale_factor")
+onready var _camera_path: NodePathVariable = resources.get_resource("nodepath_main_camera")
 
 ### -----------------------------------------------------------------------------------------------
 
@@ -62,6 +69,10 @@ func _ready():
 	_main_mouse_reference = load(MAIN_MOUSE_GUIDE_PATH) as NodePathVariable
 	_update_mouse_guide()
 	_main_mouse_reference.connect_to(self, "_on_main_mouse_reference_value_changed")
+	
+	if _camera_path.value != null:
+		_camera = get_node(_camera_path.value)
+	_camera_path.connect_to(self, "_on_camera_path_value_updated")
 	
 	default_measures["cup_detector_polygon"] = cup_detector_polygon.polygon
 	
@@ -159,14 +170,15 @@ func _set_drag_mode() -> void:
 
 
 func _update_mouse_guide() -> void:
-	if _main_mouse_reference.value != null:
-		mouse_guide = get_node(_main_mouse_reference.value)
-	else:
-		mouse_guide = null
+	mouse_guide = get_node_or_null(_main_mouse_reference.value)
 
 
 func _on_main_mouse_reference_value_changed() -> void:
 	_update_mouse_guide()
+
+
+func _on_camera_path_value_updated() -> void:
+	_camera = get_node_or_null(_camera_path.value)
 
 
 func _set_is_over_other_cups(value: bool) -> void:
@@ -205,3 +217,11 @@ func _on_BreakArea_body_entered(body):
 		if break_timer.is_stopped():
 			break_timer.start()
 
+
+func _on_BreakTimer_timeout():
+	var break_area: Area2D = $BreakArea as Area2D
+	for body in break_area.get_overlapping_bodies():
+		if body.is_in_group("cup"):
+			var rigid_body: RigidBody2D = body as RigidBody2D
+			rigid_body.apply_impulse(Vector2.ZERO, Vector2.UP.rotated(rotation) * 2000 * _scale_factor.value  * _camera.zoom.y)
+	queue_free()
