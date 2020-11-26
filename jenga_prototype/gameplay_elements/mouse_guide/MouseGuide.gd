@@ -45,10 +45,13 @@ onready var _tween: Tween = $Tween
 ### Built in Engine Methods -----------------------------------------------------------------------
 
 func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	_setup_shared_variables()
 	global_position = get_global_mouse_position()
 	eh_Utility.connect_signal(Events,
 			"altered_level_raised", self, "_on_Events_altered_level_raised")
+	eh_Utility.connect_signal(Events,
+			"altered_level_decreased", self, "_on_Events_altered_level_decreased")
 
 
 func _physics_process(delta):
@@ -84,6 +87,14 @@ func increase_altered_factor() -> void:
 			0.5, Tween.TRANS_LINEAR, Tween.EASE_IN)
 	_tween.start()
 
+
+func decrease_altered_factor() -> void:
+	_tween.interpolate_property(altered_factor, "value", 
+			altered_factor.value, 
+			altered_factor.value - altered_increment.value, 
+			0.5, Tween.TRANS_LINEAR, Tween.EASE_IN)
+	_tween.start()
+
 ### -----------------------------------------------------------------------------------------------
 
 
@@ -110,6 +121,10 @@ func _setup_shared_variables() -> void:
 
 func _on_Events_altered_level_raised() -> void:
 	increase_altered_factor()
+
+
+func _on_Events_altered_level_decreased() -> void:
+	decrease_altered_factor()
 
 
 func _on_node_path_camera_value_updated() -> void:

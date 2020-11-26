@@ -8,8 +8,6 @@ extends ProgressBar
 
 #--- constants ------------------------------------------------------------------------------------
 
-const MAX_HUE_VALUE = 359
-
 #--- public variables - order: export > normal var > onready --------------------------------------
 
 var altered_factor: int = 0
@@ -19,8 +17,6 @@ var subdivision_max_value: IntVariable
 var subdivision_increment_step: IntVariable
 
 #--- private variables - order: export > normal var > onready -------------------------------------
-
-var foreground_stylebox: StyleBoxFlat = get_stylebox("fg")
 
 onready var _resource_preloader: ResourcePreloader = $ResourcePreloader
 onready var _subdivisions: HBoxContainer = $Subdivisions
@@ -46,8 +42,13 @@ func get_subdivision_instance() -> ColorRect:
 
 
 func popuplate_progress_bar() -> void:
+	if max_value == subdivision_max_value.value:
+		return
+	
 	value = int(value) % subdivision_max_value.value
 	max_value = subdivision_max_value.value
+	
+	altered_factor = altered_state_level * max_value + value
 	
 	for child in _subdivisions.get_children():
 		_subdivisions.remove_child(child)
@@ -63,6 +64,26 @@ func popuplate_progress_bar() -> void:
 		elif index == max_value:
 			instance.modulate.a = 0
 
+
+func decrement_altered_progress(p_decrement) -> void:
+	altered_factor = max(altered_factor + p_decrement, 0)
+	var new_level = int(altered_factor / subdivision_max_value.value)
+	if new_level < altered_state_level:
+		altered_state_level -= 1
+		_level_label.text = str(altered_state_level)
+		Events.emit_signal("altered_level_decreased")
+	
+	var new_value: = 0.0
+	if altered_factor > max_value:
+		if altered_factor % int(max_value) == 0:
+			new_value = max_value
+		else:
+			new_value = altered_factor - max_value * new_level
+	else:
+		new_value = altered_factor
+	
+	value = new_value
+
 ### -----------------------------------------------------------------------------------------------
 
 
@@ -71,7 +92,6 @@ func popuplate_progress_bar() -> void:
 func _setup_shared_variables() -> void:
 	altered_state_factor = _resource_preloader.get_resource("altered_factor")
 	value = altered_state_factor.value
-	altered_state_factor.connect_to(self, "_on_altered_state_factor_value_updated")
 	
 	subdivision_increment_step = _resource_preloader.get_resource("increment_step")
 	
@@ -89,7 +109,7 @@ func _on_Events_cup_drinked() -> void:
 		if altered_factor % int(max_value) == 0:
 			new_value = max_value
 		else:
-			new_value = altered_factor - max_value * new_level	
+			new_value = altered_factor - max_value * new_level
 	else:
 		new_value = altered_factor
 	
@@ -103,11 +123,6 @@ func _on_Events_cup_drinked() -> void:
 	if new_level > altered_state_level:
 		altered_state_level = new_level
 		_level_label.text = str(altered_state_level)
-		var current_hue = foreground_stylebox.bg_color.h
-		current_hue = current_hue + 0.1 if current_hue <= 0.9 else current_hue + 0.1 - 1
-		foreground_stylebox.bg_color.h = current_hue
-		add_stylebox_override("fg", foreground_stylebox)
-		foreground_stylebox = get_stylebox("fg")
 		Events.emit_signal("altered_level_raised")
 
 

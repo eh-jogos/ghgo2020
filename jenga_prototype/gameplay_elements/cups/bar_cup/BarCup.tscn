@@ -1,12 +1,33 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://jenga_prototype/gameplay_elements/cups/bar_cup/BarCupSkin.tscn" type="PackedScene" id=1]
 [ext_resource path="res://jenga_prototype/gameplay_elements/cups/bar_cup/states/Spawn.gd" type="Script" id=2]
 [ext_resource path="res://jenga_prototype/shared_variables/float_scale_factor.tres" type="Resource" id=3]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/sfx_glass_table_v7.wav" type="AudioStream" id=4]
 [ext_resource path="res://jenga_prototype/gameplay_elements/cups/bar_cup/states/Dropped.gd" type="Script" id=5]
 [ext_resource path="res://jenga_prototype/gameplay_elements/cups/BaseCup.gd" type="Script" id=6]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/sfx_glass_hit_v2.wav" type="AudioStream" id=7]
 [ext_resource path="res://scripts/state_machines/StateMachine.gd" type="Script" id=8]
 [ext_resource path="res://jenga_prototype/gameplay_elements/cups/bar_cup/states/Draging.gd" type="Script" id=9]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/sfx_glass_hit_v3.wav" type="AudioStream" id=10]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/SfxLibrary.gd" type="Script" id=11]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/sfx_glass_table_v5.wav" type="AudioStream" id=12]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/sfx_glass_table_v6.wav" type="AudioStream" id=13]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/sfx_glass_table_v3.wav" type="AudioStream" id=14]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/sfx_glass_table_v1.wav" type="AudioStream" id=15]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/sfx_glass_table_v4.wav" type="AudioStream" id=16]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/sfx_glass_table_v2.wav" type="AudioStream" id=17]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/sfx_glass_hit_v4.wav" type="AudioStream" id=18]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/sfx_glass_hit_v6.wav" type="AudioStream" id=19]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/sfx_glass_hit_v1.wav" type="AudioStream" id=20]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/sfx_glass_hit_v5.wav" type="AudioStream" id=21]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/sfx_glass_fit_v2.wav" type="AudioStream" id=22]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/sfx_glass_fit_v6.wav" type="AudioStream" id=23]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/sfx_glass_fit_v1.wav" type="AudioStream" id=24]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/sfx_glass_fit_v4.wav" type="AudioStream" id=25]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/sfx_glass_fit_v3.wav" type="AudioStream" id=26]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/sfx_glass_fit_v5.wav" type="AudioStream" id=27]
+[ext_resource path="res://jenga_prototype/shared_variables/nodepath_main_camera.tres" type="Resource" id=28]
 
 [sub_resource type="PhysicsMaterial" id=1]
 rough = true
@@ -18,13 +39,15 @@ rough = true
 script = ExtResource( 6 )
 
 [node name="ResourcePreloader" type="ResourcePreloader" parent="."]
-resources = [ PoolStringArray( "float_scale_factor" ), [ ExtResource( 3 ) ] ]
+resources = [ PoolStringArray( "float_scale_factor", "nodepath_main_camera" ), [ ExtResource( 3 ), ExtResource( 28 ) ] ]
 
 [node name="Tween" type="Tween" parent="."]
 
 [node name="Skin" parent="." instance=ExtResource( 1 )]
 
-[node name="CupSides" type="RigidBody2D" parent="."]
+[node name="CupSides" type="RigidBody2D" parent="." groups=[
+"cup",
+]]
 collision_layer = 2048
 collision_mask = 3072
 physics_material_override = SubResource( 1 )
@@ -43,7 +66,9 @@ polygon = PoolVector2Array( 30, 84, 49, -32, 49, -85, 61, -85, 61, -33, 44, 84 )
 [node name="Bottom" type="CollisionPolygon2D" parent="CupSides"]
 polygon = PoolVector2Array( 30, 84, -30, 84, -35, 54, 35, 54 )
 
-[node name="CupTop" type="RigidBody2D" parent="."]
+[node name="CupTop" type="RigidBody2D" parent="." groups=[
+"cup",
+]]
 collision_layer = 4096
 collision_mask = 2147488768
 physics_material_override = SubResource( 2 )
@@ -71,7 +96,119 @@ collision_layer = 8192
 collision_mask = 9216
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CupDetector"]
-polygon = PoolVector2Array( -63, -87, 63, -87, 63, 87, -63, 87 )
+polygon = PoolVector2Array( -65, -90, 65, -90, 65, 90, -65, 90 )
+
+[node name="SfxHitDetector" type="Area2D" parent="."]
+collision_layer = 16384
+collision_mask = 3072
+
+[node name="SfxCollision" type="CollisionPolygon2D" parent="SfxHitDetector"]
+modulate = Color( 0, 1, 1, 1 )
+polygon = PoolVector2Array( -65, -90, 65, -90, 65, 90, -65, 90 )
+
+[node name="SfxFitDetector" type="Area2D" parent="."]
+collision_layer = 16384
+collision_mask = 2048
+
+[node name="SfxFitArea" type="CollisionPolygon2D" parent="SfxFitDetector"]
+modulate = Color( 0.266667, 0, 1, 1 )
+polygon = PoolVector2Array( -47, -75, 47, -75, 47, -30, -47, -30 )
+
+[node name="BreakArea" type="Area2D" parent="."]
+collision_layer = 16384
+collision_mask = 2048
+
+[node name="BreakPolygon" type="CollisionPolygon2D" parent="BreakArea"]
+modulate = Color( 0.266667, 0, 1, 1 )
+polygon = PoolVector2Array( -43, -9, 43, -9, 37, 26, -37, 26 )
+
+[node name="BreakTimer" type="Timer" parent="BreakArea"]
+one_shot = true
+
+[node name="SfxHit" type="Node" parent="."]
+script = ExtResource( 11 )
+
+[node name="SfxHit1" type="AudioStreamPlayer" parent="SfxHit"]
+stream = ExtResource( 20 )
+bus = "Sfx"
+
+[node name="SfxHit2" type="AudioStreamPlayer" parent="SfxHit"]
+stream = ExtResource( 7 )
+bus = "Sfx"
+
+[node name="SfxHit3" type="AudioStreamPlayer" parent="SfxHit"]
+stream = ExtResource( 10 )
+bus = "Sfx"
+
+[node name="SfxHit4" type="AudioStreamPlayer" parent="SfxHit"]
+stream = ExtResource( 18 )
+bus = "Sfx"
+
+[node name="SfxHit5" type="AudioStreamPlayer" parent="SfxHit"]
+stream = ExtResource( 21 )
+bus = "Sfx"
+
+[node name="SfxHit6" type="AudioStreamPlayer" parent="SfxHit"]
+stream = ExtResource( 19 )
+bus = "Sfx"
+
+[node name="SfxTable" type="Node" parent="."]
+script = ExtResource( 11 )
+
+[node name="SfxTable1" type="AudioStreamPlayer" parent="SfxTable"]
+stream = ExtResource( 15 )
+bus = "Sfx"
+
+[node name="SfxTable2" type="AudioStreamPlayer" parent="SfxTable"]
+stream = ExtResource( 17 )
+bus = "Sfx"
+
+[node name="SfxTable3" type="AudioStreamPlayer" parent="SfxTable"]
+stream = ExtResource( 14 )
+bus = "Sfx"
+
+[node name="SfxTable4" type="AudioStreamPlayer" parent="SfxTable"]
+stream = ExtResource( 16 )
+bus = "Sfx"
+
+[node name="SfxTable5" type="AudioStreamPlayer" parent="SfxTable"]
+stream = ExtResource( 12 )
+bus = "Sfx"
+
+[node name="SfxTable6" type="AudioStreamPlayer" parent="SfxTable"]
+stream = ExtResource( 13 )
+bus = "Sfx"
+
+[node name="SfxTable7" type="AudioStreamPlayer" parent="SfxTable"]
+stream = ExtResource( 4 )
+bus = "Sfx"
+
+[node name="SfxFit" type="Node" parent="."]
+script = ExtResource( 11 )
+
+[node name="SfxFit1" type="AudioStreamPlayer" parent="SfxFit"]
+stream = ExtResource( 24 )
+bus = "Sfx"
+
+[node name="SfxFit2" type="AudioStreamPlayer" parent="SfxFit"]
+stream = ExtResource( 22 )
+bus = "Sfx"
+
+[node name="SfxFit3" type="AudioStreamPlayer" parent="SfxFit"]
+stream = ExtResource( 26 )
+bus = "Sfx"
+
+[node name="SfxFit4" type="AudioStreamPlayer" parent="SfxFit"]
+stream = ExtResource( 25 )
+bus = "Sfx"
+
+[node name="SfxFit5" type="AudioStreamPlayer" parent="SfxFit"]
+stream = ExtResource( 27 )
+bus = "Sfx"
+
+[node name="SfxFit6" type="AudioStreamPlayer" parent="SfxFit"]
+stream = ExtResource( 23 )
+bus = "Sfx"
 
 [node name="CupStateMachine" type="Node" parent="."]
 script = ExtResource( 8 )
@@ -85,5 +222,10 @@ script = ExtResource( 9 )
 
 [node name="Dropped" type="Node" parent="CupStateMachine"]
 script = ExtResource( 5 )
+[connection signal="body_entered" from="SfxHitDetector" to="." method="_on_SfxHitDetector_body_entered"]
+[connection signal="body_entered" from="SfxFitDetector" to="." method="_on_SfxFitDetector_body_entered"]
+[connection signal="body_entered" from="BreakArea" to="." method="_on_BreakArea_body_entered"]
+[connection signal="body_exited" from="BreakArea" to="." method="_on_BreakArea_body_exited"]
+[connection signal="timeout" from="BreakArea/BreakTimer" to="." method="_on_BreakTimer_timeout"]
 
 [editable path="Skin"]

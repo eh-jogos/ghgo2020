@@ -139,6 +139,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://jenga_prototype/ui_elements/debug_menu/read_only_lines/ReadOnlyVariableLine.gd"
 }, {
+"base": "Node",
+"class": "SfxLibrary",
+"language": "GDScript",
+"path": "res://jenga_prototype/gameplay_elements/cups/sfx/SfxLibrary.gd"
+}, {
 "base": "Resource",
 "class": "SharedVariable",
 "language": "GDScript",
@@ -221,6 +226,7 @@ _global_script_class_icons={
 "NodePathVariable": "",
 "Player": "",
 "ReadOnlyDebugLine": "",
+"SfxLibrary": "",
 "SharedVariable": "",
 "State": "",
 "StateMachine": "",
@@ -239,8 +245,8 @@ _global_script_class_icons={
 config/name="Moonshot"
 run/main_scene="res://jenga_prototype/levels/BaseLevel.tscn"
 config/icon="res://icon.png"
-config/version="0.4.2"
-config/build_folder="v0.4.0"
+config/version="0.5.1"
+config/build_folder="v0.5.0"
 run/main_scene.HTML5="res://jenga_prototype/screens/DrinkSelection.tscn"
 
 [autoload]

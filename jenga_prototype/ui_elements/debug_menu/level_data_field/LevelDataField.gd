@@ -26,7 +26,7 @@ onready var _target_height_field: SpinBox = $LevelData/TargetHeightSpinBox
 onready var _camera_level_field: SpinBox = $LevelData/CameraLevelSpinBox
 onready var _bar_total_field: SpinBox = $LevelData/BarTotalSpinBox
 onready var _bar_increment_field: SpinBox = $LevelData/BarIncrementSpinBox
-onready var _altered_increment_field: SpinBox = $LevelData/AlteredIncrementSpinBox
+onready var _win_level_bonus_field: SpinBox = $LevelData/WinLevelBonusSpinBox
 onready var _cup_scale_field: SpinBox = $LevelData/CupScaleSpinBox
 
 ### -----------------------------------------------------------------------------------------------
@@ -60,7 +60,7 @@ func _set_level_data(value: LevelData) -> void:
 	_camera_level_field.value = level_data.camera_level
 	_bar_total_field.value = level_data.altered_bar_total
 	_bar_increment_field.value = level_data.altered_bar_increment
-	_altered_increment_field.value = level_data.altered_state_increment
+	_win_level_bonus_field.value = level_data.altered_bar_win_bonus
 	_cup_scale_field.value = level_data.cup_scale
 
 
@@ -114,8 +114,8 @@ func _on_BarIncrementSpinBox_value_changed(value):
 	emit_signal("level_updated", index)
 
 
-func _on_AlteredIncrementSpinBox_value_changed(value):
-	level_data.altered_state_increment = value
+func _on_WinLevelBonusSpinBox_value_changed(value):
+	level_data.altered_bar_win_bonus = value
 	emit_signal("level_updated", index)
 
 

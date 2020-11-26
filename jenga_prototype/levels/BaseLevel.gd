@@ -23,12 +23,14 @@ onready var _cup_spawn_point = $HUDLayer/HUD/SpawnCups/SpawnPivot/CupSpawnPoint
 onready var _cups_layer: Node2D = $Cups
 onready var _mouse_guide: Sprite = $MouseGuide
 onready var _camera: Camera2D = $JengaCamera
+onready var _progress_bar: ProgressBar = $HUDLayer/HUD/AlteredStateProgressBar
 
 onready var _target_height: FloatVariable = _resources.get_resource("target_height")
 onready var _camera_level: FloatVariable = _resources.get_resource("camera_level")
 onready var _altered_bar_total: IntVariable = _resources.get_resource("max_value")
 onready var _altered_bar_increment: IntVariable = _resources.get_resource("increment_step")
 onready var _altered_state_increment: FloatVariable = _resources.get_resource("altered_increment")
+onready var _altered_state: FloatVariable = _resources.get_resource("altered_factor")
 onready var _scale_factor: FloatVariable = _resources.get_resource("scale_factor")
 
 
@@ -81,7 +83,6 @@ func setup_current_level() -> void:
 		_camera_level.value = current_level.camera_level
 		_altered_bar_total.value = current_level.altered_bar_total
 		_altered_bar_increment.value = current_level.altered_bar_increment
-		_altered_state_increment.value = current_level.altered_state_increment
 		
 		if _scale_factor.value != current_level.cup_scale:
 			clear_cups()
@@ -104,6 +105,8 @@ func _on_TargetLine_level_completed():
 		#won game
 		pass
 	else:
+		var current_level: LevelData = level_list.value[level_current.value]
+		_progress_bar.decrement_altered_progress(current_level.altered_bar_win_bonus)
 		level_current.value += 1
 
 

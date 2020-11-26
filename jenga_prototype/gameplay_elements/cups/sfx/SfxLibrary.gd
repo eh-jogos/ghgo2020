@@ -1,6 +1,6 @@
 # Write your doc string for this file here
-class_name DebugMenu
-extends Control
+class_name SfxLibrary
+extends Node
 
 ### Member Variables and Dependencies -------------------------------------------------------------
 #--- signals --------------------------------------------------------------------------------------
@@ -19,21 +19,17 @@ extends Control
 ### Built in Engine Methods -----------------------------------------------------------------------
 
 func _ready():
-	hide()
-
-
-func _input(event):
-	if event.is_action_pressed("debug_show_menu"):
-		visible = !visible
-		if visible:
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		else:
-			Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	randomize()
 
 ### -----------------------------------------------------------------------------------------------
 
 
 ### Public Methods --------------------------------------------------------------------------------
+
+func play() -> void:
+	var index = randi() % get_child_count()
+	var child: AudioStreamPlayer = get_child(index)
+	child.play()
 
 ### -----------------------------------------------------------------------------------------------
 

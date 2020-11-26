@@ -1,54 +1,81 @@
-[gd_resource type="Resource" load_steps=8 format=2]
+[gd_resource type="Resource" load_steps=11 format=2]
 
 [ext_resource path="res://scripts/eh_jogos.shared_variables/Array/ArrayVariable.gd" type="Script" id=1]
 [ext_resource path="res://scripts/custom_resources/LevelData.gd" type="Script" id=2]
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 2 )
-target_height = 0.15
+target_height = 0.3
 camera_level = 0.0
 altered_bar_total = 5
 altered_bar_increment = 1
+altered_bar_win_bonus = -2
 cup_scale = 0.5
-altered_state_increment = 0.5
 
 [sub_resource type="Resource" id=2]
 script = ExtResource( 2 )
-target_height = 0.5
-camera_level = 0.25
+target_height = 0.45
+camera_level = 0.0
 altered_bar_total = 5
 altered_bar_increment = 1
-cup_scale = 2.0
-altered_state_increment = 0.5
+altered_bar_win_bonus = -1
+cup_scale = 0.5
 
 [sub_resource type="Resource" id=3]
 script = ExtResource( 2 )
-target_height = 0.6
-camera_level = 0.5
+target_height = 0.5
+camera_level = 0.05
 altered_bar_total = 5
-altered_bar_increment = 2
-cup_scale = 4.0
-altered_state_increment = 0.5
+altered_bar_increment = 1
+altered_bar_win_bonus = -1
+cup_scale = 0.8
 
 [sub_resource type="Resource" id=4]
 script = ExtResource( 2 )
-target_height = 0.7
-camera_level = 0.75
-altered_bar_total = 5
-altered_bar_increment = 1
-cup_scale = 6.0
-altered_state_increment = 0.5
+target_height = 0.6
+camera_level = 0.1
+altered_bar_total = 8
+altered_bar_increment = 2
+altered_bar_win_bonus = -1
+cup_scale = 1.1
 
 [sub_resource type="Resource" id=5]
 script = ExtResource( 2 )
-target_height = 0.8
+target_height = 0.7
+camera_level = 0.2
+altered_bar_total = 8
+altered_bar_increment = 2
+altered_bar_win_bonus = -1
+cup_scale = 1.5
+
+[sub_resource type="Resource" id=6]
+script = ExtResource( 2 )
+target_height = 0.7
+camera_level = 0.35
+altered_bar_total = 8
+altered_bar_increment = 2
+altered_bar_win_bonus = -1
+cup_scale = 2.0
+
+[sub_resource type="Resource" id=7]
+script = ExtResource( 2 )
+target_height = 0.75
+camera_level = 0.6
+altered_bar_total = 10
+altered_bar_increment = 3
+altered_bar_win_bonus = -1
+cup_scale = 3.1
+
+[sub_resource type="Resource" id=8]
+script = ExtResource( 2 )
+target_height = 0.82
 camera_level = 1.0
-altered_bar_total = 5
-altered_bar_increment = 1
-cup_scale = 8.0
-altered_state_increment = 0.5
+altered_bar_total = 10
+altered_bar_increment = 3
+altered_bar_win_bonus = -1
+cup_scale = 4.3
 
 [resource]
 script = ExtResource( 1 )
 should_reset_value = false
-value = [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ]
+value = [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ]
