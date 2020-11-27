@@ -40,7 +40,7 @@ func _ready():
 ### Private Methods -------------------------------------------------------------------------------
 
 func _on_target_line_value_updated() -> void:
-	if _tween.is_active():	
+	if _tween.is_active():
 		_tween.remove_all()
 	
 	var new_anchor = 1 - _target_line_height.value
