@@ -1,10 +1,10 @@
 [gd_scene format=2]
 
 [node name="Subdivision1" type="ColorRect"]
-margin_right = 6.0
+margin_right = 10.0
 margin_bottom = 60.0
-rect_min_size = Vector2( 6, 0 )
-color = Color( 0, 0, 0, 1 )
+rect_min_size = Vector2( 10, 0 )
+color = Color( 0.94902, 0.905882, 0.827451, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

@@ -6,38 +6,36 @@
 [ext_resource path="res://jenga_prototype/ui_elements/altered_state_proigress_bar/Subdivision1.tscn" type="PackedScene" id=4]
 [ext_resource path="res://jenga_prototype/shared_variables/altered_state_bar/int_max_value.tres" type="Resource" id=5]
 [ext_resource path="res://jenga_prototype/shared_variables/altered_state_bar/int_increment_step.tres" type="Resource" id=6]
-[ext_resource path="res://fonts/font_files/MavenPro-Black.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://fonts/font_files/Isidora_Soft_Black_It.otf" type="DynamicFontData" id=7]
+[ext_resource path="res://jenga_prototype/ui_elements/altered_state_proigress_bar/pngs/Top-bar.png" type="Texture" id=8]
 
 [sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.92, 0.5244, 0.887033, 1 )
+bg_color = Color( 0.839216, 0.0431373, 0.321569, 1 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 
 [sub_resource type="StyleBoxFlat" id=2]
-bg_color = Color( 1, 1, 1, 1 )
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color( 0, 0, 0, 1 )
-expand_margin_left = 4.0
-expand_margin_right = 4.0
-expand_margin_top = 4.0
-expand_margin_bottom = 4.0
+bg_color = Color( 0.239216, 0.137255, 0.235294, 1 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 
-[sub_resource type="StyleBoxFlat" id=3]
-bg_color = Color( 0, 0, 0, 1 )
-
-[sub_resource type="DynamicFont" id=4]
-size = 100
+[sub_resource type="DynamicFont" id=3]
+size = 80
+use_filter = true
 extra_spacing_top = -8
 font_data = ExtResource( 7 )
 
 [node name="AlteredStateProgressBar" type="ProgressBar"]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -702.0
-margin_top = 46.0
-margin_right = -102.0
-margin_bottom = 106.0
+margin_left = -582.0
+margin_top = 70.0
+margin_right = -152.0
+margin_bottom = 116.0
 custom_styles/fg = SubResource( 1 )
 custom_styles/bg = SubResource( 2 )
 max_value = 10.0
@@ -53,34 +51,42 @@ resources = [ PoolStringArray( "Subdivision1", "altered_factor", "increment_step
 
 [node name="Tween" type="Tween" parent="."]
 
+[node name="TextureRect" type="TextureRect" parent="."]
+show_behind_parent = true
+margin_left = -13.0
+margin_top = -31.0
+margin_right = 547.0
+margin_bottom = 123.0
+texture = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Subdivisions" type="HBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -4.0
+margin_top = -2.0
 margin_right = 4.0
+margin_bottom = 2.0
 custom_constants/separation = 54
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Panel" type="Panel" parent="."]
-show_behind_parent = true
+[node name="AlteredLevel" type="Label" parent="."]
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = -20.0
-margin_top = -59.0
-margin_right = 93.0
-margin_bottom = 60.0
-custom_styles/panel = SubResource( 3 )
-
-[node name="AlteredLevel" type="Label" parent="Panel"]
-anchor_left = 0.3
-anchor_right = 0.9
-anchor_bottom = 1.0
-custom_fonts/font = SubResource( 4 )
+margin_left = -3.0
+margin_top = -32.0
+margin_right = 95.0
+margin_bottom = 67.0
+grow_horizontal = 0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.839216, 0.0431373, 0.321569, 1 )
 text = "0"
 align = 1
 valign = 1

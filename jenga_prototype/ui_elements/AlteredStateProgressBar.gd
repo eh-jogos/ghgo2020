@@ -8,6 +8,8 @@ extends ProgressBar
 
 #--- constants ------------------------------------------------------------------------------------
 
+const CORNER_RADIUS = 20
+
 #--- public variables - order: export > normal var > onready --------------------------------------
 
 var altered_factor: int = 0
@@ -18,9 +20,11 @@ var subdivision_increment_step: IntVariable
 
 #--- private variables - order: export > normal var > onready -------------------------------------
 
+var fg_stylebox: StyleBoxFlat
+
 onready var _resource_preloader: ResourcePreloader = $ResourcePreloader
 onready var _subdivisions: HBoxContainer = $Subdivisions
-onready var _level_label: Label = $Panel/AlteredLevel
+onready var _level_label: Label = $AlteredLevel
 onready var _tween: Tween = $Tween
 
 ### -----------------------------------------------------------------------------------------------
@@ -29,6 +33,7 @@ onready var _tween: Tween = $Tween
 ### Built in Engine Methods -----------------------------------------------------------------------
 
 func _ready():
+	fg_stylebox = get_stylebox("fg") as StyleBoxFlat
 	_setup_shared_variables()
 	Events.connect("cup_drinked", self, "_on_Events_cup_drinked")
 
@@ -115,6 +120,13 @@ func _on_Events_cup_drinked() -> void:
 	
 	if new_value < value:
 		value = 0
+	
+	if new_value == max_value:
+		fg_stylebox.corner_radius_top_right = CORNER_RADIUS
+		fg_stylebox.corner_radius_bottom_right = CORNER_RADIUS
+	else:
+		fg_stylebox.corner_radius_top_right = 0
+		fg_stylebox.corner_radius_bottom_right = 0
 	
 	_tween.interpolate_property(self, "value", value, new_value, 
 			0.5, Tween.TRANS_LINEAR, Tween.EASE_IN)
