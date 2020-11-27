@@ -1,32 +1,32 @@
 [gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://jenga_prototype/gameplay_elements/cups/bar_cup/bar_cup.png" type="Texture" id=1]
-[ext_resource path="res://fonts/MavenProBlack_84.tres" type="DynamicFont" id=2]
+[ext_resource path="res://fonts/IsidoraSoftBlackItalic_84.tres" type="DynamicFont" id=2]
 [ext_resource path="res://jenga_prototype/screens/DrinkButton.gd" type="Script" id=3]
 [ext_resource path="res://addons/eh_jogos.transitions/transitions_data/sweep_right.tres" type="Resource" id=4]
 [ext_resource path="res://addons/eh_jogos.transitions/transitions_data/sweep_left.tres" type="Resource" id=5]
 [ext_resource path="res://addons/eh_jogos.transitions/custom_nodes/eh_SceneChanger.gd" type="Script" id=6]
-[ext_resource path="res://fonts/MavenProBlack_92.tres" type="DynamicFont" id=7]
+[ext_resource path="res://fonts/IsidoraSoftBlackItalic_92.tres" type="DynamicFont" id=7]
 
-[sub_resource type="StyleBoxFlat" id=3]
-bg_color = Color( 1, 0.996711, 0.96875, 1 )
-border_width_left = 12
-border_width_top = 12
-border_width_right = 12
-border_width_bottom = 12
-border_color = Color( 0.619608, 0.45098, 0.756863, 1 )
-corner_radius_top_left = 40
-corner_radius_top_right = 40
-corner_radius_bottom_right = 40
-corner_radius_bottom_left = 40
-
-[sub_resource type="StyleBoxFlat" id=4]
+[sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 1, 0.996711, 0.96875, 1 )
 border_width_left = 12
 border_width_top = 12
 border_width_right = 12
 border_width_bottom = 12
 border_color = Color( 0.701961, 0.556863, 0.278431, 1 )
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 1, 0.996711, 0.96875, 1 )
+border_width_left = 12
+border_width_top = 12
+border_width_right = 12
+border_width_bottom = 12
+border_color = Color( 0.619608, 0.45098, 0.756863, 1 )
 corner_radius_top_left = 40
 corner_radius_top_right = 40
 corner_radius_bottom_right = 40
@@ -44,8 +44,12 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 0.3
 custom_fonts/font = ExtResource( 7 )
-custom_colors/font_color = Color( 0.364706, 0.364706, 0.364706, 1 )
-text = "What's your poison?"
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = -4
+custom_constants/shadow_offset_y = 5
+text = "Choose your poison:"
 align = 1
 valign = 1
 __meta__ = {
@@ -65,25 +69,27 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MilkshakeButton" type="Button" parent="MilkshakeContainer"]
+[node name="BeerButton" type="Button" parent="MilkshakeContainer"]
 self_modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.85
 anchor_top = 0.05
 anchor_right = 0.85
 anchor_bottom = 0.05
 margin_left = -450.0
-margin_bottom = 500.0
+margin_top = 0.200001
+margin_bottom = 500.2
+keep_pressed_outside = true
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="eh_SceneChanger" type="Node" parent="MilkshakeContainer/MilkshakeButton"]
+[node name="eh_SceneChanger" type="Node" parent="MilkshakeContainer/BeerButton"]
 script = ExtResource( 6 )
 _next_scene_path = "res://jenga_prototype/levels/BaseLevel.tscn"
-transition_data = ExtResource( 5 )
+transition_data = ExtResource( 4 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MilkshakeContainer/MilkshakeButton"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MilkshakeContainer/BeerButton"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -98,24 +104,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="MilkshakeContainer/MilkshakeButton/VBoxContainer"]
-margin_right = 419.0
-margin_bottom = 100.0
-custom_fonts/font = ExtResource( 2 )
-custom_colors/font_outline_modulate = Color( 0.513726, 0.278431, 0.701961, 1 )
-text = "Milkshake"
-
-[node name="Panel" type="Panel" parent="MilkshakeContainer/MilkshakeButton/VBoxContainer"]
+[node name="Panel" type="Panel" parent="MilkshakeContainer/BeerButton/VBoxContainer"]
 margin_left = 34.0
-margin_top = 130.0
 margin_right = 384.0
-margin_bottom = 480.0
+margin_bottom = 350.0
 rect_min_size = Vector2( 350, 350 )
 mouse_filter = 2
 size_flags_horizontal = 4
-custom_styles/panel = SubResource( 3 )
+custom_styles/panel = SubResource( 1 )
 
-[node name="Cup" type="TextureRect" parent="MilkshakeContainer/MilkshakeButton/VBoxContainer/Panel"]
+[node name="Cup" type="TextureRect" parent="MilkshakeContainer/BeerButton/VBoxContainer/Panel"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -129,6 +127,15 @@ texture = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Label" type="Label" parent="MilkshakeContainer/BeerButton/VBoxContainer"]
+margin_top = 380.0
+margin_right = 419.0
+margin_bottom = 492.0
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.239216, 0.137255, 0.235294, 1 )
+text = "Beer"
+align = 1
 
 [node name="BeerContainer" type="Control" parent="."]
 anchor_left = 0.5
@@ -139,26 +146,26 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="BeerButton" type="Button" parent="BeerContainer"]
+[node name="MilkshakeButton" type="Button" parent="BeerContainer"]
 self_modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.15
 anchor_top = 0.05
 anchor_right = 0.15
 anchor_bottom = 0.05
+margin_top = -1.14441e-05
 margin_right = 450.0
 margin_bottom = 500.0
-keep_pressed_outside = true
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="eh_SceneChanger" type="Node" parent="BeerContainer/BeerButton"]
+[node name="eh_SceneChanger" type="Node" parent="BeerContainer/MilkshakeButton"]
 script = ExtResource( 6 )
 _next_scene_path = "res://jenga_prototype/levels/BaseLevel.tscn"
-transition_data = ExtResource( 4 )
+transition_data = ExtResource( 5 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="BeerContainer/BeerButton"]
+[node name="VBoxContainer" type="VBoxContainer" parent="BeerContainer/MilkshakeButton"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -173,25 +180,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="BeerContainer/BeerButton/VBoxContainer"]
-margin_right = 419.0
-margin_bottom = 100.0
-custom_fonts/font = ExtResource( 2 )
-custom_colors/font_outline_modulate = Color( 0.701961, 0.556863, 0.278431, 1 )
-text = "Beer"
-align = 1
-
-[node name="Panel" type="Panel" parent="BeerContainer/BeerButton/VBoxContainer"]
-margin_left = 34.0
-margin_top = 130.0
-margin_right = 384.0
-margin_bottom = 480.0
+[node name="Panel" type="Panel" parent="BeerContainer/MilkshakeButton/VBoxContainer"]
+margin_left = 40.0
+margin_right = 390.0
+margin_bottom = 350.0
 rect_min_size = Vector2( 350, 350 )
 mouse_filter = 2
 size_flags_horizontal = 4
-custom_styles/panel = SubResource( 4 )
+custom_styles/panel = SubResource( 2 )
 
-[node name="Cup" type="TextureRect" parent="BeerContainer/BeerButton/VBoxContainer/Panel"]
+[node name="Cup" type="TextureRect" parent="BeerContainer/MilkshakeButton/VBoxContainer/Panel"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -205,3 +203,11 @@ texture = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Label" type="Label" parent="BeerContainer/MilkshakeButton/VBoxContainer"]
+margin_top = 380.0
+margin_right = 431.0
+margin_bottom = 492.0
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.239216, 0.137255, 0.235294, 1 )
+text = "Milkshake"

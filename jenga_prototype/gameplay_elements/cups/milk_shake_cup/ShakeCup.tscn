@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/BaseCup.tscn" type="PackedScene" id=1]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/milk_shake_cup/MilkShakeSkin.tscn" type="PackedScene" id=2]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/milk_shake_cup/ShakeCup.gd" type="Script" id=3]
+
+[node name="ShakeCup" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+
+[node name="Skin" parent="." index="2" instance=ExtResource( 2 )]
+
+[node name="SideLeft" parent="CupSides" index="0"]
+polygon = PoolVector2Array( -445, -620, -336, 640, -241, 640, -350, -620 )
+
+[node name="SideRight" parent="CupSides" index="1"]
+polygon = PoolVector2Array( 445, -620, 336, 640, 241, 640, 350, -620 )
+
+[node name="Bottom" parent="CupSides" index="2"]
+polygon = PoolVector2Array( 241, 640, -241, 640, -285, 120, 285, 120 )
+
+[node name="LeftJoint" parent="CupTop" index="0"]
+position = Vector2( -350, -620 )
+
+[node name="RightJoint" parent="CupTop" index="1"]
+position = Vector2( 350, -620 )
+
+[node name="Top" parent="CupTop" index="2"]
+polygon = PoolVector2Array( -350, -620, 350, -620, 332, -400, -332, -400 )
+
+[node name="CollisionPolygon2D" parent="CupDetector" index="0"]
+polygon = PoolVector2Array( -485, -750, 485, -750, 485, 750, -485, 750 )
+
+[node name="SfxCollision" parent="SfxHitDetector" index="0"]
+polygon = PoolVector2Array( -550, -815, 550, -815, 550, 815, -550, 815 )
+
+[node name="SfxFitArea" parent="SfxFitDetector" index="0"]
+polygon = PoolVector2Array( -330, -520, 330, -520, 310, -280, -310, -280 )
+
+[node name="BreakPolygon" parent="BreakArea" index="0"]
+polygon = PoolVector2Array( -290, -100, 290, -100, 275, 100, -275, 100 )
