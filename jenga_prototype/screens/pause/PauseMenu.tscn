@@ -1,0 +1,191 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://jenga_prototype/ui_elements/buttons/RegularRedButton.tscn" type="PackedScene" id=1]
+[ext_resource path="res://jenga_prototype/screens/pause/Screen-overlay.png" type="Texture" id=2]
+[ext_resource path="res://jenga_prototype/screens/pause/PauseMenu.gd" type="Script" id=3]
+[ext_resource path="res://jenga_prototype/ui_elements/buttons/ToggleButton.tscn" type="PackedScene" id=4]
+[ext_resource path="res://jenga_prototype/shared_variables/nodepath_pause_menu.tres" type="Resource" id=5]
+[ext_resource path="res://jenga_prototype/ui_elements/buttons/RegularButton.tscn" type="PackedScene" id=6]
+[ext_resource path="res://jenga_prototype/ui_elements/buttons/MenuButton.tscn" type="PackedScene" id=8]
+[ext_resource path="res://jenga_prototype/shared_variables/nodepath_cursor.tres" type="Resource" id=11]
+
+[sub_resource type="Animation" id=1]
+resource_name = "BASE"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("VBoxContainer:rect_rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 0.5 ),
+"update": 0,
+"values": [ 60.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ColorRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "close"
+tracks/0/type = "value"
+tracks/0/path = NodePath("VBoxContainer:rect_rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.7 ),
+"transitions": PoolRealArray( 0.5, -2, 2, 0.5 ),
+"update": 0,
+"values": [ 0.0, 2.0, -5.0, 60.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ColorRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "open"
+tracks/0/type = "value"
+tracks/0/path = NodePath("VBoxContainer:rect_rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5, 0.7 ),
+"transitions": PoolRealArray( 0.5, -2, 2, 1 ),
+"update": 0,
+"values": [ 60.0, -5.0, 2.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ColorRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="PauseMenu" type="Popup"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+popup_exclusive = true
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+_nodepath_variable = ExtResource( 5 )
+_nodepath_cursor = ExtResource( 11 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/BASE = SubResource( 1 )
+anims/close = SubResource( 2 )
+anims/open = SubResource( 3 )
+
+[node name="ColorRect" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 2 )
+
+[node name="VBoxContainer" type="ReferenceRect" parent="."]
+margin_left = 48.0
+margin_top = 192.0
+margin_right = 492.0
+margin_bottom = 772.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_rotation = 60.0
+rect_pivot_offset = Vector2( 1110, 222 )
+mouse_filter = 2
+border_color = Color( 0, 1, 0.929412, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MusicButton" parent="VBoxContainer" instance=ExtResource( 4 )]
+pressed = false
+text = "Music"
+
+[node name="SfxButton" parent="VBoxContainer" instance=ExtResource( 4 )]
+margin_left = -10.0
+margin_top = 155.0
+margin_right = 390.0
+margin_bottom = 300.0
+rect_rotation = -4.0
+pressed = false
+text = "Sounds"
+
+[node name="CreditsButton" parent="VBoxContainer" instance=ExtResource( 6 )]
+margin_left = 5.0
+margin_top = 310.0
+margin_right = 405.0
+margin_bottom = 455.0
+rect_rotation = -8.0
+text = "Credits"
+
+[node name="QuitButton" parent="VBoxContainer" instance=ExtResource( 1 )]
+margin_left = 35.0
+margin_top = 465.0
+margin_right = 435.0
+margin_bottom = 610.0
+rect_rotation = -12.0
+text = "Quit game"
+
+[node name="MenuButton" parent="." instance=ExtResource( 8 )]
+margin_left = 35.0
+margin_top = 35.0
+margin_right = 141.0
+margin_bottom = 124.0
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]

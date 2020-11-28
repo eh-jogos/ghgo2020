@@ -1,5 +1,5 @@
 # Write your doc string for this file here
-extends State
+extends Sprite
 
 ### Member Variables and Dependencies -------------------------------------------------------------
 #--- signals --------------------------------------------------------------------------------------
@@ -10,34 +10,22 @@ extends State
 
 #--- public variables - order: export > normal var > onready --------------------------------------
 
-#--- private variables - order: export > normal var > onready -------------------------------------
+export var nodepath_variable: Resource
 
-onready var _cup: BaseCup = owner as BaseCup
+#--- private variables - order: export > normal var > onready -------------------------------------
 
 ### -----------------------------------------------------------------------------------------------
 
 
 ### Built in Engine Methods -----------------------------------------------------------------------
 
+func _ready():
+	nodepath_variable.value = get_path()
+
 ### -----------------------------------------------------------------------------------------------
 
 
 ### Public Methods --------------------------------------------------------------------------------
-
-func enter(msg: Dictionary = {}) -> void:
-	_cup.is_active = false
-	_cup.skin.spawn()
-	yield(_cup.skin, "animation_finished")
-	_cup.skin.drink()
-	Events.emit_signal("cup_drinked")
-	yield(_cup.skin, "animation_finished")
-	_cup.tween.follow_property(
-			_cup.main_rigid_body, "global_position", _cup.main_rigid_body.global_position,
-			_cup.mouse_guide, "global_position", 0.5, Tween.TRANS_BACK, Tween.EASE_OUT
-	)
-	_cup.tween.start()
-	yield(_cup.tween, "tween_all_completed")
-	_state_machine.transition_to("Dragging")
 
 ### -----------------------------------------------------------------------------------------------
 
