@@ -3,10 +3,10 @@
 [ext_resource path="res://jenga_prototype/gameplay_elements/cups/bar_cup/bar_cup.png" type="Texture" id=1]
 [ext_resource path="res://fonts/IsidoraSoftBlackItalic_84.tres" type="DynamicFont" id=2]
 [ext_resource path="res://jenga_prototype/screens/DrinkButton.gd" type="Script" id=3]
-[ext_resource path="res://addons/eh_jogos.transitions/transitions_data/sweep_right.tres" type="Resource" id=4]
-[ext_resource path="res://addons/eh_jogos.transitions/transitions_data/sweep_left.tres" type="Resource" id=5]
+[ext_resource path="res://addons/eh_jogos.transitions/transitions_data/sweep_up.tres" type="Resource" id=4]
 [ext_resource path="res://addons/eh_jogos.transitions/custom_nodes/eh_SceneChanger.gd" type="Script" id=6]
 [ext_resource path="res://fonts/IsidoraSoftBlackItalic_92.tres" type="DynamicFont" id=7]
+[ext_resource path="res://jenga_prototype/shared_variables/bool_is_milkshake.tres" type="Resource" id=8]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 1, 0.996711, 0.96875, 1 )
@@ -83,6 +83,7 @@ script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+cup_type_shared_variable = ExtResource( 8 )
 
 [node name="eh_SceneChanger" type="Node" parent="MilkshakeContainer/BeerButton"]
 script = ExtResource( 6 )
@@ -159,11 +160,13 @@ script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+is_milkshake = true
+cup_type_shared_variable = ExtResource( 8 )
 
 [node name="eh_SceneChanger" type="Node" parent="BeerContainer/MilkshakeButton"]
 script = ExtResource( 6 )
 _next_scene_path = "res://jenga_prototype/levels/BaseLevel.tscn"
-transition_data = ExtResource( 5 )
+transition_data = ExtResource( 4 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="BeerContainer/MilkshakeButton"]
 anchor_left = 0.5

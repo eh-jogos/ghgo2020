@@ -282,6 +282,7 @@ tracks/2/keys = {
 }
 
 [node name="TransitionLayer" type="CanvasLayer"]
+pause_mode = 2
 layer = 128
 script = ExtResource( 2 )
 transition_data = ExtResource( 3 )

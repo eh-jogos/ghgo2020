@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://jenga_prototype/ui_elements/buttons/RegularRedButton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://jenga_prototype/screens/pause/Screen-overlay.png" type="Texture" id=2]
@@ -6,7 +6,9 @@
 [ext_resource path="res://jenga_prototype/ui_elements/buttons/ToggleButton.tscn" type="PackedScene" id=4]
 [ext_resource path="res://jenga_prototype/shared_variables/nodepath_pause_menu.tres" type="Resource" id=5]
 [ext_resource path="res://jenga_prototype/ui_elements/buttons/RegularButton.tscn" type="PackedScene" id=6]
+[ext_resource path="res://addons/eh_jogos.transitions/custom_nodes/eh_SceneChanger.gd" type="Script" id=7]
 [ext_resource path="res://jenga_prototype/ui_elements/buttons/MenuButton.tscn" type="PackedScene" id=8]
+[ext_resource path="res://addons/eh_jogos.transitions/transitions_data/sweep_down.tres" type="Resource" id=9]
 [ext_resource path="res://jenga_prototype/shared_variables/nodepath_cursor.tres" type="Resource" id=11]
 
 [sub_resource type="Animation" id=1]
@@ -133,7 +135,6 @@ anims/close = SubResource( 2 )
 anims/open = SubResource( 3 )
 
 [node name="ColorRect" type="TextureRect" parent="."]
-modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -142,11 +143,10 @@ texture = ExtResource( 2 )
 [node name="VBoxContainer" type="ReferenceRect" parent="."]
 margin_left = 48.0
 margin_top = 192.0
-margin_right = 492.0
-margin_bottom = 772.0
+margin_right = 522.0
+margin_bottom = 912.0
 grow_horizontal = 2
 grow_vertical = 2
-rect_rotation = 60.0
 rect_pivot_offset = Vector2( 1110, 222 )
 mouse_filter = 2
 border_color = Color( 0, 1, 0.929412, 1 )
@@ -155,7 +155,7 @@ __meta__ = {
 }
 
 [node name="MusicButton" parent="VBoxContainer" instance=ExtResource( 4 )]
-pressed = false
+disabled = true
 text = "Music"
 
 [node name="SfxButton" parent="VBoxContainer" instance=ExtResource( 4 )]
@@ -164,7 +164,6 @@ margin_top = 155.0
 margin_right = 390.0
 margin_bottom = 300.0
 rect_rotation = -4.0
-pressed = false
 text = "Sounds"
 
 [node name="CreditsButton" parent="VBoxContainer" instance=ExtResource( 6 )]
@@ -173,14 +172,29 @@ margin_top = 310.0
 margin_right = 405.0
 margin_bottom = 455.0
 rect_rotation = -8.0
+disabled = true
 text = "Credits"
 
-[node name="QuitButton" parent="VBoxContainer" instance=ExtResource( 1 )]
-margin_left = 35.0
-margin_top = 465.0
-margin_right = 435.0
-margin_bottom = 610.0
+[node name="RestartButton" parent="VBoxContainer" instance=ExtResource( 6 )]
+margin_left = 30.0
+margin_top = 455.0
+margin_right = 430.0
+margin_bottom = 600.0
 rect_rotation = -12.0
+text = "Restart game"
+
+[node name="eh_SceneChanger" type="Node" parent="VBoxContainer/RestartButton"]
+script = ExtResource( 7 )
+_next_scene_path = "res://jenga_prototype/screens/DrinkSelection.tscn"
+transition_data = ExtResource( 9 )
+
+[node name="QuitButton" parent="VBoxContainer" instance=ExtResource( 1 )]
+margin_left = 65.0
+margin_top = 610.0
+margin_right = 465.0
+margin_bottom = 755.0
+rect_rotation = -16.0
+texture_disabled = null
 text = "Quit game"
 
 [node name="MenuButton" parent="." instance=ExtResource( 8 )]
@@ -188,4 +202,8 @@ margin_left = 35.0
 margin_top = 35.0
 margin_right = 141.0
 margin_bottom = 124.0
+[connection signal="toggled" from="VBoxContainer/MusicButton" to="." method="_on_MusicButton_toggled"]
+[connection signal="toggled" from="VBoxContainer/SfxButton" to="." method="_on_SfxButton_toggled"]
+[connection signal="pressed" from="VBoxContainer/CreditsButton" to="." method="_on_CreditsButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/RestartButton" to="." method="_on_RestartButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]

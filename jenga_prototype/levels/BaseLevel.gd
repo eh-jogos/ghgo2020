@@ -34,6 +34,7 @@ onready var _altered_bar_increment: IntVariable = _resources.get_resource("incre
 onready var _altered_state_increment: FloatVariable = _resources.get_resource("altered_increment")
 onready var _altered_state: FloatVariable = _resources.get_resource("altered_factor")
 onready var _scale_factor: FloatVariable = _resources.get_resource("scale_factor")
+onready var _is_milkshake: BoolVariable = _resources.get_resource("is_milkshake")
 
 
 ### -----------------------------------------------------------------------------------------------
@@ -61,7 +62,11 @@ func add_cup() -> void:
 	if not _mouse_guide.is_full:
 		_mouse_guide.is_full = true
 		
-		var new_cup: BaseCup = _resources.get_resource("cup").instance()
+		var new_cup: BaseCup
+		if _is_milkshake.value:
+			new_cup = _resources.get_resource("cup_milkshake").instance()
+		else:
+			new_cup = _resources.get_resource("cup").instance()
 		var canvas_transform = get_canvas_transform()
 		var canvas_origin = -canvas_transform.origin * _camera.zoom
 		var guide_position = _cup_spawn_point.rect_global_position * _camera.zoom

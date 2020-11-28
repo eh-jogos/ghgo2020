@@ -79,7 +79,25 @@ func close_pause_menu() -> void:
 
 ### Private Methods -------------------------------------------------------------------------------
 
-func _on_QuitButton_pressed():
+func _on_MusicButton_toggled(button_pressed: bool) -> void:
+	var music_bus = AudioServer.get_bus_index("Music")
+	AudioServer.set_bus_mute(music_bus, button_pressed)
+
+
+func _on_SfxButton_toggled(button_pressed: bool) -> void:
+	var sfx_bus = AudioServer.get_bus_index("Sfx")
+	AudioServer.set_bus_mute(sfx_bus, button_pressed)
+
+
+func _on_CreditsButton_pressed() -> void:
+	pass # Replace with function body.
+
+
+func _on_RestartButton_pressed():
+	get_tree().paused = false
+
+
+func _on_QuitButton_pressed() -> void:
 	get_tree().quit()
 
 ### -----------------------------------------------------------------------------------------------
