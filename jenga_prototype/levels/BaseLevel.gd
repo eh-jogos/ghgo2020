@@ -26,6 +26,7 @@ onready var _cups_layer: Node2D = $Cups
 onready var _mouse_guide: Sprite = $MouseGuide
 onready var _camera: Camera2D = $JengaCamera
 onready var _progress_bar: ProgressBar = $HUDLayer/HUD/AlteredStateProgressBar
+onready var _background: Node2D = $ParallaxBackgrounds
 
 onready var _target_height: FloatVariable = _resources.get_resource("target_height")
 onready var _camera_level: FloatVariable = _resources.get_resource("camera_level")
@@ -52,6 +53,11 @@ func _ready():
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("jenga_reset"):
 		reset_level()
+
+
+func _input(event):
+	if event.is_action_pressed("jenga_debug_ending") and OS.is_debug_build():
+		_game_ending()
 
 ### -----------------------------------------------------------------------------------------------
 
@@ -114,6 +120,16 @@ func reset_level() -> void:
 
 ### Private Methods -------------------------------------------------------------------------------
 
+func _game_ending() -> void:
+	var _hud_animator: AnimationPlayer = $HUDLayer/AnimationPlayer
+	_hud_animator.play("hide_hud")
+	_camera.go_to_ending()
+	yield(_camera._tween, "tween_all_completed")
+	_background.show_ending()
+	yield(_background._ending_animator, "animation_finished")
+	_hud_animator.play("show_end_hud")
+
+
 func _on_SpawnCups_pressed():
 	add_cup()
 
@@ -124,8 +140,7 @@ func _on_TargetLine_level_completed():
 	reset_values.altered_bar_lifetime_value = _progress_bar.lifetime_value
 	
 	if level_current.value + 1 >= level_list.value.size():
-		#won game
-		pass
+		_game_ending()
 	else:
 		
 		var current_level: LevelData = level_list.value[level_current.value]

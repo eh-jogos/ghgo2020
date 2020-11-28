@@ -1,15 +1,265 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://jenga_prototype/background_elements/pngs/background.png" type="Texture" id=1]
 [ext_resource path="res://jenga_prototype/background_elements/ParallaxBackgrounds.gd" type="Script" id=2]
 [ext_resource path="res://jenga_prototype/background_elements/pngs/park.png" type="Texture" id=3]
 [ext_resource path="res://jenga_prototype/gameplay_elements/tables/ground/ground.png" type="Texture" id=4]
 [ext_resource path="res://jenga_prototype/background_elements/pngs/cityscape.png" type="Texture" id=5]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/milk_shake_cup/pngs/Canudo.png" type="Texture" id=6]
 [ext_resource path="res://jenga_prototype/background_elements/pngs/clouds.png" type="Texture" id=7]
 [ext_resource path="res://jenga_prototype/background_elements/pngs/asteroids.png" type="Texture" id=8]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/bar_cup/bar_cup.png" type="Texture" id=9]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/bar_cup/bar_cup_liquid.png" type="Texture" id=10]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/milk_shake_cup/pngs/Tampa.png" type="Texture" id=11]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/milk_shake_cup/pngs/Marca.png" type="Texture" id=12]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/milk_shake_cup/pngs/ShakeMask.png" type="Texture" id=13]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/milk_shake_cup/pngs/Shake.png" type="Texture" id=14]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/milk_shake_cup/pngs/Canudo dentro.png" type="Texture" id=15]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/milk_shake_cup/pngs/Copo.png" type="Texture" id=16]
+[ext_resource path="res://fonts/font_files/Isidora_Soft_Black_It.otf" type="DynamicFontData" id=17]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="Animation" id=1]
+resource_name = "idle"
+length = 100.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Clouds1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 7.6, 8 ),
+"transitions": PoolRealArray( 0, 1 ),
+"update": 0,
+"values": [ Vector2( -14855, -3351.64 ), Vector2( 16689.8, -3351.64 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Clouds2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 32, 32.4, 100 ),
+"transitions": PoolRealArray( 1, 0, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -5610.85, -3253.03 ), Vector2( -14805.1, -3253.03 ), Vector2( 16689.2, -3253.03 ), Vector2( -5610.85, -3253.03 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Clouds3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 65, 65.4, 100 ),
+"transitions": PoolRealArray( 1, 0, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 5346.86, -3301.08 ), Vector2( -14800.2, -3301.08 ), Vector2( 18952.6, -3301.08 ), Vector2( 5346.86, -3301.08 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "idle"
+length = 50.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Asteroids1:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 4, 4 ), Vector2( 4.5, 4.15 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 8107.97, 189.045 )
+
+[sub_resource type="Animation" id=6]
+resource_name = "BASE"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Skin:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Skin:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 0.5 ),
+"update": 0,
+"values": [ Vector2( 266.425, -5186.32 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Skin2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 0.5 ),
+"update": 0,
+"values": [ Vector2( -969.881, -5322.08 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Skin2:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Label:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Label:custom_colors/font_color")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Label:custom_colors/font_outline_modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "the_end"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Skin:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Skin:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( 266.425, -5186.32 ), Vector2( -1136.48, -8105.25 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Skin2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( -969.881, -5322.08 ), Vector2( 1428.63, -8105.26 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Skin2:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Label:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.3, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Label:custom_colors/font_color")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.3, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 0.917647, 0.690196, 1 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Label:custom_colors/font_outline_modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.3, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 0.239216, 0.137255, 0.235294, 1 ) ]
+}
+
+[sub_resource type="DynamicFont" id=5]
+size = 600
+outline_size = 80
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 17 )
 
 [node name="ParallaxBackgrounds" type="Node2D"]
 script = ExtResource( 2 )
@@ -36,31 +286,38 @@ motion_scale = Vector2( 1, 0.5 )
 motion_offset = Vector2( 0, 800 )
 
 [node name="Clouds1" type="Sprite" parent="Layer0/ParallaxLayer4"]
-position = Vector2( -133.305, -3351.64 )
+position = Vector2( 13104.3, -3351.64 )
 scale = Vector2( 4, 4 )
 texture = ExtResource( 7 )
 
 [node name="Clouds2" type="Sprite" parent="Layer0/ParallaxLayer4"]
-position = Vector2( -5610.85, -3253.03 )
+position = Vector2( -11162.1, -3253.03 )
 scale = Vector2( 4, 4 )
 texture = ExtResource( 7 )
 flip_h = true
 
 [node name="Clouds3" type="Sprite" parent="Layer0/ParallaxLayer4"]
-position = Vector2( 5346.86, -3301.08 )
+position = Vector2( -641.729, -3301.08 )
 scale = Vector2( 4, 4 )
 texture = ExtResource( 7 )
 flip_h = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Layer0/ParallaxLayer4"]
+autoplay = "idle"
+anims/idle = SubResource( 1 )
 
 [node name="ParallaxLayer5" type="ParallaxLayer" parent="Layer0"]
 motion_scale = Vector2( 1, 1.5 )
 motion_offset = Vector2( 0, -1800 )
 
 [node name="Asteroids1" type="Sprite" parent="Layer0/ParallaxLayer5"]
-position = Vector2( -119.05, -6149.88 )
-scale = Vector2( 4, 4 )
+position = Vector2( 960, -6149.88 )
+scale = Vector2( 4.11191, 4.03357 )
 texture = ExtResource( 8 )
 flip_h = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Layer0/ParallaxLayer5"]
+anims/idle = SubResource( 2 )
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="Layer0"]
 position = Vector2( 960, 1080 )
@@ -103,4 +360,84 @@ collision_mask = 1024
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 0, 96 )
-shape = SubResource( 1 )
+shape = SubResource( 3 )
+
+[node name="Ending" type="Node2D" parent="."]
+position = Vector2( 960, 2176 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Ending"]
+autoplay = "BASE"
+anims/BASE = SubResource( 6 )
+anims/the_end = SubResource( 4 )
+
+[node name="Skin" type="Node2D" parent="Ending"]
+position = Vector2( -1136.48, -8105.25 )
+rotation = -0.313079
+scale = Vector2( 6.75812, 6.75812 )
+
+[node name="Liquid" type="Sprite" parent="Ending/Skin"]
+texture = ExtResource( 10 )
+centered = false
+offset = Vector2( -55, -58 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 111, 147 )
+
+[node name="Cup" type="Sprite" parent="Ending/Skin"]
+texture = ExtResource( 9 )
+
+[node name="Skin2" type="Node2D" parent="Ending"]
+position = Vector2( 1428.63, -8105.26 )
+rotation = 0.312414
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="CupBase" type="Sprite" parent="Ending/Skin2"]
+modulate = Color( 1, 1, 1, 0.458824 )
+texture = ExtResource( 16 )
+
+[node name="Liquid" type="Sprite" parent="Ending/Skin2"]
+light_mask = 2
+texture = ExtResource( 14 )
+offset = Vector2( 0, 150 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 764, 1094 )
+
+[node name="Light2D" type="Light2D" parent="Ending/Skin2"]
+texture = ExtResource( 13 )
+offset = Vector2( 0, 150 )
+mode = 3
+range_item_cull_mask = 2
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Tampa" type="Sprite" parent="Ending/Skin2"]
+texture = ExtResource( 11 )
+offset = Vector2( 0, -563 )
+
+[node name="Canudo" type="Sprite" parent="Ending/Skin2/Tampa"]
+texture = ExtResource( 6 )
+offset = Vector2( 0, -836 )
+
+[node name="Canudo2" type="Sprite" parent="Ending/Skin2/Tampa"]
+show_behind_parent = true
+texture = ExtResource( 15 )
+
+[node name="Marca" type="Sprite" parent="Ending/Skin2"]
+texture = ExtResource( 12 )
+
+[node name="Label" type="Label" parent="Ending"]
+margin_left = -3733.02
+margin_top = -8110.24
+margin_right = 3733.98
+margin_bottom = -6913.24
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 1, 0.917647, 0.690196, 1 )
+custom_colors/font_outline_modulate = Color( 0.239216, 0.137255, 0.235294, 1 )
+text = "Congratulations"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

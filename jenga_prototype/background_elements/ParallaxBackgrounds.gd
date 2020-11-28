@@ -14,6 +14,8 @@ extends Node2D
 
 var _debug_camera: Camera2D = null
 
+onready var _ending_animator: AnimationPlayer = $Ending/AnimationPlayer
+
 ### -----------------------------------------------------------------------------------------------
 
 
@@ -31,7 +33,6 @@ func _ready():
 
 
 func _input(event):
-	
 	if event.is_action_pressed("jenga_rotate_clockwise"):
 		_debug_camera.zoom += Vector2.ONE * 0.1
 	elif event.is_action_pressed("jenga_rotate_anti_clockwise"):
@@ -48,6 +49,9 @@ func _input(event):
 
 
 ### Public Methods --------------------------------------------------------------------------------
+
+func show_ending() -> void:
+	_ending_animator.play("the_end")
 
 ### -----------------------------------------------------------------------------------------------
 

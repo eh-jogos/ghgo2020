@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://jenga_prototype/gameplay_elements/cups/bar_cup/BarCup.tscn" type="PackedScene" id=1]
 [ext_resource path="res://jenga_prototype/gameplay_elements/tables/bar_table/mesa_de_bar.png" type="Texture" id=2]
@@ -28,6 +28,9 @@
 [ext_resource path="res://jenga_prototype/levels/MouseGuideCursor.gd" type="Script" id=26]
 [ext_resource path="res://jenga_prototype/shared_variables/nodepath_cursor.tres" type="Resource" id=27]
 [ext_resource path="res://jenga_prototype/shared_variables/bool_is_milkshake.tres" type="Resource" id=28]
+[ext_resource path="res://addons/eh_jogos.transitions/custom_nodes/eh_SceneChanger.gd" type="Script" id=29]
+[ext_resource path="res://addons/eh_jogos.transitions/transitions_data/sweep_down.tres" type="Resource" id=30]
+[ext_resource path="res://jenga_prototype/ui_elements/buttons/RegularButton.tscn" type="PackedScene" id=31]
 
 [sub_resource type="PhysicsMaterial" id=1]
 rough = true
@@ -67,20 +70,88 @@ expand_margin_right = 30.0
 expand_margin_top = 30.0
 expand_margin_bottom = 30.0
 
-[sub_resource type="Animation" id=5]
-length = 5.0
-loop = true
+[sub_resource type="Animation" id=7]
+resource_name = "BASE"
+length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("JengaCamera:zoom")
+tracks/0/path = NodePath("GameHUD:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 2.5 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("EndHud:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "hide_hud"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("GameHUD:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1, 1 ), Vector2( 4, 4 ) ]
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../TargetLine:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 3,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("EndHud:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "show_end_hud"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("EndHud:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
 [node name="BaseLevel" type="Node2D"]
@@ -109,11 +180,13 @@ offset = Vector2( 0, -91 )
 polygon = PoolVector2Array( -2880, 0, -2400, -315, 2400, -315, 2880, 0 )
 
 [node name="TargetLine" parent="." instance=ExtResource( 7 )]
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 960, 900 )
 
 [node name="Cups" type="Node2D" parent="."]
 
 [node name="JengaCamera" parent="." instance=ExtResource( 11 )]
+zoom = Vector2( 2.8, 2.8 )
 
 [node name="MouseGuide" parent="." instance=ExtResource( 3 )]
 
@@ -122,7 +195,7 @@ remote_path = NodePath("../../CanvasLayer/MouseGuideCursor")
 
 [node name="HUDLayer" type="CanvasLayer" parent="."]
 
-[node name="HUD" type="Control" parent="HUDLayer"]
+[node name="GameHUD" type="Control" parent="HUDLayer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -131,7 +204,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SpawnCups" type="Button" parent="HUDLayer/HUD"]
+[node name="SpawnCups" type="Button" parent="HUDLayer/GameHUD"]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -150,7 +223,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SpawnPivot" type="Control" parent="HUDLayer/HUD/SpawnCups"]
+[node name="SpawnPivot" type="Control" parent="HUDLayer/GameHUD/SpawnCups"]
 anchor_left = 0.5
 anchor_right = 0.5
 margin_top = -30.0
@@ -160,7 +233,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CupSpawnPoint" type="Control" parent="HUDLayer/HUD/SpawnCups/SpawnPivot"]
+[node name="CupSpawnPoint" type="Control" parent="HUDLayer/GameHUD/SpawnCups/SpawnPivot"]
 margin_top = -187.0
 margin_bottom = -187.0
 rect_min_size = Vector2( 25, 25 )
@@ -168,15 +241,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ColorRect" type="ColorRect" parent="HUDLayer/HUD/SpawnCups/SpawnPivot/CupSpawnPoint"]
+[node name="ColorRect" type="ColorRect" parent="HUDLayer/GameHUD/SpawnCups/SpawnPivot/CupSpawnPoint"]
 visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 color = Color( 0.972549, 0.160784, 0.160784, 1 )
 
-[node name="AlteredStateProgressBar" parent="HUDLayer/HUD" instance=ExtResource( 8 )]
+[node name="AlteredStateProgressBar" parent="HUDLayer/GameHUD" instance=ExtResource( 8 )]
 
-[node name="TargetLineGuide" type="Control" parent="HUDLayer/HUD"]
+[node name="TargetLineGuide" type="Control" parent="HUDLayer/GameHUD"]
 anchor_left = 1.0
 anchor_top = 0.4
 anchor_right = 1.0
@@ -189,9 +262,9 @@ __meta__ = {
 _target_line_height = ExtResource( 17 )
 _node_path_variable = ExtResource( 12 )
 
-[node name="Tween" type="Tween" parent="HUDLayer/HUD/TargetLineGuide"]
+[node name="Tween" type="Tween" parent="HUDLayer/GameHUD/TargetLineGuide"]
 
-[node name="ColorRect" type="ColorRect" parent="HUDLayer/HUD/TargetLineGuide"]
+[node name="ColorRect" type="ColorRect" parent="HUDLayer/GameHUD/TargetLineGuide"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -200,20 +273,60 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PromptsGameplay" parent="HUDLayer/HUD" instance=ExtResource( 15 )]
+[node name="PromptsGameplay" parent="HUDLayer/GameHUD" instance=ExtResource( 15 )]
 anchor_top = 1.0
 anchor_bottom = 1.0
 margin_top = -160.0
 margin_bottom = -56.0
 
-[node name="PauseMenu" parent="HUDLayer/HUD" instance=ExtResource( 10 )]
+[node name="PauseMenu" parent="HUDLayer/GameHUD" instance=ExtResource( 10 )]
+
+[node name="EndHud" type="Control" parent="HUDLayer"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RegularButton" parent="HUDLayer/EndHud" instance=ExtResource( 31 )]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -200.0
+margin_top = -337.0
+margin_right = 200.0
+margin_bottom = -192.0
+text = "Play again"
+
+[node name="eh_SceneChanger" type="Node" parent="HUDLayer/EndHud/RegularButton"]
+script = ExtResource( 29 )
+_next_scene_path = "res://jenga_prototype/screens/DrinkSelection.tscn"
+transition_data = ExtResource( 30 )
+
+[node name="CreditsButton" parent="HUDLayer/EndHud" instance=ExtResource( 31 )]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -200.0
+margin_top = -184.0
+margin_right = 200.0
+margin_bottom = -38.9999
+rect_rotation = -5.0
+text = "Credits"
 
 [node name="JengaDebugMenu" parent="HUDLayer" instance=ExtResource( 4 )]
 margin_top = 0.0
 margin_bottom = 0.0
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/teste = SubResource( 5 )
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HUDLayer"]
+autoplay = "BASE"
+anims/BASE = SubResource( 7 )
+anims/hide_hud = SubResource( 5 )
+anims/show_end_hud = SubResource( 6 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 2
@@ -225,4 +338,4 @@ texture = ExtResource( 23 )
 script = ExtResource( 26 )
 nodepath_variable = ExtResource( 27 )
 [connection signal="level_completed" from="TargetLine" to="." method="_on_TargetLine_level_completed"]
-[connection signal="pressed" from="HUDLayer/HUD/SpawnCups" to="." method="_on_SpawnCups_pressed"]
+[connection signal="pressed" from="HUDLayer/GameHUD/SpawnCups" to="." method="_on_SpawnCups_pressed"]
