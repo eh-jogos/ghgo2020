@@ -8,8 +8,8 @@ extends TextureButton
 
 #--- constants ------------------------------------------------------------------------------------
 
-const STARTING_X = 625
-const HOVER_X = 5
+const STARTING_X = 604
+const HOVER_X = 10
 
 #--- public variables - order: export > normal var > onready --------------------------------------
 
