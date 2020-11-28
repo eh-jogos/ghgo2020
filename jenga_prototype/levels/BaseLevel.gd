@@ -21,11 +21,11 @@ var reset_values: Dictionary = {
 #--- private variables - order: export > normal var > onready -------------------------------------
 
 onready var _resources: ResourcePreloader = $ResourcePreloader
-onready var _cup_spawn_point = $HUDLayer/HUD/SpawnCups/SpawnPivot/CupSpawnPoint
+onready var _cup_spawn_point = $HUDLayer/GameHUD/SpawnCups/SpawnPivot/CupSpawnPoint
 onready var _cups_layer: Node2D = $Cups
 onready var _mouse_guide: Sprite = $MouseGuide
 onready var _camera: Camera2D = $JengaCamera
-onready var _progress_bar: ProgressBar = $HUDLayer/HUD/AlteredStateProgressBar
+onready var _progress_bar: ProgressBar = $HUDLayer/GameHUD/AlteredStateProgressBar
 onready var _background: Node2D = $ParallaxBackgrounds
 
 onready var _target_height: FloatVariable = _resources.get_resource("target_height")
