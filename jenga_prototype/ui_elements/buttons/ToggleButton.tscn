@@ -1,20 +1,23 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://jenga_prototype/ui_elements/buttons/ToggleButton.gd" type="Script" id=1]
 [ext_resource path="res://jenga_prototype/ui_elements/buttons/pngs/Button-normal.png" type="Texture" id=2]
 [ext_resource path="res://jenga_prototype/ui_elements/buttons/pngs/Button-hover.png" type="Texture" id=3]
 [ext_resource path="res://jenga_prototype/ui_elements/buttons/pngs/Button-pressed.png" type="Texture" id=4]
 [ext_resource path="res://fonts/IsidoraSoftBlackItalic_40.tres" type="DynamicFont" id=5]
+[ext_resource path="res://jenga_prototype/ui_elements/buttons/pngs/Button-disabled.png" type="Texture" id=6]
+[ext_resource path="res://jenga_prototype/ui_elements/buttons/pngs/Button-clickmask.png" type="BitMap" id=7]
 
 [node name="RegularButton" type="TextureButton"]
 margin_right = 40.0
 margin_bottom = 40.0
 toggle_mode = true
-pressed = true
 action_mode = 0
 texture_normal = ExtResource( 2 )
 texture_pressed = ExtResource( 4 )
 texture_hover = ExtResource( 3 )
+texture_disabled = ExtResource( 6 )
+texture_click_mask = ExtResource( 7 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -25,9 +28,9 @@ margin_pressed_right = -30
 [node name="Content" type="HBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 18.0
+margin_left = 28.0
 margin_top = 1.0
-margin_right = -31.0
+margin_right = -20.0
 margin_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -44,7 +47,7 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="Content"]
 margin_top = 45.0
-margin_right = 275.0
+margin_right = 276.0
 margin_bottom = 99.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -60,8 +63,8 @@ __meta__ = {
 }
 
 [node name="MarginContainer" type="MarginContainer" parent="Content"]
-margin_left = 275.0
-margin_right = 351.0
+margin_left = 276.0
+margin_right = 352.0
 margin_bottom = 145.0
 mouse_filter = 2
 custom_constants/margin_top = 5

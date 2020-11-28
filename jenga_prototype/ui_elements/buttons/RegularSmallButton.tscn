@@ -1,14 +1,16 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://jenga_prototype/ui_elements/buttons/pngs/Small-button-pressed.png" type="Texture" id=1]
 [ext_resource path="res://jenga_prototype/ui_elements/buttons/RegularButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://jenga_prototype/ui_elements/buttons/pngs/Small-button-hover.png" type="Texture" id=3]
 [ext_resource path="res://jenga_prototype/ui_elements/buttons/pngs/Small-button-normal.png" type="Texture" id=4]
+[ext_resource path="res://jenga_prototype/ui_elements/buttons/pngs/Small-button-clickmask.png" type="BitMap" id=5]
 
 [node name="RegularSmallButton" instance=ExtResource( 2 )]
 texture_normal = ExtResource( 4 )
 texture_pressed = ExtResource( 1 )
 texture_hover = ExtResource( 3 )
+texture_click_mask = ExtResource( 5 )
 text = "Small"
 margin_normal_left = 25
 margin_pressed_left = 14
