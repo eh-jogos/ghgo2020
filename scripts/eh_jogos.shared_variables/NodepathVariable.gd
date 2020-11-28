@@ -15,7 +15,7 @@ extends SharedVariable
 #--- public variables - order: export > normal var > onready --------------------------------------
 
 # Shared Variable value
-export var value: NodePath = NodePath("") setget _set_value
+export var value: NodePath = NodePath("") setget _set_value, _get_value
 
 #--- private variables - order: export > normal var > onready -------------------------------------
 
@@ -44,5 +44,13 @@ func get_class() -> String:
 func _set_value(p_value: NodePath) -> void:
 	value = p_value
 	emit_signal("value_updated")
+
+
+func _get_value() -> NodePath:
+	if value == NodePath("") and resource_name != "":
+		push_error("Undefined nodepath in %s"%[resource_name])
+		assert(false)
+	
+	return value
 
 ### -----------------------------------------------------------------------------------------------
