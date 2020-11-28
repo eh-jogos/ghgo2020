@@ -12,7 +12,7 @@ const CORNER_RADIUS = 20
 
 #--- public variables - order: export > normal var > onready --------------------------------------
 
-var altered_factor: int = 0
+var lifetime_value: int = 0
 var altered_state_level: int = 0
 var altered_state_factor: FloatVariable
 var subdivision_max_value: IntVariable
@@ -53,7 +53,7 @@ func popuplate_progress_bar() -> void:
 	value = int(value) % subdivision_max_value.value
 	max_value = subdivision_max_value.value
 	
-	altered_factor = altered_state_level * max_value + value
+	lifetime_value = altered_state_level * max_value + value
 	
 	for child in _subdivisions.get_children():
 		_subdivisions.remove_child(child)
@@ -71,23 +71,50 @@ func popuplate_progress_bar() -> void:
 
 
 func decrement_altered_progress(p_decrement) -> void:
-	altered_factor = max(altered_factor + p_decrement, 0)
-	var new_level = int(altered_factor / subdivision_max_value.value)
+	lifetime_value = max(lifetime_value + p_decrement, 0)
+	var new_level = int(lifetime_value / subdivision_max_value.value)
 	if new_level < altered_state_level:
 		altered_state_level -= 1
 		_level_label.text = str(altered_state_level)
 		Events.emit_signal("altered_level_decreased")
 	
 	var new_value: = 0.0
-	if altered_factor > max_value:
-		if altered_factor % int(max_value) == 0:
+	if lifetime_value > max_value:
+		if lifetime_value % int(max_value) == 0:
 			new_value = max_value
 		else:
-			new_value = altered_factor - max_value * new_level
+			new_value = lifetime_value - max_value * new_level
 	else:
-		new_value = altered_factor
+		new_value = lifetime_value
 	
 	value = new_value
+
+
+func reset_progress_bar_to(p_value: int) -> void:
+	lifetime_value = p_value
+	var new_level = int(lifetime_value / subdivision_max_value.value)
+	
+	var new_value: = 0.0
+	if lifetime_value > max_value:
+		if lifetime_value % int(max_value) == 0:
+			new_value = max_value
+		else:
+			new_value = lifetime_value - max_value * new_level
+	else:
+		new_value = lifetime_value
+	
+	if new_value == max_value:
+		fg_stylebox.corner_radius_top_right = CORNER_RADIUS
+		fg_stylebox.corner_radius_bottom_right = CORNER_RADIUS
+	else:
+		fg_stylebox.corner_radius_top_right = 0
+		fg_stylebox.corner_radius_bottom_right = 0
+	
+	value = new_value
+	
+	if new_level != altered_state_level:
+		altered_state_level = new_level
+		_level_label.text = str(altered_state_level)
 
 ### -----------------------------------------------------------------------------------------------
 
@@ -106,17 +133,17 @@ func _setup_shared_variables() -> void:
 
 
 func _on_Events_cup_drinked() -> void:
-	altered_factor += subdivision_increment_step.value
-	var new_level = int(altered_factor / subdivision_max_value.value)
+	lifetime_value += subdivision_increment_step.value
+	var new_level = int(lifetime_value / subdivision_max_value.value)
 	
 	var new_value: = 0.0
-	if altered_factor > max_value:
-		if altered_factor % int(max_value) == 0:
+	if lifetime_value > max_value:
+		if lifetime_value % int(max_value) == 0:
 			new_value = max_value
 		else:
-			new_value = altered_factor - max_value * new_level
+			new_value = lifetime_value - max_value * new_level
 	else:
-		new_value = altered_factor
+		new_value = lifetime_value
 	
 	if new_value < value:
 		value = 0
