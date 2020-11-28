@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://jenga_prototype/ui_elements/buttons/pngs/Button-pressed.png" type="Texture" id=1]
+[ext_resource path="res://fonts/IsidoraSoftBlackItalic_40.tres" type="DynamicFont" id=2]
+[ext_resource path="res://jenga_prototype/ui_elements/buttons/RegularButton.gd" type="Script" id=3]
+[ext_resource path="res://jenga_prototype/ui_elements/buttons/pngs/Button-hover.png" type="Texture" id=4]
+[ext_resource path="res://jenga_prototype/ui_elements/buttons/pngs/Button-normal.png" type="Texture" id=5]
+
+[node name="RegularButton" type="TextureButton"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 1 )
+texture_hover = ExtResource( 4 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 28.0
+margin_top = 2.0
+margin_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_rotation = 4.05972
+rect_pivot_offset = Vector2( 186, 72 )
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.227451, 0.156863, 0.243137, 1 )
+text = "Button text"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

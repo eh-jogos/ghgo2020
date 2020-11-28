@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://jenga_prototype/ui_elements/buttons/pngs/Red-button-normal.png" type="Texture" id=1]
+[ext_resource path="res://jenga_prototype/ui_elements/buttons/RegularButton.tscn" type="PackedScene" id=2]
+[ext_resource path="res://jenga_prototype/ui_elements/buttons/pngs/Red-button-pressed.png" type="Texture" id=3]
+[ext_resource path="res://jenga_prototype/ui_elements/buttons/pngs/Red-button-hover.png" type="Texture" id=4]
+
+[node name="RegularRedButton" instance=ExtResource( 2 )]
+texture_normal = ExtResource( 1 )
+texture_pressed = ExtResource( 3 )
+texture_hover = ExtResource( 4 )
+text_color_hover = Color( 1, 1, 1, 1 )
+text_color_normal = Color( 1, 1, 1, 1 )
+
+[node name="Label" parent="." index="0"]
+custom_colors/font_color = Color( 1, 1, 1, 1 )
