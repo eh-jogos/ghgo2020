@@ -1,0 +1,15 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+path="res://.import/Small-button-clickmask.png-29d8a10a762a8be8fa8f17ee47f9e2bd.res"
+
+[deps]
+
+source_file="res://jenga_prototype/ui_elements/buttons/pngs/Small-button-clickmask.png"
+dest_files=[ "res://.import/Small-button-clickmask.png-29d8a10a762a8be8fa8f17ee47f9e2bd.res" ]
+
+[params]
+
+create_from=1
+threshold=0.5

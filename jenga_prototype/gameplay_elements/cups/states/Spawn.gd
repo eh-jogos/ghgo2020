@@ -25,7 +25,6 @@ onready var _cup: BaseCup = owner as BaseCup
 ### Public Methods --------------------------------------------------------------------------------
 
 func enter(msg: Dictionary = {}) -> void:
-	print(_cup.name)
 	_cup.is_active = false
 	_cup.skin.spawn()
 	yield(_cup.skin, "animation_finished")

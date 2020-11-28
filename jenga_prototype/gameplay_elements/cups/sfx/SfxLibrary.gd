@@ -28,8 +28,7 @@ func _ready():
 
 func play() -> void:
 	var index = randi() % get_child_count()
-	var child: AudioStreamPlayer = get_child(index)
-	child.play()
+	get_child(index).play()
 
 ### -----------------------------------------------------------------------------------------------
 

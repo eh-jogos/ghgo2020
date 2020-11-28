@@ -44,7 +44,10 @@ func get_class() -> String:
 
 func _set_value(p_value: bool) -> void:
 	value = p_value
-	ResourceSaver.save(resource_path, self)
+	
+	if not should_reset_value:
+		ResourceSaver.save(resource_path, self)
+	
 	emit_signal("value_updated")
 
 ### -----------------------------------------------------------------------------------------------

@@ -1,0 +1,80 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://jenga_prototype/ui_elements/buttons/ToggleButton.gd" type="Script" id=1]
+[ext_resource path="res://jenga_prototype/ui_elements/buttons/pngs/Button-normal.png" type="Texture" id=2]
+[ext_resource path="res://jenga_prototype/ui_elements/buttons/pngs/Button-hover.png" type="Texture" id=3]
+[ext_resource path="res://jenga_prototype/ui_elements/buttons/pngs/Button-pressed.png" type="Texture" id=4]
+[ext_resource path="res://fonts/IsidoraSoftBlackItalic_40.tres" type="DynamicFont" id=5]
+[ext_resource path="res://jenga_prototype/ui_elements/buttons/pngs/Button-disabled.png" type="Texture" id=6]
+[ext_resource path="res://jenga_prototype/ui_elements/buttons/pngs/Button-clickmask.png" type="BitMap" id=7]
+
+[node name="RegularButton" type="TextureButton"]
+margin_right = 40.0
+margin_bottom = 40.0
+toggle_mode = true
+action_mode = 0
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 4 )
+texture_hover = ExtResource( 3 )
+texture_disabled = ExtResource( 6 )
+texture_click_mask = ExtResource( 7 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+margin_normal_right = -20
+margin_pressed_right = -30
+
+[node name="Content" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 28.0
+margin_top = 1.0
+margin_right = -20.0
+margin_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_rotation = 4.05972
+rect_pivot_offset = Vector2( 186, 72 )
+mouse_filter = 2
+size_flags_vertical = 4
+custom_constants/separation = 0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="Label" type="Label" parent="Content"]
+margin_top = 45.0
+margin_right = 276.0
+margin_bottom = 99.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 186, 72 )
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0.227451, 0.156863, 0.243137, 1 )
+text = "Button text"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="Content"]
+margin_left = 276.0
+margin_right = 352.0
+margin_bottom = 145.0
+mouse_filter = 2
+custom_constants/margin_top = 5
+
+[node name="CheckButton" type="CheckButton" parent="Content/MarginContainer"]
+margin_top = 5.0
+margin_right = 76.0
+margin_bottom = 145.0
+mouse_filter = 2
+pressed = true
+__meta__ = {
+"_edit_use_anchors_": false
+}

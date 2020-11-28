@@ -12,9 +12,11 @@ extends Node2D
 
 var level_current: IntVariable
 var level_list: ArrayVariable
+var reset_values: Dictionary = {
+	"altered_factor": 0.0,
+	"altered_bar_lifetime_value": 0,
+}
 
-# then search where they are currently used/incremented and change the logic so that the increment
-# happens here, but the animation in responde there. Then try to make it work with teh debug menu
 
 #--- private variables - order: export > normal var > onready -------------------------------------
 
@@ -32,6 +34,7 @@ onready var _altered_bar_increment: IntVariable = _resources.get_resource("incre
 onready var _altered_state_increment: FloatVariable = _resources.get_resource("altered_increment")
 onready var _altered_state: FloatVariable = _resources.get_resource("altered_factor")
 onready var _scale_factor: FloatVariable = _resources.get_resource("scale_factor")
+onready var _is_milkshake: BoolVariable = _resources.get_resource("is_milkshake")
 
 
 ### -----------------------------------------------------------------------------------------------
@@ -45,6 +48,11 @@ func _ready():
 	setup_current_level()
 	level_current.connect_to(self, "_on_level_current_value_updated")
 
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("jenga_reset"):
+		reset_level()
+
 ### -----------------------------------------------------------------------------------------------
 
 
@@ -54,7 +62,11 @@ func add_cup() -> void:
 	if not _mouse_guide.is_full:
 		_mouse_guide.is_full = true
 		
-		var new_cup: BaseCup = _resources.get_resource("cup").instance()
+		var new_cup: BaseCup
+		if _is_milkshake.value:
+			new_cup = _resources.get_resource("cup_milkshake").instance()
+		else:
+			new_cup = _resources.get_resource("cup").instance()
 		var canvas_transform = get_canvas_transform()
 		var canvas_origin = -canvas_transform.origin * _camera.zoom
 		var guide_position = _cup_spawn_point.rect_global_position * _camera.zoom
@@ -90,6 +102,13 @@ func setup_current_level() -> void:
 		_scale_factor.value = current_level.cup_scale 
 		update_cup_scale()
 
+
+func reset_level() -> void:
+	clear_cups()
+	_altered_state.value = reset_values.altered_factor
+	_progress_bar.reset_progress_bar_to(reset_values.altered_bar_lifetime_value)
+
+
 ### -----------------------------------------------------------------------------------------------
 
 
@@ -101,10 +120,14 @@ func _on_SpawnCups_pressed():
 
 func _on_TargetLine_level_completed():
 	clear_cups()
+	reset_values.altered_factor = _altered_state.value
+	reset_values.altered_bar_lifetime_value = _progress_bar.lifetime_value
+	
 	if level_current.value + 1 >= level_list.value.size():
 		#won game
 		pass
 	else:
+		
 		var current_level: LevelData = level_list.value[level_current.value]
 		_progress_bar.decrement_altered_progress(current_level.altered_bar_win_bonus)
 		level_current.value += 1

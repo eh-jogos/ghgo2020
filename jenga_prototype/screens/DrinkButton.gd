@@ -14,12 +14,19 @@ const COLOR_HOVER = Color.white
 
 #--- public variables - order: export > normal var > onready --------------------------------------
 
+export var is_milkshake: bool = false
+export var cup_type_shared_variable: Resource
+
 #--- private variables - order: export > normal var > onready -------------------------------------
 
 ### -----------------------------------------------------------------------------------------------
 
 
 ### Built in Engine Methods -----------------------------------------------------------------------
+
+func _pressed():
+	cup_type_shared_variable.value = is_milkshake
+
 
 func _process(_delta) -> void:
 	if is_hovered():

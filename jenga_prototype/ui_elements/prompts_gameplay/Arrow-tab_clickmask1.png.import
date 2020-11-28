@@ -1,0 +1,15 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+path="res://.import/Arrow-tab_clickmask1.png-59b54b99e11bfbe347005381fdc895a8.res"
+
+[deps]
+
+source_file="res://jenga_prototype/ui_elements/prompts_gameplay/Arrow-tab_clickmask1.png"
+dest_files=[ "res://.import/Arrow-tab_clickmask1.png-59b54b99e11bfbe347005381fdc895a8.res" ]
+
+[params]
+
+create_from=1
+threshold=0.5

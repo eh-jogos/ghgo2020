@@ -64,7 +64,6 @@ onready var _camera_path: NodePathVariable = resources.get_resource("nodepath_ma
 ### Built in Engine Methods -----------------------------------------------------------------------
 
 func _ready():
-	print("Ready: %s"%[name])
 	eh_Utility.set_node_as_toplevel(main_rigid_body, true)
 	
 	_main_mouse_reference = load(MAIN_MOUSE_GUIDE_PATH) as NodePathVariable

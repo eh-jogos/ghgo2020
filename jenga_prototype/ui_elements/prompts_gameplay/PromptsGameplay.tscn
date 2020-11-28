@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://jenga_prototype/ui_elements/prompts_gameplay/Arrow-tab.png" type="Texture" id=1]
 [ext_resource path="res://jenga_prototype/ui_elements/PromptJenga.tscn" type="PackedScene" id=2]
 [ext_resource path="res://jenga_prototype/ui_elements/prompts_gameplay/Command-tab.png" type="Texture" id=3]
 [ext_resource path="res://jenga_prototype/ui_elements/prompts_gameplay/HideShowPromptButton.gd" type="Script" id=4]
 [ext_resource path="res://jenga_prototype/ui_elements/prompts_gameplay/PromptsGameplay.gd" type="Script" id=5]
+[ext_resource path="res://jenga_prototype/ui_elements/prompts_gameplay/Arrow-tab_clickmask1.png" type="BitMap" id=6]
 
 [node name="PromptsGameplay" type="Control"]
 margin_right = 689.0
@@ -32,23 +33,24 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -293.5
-margin_top = -30.0
-margin_right = 293.5
-margin_bottom = 30.0
+margin_left = -317.5
+margin_top = -33.0
+margin_right = 269.5
+margin_bottom = 27.0
 
 [node name="HideShowPromptButton" type="TextureButton" parent="."]
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = -64.0
-margin_top = -17.5
-margin_right = -41.0
-margin_bottom = 17.5
-rect_pivot_offset = Vector2( 11, 17 )
+margin_left = -85.0
+margin_top = -42.5
+margin_right = -12.0
+margin_bottom = 42.5
+rect_pivot_offset = Vector2( 36, 42 )
 toggle_mode = true
 texture_normal = ExtResource( 1 )
+texture_click_mask = ExtResource( 6 )
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
