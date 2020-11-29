@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Canudo.png-75b04f3a14ebed31f49673cec49e4893.stex"
+path="res://.import/tampa_completa.png-2410df304864d3eac0a5cf70aecc2e81.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://jenga_prototype/gameplay_elements/cups/milk_shake_cup/pngs/Canudo.png"
-dest_files=[ "res://.import/Canudo.png-75b04f3a14ebed31f49673cec49e4893.stex" ]
+source_file="res://jenga_prototype/gameplay_elements/cups/milk_shake_cup/pngs/tampa_completa.png"
+dest_files=[ "res://.import/tampa_completa.png-2410df304864d3eac0a5cf70aecc2e81.stex" ]
 
 [params]
 
