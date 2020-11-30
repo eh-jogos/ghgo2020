@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://jenga_prototype/background_elements/pngs/background.png" type="Texture" id=1]
 [ext_resource path="res://jenga_prototype/background_elements/ParallaxBackgrounds.gd" type="Script" id=2]
@@ -17,8 +17,14 @@
 [ext_resource path="res://jenga_prototype/gameplay_elements/cups/milk_shake_cup/pngs/Canudo dentro.png" type="Texture" id=15]
 [ext_resource path="res://jenga_prototype/gameplay_elements/cups/milk_shake_cup/pngs/Copo.png" type="Texture" id=16]
 [ext_resource path="res://fonts/font_files/Isidora_Soft_Black_It.otf" type="DynamicFontData" id=17]
+[ext_resource path="res://jenga_prototype/background_elements/pngs/moon.png" type="Texture" id=18]
+[ext_resource path="res://jenga_prototype/background_elements/Moon.gd" type="Script" id=19]
+[ext_resource path="res://jenga_prototype/shared_variables/target_line/nodepath_target_line_guide.tres" type="Resource" id=20]
+[ext_resource path="res://jenga_prototype/shared_variables/nodepath_main_camera.tres" type="Resource" id=21]
+[ext_resource path="res://jenga_prototype/shared_variables/levels/int_level_current.tres" type="Resource" id=22]
+[ext_resource path="res://jenga_prototype/shared_variables/levels/array_levels_list.tres" type="Resource" id=23]
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="Animation" id=7]
 resource_name = "idle"
 length = 100.0
 loop = true
@@ -59,7 +65,7 @@ tracks/2/keys = {
 "values": [ Vector2( 5346.86, -3301.08 ), Vector2( -14800.2, -3301.08 ), Vector2( 18952.6, -3301.08 ), Vector2( 5346.86, -3301.08 ) ]
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=8]
 resource_name = "idle"
 length = 50.0
 loop = true
@@ -267,6 +273,7 @@ script = ExtResource( 2 )
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="Layer0"]
 position = Vector2( 960, 1080 )
+z_index = -1
 motion_scale = Vector2( 1, 1.3 )
 motion_offset = Vector2( 0, -730 )
 
@@ -278,63 +285,70 @@ offset = Vector2( 0, -4568 )
 region_enabled = true
 region_rect = Rect2( -200, 0, 16237, 9136 )
 
-[node name="ParallaxLayer4" type="ParallaxLayer" parent="Layer0"]
+[node name="Layer1" type="ParallaxBackground" parent="."]
+layer = -98
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="Layer1"]
+z_index = 1
 motion_scale = Vector2( 1, 0.5 )
 motion_offset = Vector2( 0, 1500 )
 
-[node name="Clouds1" type="Sprite" parent="Layer0/ParallaxLayer4"]
+[node name="Clouds1" type="Sprite" parent="Layer1/ParallaxLayer4"]
 position = Vector2( -12448, -3351.64 )
 texture = ExtResource( 7 )
 
-[node name="Clouds2" type="Sprite" parent="Layer0/ParallaxLayer4"]
+[node name="Clouds2" type="Sprite" parent="Layer1/ParallaxLayer4"]
 position = Vector2( -5610.85, -3253.03 )
 texture = ExtResource( 7 )
 flip_h = true
 
-[node name="Clouds3" type="Sprite" parent="Layer0/ParallaxLayer4"]
+[node name="Clouds3" type="Sprite" parent="Layer1/ParallaxLayer4"]
 position = Vector2( 5346.86, -3301.08 )
 texture = ExtResource( 7 )
 flip_h = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Layer0/ParallaxLayer4"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Layer1/ParallaxLayer4"]
 autoplay = "idle"
-anims/idle = SubResource( 1 )
+anims/idle = SubResource( 7 )
 
-[node name="ParallaxLayer5" type="ParallaxLayer" parent="Layer0"]
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="Layer1"]
+z_index = 1
 motion_scale = Vector2( 1, 1.5 )
 motion_offset = Vector2( 0, -1800 )
 
-[node name="Asteroids1" type="Sprite" parent="Layer0/ParallaxLayer5"]
+[node name="Asteroids1" type="Sprite" parent="Layer1/ParallaxLayer5"]
 position = Vector2( 960, -6149.88 )
 scale = Vector2( 4, 4 )
 texture = ExtResource( 8 )
 flip_h = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Layer0/ParallaxLayer5"]
-anims/idle = SubResource( 2 )
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Layer1/ParallaxLayer5"]
+anims/idle = SubResource( 8 )
 
-[node name="ParallaxLayer3" type="ParallaxLayer" parent="Layer0"]
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="Layer1"]
 position = Vector2( 960, 1080 )
+z_index = 1
 motion_scale = Vector2( 1, 0.95 )
 motion_offset = Vector2( 0, 100 )
 
-[node name="City" type="Sprite" parent="Layer0/ParallaxLayer3"]
+[node name="City" type="Sprite" parent="Layer1/ParallaxLayer3"]
 self_modulate = Color( 1, 0.933333, 0.756863, 1 )
 texture = ExtResource( 5 )
 centered = false
 offset = Vector2( -8118, -3570 )
 region_rect = Rect2( 0, 0, 4320, 7696 )
 
-[node name="ParallaxLayer2" type="ParallaxLayer" parent="Layer0"]
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="Layer1"]
 position = Vector2( 960, 1080 )
+z_index = 1
 
-[node name="Park" type="Sprite" parent="Layer0/ParallaxLayer2"]
+[node name="Park" type="Sprite" parent="Layer1/ParallaxLayer2"]
 self_modulate = Color( 1, 0.933333, 0.756863, 1 )
 texture = ExtResource( 3 )
 offset = Vector2( 0, -430 )
 region_rect = Rect2( 0, 0, 4320, 7696 )
 
-[node name="Ground" type="Sprite" parent="Layer0/ParallaxLayer2"]
+[node name="Ground" type="Sprite" parent="Layer1/ParallaxLayer2"]
 self_modulate = Color( 1, 0.933333, 0.756863, 1 )
 position = Vector2( 0, 157 )
 texture = ExtResource( 4 )
@@ -430,3 +444,18 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -99
+follow_viewport_enable = true
+
+[node name="Moon" type="Sprite" parent="CanvasLayer"]
+position = Vector2( 1097.59, -6063.1 )
+texture = ExtResource( 18 )
+script = ExtResource( 19 )
+target_line_nodepath = ExtResource( 20 )
+camera_nodepath = ExtResource( 21 )
+level_current = ExtResource( 22 )
+level_list = ExtResource( 23 )
+
+[node name="Tween" type="Tween" parent="CanvasLayer/Moon"]
