@@ -73,13 +73,13 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 25 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 4, 4 ), Vector2( 4.5, 4.15 ) ]
+"values": [ Vector2( 1, 1 ), Vector2( 1.25, 1.1 ) ]
 }
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 8107.97, 189.045 )
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=4]
 resource_name = "BASE"
 length = 0.001
 tracks/0/type = "value"
@@ -167,8 +167,7 @@ tracks/6/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "the_end"
+[sub_resource type="Animation" id=5]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Skin:modulate")
 tracks/0/interp = 1
@@ -254,7 +253,7 @@ tracks/6/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 0.239216, 0.137255, 0.235294, 1 ) ]
 }
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=6]
 size = 600
 outline_size = 80
 use_mipmaps = true
@@ -274,31 +273,26 @@ motion_offset = Vector2( 0, -730 )
 [node name="Sprite" type="Sprite" parent="Layer0/ParallaxLayer"]
 self_modulate = Color( 1, 0.933333, 0.756863, 1 )
 position = Vector2( 0, -5.33936 )
-scale = Vector2( 4, 4 )
 texture = ExtResource( 1 )
-centered = false
-offset = Vector2( -2178, -2283 )
+offset = Vector2( 0, -4568 )
 region_enabled = true
-region_rect = Rect2( -200, 0, 4357, 2583 )
+region_rect = Rect2( -200, 0, 16237, 9136 )
 
 [node name="ParallaxLayer4" type="ParallaxLayer" parent="Layer0"]
 motion_scale = Vector2( 1, 0.5 )
-motion_offset = Vector2( 0, 800 )
+motion_offset = Vector2( 0, 1500 )
 
 [node name="Clouds1" type="Sprite" parent="Layer0/ParallaxLayer4"]
-position = Vector2( 13104.3, -3351.64 )
-scale = Vector2( 4, 4 )
+position = Vector2( -12448, -3351.64 )
 texture = ExtResource( 7 )
 
 [node name="Clouds2" type="Sprite" parent="Layer0/ParallaxLayer4"]
-position = Vector2( -11162.1, -3253.03 )
-scale = Vector2( 4, 4 )
+position = Vector2( -5610.85, -3253.03 )
 texture = ExtResource( 7 )
 flip_h = true
 
 [node name="Clouds3" type="Sprite" parent="Layer0/ParallaxLayer4"]
-position = Vector2( -641.729, -3301.08 )
-scale = Vector2( 4, 4 )
+position = Vector2( 5346.86, -3301.08 )
 texture = ExtResource( 7 )
 flip_h = true
 
@@ -312,7 +306,7 @@ motion_offset = Vector2( 0, -1800 )
 
 [node name="Asteroids1" type="Sprite" parent="Layer0/ParallaxLayer5"]
 position = Vector2( 960, -6149.88 )
-scale = Vector2( 4.11191, 4.03357 )
+scale = Vector2( 4, 4 )
 texture = ExtResource( 8 )
 flip_h = true
 
@@ -326,10 +320,9 @@ motion_offset = Vector2( 0, 100 )
 
 [node name="City" type="Sprite" parent="Layer0/ParallaxLayer3"]
 self_modulate = Color( 1, 0.933333, 0.756863, 1 )
-scale = Vector2( 4, 4 )
 texture = ExtResource( 5 )
 centered = false
-offset = Vector2( -2028.5, -890 )
+offset = Vector2( -8118, -3570 )
 region_rect = Rect2( 0, 0, 4320, 7696 )
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="Layer0"]
@@ -337,21 +330,18 @@ position = Vector2( 960, 1080 )
 
 [node name="Park" type="Sprite" parent="Layer0/ParallaxLayer2"]
 self_modulate = Color( 1, 0.933333, 0.756863, 1 )
-scale = Vector2( 4, 4 )
 texture = ExtResource( 3 )
-centered = false
-offset = Vector2( -776, -215 )
+offset = Vector2( 0, -430 )
 region_rect = Rect2( 0, 0, 4320, 7696 )
 
 [node name="Ground" type="Sprite" parent="Layer0/ParallaxLayer2"]
 self_modulate = Color( 1, 0.933333, 0.756863, 1 )
 position = Vector2( 0, 157 )
-scale = Vector2( 4, 4 )
 texture = ExtResource( 4 )
 centered = false
-offset = Vector2( -2028, -55 )
+offset = Vector2( -8118, -219 )
 region_enabled = true
-region_rect = Rect2( 0, 0, 4057, 100 )
+region_rect = Rect2( 0, 0, 16237, 219 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2( 960, 1140 )
@@ -367,8 +357,8 @@ position = Vector2( 960, 2176 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Ending"]
 autoplay = "BASE"
-anims/BASE = SubResource( 6 )
-anims/the_end = SubResource( 4 )
+anims/BASE = SubResource( 4 )
+anims/the_end = SubResource( 5 )
 
 [node name="Skin" type="Node2D" parent="Ending"]
 position = Vector2( -1136.48, -8105.25 )
@@ -399,9 +389,8 @@ texture = ExtResource( 16 )
 [node name="Liquid" type="Sprite" parent="Ending/Skin2"]
 light_mask = 2
 texture = ExtResource( 14 )
-offset = Vector2( 0, 150 )
 region_enabled = true
-region_rect = Rect2( 0, 0, 764, 1094 )
+region_rect = Rect2( 0, 0, 968, 1496 )
 
 [node name="Light2D" type="Light2D" parent="Ending/Skin2"]
 texture = ExtResource( 13 )
@@ -432,7 +421,7 @@ margin_left = -3733.02
 margin_top = -8110.24
 margin_right = 3733.98
 margin_bottom = -6913.24
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 1, 0.917647, 0.690196, 1 )
 custom_colors/font_outline_modulate = Color( 0.239216, 0.137255, 0.235294, 1 )
 text = "Congratulations"
