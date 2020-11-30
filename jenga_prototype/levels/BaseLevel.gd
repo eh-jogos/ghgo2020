@@ -48,6 +48,7 @@ func _ready():
 	level_list = load("res://jenga_prototype/shared_variables/levels/array_levels_list.tres")
 	setup_current_level()
 	level_current.connect_to(self, "_on_level_current_value_updated")
+	$AudioStreamPlayer.play()
 
 
 func _unhandled_input(event: InputEvent) -> void:

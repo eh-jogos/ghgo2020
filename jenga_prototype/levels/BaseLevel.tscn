@@ -1,6 +1,6 @@
 [gd_scene load_steps=40 format=2]
 
-[ext_resource path="res://jenga_prototype/gameplay_elements/cups/bar_cup/BarCup.tscn" type="PackedScene" id=1]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/beer_cup/BeerCup.tscn" type="PackedScene" id=1]
 [ext_resource path="res://jenga_prototype/gameplay_elements/tables/bar_table/mesa_de_bar.png" type="Texture" id=2]
 [ext_resource path="res://jenga_prototype/gameplay_elements/mouse_guide/MouseGuide.tscn" type="PackedScene" id=3]
 [ext_resource path="res://jenga_prototype/gameplay_elements/DebugMenus/JengaDebugMenu.tscn" type="PackedScene" id=4]
@@ -211,7 +211,6 @@ resources = [ PoolStringArray( "altered_factor", "altered_increment", "camera_le
 pause_mode = 2
 stream = ExtResource( 32 )
 volume_db = -12.0
-autoplay = true
 bus = "Music"
 
 [node name="ParallaxBackgrounds" parent="." instance=ExtResource( 14 )]
