@@ -26,7 +26,7 @@ texture = ExtResource( 3 )
 light_mask = 2
 texture = ExtResource( 4 )
 region_enabled = true
-region_rect = Rect2( 0, 0, 764, 1094 )
+region_rect = Rect2( 0, 0, 968, 1496 )
 
 [node name="Light2D" type="Light2D" parent="."]
 texture = ExtResource( 9 )
