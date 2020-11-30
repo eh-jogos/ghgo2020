@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/background.png-2eaf945a5f49090fc51c950bd620552a.stex"
+path="res://.import/Cityscape.png-7521f70facca41f01effe2fedd0e0c97.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://jenga_prototype/background_elements/pngs/background.png"
-dest_files=[ "res://.import/background.png-2eaf945a5f49090fc51c950bd620552a.stex" ]
+source_file="res://jenga_prototype/background_elements/pngs/Cityscape.png"
+dest_files=[ "res://.import/Cityscape.png-7521f70facca41f01effe2fedd0e0c97.stex" ]
 
 [params]
 

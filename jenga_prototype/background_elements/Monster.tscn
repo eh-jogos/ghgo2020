@@ -1,0 +1,76 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://jenga_prototype/background_elements/pngs/Monster.png" type="Texture" id=1]
+[ext_resource path="res://jenga_prototype/background_elements/Monster.gd" type="Script" id=2]
+
+
+[sub_resource type="Animation" id=1]
+resource_name = "idle"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3, 6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.05, 1.02 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 3, 6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -2.0, 2.0, -2.0 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "rawr"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 2.5, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1.1 ), Vector2( 1.1, 1 ), Vector2( 0.95, 1.1 ), Vector2( 1.1, 1.15 ), Vector2( 1.1, 1.15 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 1.6, 1.8, 2, 2.2, 2.4, 2.5, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -2.0, 2.0, -2.0, 2.0, -5.0, 5.0, -5.0, 5.0, -5.0, 2.0, -2.0 ]
+}
+
+[node name="Monster" type="Sprite"]
+position = Vector2( 0, 1101.84 )
+rotation = -0.0349066
+texture = ExtResource( 1 )
+offset = Vector2( 0, -1238.5 )
+script = ExtResource( 2 )
+rawr_countdown = 12
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "idle"
+anims/idle = SubResource( 1 )
+anims/rawr = SubResource( 2 )
+next/rawr = "idle"
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

@@ -14,6 +14,7 @@ export var target_line_nodepath: Resource
 export var camera_nodepath: Resource
 export var level_current: Resource
 export var level_list: Resource
+export var reference_height: int = 0
 
 var target_line: Control
 var camera: Camera2D
@@ -32,8 +33,6 @@ onready var tween: Tween = $Tween
 func _ready():
 	final_position = position
 	
-	size = texture.get_size()
-	
 	level_current.connect_to(self, "_on_level_current_value_updated")
 	
 	target_line = get_node_or_null(target_line_nodepath.value)
@@ -48,10 +47,10 @@ func _ready():
 func _physics_process(_delta):
 	if target_line and camera:
 		var canvas_transform = owner.get_canvas_transform()
-		var canvas_origin = -canvas_transform.origin.y * camera.zoom.y
-		var guide_position = target_line.rect_global_position.y * camera.zoom.y
+		var canvas_origin = -canvas_transform.origin.y * camera.zoom.y 
+		var guide_position = target_line.rect_global_position.y * camera.zoom.y 
 #		scale = camera.zoom
-		global_position.y = canvas_origin + guide_position - (size.y / 2)
+		global_position.y = canvas_origin + guide_position - (reference_height * scale.y / 2)
 		global_position.y = clamp(global_position.y, final_position.y, 0)
 
 ### -----------------------------------------------------------------------------------------------
