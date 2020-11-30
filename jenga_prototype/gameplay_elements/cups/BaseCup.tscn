@@ -30,9 +30,13 @@
 
 [sub_resource type="PhysicsMaterial" id=1]
 rough = true
+bounce = 1.0
+absorbent = true
 
 [sub_resource type="PhysicsMaterial" id=2]
 rough = true
+bounce = 1.0
+absorbent = true
 
 [node name="BarCup" type="Node2D"]
 script = ExtResource( 16 )
@@ -63,6 +67,10 @@ polygon = PoolVector2Array( 30, 84, 49, -32, 49, -85, 61, -85, 61, -33, 44, 84 )
 [node name="Bottom" type="CollisionPolygon2D" parent="CupSides"]
 polygon = PoolVector2Array( 30, 84, -30, 84, -35, 54, 35, 54 )
 
+[node name="PinJoint2D" type="PinJoint2D" parent="CupSides"]
+
+[node name="PinJoint2D2" type="PinJoint2D" parent="CupSides"]
+
 [node name="CupTop" type="RigidBody2D" parent="." groups=[
 "cup",
 ]]
@@ -85,7 +93,18 @@ position = Vector2( 47.6494, -84.1356 )
 node_a = NodePath("../../CupSides")
 node_b = NodePath("..")
 
+[node name="LeftJoint2" type="PinJoint2D" parent="CupTop"]
+position = Vector2( -48.611, -55.1356 )
+node_a = NodePath("../../CupSides")
+node_b = NodePath("..")
+
+[node name="RightJoint2" type="PinJoint2D" parent="CupTop"]
+position = Vector2( 47.6494, -55.1356 )
+node_a = NodePath("../../CupSides")
+node_b = NodePath("..")
+
 [node name="Top" type="CollisionPolygon2D" parent="CupTop"]
+visible = false
 polygon = PoolVector2Array( -49, -85, 49, -85, 49, -55, -49, -55 )
 
 [node name="CupDetector" type="Area2D" parent="."]
