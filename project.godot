@@ -251,7 +251,7 @@ _global_script_class_icons={
 config/name="Moonshot"
 run/main_scene="res://jenga_prototype/screens/DrinkSelection.tscn"
 config/icon="res://icon.png"
-config/version="0.6.1"
+config/version="0.6.2"
 config/build_folder="v0.6"
 run/main_scene.HTML5="res://jenga_prototype/screens/DrinkSelection.tscn"
 
