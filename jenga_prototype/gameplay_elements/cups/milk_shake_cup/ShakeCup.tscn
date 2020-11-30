@@ -37,6 +37,7 @@ position = Vector2( 326.078, -399.136 )
 position = Vector2( -334.351, -401.136 )
 
 [node name="Top" parent="CupTop" index="4"]
+visible = true
 polygon = PoolVector2Array( -350, -620, 350, -620, 332, -400, -332, -400 )
 
 [node name="CollisionPolygon2D" parent="CupDetector" index="0"]
