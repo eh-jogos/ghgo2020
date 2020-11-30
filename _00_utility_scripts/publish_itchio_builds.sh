@@ -5,7 +5,7 @@ main_folder=${PWD##*/}
 cd "$(dirname "$0")"
 cd ..
 
-itch_game_adress=eh-jogos/ghgo20-moonshot
+itch_game_adress=eh-jogos/a-cup-to-the-moon
 project_name="ghgo20-MoonShot"
 
 project_settings="project.godot"
