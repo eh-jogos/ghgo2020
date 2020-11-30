@@ -14,57 +14,57 @@ cup_scale = 0.5
 
 [sub_resource type="Resource" id=2]
 script = ExtResource( 2 )
-target_height = 0.45
+target_height = 0.44
 camera_level = 0.0
 altered_bar_total = 5
 altered_bar_increment = 1
-altered_bar_win_bonus = -1
+altered_bar_win_bonus = -2
 cup_scale = 0.5
 
 [sub_resource type="Resource" id=3]
 script = ExtResource( 2 )
-target_height = 0.5
+target_height = 0.47
 camera_level = 0.05
 altered_bar_total = 5
 altered_bar_increment = 1
-altered_bar_win_bonus = -1
-cup_scale = 0.8
+altered_bar_win_bonus = -2
+cup_scale = 0.9
 
 [sub_resource type="Resource" id=4]
 script = ExtResource( 2 )
-target_height = 0.6
+target_height = 0.61
 camera_level = 0.1
-altered_bar_total = 8
-altered_bar_increment = 2
-altered_bar_win_bonus = -1
-cup_scale = 1.1
+altered_bar_total = 5
+altered_bar_increment = 1
+altered_bar_win_bonus = -2
+cup_scale = 1.3
 
 [sub_resource type="Resource" id=5]
 script = ExtResource( 2 )
-target_height = 0.7
+target_height = 0.65
 camera_level = 0.2
 altered_bar_total = 8
 altered_bar_increment = 2
-altered_bar_win_bonus = -1
-cup_scale = 1.5
+altered_bar_win_bonus = -4
+cup_scale = 2.4
 
 [sub_resource type="Resource" id=6]
 script = ExtResource( 2 )
-target_height = 0.7
+target_height = 0.74
 camera_level = 0.35
 altered_bar_total = 8
 altered_bar_increment = 2
-altered_bar_win_bonus = -1
-cup_scale = 2.0
+altered_bar_win_bonus = -4
+cup_scale = 3.4
 
 [sub_resource type="Resource" id=7]
 script = ExtResource( 2 )
-target_height = 0.75
+target_height = 0.76
 camera_level = 0.6
-altered_bar_total = 10
-altered_bar_increment = 3
-altered_bar_win_bonus = -1
-cup_scale = 3.1
+altered_bar_total = 8
+altered_bar_increment = 2
+altered_bar_win_bonus = -3
+cup_scale = 5.4
 
 [sub_resource type="Resource" id=8]
 script = ExtResource( 2 )
@@ -72,8 +72,8 @@ target_height = 0.82
 camera_level = 1.0
 altered_bar_total = 10
 altered_bar_increment = 3
-altered_bar_win_bonus = -1
-cup_scale = 4.3
+altered_bar_win_bonus = -6
+cup_scale = 12.0
 
 [resource]
 script = ExtResource( 1 )

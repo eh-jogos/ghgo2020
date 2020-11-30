@@ -10,7 +10,10 @@ extends DebugMenu
 
 #--- public variables - order: export > normal var > onready --------------------------------------
 
+
 #--- private variables - order: export > normal var > onready -------------------------------------
+
+export var _nodepath_cursor: Resource
 
 var _data_progression: Dictionary = {}
 var _data_target_line: Dictionary = {}
@@ -23,6 +26,8 @@ onready var _group_altered_state: DebugGroup = $Panel/ScrollContainer/DebugList/
 onready var _popup_save: FileDialog = $Popups/SaveDialog
 onready var _popup_load: FileDialog = $Popups/LoadDialog
 
+onready var _cursor: Sprite
+
 ### -----------------------------------------------------------------------------------------------
 
 
@@ -32,6 +37,27 @@ onready var _popup_load: FileDialog = $Popups/LoadDialog
 
 
 ### Public Methods --------------------------------------------------------------------------------
+
+
+func open_debug_menu() -> void:
+	if not _cursor:
+		_cursor = get_node(_nodepath_cursor.value)
+	
+	_cursor.hide()
+	
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	.open_debug_menu()
+
+
+func close_debug_menu() -> void:
+	if not _cursor:
+		_cursor = get_node(_nodepath_cursor.value)
+	
+	_cursor.show()
+	
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	.close_debug_menu()
+
 
 func load_save_data(save_data: Dictionary) -> void:
 	for key in save_data:

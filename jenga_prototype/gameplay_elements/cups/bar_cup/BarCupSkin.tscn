@@ -13,11 +13,12 @@ script = ExtResource( 3 )
 drink_count = ExtResource( 8 )
 
 [node name="Liquid" type="Sprite" parent="."]
+position = Vector2( 10, 147 )
 texture = ExtResource( 1 )
 centered = false
 offset = Vector2( -55, -58 )
 region_enabled = true
-region_rect = Rect2( 0, 0, 111, 147 )
+region_rect = Rect2( 10, 0, 91, 0 )
 
 [node name="Cup" type="Sprite" parent="."]
 texture = ExtResource( 2 )

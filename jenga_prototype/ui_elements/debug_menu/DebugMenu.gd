@@ -24,16 +24,22 @@ func _ready():
 
 func _input(event):
 	if event.is_action_pressed("debug_show_menu"):
-		visible = !visible
 		if visible:
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			close_debug_menu()
 		else:
-			Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+			open_debug_menu()
 
 ### -----------------------------------------------------------------------------------------------
 
 
 ### Public Methods --------------------------------------------------------------------------------
+
+func open_debug_menu() -> void:
+	show()
+
+
+func close_debug_menu() -> void:
+	hide()
 
 ### -----------------------------------------------------------------------------------------------
 

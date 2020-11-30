@@ -16,6 +16,9 @@ export var anchor_end: Vector2 = Vector2(960,-3250)
 export var anchor_min_zoom: float = 0.5
 export var anchor_max_zoom: float = 8.45
 
+export var end_position: Vector2 = Vector2(960, -5490)
+export var end_zoom: float = 3
+
 var difference_anchor: Vector2
 var difference_zoom: float
 
@@ -55,6 +58,14 @@ func update_zoom() -> void:
 	var new_camera_level = _camera_level.value
 	_tween.interpolate_property(self, "camera_level", camera_level, new_camera_level, 
 			0.3, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+	_tween.start()
+
+
+func go_to_ending() -> void:
+	_tween.interpolate_property(self, "position", position, end_position, 
+			1.0, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
+	_tween.interpolate_property(self, "zoom", zoom, Vector2.ONE * end_zoom,
+			1.0, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
 	_tween.start()
 
 ### -----------------------------------------------------------------------------------------------

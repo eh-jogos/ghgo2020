@@ -11,7 +11,6 @@
 [ext_resource path="res://hookshot_prototype/gameplay_elements/checkpoint/Checkpoint.tscn" type="PackedScene" id=9]
 [ext_resource path="res://hookshot_prototype/gameplay_elements/ground/Ground.tscn" type="PackedScene" id=10]
 
-
 [sub_resource type="LineShape2D" id=1]
 normal = Vector2( 1, 0 )
 
@@ -75,6 +74,7 @@ script = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+center = 0.0
 open_area = 0.33
 
 [node name="Left" type="ColorRect" parent="CanvasLayer/BlackStrips"]

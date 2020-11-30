@@ -12,7 +12,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.3, 1 ),
 "transitions": PoolRealArray( 0, 1, 1 ),
 "update": 0,
-"values": [ Rect2( 0, 0, 764, 1094 ), Rect2( 0, 0, 764, 1094 ), Rect2( 77, 0, 610, 0 ) ]
+"values": [ Rect2( 0, 0, 968, 1496 ), Rect2( 0, 0, 968, 1496 ), Rect2( 0, 0, 968, 0 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Liquid:position")
@@ -24,47 +24,5 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.3, 1 ),
 "transitions": PoolRealArray( 0, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 547 ) ]
-}
-tracks/2/type = "bezier"
-tracks/2/path = NodePath("Tampa:position:x")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"points": PoolRealArray( 0, -0.25, 0, 0.38, -1.42039, 1191.28, -0.41, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.5 )
-}
-tracks/3/type = "bezier"
-tracks/3/path = NodePath("Tampa:position:y")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, -748, -0.43, 42.3848, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.4 )
-}
-tracks/4/type = "bezier"
-tracks/4/path = NodePath("Tampa:rotation_degrees")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"points": PoolRealArray( 0, -0.25, 0, 0.24, -0.62006, 52.18, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.3 )
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("Tampa:modulate")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0, 0.4 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 748 ) ]
 }

@@ -27,6 +27,7 @@ extends BaseCup
 
 ### Private Methods -------------------------------------------------------------------------------
 
+
 func _scale_collision_polygon(polygon: PoolVector2Array) -> PoolVector2Array:
 	var converted_scale = Vector2(121, 187) / Vector2(968, 1496)
 	for index in polygon.size():
@@ -53,6 +54,10 @@ func _handle_scale_factor() -> void:
 	for joint in top_rigid_body.get_children():
 		if joint is PinJoint2D:
 			joint.position = default_measures[joint.name] * _scale_factor.value * converted_scale
+	
+	for joint in main_rigid_body.get_children():
+		if joint is PinJoint2D:
+			joint.position = default_measures[joint.name] * _scale_factor.value * converted_scale
 
 
 func _on_BreakTimer_timeout():
@@ -68,3 +73,7 @@ func _on_BreakTimer_timeout():
 	queue_free()
 
 ### -----------------------------------------------------------------------------------------------
+
+
+func _on_CupSides_body_entered(body):
+	print("OI")

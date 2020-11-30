@@ -83,6 +83,10 @@ func _ready():
 		if joint is PinJoint2D:
 			default_measures[joint.name] = joint.position
 	
+	for joint in main_rigid_body.get_children():
+		if joint is PinJoint2D:
+			default_measures[joint.name] = joint.position
+	
 	_handle_scale_factor()
 
 
@@ -122,6 +126,7 @@ func _scale_collision_polygon(polygon: PoolVector2Array) -> PoolVector2Array:
 		polygon[index] *= _scale_factor.value
 	return polygon
 
+
 func _handle_scale_factor() -> void:
 	skin.scale_factor = _scale_factor.value
 	if state_machine._state_name == "Dragging":
@@ -137,6 +142,10 @@ func _handle_scale_factor() -> void:
 		body.mass = 1 * _scale_factor.value
 	
 	for joint in top_rigid_body.get_children():
+		if joint is PinJoint2D:
+			joint.position = default_measures[joint.name] * _scale_factor.value
+	
+	for joint in main_rigid_body.get_children():
 		if joint is PinJoint2D:
 			joint.position = default_measures[joint.name] * _scale_factor.value
 
@@ -206,14 +215,18 @@ func _on_SfxFitDetector_body_entered(body):
 
 func _on_BreakArea_body_exited(body):
 	if body.is_in_group("cup"):
-		if not break_timer.is_stopped():
-			break_timer.stop()
+		for joint in main_rigid_body.get_children():
+			if joint is PinJoint2D:
+				joint.node_a = NodePath()
+				joint.node_b = NodePath()
 
 
 func _on_BreakArea_body_entered(body):
 	if body.is_in_group("cup"):
-		if break_timer.is_stopped():
-			break_timer.start()
+		for joint in main_rigid_body.get_children():
+			if joint is PinJoint2D:
+				joint.node_a = main_rigid_body.get_path()
+				joint.node_b = body.get_path()
 
 
 func _on_BreakTimer_timeout():

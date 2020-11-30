@@ -18,19 +18,33 @@ polygon = PoolVector2Array( 445, -620, 336, 640, 241, 640, 350, -620 )
 [node name="Bottom" parent="CupSides" index="2"]
 polygon = PoolVector2Array( 241, 640, -241, 640, -285, 120, 285, 120 )
 
+[node name="PinJoint2D" parent="CupSides" index="3"]
+position = Vector2( -283.18, -94.3934 )
+
+[node name="PinJoint2D2" parent="CupSides" index="4"]
+position = Vector2( 283.18, -98.8883 )
+
 [node name="LeftJoint" parent="CupTop" index="0"]
 position = Vector2( -350, -620 )
 
 [node name="RightJoint" parent="CupTop" index="1"]
 position = Vector2( 350, -620 )
 
-[node name="Top" parent="CupTop" index="2"]
+[node name="LeftJoint2" parent="CupTop" index="2"]
+position = Vector2( 326.078, -399.136 )
+
+[node name="RightJoint2" parent="CupTop" index="3"]
+position = Vector2( -334.351, -401.136 )
+
+[node name="Top" parent="CupTop" index="4"]
 polygon = PoolVector2Array( -350, -620, 350, -620, 332, -400, -332, -400 )
 
 [node name="CollisionPolygon2D" parent="CupDetector" index="0"]
+visible = false
 polygon = PoolVector2Array( -485, -750, 485, -750, 485, 750, -485, 750 )
 
 [node name="SfxCollision" parent="SfxHitDetector" index="0"]
+visible = false
 polygon = PoolVector2Array( -550, -815, 550, -815, 550, 815, -550, 815 )
 
 [node name="SfxFitArea" parent="SfxFitDetector" index="0"]
@@ -38,3 +52,4 @@ polygon = PoolVector2Array( -330, -520, 330, -520, 310, -280, -310, -280 )
 
 [node name="BreakPolygon" parent="BreakArea" index="0"]
 polygon = PoolVector2Array( -290, -100, 290, -100, 275, 100, -275, 100 )
+[connection signal="body_entered" from="CupSides" to="." method="_on_CupSides_body_entered"]

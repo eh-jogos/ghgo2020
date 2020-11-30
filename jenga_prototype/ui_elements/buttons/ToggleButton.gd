@@ -15,6 +15,9 @@ export var text: String = "Button text" setget _set_text
 export var text_color_hover: = Color("3a283e")
 export var text_color_normal: = Color("3a283e")
 
+export var texture_on: Texture = null
+export var texture_off: Texture = null
+
 export var margin_normal_left: = 28
 export var margin_normal_right: = 0
 export var margin_pressed_left: = 18
@@ -24,7 +27,7 @@ export var margin_pressed_right: = -14
 
 onready var _content: HBoxContainer = $Content
 onready var _label: Label = $Content/Label
-onready var _check_button: CheckButton = $Content/MarginContainer/CheckButton
+onready var _switch_texture: TextureRect = $Content/MarginContainer/Switch
 
 ### -----------------------------------------------------------------------------------------------
 
@@ -47,11 +50,12 @@ func _toggled(button_pressed):
 	if button_pressed:
 		_content.margin_left = margin_pressed_left
 		_content.margin_right = margin_pressed_right
+		_switch_texture.texture = texture_off
 	else:
 		_content.margin_left = margin_normal_left
 		_content.margin_right = margin_normal_right
+		_switch_texture.texture = texture_on
 
-	_check_button.pressed = !button_pressed
 
 ### -----------------------------------------------------------------------------------------------
 

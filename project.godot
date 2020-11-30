@@ -251,8 +251,8 @@ _global_script_class_icons={
 config/name="Moonshot"
 run/main_scene="res://jenga_prototype/screens/DrinkSelection.tscn"
 config/icon="res://icon.png"
-config/version="0.5.3"
-config/build_folder="v0.5.0"
+config/version="0.6.1"
+config/build_folder="v0.6"
 run/main_scene.HTML5="res://jenga_prototype/screens/DrinkSelection.tscn"
 
 [autoload]
@@ -334,6 +334,11 @@ pause_game={
 jenga_reset={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":82,"unicode":0,"echo":false,"script":null)
+ ]
+}
+jenga_debug_ending={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":true,"meta":false,"command":true,"pressed":false,"scancode":69,"unicode":0,"echo":false,"script":null)
  ]
 }
 
