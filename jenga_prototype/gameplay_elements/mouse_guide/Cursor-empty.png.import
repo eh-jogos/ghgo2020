@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Copo-detalhes-frente.png-0ad7238c6ae29a634ee19cf37b7341b7.stex"
+path="res://.import/Cursor-empty.png-2238ac074f79e093a26d895468cc5753.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://jenga_prototype/gameplay_elements/cups/beer_cup/pngs/Copo-detalhes-frente.png"
-dest_files=[ "res://.import/Copo-detalhes-frente.png-0ad7238c6ae29a634ee19cf37b7341b7.stex" ]
+source_file="res://jenga_prototype/gameplay_elements/mouse_guide/Cursor-empty.png"
+dest_files=[ "res://.import/Cursor-empty.png-2238ac074f79e093a26d895468cc5753.stex" ]
 
 [params]
 
@@ -21,7 +21,7 @@ compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=true
-flags/mipmaps=true
+flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
 process/fix_alpha_border=true

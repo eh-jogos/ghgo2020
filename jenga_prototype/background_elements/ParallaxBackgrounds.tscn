@@ -1,15 +1,15 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=35 format=2]
 
-[ext_resource path="res://jenga_prototype/background_elements/pngs/background.png" type="Texture" id=1]
+[ext_resource path="res://jenga_prototype/background_elements/Star.tscn" type="PackedScene" id=1]
 [ext_resource path="res://jenga_prototype/background_elements/ParallaxBackgrounds.gd" type="Script" id=2]
 [ext_resource path="res://jenga_prototype/background_elements/pngs/park.png" type="Texture" id=3]
 [ext_resource path="res://jenga_prototype/gameplay_elements/tables/ground/ground.png" type="Texture" id=4]
-[ext_resource path="res://jenga_prototype/background_elements/pngs/cityscape.png" type="Texture" id=5]
+[ext_resource path="res://jenga_prototype/background_elements/Monster.tscn" type="PackedScene" id=5]
 [ext_resource path="res://jenga_prototype/gameplay_elements/cups/milk_shake_cup/pngs/Canudo.png" type="Texture" id=6]
-[ext_resource path="res://jenga_prototype/background_elements/pngs/clouds.png" type="Texture" id=7]
+[ext_resource path="res://jenga_prototype/background_elements/pngs/Cityscape.png" type="Texture" id=7]
 [ext_resource path="res://jenga_prototype/background_elements/pngs/asteroids.png" type="Texture" id=8]
-[ext_resource path="res://jenga_prototype/gameplay_elements/cups/bar_cup/bar_cup.png" type="Texture" id=9]
-[ext_resource path="res://jenga_prototype/gameplay_elements/cups/bar_cup/bar_cup_liquid.png" type="Texture" id=10]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/beer_cup/pngs/Copo-detalhes-frente.png" type="Texture" id=9]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/beer_cup/pngs/Copo-base-fundo.png" type="Texture" id=10]
 [ext_resource path="res://jenga_prototype/gameplay_elements/cups/milk_shake_cup/pngs/Tampa.png" type="Texture" id=11]
 [ext_resource path="res://jenga_prototype/gameplay_elements/cups/milk_shake_cup/pngs/Marca.png" type="Texture" id=12]
 [ext_resource path="res://jenga_prototype/gameplay_elements/cups/milk_shake_cup/pngs/ShakeMask.png" type="Texture" id=13]
@@ -17,55 +17,20 @@
 [ext_resource path="res://jenga_prototype/gameplay_elements/cups/milk_shake_cup/pngs/Canudo dentro.png" type="Texture" id=15]
 [ext_resource path="res://jenga_prototype/gameplay_elements/cups/milk_shake_cup/pngs/Copo.png" type="Texture" id=16]
 [ext_resource path="res://fonts/font_files/Isidora_Soft_Black_It.otf" type="DynamicFontData" id=17]
-[ext_resource path="res://jenga_prototype/background_elements/pngs/moon.png" type="Texture" id=18]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/beer_cup/pngs/Copo-cerveja-meio.png" type="Texture" id=18]
 [ext_resource path="res://jenga_prototype/background_elements/Moon.gd" type="Script" id=19]
 [ext_resource path="res://jenga_prototype/shared_variables/target_line/nodepath_target_line_guide.tres" type="Resource" id=20]
 [ext_resource path="res://jenga_prototype/shared_variables/nodepath_main_camera.tres" type="Resource" id=21]
 [ext_resource path="res://jenga_prototype/shared_variables/levels/int_level_current.tres" type="Resource" id=22]
 [ext_resource path="res://jenga_prototype/shared_variables/levels/array_levels_list.tres" type="Resource" id=23]
+[ext_resource path="res://jenga_prototype/background_elements/pngs/Background.png" type="Texture" id=24]
+[ext_resource path="res://jenga_prototype/background_elements/pngs/Moon-glow.png" type="Texture" id=25]
+[ext_resource path="res://jenga_prototype/background_elements/pngs/Nuvens-fundo.png" type="Texture" id=26]
+[ext_resource path="res://jenga_prototype/background_elements/MovingCloud.tscn" type="PackedScene" id=27]
+[ext_resource path="res://jenga_prototype/background_elements/pngs/Nuvem-3.png" type="Texture" id=28]
+[ext_resource path="res://jenga_prototype/background_elements/pngs/Nuvem-2.png" type="Texture" id=29]
 
-[sub_resource type="Animation" id=7]
-resource_name = "idle"
-length = 100.0
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Clouds1:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 7.6, 8 ),
-"transitions": PoolRealArray( 0, 1 ),
-"update": 0,
-"values": [ Vector2( -14855, -3351.64 ), Vector2( 16689.8, -3351.64 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Clouds2:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 32, 32.4, 100 ),
-"transitions": PoolRealArray( 1, 0, 1, 1 ),
-"update": 0,
-"values": [ Vector2( -5610.85, -3253.03 ), Vector2( -14805.1, -3253.03 ), Vector2( 16689.2, -3253.03 ), Vector2( -5610.85, -3253.03 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Clouds3:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 65, 65.4, 100 ),
-"transitions": PoolRealArray( 1, 0, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 5346.86, -3301.08 ), Vector2( -14800.2, -3301.08 ), Vector2( 18952.6, -3301.08 ), Vector2( 5346.86, -3301.08 ) ]
-}
-
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=1]
 resource_name = "idle"
 length = 50.0
 loop = true
@@ -82,50 +47,50 @@ tracks/0/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 1.25, 1.1 ) ]
 }
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 8107.97, 189.045 )
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "BASE"
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("Skin:modulate")
+tracks/0/path = NodePath("Skin2:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 0.5 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ) ]
+"values": [ Vector2( -969.881, -5322.08 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Skin:position")
+tracks/1/path = NodePath("Skin2:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 266.425, -5186.32 ) ]
+"values": [ Color( 1, 1, 1, 0 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Skin2:position")
+tracks/2/path = NodePath("Label:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
 "times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -969.881, -5322.08 ) ]
+"values": [ Color( 1, 1, 1, 0 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Skin2:modulate")
+tracks/3/path = NodePath("Label:custom_colors/font_color")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -134,10 +99,10 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ) ]
+"values": [ Color( 1, 1, 1, 1 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Label:modulate")
+tracks/4/path = NodePath("Label:custom_colors/font_outline_modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -146,22 +111,22 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ) ]
+"values": [ Color( 1, 1, 1, 1 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("Label:custom_colors/font_color")
+tracks/5/path = NodePath("Skin3:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
 "times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 0.5 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ) ]
+"values": [ Vector2( 266.425, -5186.32 ) ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("Label:custom_colors/font_outline_modulate")
+tracks/6/path = NodePath("Skin3:modulate")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -170,33 +135,33 @@ tracks/6/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ) ]
+"values": [ Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 tracks/0/type = "value"
-tracks/0/path = NodePath("Skin:modulate")
+tracks/0/path = NodePath("Skin3:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 1, 1 ),
+"transitions": PoolRealArray( 0.5, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+"values": [ Vector2( 266.425, -5186.32 ), Vector2( -1136.48, -8105.25 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Skin:position")
+tracks/1/path = NodePath("Skin3:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 266.425, -5186.32 ), Vector2( -1136.48, -8105.25 ) ]
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Skin2:position")
@@ -259,7 +224,7 @@ tracks/6/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 0.239216, 0.137255, 0.235294, 1 ) ]
 }
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=5]
 size = 600
 outline_size = 80
 use_mipmaps = true
@@ -277,39 +242,289 @@ z_index = -1
 motion_scale = Vector2( 1, 1.3 )
 motion_offset = Vector2( 0, -730 )
 
-[node name="Sprite" type="Sprite" parent="Layer0/ParallaxLayer"]
+[node name="Sky" type="Sprite" parent="Layer0/ParallaxLayer"]
 self_modulate = Color( 1, 0.933333, 0.756863, 1 )
 position = Vector2( 0, -5.33936 )
-texture = ExtResource( 1 )
-offset = Vector2( 0, -4568 )
+scale = Vector2( 3.7, 3.7 )
+texture = ExtResource( 24 )
+offset = Vector2( 0, -1250 )
 region_enabled = true
-region_rect = Rect2( -200, 0, 16237, 9136 )
+region_rect = Rect2( -200, 0, 4500, 3000 )
+
+[node name="BgCloud" type="Sprite" parent="Layer0/ParallaxLayer/Sky"]
+texture = ExtResource( 26 )
+offset = Vector2( 0, -1250 )
+
+[node name="Stars" type="Node2D" parent="Layer0/ParallaxLayer"]
+
+[node name="Star" parent="Layer0/ParallaxLayer/Stars" instance=ExtResource( 1 )]
+position = Vector2( 2272, -7264 )
+
+[node name="Star7" parent="Layer0/ParallaxLayer/Stars" instance=ExtResource( 1 )]
+position = Vector2( 3360, -6768 )
+
+[node name="Star8" parent="Layer0/ParallaxLayer/Stars" instance=ExtResource( 1 )]
+position = Vector2( 3136, -7776 )
+
+[node name="Star9" parent="Layer0/ParallaxLayer/Stars" instance=ExtResource( 1 )]
+position = Vector2( 4784, -8512 )
+
+[node name="Star10" parent="Layer0/ParallaxLayer/Stars" instance=ExtResource( 1 )]
+position = Vector2( 6320, -7168 )
+
+[node name="Star11" parent="Layer0/ParallaxLayer/Stars" instance=ExtResource( 1 )]
+position = Vector2( 7360, -8512 )
+
+[node name="Star12" parent="Layer0/ParallaxLayer/Stars" instance=ExtResource( 1 )]
+position = Vector2( 6448, -7872.6 )
+
+[node name="Star13" parent="Layer0/ParallaxLayer/Stars" instance=ExtResource( 1 )]
+position = Vector2( 5184, -7104.6 )
+
+[node name="Star14" parent="Layer0/ParallaxLayer/Stars" instance=ExtResource( 1 )]
+position = Vector2( 7264, -7014.24 )
+
+[node name="Star15" parent="Layer0/ParallaxLayer/Stars" instance=ExtResource( 1 )]
+position = Vector2( 5184, -7734.24 )
+
+[node name="Star16" parent="Layer0/ParallaxLayer/Stars" instance=ExtResource( 1 )]
+position = Vector2( 5184, -7734.24 )
+
+[node name="Star17" parent="Layer0/ParallaxLayer/Stars" instance=ExtResource( 1 )]
+position = Vector2( 7920, -7814.24 )
+
+[node name="Star18" parent="Layer0/ParallaxLayer/Stars" instance=ExtResource( 1 )]
+position = Vector2( 3392, -8678.24 )
+
+[node name="Star19" parent="Layer0/ParallaxLayer/Stars" instance=ExtResource( 1 )]
+position = Vector2( 2272, -8390.24 )
+
+[node name="Star20" parent="Layer0/ParallaxLayer/Stars" instance=ExtResource( 1 )]
+position = Vector2( 528, -8470.24 )
+
+[node name="Star21" parent="Layer0/ParallaxLayer/Stars" instance=ExtResource( 1 )]
+position = Vector2( -1376, -8198.24 )
+
+[node name="Star22" parent="Layer0/ParallaxLayer/Stars" instance=ExtResource( 1 )]
+position = Vector2( -896, -7942.24 )
+
+[node name="Star23" parent="Layer0/ParallaxLayer/Stars" instance=ExtResource( 1 )]
+position = Vector2( -2400, -8678.24 )
+
+[node name="Star24" parent="Layer0/ParallaxLayer/Stars" instance=ExtResource( 1 )]
+position = Vector2( -4400, -6886.24 )
+
+[node name="Star25" parent="Layer0/ParallaxLayer/Stars" instance=ExtResource( 1 )]
+position = Vector2( -3733.02, -8294.24 )
+
+[node name="Star26" parent="Layer0/ParallaxLayer/Stars" instance=ExtResource( 1 )]
+position = Vector2( -4741.02, -8118.24 )
+
+[node name="Star27" parent="Layer0/ParallaxLayer/Stars" instance=ExtResource( 1 )]
+position = Vector2( -6293.02, -7398.24 )
+
+[node name="Star28" parent="Layer0/ParallaxLayer/Stars" instance=ExtResource( 1 )]
+position = Vector2( -6501.02, -8406.24 )
+
+[node name="Star29" parent="Layer0/ParallaxLayer/Stars" instance=ExtResource( 1 )]
+position = Vector2( -5669.02, -7750.24 )
+
+[node name="Star30" parent="Layer0/ParallaxLayer/Stars" instance=ExtResource( 1 )]
+position = Vector2( -4101.02, -7382.24 )
+
+[node name="Star31" parent="Layer0/ParallaxLayer/Stars" instance=ExtResource( 1 )]
+position = Vector2( -2133.02, -7782.24 )
+
+[node name="Star32" parent="Layer0/ParallaxLayer/Stars" instance=ExtResource( 1 )]
+position = Vector2( -5029.02, -8774.24 )
+
+[node name="Star33" parent="Layer0/ParallaxLayer/Stars" instance=ExtResource( 1 )]
+position = Vector2( -7045.02, -7638.24 )
+
+[node name="Star34" parent="Layer0/ParallaxLayer/Stars" instance=ExtResource( 1 )]
+position = Vector2( -6981.02, -6822.24 )
+
+[node name="Star35" parent="Layer0/ParallaxLayer/Stars" instance=ExtResource( 1 )]
+position = Vector2( -7813.02, -7174.24 )
+
+[node name="Star36" parent="Layer0/ParallaxLayer/Stars" instance=ExtResource( 1 )]
+position = Vector2( -8021.02, -8166.24 )
+
+[node name="Star37" parent="Layer0/ParallaxLayer/Stars" instance=ExtResource( 1 )]
+position = Vector2( -7285.02, -8326.24 )
+
+[node name="Star38" parent="Layer0/ParallaxLayer/Stars" instance=ExtResource( 1 )]
+position = Vector2( -8021.02, -8838.24 )
+
+[node name="Star39" parent="Layer0/ParallaxLayer/Stars" instance=ExtResource( 1 )]
+position = Vector2( -6509.5, -8939.88 )
+
+[node name="Star40" parent="Layer0/ParallaxLayer/Stars" instance=ExtResource( 1 )]
+position = Vector2( -557.5, -8699.88 )
+
+[node name="Star41" parent="Layer0/ParallaxLayer/Stars" instance=ExtResource( 1 )]
+position = Vector2( 6018.5, -8715.88 )
+
+[node name="Star2" parent="Layer0/ParallaxLayer/Stars" instance=ExtResource( 1 )]
+position = Vector2( -3136, -7632 )
+
+[node name="Star3" parent="Layer0/ParallaxLayer/Stars" instance=ExtResource( 1 )]
+position = Vector2( -1824, -6864 )
+
+[node name="Star4" parent="Layer0/ParallaxLayer/Stars" instance=ExtResource( 1 )]
+position = Vector2( 1584, -8080 )
+
+[node name="Star5" parent="Layer0/ParallaxLayer/Stars" instance=ExtResource( 1 )]
+position = Vector2( 1504, -6768 )
+
+[node name="Star6" parent="Layer0/ParallaxLayer/Stars" instance=ExtResource( 1 )]
+position = Vector2( 4048, -7664 )
 
 [node name="Layer1" type="ParallaxBackground" parent="."]
 layer = -98
 
 [node name="ParallaxLayer4" type="ParallaxLayer" parent="Layer1"]
+modulate = Color( 1, 1, 1, 0.6 )
 z_index = 1
 motion_scale = Vector2( 1, 0.5 )
 motion_offset = Vector2( 0, 1500 )
 
-[node name="Clouds1" type="Sprite" parent="Layer1/ParallaxLayer4"]
-position = Vector2( -12448, -3351.64 )
-texture = ExtResource( 7 )
+[node name="MovingCloud" parent="Layer1/ParallaxLayer4" instance=ExtResource( 27 )]
+scale = Vector2( 1, 1 )
+start_offset = 0.0
+custom_scale = 1.0
 
-[node name="Clouds2" type="Sprite" parent="Layer1/ParallaxLayer4"]
-position = Vector2( -5610.85, -3253.03 )
-texture = ExtResource( 7 )
+[node name="MovingCloud19" parent="Layer1/ParallaxLayer4" instance=ExtResource( 27 )]
+position = Vector2( -6187.05, -2709.58 )
+scale = Vector2( 2.5, 2.5 )
 flip_h = true
+start_offset = 0.85
+custom_scale = 2.5
 
-[node name="Clouds3" type="Sprite" parent="Layer1/ParallaxLayer4"]
-position = Vector2( 5346.86, -3301.08 )
-texture = ExtResource( 7 )
+[node name="MovingCloud8" parent="Layer1/ParallaxLayer4" instance=ExtResource( 27 )]
+position = Vector2( 4875, -3713.5 )
+scale = Vector2( 0.8, 0.8 )
 flip_h = true
+start_offset = 0.31
+custom_scale = 0.8
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Layer1/ParallaxLayer4"]
-autoplay = "idle"
-anims/idle = SubResource( 7 )
+[node name="MovingCloud12" parent="Layer1/ParallaxLayer4" instance=ExtResource( 27 )]
+position = Vector2( 162.18, -3499.92 )
+scale = Vector2( 0.6, 0.6 )
+flip_h = true
+start_offset = 0.54
+custom_scale = 0.6
+
+[node name="MovingCloud22" parent="Layer1/ParallaxLayer4" instance=ExtResource( 27 )]
+position = Vector2( -9238.75, -3499.92 )
+scale = Vector2( 0.6, 0.6 )
+start_offset = 1.0
+custom_scale = 0.6
+
+[node name="MovingCloud13" parent="Layer1/ParallaxLayer4" instance=ExtResource( 27 )]
+position = Vector2( -2091.78, -3755.92 )
+scale = Vector2( 0.8, 0.8 )
+flip_h = true
+start_offset = 0.65
+custom_scale = 0.8
+
+[node name="MovingCloud16" parent="Layer1/ParallaxLayer4" instance=ExtResource( 27 )]
+position = Vector2( -1477.11, -2904.92 )
+scale = Vector2( 2.6, 2.6 )
+texture = ExtResource( 28 )
+start_offset = 0.62
+custom_scale = 2.6
+
+[node name="MovingCloud7" parent="Layer1/ParallaxLayer4" instance=ExtResource( 27 )]
+position = Vector2( 4055.53, -2806.38 )
+scale = Vector2( 1.8, 1.8 )
+texture = ExtResource( 28 )
+flip_h = true
+start_offset = 0.35
+custom_scale = 1.8
+
+[node name="MovingCloud6" parent="Layer1/ParallaxLayer4" instance=ExtResource( 27 )]
+position = Vector2( 6103.91, -2837.58 )
+scale = Vector2( 2.5, 2.5 )
+start_offset = 0.25
+custom_scale = 2.5
+
+[node name="MovingCloud9" parent="Layer1/ParallaxLayer4" instance=ExtResource( 27 )]
+position = Vector2( 3031.06, -3456.76 )
+scale = Vector2( 1.2, 1.2 )
+start_offset = 0.4
+custom_scale = 1.2
+
+[node name="MovingCloud11" parent="Layer1/ParallaxLayer4" instance=ExtResource( 27 )]
+position = Vector2( 2006.49, -3753.09 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 28 )
+start_offset = 0.45
+custom_scale = 0.8
+
+[node name="MovingCloud2" parent="Layer1/ParallaxLayer4" instance=ExtResource( 27 )]
+position = Vector2( 10193.5, -2918.21 )
+texture = ExtResource( 29 )
+start_offset = 0.05
+
+[node name="MovingCloud10" parent="Layer1/ParallaxLayer4" instance=ExtResource( 27 )]
+position = Vector2( 981.875, -3089.07 )
+scale = Vector2( 1.8, 1.8 )
+texture = ExtResource( 29 )
+flip_h = true
+custom_scale = 1.8
+
+[node name="MovingCloud5" parent="Layer1/ParallaxLayer4" instance=ExtResource( 27 )]
+position = Vector2( 6718.19, -3636.31 )
+scale = Vector2( 1, 1 )
+texture = ExtResource( 29 )
+flip_h = true
+start_offset = 0.22
+custom_scale = 1.0
+
+[node name="MovingCloud18" parent="Layer1/ParallaxLayer4" instance=ExtResource( 27 )]
+position = Vector2( -3525.76, -3476.31 )
+scale = Vector2( 1.2, 1.2 )
+texture = ExtResource( 29 )
+flip_h = true
+start_offset = 0.72
+custom_scale = 1.2
+
+[node name="MovingCloud21" parent="Layer1/ParallaxLayer4" instance=ExtResource( 27 )]
+position = Vector2( -8229.73, -3188.31 )
+scale = Vector2( 1.2, 1.2 )
+texture = ExtResource( 29 )
+start_offset = 0.95
+custom_scale = 1.2
+
+[node name="MovingCloud3" parent="Layer1/ParallaxLayer4" instance=ExtResource( 27 )]
+position = Vector2( 10193.5, -3724.56 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 28 )
+start_offset = 0.05
+custom_scale = 0.7
+
+[node name="MovingCloud20" parent="Layer1/ParallaxLayer4" instance=ExtResource( 27 )]
+position = Vector2( -7209.31, -3564.56 )
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 28 )
+start_offset = 0.9
+custom_scale = 0.9
+
+[node name="MovingCloud4" parent="Layer1/ParallaxLayer4" instance=ExtResource( 27 )]
+position = Vector2( 8150.8, -3317.03 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 28 )
+start_offset = 0.15
+custom_scale = 1.5
+
+[node name="MovingCloud17" parent="Layer1/ParallaxLayer4" instance=ExtResource( 27 )]
+position = Vector2( -5163.88, -3317.03 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 28 )
+flip_h = true
+start_offset = 0.8
+custom_scale = 1.5
 
 [node name="ParallaxLayer5" type="ParallaxLayer" parent="Layer1"]
 z_index = 1
@@ -318,12 +533,11 @@ motion_offset = Vector2( 0, -1800 )
 
 [node name="Asteroids1" type="Sprite" parent="Layer1/ParallaxLayer5"]
 position = Vector2( 960, -6149.88 )
-scale = Vector2( 4, 4 )
 texture = ExtResource( 8 )
 flip_h = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Layer1/ParallaxLayer5"]
-anims/idle = SubResource( 8 )
+anims/idle = SubResource( 1 )
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="Layer1"]
 position = Vector2( 960, 1080 )
@@ -332,11 +546,14 @@ motion_scale = Vector2( 1, 0.95 )
 motion_offset = Vector2( 0, 100 )
 
 [node name="City" type="Sprite" parent="Layer1/ParallaxLayer3"]
-self_modulate = Color( 1, 0.933333, 0.756863, 1 )
-texture = ExtResource( 5 )
-centered = false
-offset = Vector2( -8118, -3570 )
+position = Vector2( 0, -16 )
+scale = Vector2( 1.85, 1.85 )
+texture = ExtResource( 7 )
+offset = Vector2( 0, -1044 )
 region_rect = Rect2( 0, 0, 4320, 7696 )
+
+[node name="Monster" parent="Layer1/ParallaxLayer3" instance=ExtResource( 5 )]
+position = Vector2( -1492, 127.136 )
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="Layer1"]
 position = Vector2( 960, 1080 )
@@ -364,29 +581,40 @@ collision_mask = 1024
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 0, 96 )
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 
 [node name="Ending" type="Node2D" parent="."]
 position = Vector2( 960, 2176 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Ending"]
 autoplay = "BASE"
-anims/BASE = SubResource( 4 )
-anims/the_end = SubResource( 5 )
+anims/BASE = SubResource( 3 )
+anims/the_end = SubResource( 4 )
 
-[node name="Skin" type="Node2D" parent="Ending"]
+[node name="Skin3" type="Node2D" parent="Ending"]
 position = Vector2( -1136.48, -8105.25 )
-rotation = -0.313079
-scale = Vector2( 6.75812, 6.75812 )
+rotation = -0.312414
 
-[node name="Liquid" type="Sprite" parent="Ending/Skin"]
+[node name="CupBase" type="Sprite" parent="Ending/Skin3"]
 texture = ExtResource( 10 )
-centered = false
-offset = Vector2( -55, -58 )
-region_enabled = true
-region_rect = Rect2( 0, 0, 111, 147 )
 
-[node name="Cup" type="Sprite" parent="Ending/Skin"]
+[node name="Liquid" type="Sprite" parent="Ending/Skin3"]
+light_mask = 2
+texture = ExtResource( 18 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 968, 1496 )
+
+[node name="Light2D" type="Light2D" parent="Ending/Skin3"]
+texture = ExtResource( 13 )
+mode = 3
+range_item_cull_mask = 2
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Marca" type="Sprite" parent="Ending/Skin3"]
+z_index = 1
+z_as_relative = false
 texture = ExtResource( 9 )
 
 [node name="Skin2" type="Node2D" parent="Ending"]
@@ -397,7 +625,6 @@ __meta__ = {
 }
 
 [node name="CupBase" type="Sprite" parent="Ending/Skin2"]
-modulate = Color( 1, 1, 1, 0.458824 )
 texture = ExtResource( 16 )
 
 [node name="Liquid" type="Sprite" parent="Ending/Skin2"]
@@ -435,7 +662,7 @@ margin_left = -3733.02
 margin_top = -8110.24
 margin_right = 3733.98
 margin_bottom = -6913.24
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 1, 0.917647, 0.690196, 1 )
 custom_colors/font_outline_modulate = Color( 0.239216, 0.137255, 0.235294, 1 )
 text = "Congratulations"
@@ -451,11 +678,13 @@ follow_viewport_enable = true
 
 [node name="Moon" type="Sprite" parent="CanvasLayer"]
 position = Vector2( 1097.59, -6063.1 )
-texture = ExtResource( 18 )
+scale = Vector2( 0.55, 0.55 )
+texture = ExtResource( 25 )
 script = ExtResource( 19 )
 target_line_nodepath = ExtResource( 20 )
 camera_nodepath = ExtResource( 21 )
 level_current = ExtResource( 22 )
 level_list = ExtResource( 23 )
+reference_height = 3378
 
 [node name="Tween" type="Tween" parent="CanvasLayer/Moon"]

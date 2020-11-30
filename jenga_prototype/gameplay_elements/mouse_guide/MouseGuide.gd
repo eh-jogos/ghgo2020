@@ -13,7 +13,10 @@ const HALF_CIRCLE = PI
 
 #--- public variables - order: export > normal var > onready --------------------------------------
 
-var is_full: = false
+export var texture_empty: Texture
+export var texture_grab: Texture
+
+var is_full: = false setget _set_is_full
 
 var drunk_offset: = Vector2.ZERO
 var drunk_offset_range: FloatVariable
@@ -32,6 +35,9 @@ var new_global_position: Vector2 = Vector2.ZERO
 var _node_path_variable: NodePathVariable
 var _movement_time_count: float = 0
 var _rotation_time_count: float = 0
+
+var _node_path_cursor: NodePathVariable
+var _cursor: Sprite
 
 var _node_path_camera: NodePathVariable
 var _camera: Camera2D
@@ -52,6 +58,8 @@ func _ready():
 			"altered_level_raised", self, "_on_Events_altered_level_raised")
 	eh_Utility.connect_signal(Events,
 			"altered_level_decreased", self, "_on_Events_altered_level_decreased")
+	
+	_set_is_full(is_full)
 
 
 func _physics_process(delta):
@@ -100,6 +108,19 @@ func decrease_altered_factor() -> void:
 
 ### Private Methods -------------------------------------------------------------------------------
 
+func _set_is_full(value: bool) -> void:
+	is_full = value
+	
+	if is_full:
+		texture = texture_grab
+		if _cursor:
+			_cursor.texture = texture_grab
+	else:
+		texture = texture_empty
+		if _cursor:
+			_cursor.texture = texture_empty
+
+
 func _setup_shared_variables() -> void:
 	drunk_offset_range = _resources.get_resource("altered_offset_unit")
 	drunk_rotate_loop_duration = _resources.get_resource("altered_angular_loop_duration")
@@ -112,6 +133,16 @@ func _setup_shared_variables() -> void:
 	
 	_node_path_variable = _resources.get_resource("main_mouse_guide")
 	_node_path_variable.value = self.get_path()
+	
+	_node_path_cursor = _resources.get_resource("cursor")
+	_cursor = get_node_or_null(_node_path_cursor.value)
+	if not _cursor:
+		_node_path_cursor.connect_to(self, "_on_node_path_cursor_value_updated")
+	else:
+		if is_full:
+			_cursor.texture = texture_grab
+		else:
+			_cursor.texture = texture_empty
 	
 	_node_path_camera = _resources.get_resource("main_camera")
 	_camera = get_node_or_null(_node_path_camera.value)
@@ -128,7 +159,15 @@ func _on_Events_altered_level_decreased() -> void:
 
 
 func _on_node_path_camera_value_updated() -> void:
-	_camera = get_node_or_null(_node_path_camera.value)
+	_camera = get_node(_node_path_camera.value)
+
+
+func _on_node_path_cursor_value_updated() -> void:
+	_cursor = get_node(_node_path_cursor.value)
+	if is_full:
+		_cursor.texture = texture_grab
+	else:
+		_cursor.texture = texture_empty
 
 ### -----------------------------------------------------------------------------------------------
 

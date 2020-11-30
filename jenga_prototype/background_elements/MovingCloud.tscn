@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://jenga_prototype/background_elements/pngs/Nuvem-1.png" type="Texture" id=1]
+[ext_resource path="res://jenga_prototype/background_elements/MovingCloud.gd" type="Script" id=2]
+
+
+[sub_resource type="Animation" id=1]
+resource_name = "idle"
+length = 100.0
+loop = true
+tracks/0/type = "bezier"
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 11202.5, -0.25, 0, 0.25, 0, -9238.75, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 100 )
+}
+
+[node name="MovingCloud" type="Sprite"]
+position = Vector2( 11202.5, -2837.58 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 1 )
+script = ExtResource( 2 )
+start_offset = 0.5
+custom_scale = 2.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/idle = SubResource( 1 )

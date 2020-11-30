@@ -1,5 +1,5 @@
 # Write your doc string for this file here
-extends Control
+extends Sprite
 
 ### Member Variables and Dependencies -------------------------------------------------------------
 #--- signals --------------------------------------------------------------------------------------
@@ -8,22 +8,15 @@ extends Control
 
 #--- constants ------------------------------------------------------------------------------------
 
-const POSITION_OPEN = 0
-const POSITION_CLOSED = -600
-
 #--- public variables - order: export > normal var > onready --------------------------------------
 
-var is_collapsed = false setget _set_is_collapsed
+export var rawr_countdown: int = 15
 
-onready var tween: Tween = $Tween
+var idle_count: int
 
 #--- private variables - order: export > normal var > onready -------------------------------------
 
-export var _nodepath_mouse_guide: Resource
-export var _nodepath_cursor: Resource
-
-var _mouse_guide: Sprite
-var _cursor: Sprite
+onready var _animator: AnimationPlayer = $AnimationPlayer
 
 ### -----------------------------------------------------------------------------------------------
 
@@ -31,6 +24,7 @@ var _cursor: Sprite
 ### Built in Engine Methods -----------------------------------------------------------------------
 
 func _ready():
+	idle_count = rawr_countdown
 	pass
 
 ### -----------------------------------------------------------------------------------------------
@@ -43,41 +37,14 @@ func _ready():
 
 ### Private Methods -------------------------------------------------------------------------------
 
-func _set_is_collapsed(value: bool) -> void:
-	is_collapsed = value
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == "idle":
+		idle_count -= 1
 	
-	if tween.is_active():
-		tween.remove(self)
-	
-	if is_collapsed:
-		tween.interpolate_property(self, "rect_position:x", rect_position.x, POSITION_CLOSED,
-				0.5, Tween.TRANS_BACK, Tween.EASE_OUT)
+	if idle_count == 0:
+		idle_count = rawr_countdown
+		_animator.play("rawr")
 	else:
-		tween.interpolate_property(self, "rect_position:x", rect_position.x, POSITION_OPEN,
-				0.5, Tween.TRANS_CUBIC, Tween.EASE_OUT)
-	
-	tween.start()
+		_animator.play("idle")
 
 ### -----------------------------------------------------------------------------------------------
-
-
-func _on_PromptsGameplay_mouse_entered():
-	if not _cursor:
-		_cursor = get_node(_nodepath_cursor.value)
-	if not _mouse_guide:
-		_mouse_guide = get_node(_nodepath_mouse_guide.value)
-	_cursor.hide()
-	_mouse_guide.hide()
-	
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-
-
-func _on_PromptsGameplay_mouse_exited():
-	if not _cursor:
-		_cursor = get_node(_nodepath_cursor.value)
-	if not _mouse_guide:
-		_mouse_guide = get_node(_nodepath_mouse_guide.value)
-	_cursor.show()
-	_mouse_guide.show()
-	
-	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)

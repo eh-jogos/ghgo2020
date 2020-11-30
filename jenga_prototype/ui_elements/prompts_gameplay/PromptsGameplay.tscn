@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://jenga_prototype/ui_elements/prompts_gameplay/Arrow-tab.png" type="Texture" id=1]
 [ext_resource path="res://jenga_prototype/ui_elements/PromptJenga.tscn" type="PackedScene" id=2]
@@ -6,15 +6,18 @@
 [ext_resource path="res://jenga_prototype/ui_elements/prompts_gameplay/HideShowPromptButton.gd" type="Script" id=4]
 [ext_resource path="res://jenga_prototype/ui_elements/prompts_gameplay/PromptsGameplay.gd" type="Script" id=5]
 [ext_resource path="res://jenga_prototype/ui_elements/prompts_gameplay/Arrow-tab_clickmask1.png" type="BitMap" id=6]
+[ext_resource path="res://jenga_prototype/shared_variables/nodepath_cursor.tres" type="Resource" id=7]
+[ext_resource path="res://jenga_prototype/shared_variables/nodepath_main_mouse_guide.tres" type="Resource" id=8]
 
 [node name="PromptsGameplay" type="Control"]
 margin_right = 689.0
 margin_bottom = 104.0
-mouse_filter = 2
 script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+_nodepath_mouse_guide = ExtResource( 8 )
+_nodepath_cursor = ExtResource( 7 )
 
 [node name="Tween" type="Tween" parent="."]
 
@@ -48,6 +51,7 @@ margin_top = -42.5
 margin_right = -12.0
 margin_bottom = 42.5
 rect_pivot_offset = Vector2( 36, 42 )
+mouse_filter = 1
 toggle_mode = true
 texture_normal = ExtResource( 1 )
 texture_click_mask = ExtResource( 6 )
@@ -55,6 +59,8 @@ script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+[connection signal="mouse_entered" from="." to="." method="_on_PromptsGameplay_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_PromptsGameplay_mouse_exited"]
 [connection signal="mouse_entered" from="HideShowPromptButton" to="HideShowPromptButton" method="_on_HideShowPromptButton_mouse_entered"]
 [connection signal="mouse_exited" from="HideShowPromptButton" to="HideShowPromptButton" method="_on_HideShowPromptButton_mouse_exited"]
 [connection signal="toggled" from="HideShowPromptButton" to="HideShowPromptButton" method="_on_HideShowPromptButton_toggled"]
