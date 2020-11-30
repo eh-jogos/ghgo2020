@@ -1,7 +1,7 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://jenga_prototype/gameplay_elements/mouse_guide/MouseGuide.gd" type="Script" id=1]
-[ext_resource path="res://resources/white_block.png" type="Texture" id=2]
+[ext_resource path="res://jenga_prototype/gameplay_elements/mouse_guide/Cursor-empty.png" type="Texture" id=2]
 [ext_resource path="res://jenga_prototype/shared_variables/nodepath_main_mouse_guide.tres" type="Resource" id=3]
 [ext_resource path="res://jenga_prototype/shared_variables/altered_status/float_altered_factor.tres" type="Resource" id=4]
 [ext_resource path="res://jenga_prototype/shared_variables/altered_status/float_altered_increment.tres" type="Resource" id=5]
@@ -10,13 +10,17 @@
 [ext_resource path="res://jenga_prototype/shared_variables/altered_status/float_altered_linear_loop_duration.tres" type="Resource" id=8]
 [ext_resource path="res://jenga_prototype/shared_variables/float_scale_factor.tres" type="Resource" id=9]
 [ext_resource path="res://jenga_prototype/shared_variables/nodepath_main_camera.tres" type="Resource" id=10]
+[ext_resource path="res://jenga_prototype/shared_variables/nodepath_cursor.tres" type="Resource" id=11]
+[ext_resource path="res://jenga_prototype/gameplay_elements/mouse_guide/Cursor-grab.png" type="Texture" id=12]
 
 [node name="MouseGuide" type="Sprite"]
 scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 2 )
 script = ExtResource( 1 )
+texture_empty = ExtResource( 2 )
+texture_grab = ExtResource( 12 )
 
 [node name="ResourcePreloader" type="ResourcePreloader" parent="."]
-resources = [ PoolStringArray( "altered_angular_loop_duration", "altered_factor", "altered_increment", "altered_linear_loop_duration", "altered_offset_unit", "main_camera", "main_mouse_guide", "scale_factor" ), [ ExtResource( 6 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 10 ), ExtResource( 3 ), ExtResource( 9 ) ] ]
+resources = [ PoolStringArray( "altered_angular_loop_duration", "altered_factor", "altered_increment", "altered_linear_loop_duration", "altered_offset_unit", "cursor", "main_camera", "main_mouse_guide", "scale_factor" ), [ ExtResource( 6 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 11 ), ExtResource( 10 ), ExtResource( 3 ), ExtResource( 9 ) ] ]
 
 [node name="Tween" type="Tween" parent="."]
