@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/sfx_lvl7_glass_hit_v1.wav-ae2492bdf98cb1e3b0c02c3c9a630bfa.sample"
+
+[deps]
+
+source_file="res://jenga_prototype/gameplay_elements/cups/sfx/glass/lvl7/sfx_lvl7_glass_hit_v1.wav"
+dest_files=[ "res://.import/sfx_lvl7_glass_hit_v1.wav-ae2492bdf98cb1e3b0c02c3c9a630bfa.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

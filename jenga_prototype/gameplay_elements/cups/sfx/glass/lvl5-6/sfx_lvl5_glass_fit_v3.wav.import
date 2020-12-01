@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/sfx_lvl5_glass_fit_v3.wav-ee9e648c155f4d13a9761134f63f661e.sample"
+
+[deps]
+
+source_file="res://jenga_prototype/gameplay_elements/cups/sfx/glass/lvl5-6/sfx_lvl5_glass_fit_v3.wav"
+dest_files=[ "res://.import/sfx_lvl5_glass_fit_v3.wav-ee9e648c155f4d13a9761134f63f661e.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

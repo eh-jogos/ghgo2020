@@ -1,32 +1,14 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scripts/state_machines/StateMachine.gd" type="Script" id=1]
 [ext_resource path="res://jenga_prototype/shared_variables/float_scale_factor.tres" type="Resource" id=2]
 [ext_resource path="res://jenga_prototype/shared_variables/nodepath_main_camera.tres" type="Resource" id=3]
-[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/sfx_glass_hit_v5.wav" type="AudioStream" id=4]
-[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/sfx_glass_fit_v1.wav" type="AudioStream" id=5]
-[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/sfx_glass_hit_v4.wav" type="AudioStream" id=6]
-[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/sfx_glass_table_v2.wav" type="AudioStream" id=7]
-[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/sfx_glass_hit_v6.wav" type="AudioStream" id=8]
-[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/sfx_glass_fit_v6.wav" type="AudioStream" id=9]
-[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/sfx_glass_fit_v4.wav" type="AudioStream" id=10]
-[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/sfx_glass_fit_v2.wav" type="AudioStream" id=11]
-[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/sfx_glass_hit_v1.wav" type="AudioStream" id=12]
-[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/sfx_glass_table_v4.wav" type="AudioStream" id=13]
-[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/sfx_glass_table_v1.wav" type="AudioStream" id=14]
-[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/SfxLibrary.gd" type="Script" id=15]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/beer_cup/SfxCup.gd" type="Script" id=4]
+[ext_resource path="res://jenga_prototype/shared_variables/levels/int_level_current.tres" type="Resource" id=5]
 [ext_resource path="res://jenga_prototype/gameplay_elements/cups/BaseCup.gd" type="Script" id=16]
 [ext_resource path="res://jenga_prototype/gameplay_elements/cups/states/Draging.gd" type="Script" id=17]
 [ext_resource path="res://jenga_prototype/gameplay_elements/cups/states/Dropped.gd" type="Script" id=18]
 [ext_resource path="res://jenga_prototype/gameplay_elements/cups/states/Spawn.gd" type="Script" id=19]
-[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/sfx_glass_table_v3.wav" type="AudioStream" id=20]
-[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/sfx_glass_table_v7.wav" type="AudioStream" id=21]
-[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/sfx_glass_hit_v2.wav" type="AudioStream" id=22]
-[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/sfx_glass_table_v6.wav" type="AudioStream" id=23]
-[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/sfx_glass_table_v5.wav" type="AudioStream" id=24]
-[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/sfx_glass_hit_v3.wav" type="AudioStream" id=25]
-[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/sfx_glass_fit_v3.wav" type="AudioStream" id=26]
-[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/sfx_glass_fit_v5.wav" type="AudioStream" id=27]
 
 [sub_resource type="PhysicsMaterial" id=1]
 rough = true
@@ -139,89 +121,16 @@ modulate = Color( 0.266667, 0, 1, 1 )
 polygon = PoolVector2Array( -43, -9, 43, -9, 37, 26, -37, 26 )
 
 [node name="SfxHit" type="Node" parent="."]
-script = ExtResource( 15 )
-
-[node name="SfxHit1" type="AudioStreamPlayer" parent="SfxHit"]
-stream = ExtResource( 12 )
-bus = "Sfx"
-
-[node name="SfxHit2" type="AudioStreamPlayer" parent="SfxHit"]
-stream = ExtResource( 22 )
-bus = "Sfx"
-
-[node name="SfxHit3" type="AudioStreamPlayer" parent="SfxHit"]
-stream = ExtResource( 25 )
-bus = "Sfx"
-
-[node name="SfxHit4" type="AudioStreamPlayer" parent="SfxHit"]
-stream = ExtResource( 6 )
-bus = "Sfx"
-
-[node name="SfxHit5" type="AudioStreamPlayer" parent="SfxHit"]
-stream = ExtResource( 4 )
-bus = "Sfx"
-
-[node name="SfxHit6" type="AudioStreamPlayer" parent="SfxHit"]
-stream = ExtResource( 8 )
-bus = "Sfx"
+script = ExtResource( 4 )
+current_level = ExtResource( 5 )
 
 [node name="SfxTable" type="Node" parent="."]
-script = ExtResource( 15 )
-
-[node name="SfxTable1" type="AudioStreamPlayer" parent="SfxTable"]
-stream = ExtResource( 14 )
-bus = "Sfx"
-
-[node name="SfxTable2" type="AudioStreamPlayer" parent="SfxTable"]
-stream = ExtResource( 7 )
-bus = "Sfx"
-
-[node name="SfxTable3" type="AudioStreamPlayer" parent="SfxTable"]
-stream = ExtResource( 20 )
-bus = "Sfx"
-
-[node name="SfxTable4" type="AudioStreamPlayer" parent="SfxTable"]
-stream = ExtResource( 13 )
-bus = "Sfx"
-
-[node name="SfxTable5" type="AudioStreamPlayer" parent="SfxTable"]
-stream = ExtResource( 24 )
-bus = "Sfx"
-
-[node name="SfxTable6" type="AudioStreamPlayer" parent="SfxTable"]
-stream = ExtResource( 23 )
-bus = "Sfx"
-
-[node name="SfxTable7" type="AudioStreamPlayer" parent="SfxTable"]
-stream = ExtResource( 21 )
-bus = "Sfx"
+script = ExtResource( 4 )
+current_level = ExtResource( 5 )
 
 [node name="SfxFit" type="Node" parent="."]
-script = ExtResource( 15 )
-
-[node name="SfxFit1" type="AudioStreamPlayer" parent="SfxFit"]
-stream = ExtResource( 5 )
-bus = "Sfx"
-
-[node name="SfxFit2" type="AudioStreamPlayer" parent="SfxFit"]
-stream = ExtResource( 11 )
-bus = "Sfx"
-
-[node name="SfxFit3" type="AudioStreamPlayer" parent="SfxFit"]
-stream = ExtResource( 26 )
-bus = "Sfx"
-
-[node name="SfxFit4" type="AudioStreamPlayer" parent="SfxFit"]
-stream = ExtResource( 10 )
-bus = "Sfx"
-
-[node name="SfxFit5" type="AudioStreamPlayer" parent="SfxFit"]
-stream = ExtResource( 27 )
-bus = "Sfx"
-
-[node name="SfxFit6" type="AudioStreamPlayer" parent="SfxFit"]
-stream = ExtResource( 9 )
-bus = "Sfx"
+script = ExtResource( 4 )
+current_level = ExtResource( 5 )
 
 [node name="CupStateMachine" type="Node" parent="."]
 script = ExtResource( 1 )
