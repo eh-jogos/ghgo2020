@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://jenga_prototype/gameplay_elements/camera/JengaCamera.gd" type="Script" id=1]
 [ext_resource path="res://jenga_prototype/shared_variables/nodepath_main_camera.tres" type="Resource" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://jenga_prototype/gameplay_elements/camera/sfx/sfx_whoosh_v1.wav" type="AudioStream" id=6]
 [ext_resource path="res://jenga_prototype/gameplay_elements/camera/sfx/sfx_whoosh_v2.wav" type="AudioStream" id=7]
 [ext_resource path="res://jenga_prototype/gameplay_elements/camera/sfx/sfx_whoosh_v3.wav" type="AudioStream" id=8]
+[ext_resource path="res://jenga_prototype/gameplay_elements/camera/Shaker.gd" type="Script" id=9]
+[ext_resource path="res://jenga_prototype/shared_variables/levels/int_level_current.tres" type="Resource" id=10]
 
 [node name="JengaCamera" type="Camera2D"]
 position = Vector2( 960, 540 )
@@ -18,8 +20,13 @@ __meta__ = {
 "_editor_description_": ""
 }
 
+[node name="Shaker" type="Node" parent="."]
+script = ExtResource( 9 )
+decay = 1.5
+max_offset = Vector2( 80, 60 )
+
 [node name="ResourcePreloader" type="ResourcePreloader" parent="."]
-resources = [ PoolStringArray( "camera_level", "main_camera", "target_line" ), [ ExtResource( 3 ), ExtResource( 2 ), ExtResource( 4 ) ] ]
+resources = [ PoolStringArray( "camera_level", "int_level_current", "main_camera", "target_line" ), [ ExtResource( 3 ), ExtResource( 10 ), ExtResource( 2 ), ExtResource( 4 ) ] ]
 
 [node name="Tween" type="Tween" parent="."]
 

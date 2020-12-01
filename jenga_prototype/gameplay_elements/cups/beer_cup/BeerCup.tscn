@@ -45,8 +45,7 @@ visible = false
 polygon = PoolVector2Array( -485, -750, 485, -750, 485, 750, -485, 750 )
 
 [node name="SfxCollision" parent="SfxHitDetector" index="0"]
-visible = false
-polygon = PoolVector2Array( -550, -815, 550, -815, 550, 815, -550, 815 )
+polygon = PoolVector2Array( -475, -660, 475, -660, 475, 660, -475, 660 )
 
 [node name="SfxFitArea" parent="SfxFitDetector" index="0"]
 polygon = PoolVector2Array( -330, -520, 330, -520, 310, -280, -310, -280 )

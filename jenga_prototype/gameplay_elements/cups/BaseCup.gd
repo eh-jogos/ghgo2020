@@ -202,8 +202,10 @@ func _on_SfxHitDetector_body_entered(body) -> void:
 	
 	if body.is_in_group("cup"):
 		sfx_hits.play()
+		Events.emit_signal("cup_collided")
 	else:
 		sfx_table.play()
+		Events.emit_signal("ground_collided")
 
 
 func _on_SfxFitDetector_body_entered(body):
