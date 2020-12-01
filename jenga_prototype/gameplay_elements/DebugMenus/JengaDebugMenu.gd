@@ -122,3 +122,15 @@ func _on_Load_Profile_pressed():
 	_popup_load.open_load_dialog(self, "*.profile ; Text File")
 
 ### -----------------------------------------------------------------------------------------------
+
+
+func _on_SfxSpinBox_value_changed(value):
+	var sfx_bus = AudioServer.get_bus_index("Sfx")
+	var vol_db = linear2db(value)
+	AudioServer.set_bus_volume_db(sfx_bus, vol_db)
+
+
+func _on_MusicSpinBox_value_changed(value):
+	var music_bus = AudioServer.get_bus_index("Music")
+	var vol_db = linear2db(value)
+	AudioServer.set_bus_volume_db(music_bus, vol_db)

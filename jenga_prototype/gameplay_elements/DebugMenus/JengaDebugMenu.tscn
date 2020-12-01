@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://jenga_prototype/ui_elements/debug_menu/DebugMenu.tscn" type="PackedScene" id=1]
 [ext_resource path="res://jenga_prototype/ui_elements/debug_menu/read_only_lines/ReadOnlyVariableLine.tscn" type="PackedScene" id=2]
@@ -12,8 +12,25 @@
 [ext_resource path="res://jenga_prototype/gameplay_elements/DebugMenus/JengaDebugMenu.gd" type="Script" id=10]
 [ext_resource path="res://jenga_prototype/ui_elements/debug_menu/int_lines/IntVariableField.tscn" type="PackedScene" id=11]
 [ext_resource path="res://jenga_prototype/shared_variables/nodepath_cursor.tres" type="Resource" id=12]
+[ext_resource path="res://resources/themes/theme_debug_menu.tres" type="Theme" id=13]
+[ext_resource path="res://fonts/font_files/MavenPro-Bold.ttf" type="DynamicFontData" id=14]
 
 [sub_resource type="StyleBoxFlat" id=1]
+content_margin_left = 10.0
+content_margin_right = 10.0
+content_margin_top = 10.0
+content_margin_bottom = 10.0
+bg_color = Color( 0.4, 0.501961, 1, 1 )
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="DynamicFont" id=3]
+resource_local_to_scene = true
+size = 32
+use_filter = true
+font_data = ExtResource( 14 )
+
+[sub_resource type="StyleBoxFlat" id=4]
 bg_color = Color( 0.164706, 0.164706, 0.188235, 1 )
 border_width_left = 2
 border_width_top = 40
@@ -21,7 +38,7 @@ border_width_right = 2
 border_width_bottom = 2
 expand_margin_top = 40.0
 
-[sub_resource type="Theme" id=2]
+[sub_resource type="Theme" id=5]
 default_font = ExtResource( 8 )
 WindowDialog/colors/title_color = Color( 0, 0, 0, 1 )
 WindowDialog/constants/close_h_ofs = 18
@@ -31,7 +48,7 @@ WindowDialog/constants/title_height = 40
 WindowDialog/fonts/title_font = null
 WindowDialog/icons/close = null
 WindowDialog/icons/close_highlight = null
-WindowDialog/styles/panel = SubResource( 1 )
+WindowDialog/styles/panel = SubResource( 4 )
 
 [node name="JengaDebugMenu" instance=ExtResource( 1 )]
 margin_top = 1.8877
@@ -64,10 +81,12 @@ text = "Carregar Perfil"
 
 [node name="ScrollContainer" parent="Panel" index="1"]
 margin_top = 90.0
+scroll_vertical = 652
 
 [node name="DebugList" parent="Panel/ScrollContainer" index="0"]
+margin_top = -652.0
 margin_right = 443.0
-margin_bottom = 1344.0
+margin_bottom = 960.0
 
 [node name="ProgressionGroup" parent="Panel/ScrollContainer/DebugList" index="0" instance=ExtResource( 5 )]
 margin_right = 443.0
@@ -155,19 +174,109 @@ hint_tooltip = "Máximo de pixels de distancia do mouse vai ser a posição do c
 field_name = "Duração do Loop do Movimento Angular"
 float_variable_path = "res://jenga_prototype/shared_variables/altered_status/float_altered_angular_loop_duration.tres"
 
+[node name="DebugGroup" type="VBoxContainer" parent="Panel/ScrollContainer/DebugList" index="3"]
+margin_top = 1354.0
+margin_right = 443.0
+margin_bottom = 1612.0
+custom_constants/separation = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DebugGroupTitle" type="PanelContainer" parent="Panel/ScrollContainer/DebugList/DebugGroup" index="0"]
+margin_right = 443.0
+margin_bottom = 58.0
+theme = ExtResource( 13 )
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Content" type="VBoxContainer" parent="Panel/ScrollContainer/DebugList/DebugGroup/DebugGroupTitle" index="0"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 433.0
+margin_bottom = 48.0
+custom_constants/separation = 5
+
+[node name="TitleButton" type="Button" parent="Panel/ScrollContainer/DebugList/DebugGroup/DebugGroupTitle/Content" index="0"]
+margin_right = 423.0
+margin_bottom = 38.0
+size_flags_horizontal = 3
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 2 )
+custom_styles/disabled = SubResource( 2 )
+custom_styles/normal = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
+toggle_mode = true
+pressed = true
+text = "Controles de som"
+align = 0
+
+[node name="FloatVariableLine" type="VBoxContainer" parent="Panel/ScrollContainer/DebugList/DebugGroup" index="1"]
+margin_top = 68.0
+margin_right = 443.0
+margin_bottom = 158.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Panel/ScrollContainer/DebugList/DebugGroup/FloatVariableLine" index="0"]
+margin_right = 443.0
+margin_bottom = 38.0
+text = "Volume de Sfx"
+autowrap = true
+
+[node name="SfxSpinBox" type="SpinBox" parent="Panel/ScrollContainer/DebugList/DebugGroup/FloatVariableLine" index="1"]
+margin_left = 243.0
+margin_top = 42.0
+margin_right = 443.0
+margin_bottom = 90.0
+rect_min_size = Vector2( 200, 0 )
+size_flags_horizontal = 8
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="FloatVariableLine2" type="VBoxContainer" parent="Panel/ScrollContainer/DebugList/DebugGroup" index="2"]
+margin_top = 168.0
+margin_right = 443.0
+margin_bottom = 258.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Panel/ScrollContainer/DebugList/DebugGroup/FloatVariableLine2" index="0"]
+margin_right = 443.0
+margin_bottom = 38.0
+text = "Volume de Musica"
+autowrap = true
+
+[node name="MusicSpinBox" type="SpinBox" parent="Panel/ScrollContainer/DebugList/DebugGroup/FloatVariableLine2" index="1"]
+margin_left = 243.0
+margin_top = 42.0
+margin_right = 443.0
+margin_bottom = 90.0
+rect_min_size = Vector2( 200, 0 )
+size_flags_horizontal = 8
+max_value = 1.0
+step = 0.01
+value = 1.0
+
 [node name="SaveDialog" parent="Popups" index="0"]
 margin_left = -828.0
 margin_top = -417.0
 margin_right = 772.0
 margin_bottom = 383.0
-theme = SubResource( 2 )
+theme = SubResource( 5 )
 filters = PoolStringArray(  )
 script = ExtResource( 7 )
 
 [node name="LoadDialog" parent="Popups" index="1"]
 margin_right = 1100.0
 margin_bottom = 450.0
-theme = SubResource( 2 )
+theme = SubResource( 5 )
 filters = PoolStringArray(  )
 script = ExtResource( 9 )
 [connection signal="pressed" from="Panel/ProfileButtons/SaveProfile" to="." method="_on_SaveProfile_pressed"]
@@ -178,3 +287,5 @@ script = ExtResource( 9 )
 [connection signal="loda_data_requested" from="Panel/ScrollContainer/DebugList/TargetLineGroup" to="." method="_on_TargetLineGroup_loda_data_requested"]
 [connection signal="data_saved" from="Panel/ScrollContainer/DebugList/AlteredStateGroup" to="." method="_on_AlteredStateGroup_data_saved"]
 [connection signal="loda_data_requested" from="Panel/ScrollContainer/DebugList/AlteredStateGroup" to="." method="_on_AlteredStateGroup_loda_data_requested"]
+[connection signal="value_changed" from="Panel/ScrollContainer/DebugList/DebugGroup/FloatVariableLine/SfxSpinBox" to="." method="_on_SfxSpinBox_value_changed"]
+[connection signal="value_changed" from="Panel/ScrollContainer/DebugList/DebugGroup/FloatVariableLine2/MusicSpinBox" to="." method="_on_MusicSpinBox_value_changed"]
