@@ -115,7 +115,6 @@ func reset_level() -> void:
 	_altered_state.value = reset_values.altered_factor
 	_progress_bar.reset_progress_bar_to(reset_values.altered_bar_lifetime_value)
 
-
 ### -----------------------------------------------------------------------------------------------
 
 
@@ -125,6 +124,9 @@ func _game_ending() -> void:
 	var _hud_animator: AnimationPlayer = $HUDLayer/AnimationPlayer
 	_hud_animator.play("hide_hud")
 	_camera.go_to_ending()
+	_scale_factor.value = 3.0
+	_altered_state.value = 0.0
+	_mouse_guide.set_thumbs_up()
 	yield(_camera._tween, "tween_all_completed")
 	_background.show_ending()
 	yield(_background._ending_animator, "animation_finished")
@@ -143,9 +145,6 @@ func _on_TargetLine_level_completed():
 	if level_current.value + 1 >= level_list.value.size():
 		_game_ending()
 	else:
-		
-		var current_level: LevelData = level_list.value[level_current.value]
-		_progress_bar.decrement_altered_progress(current_level.altered_bar_win_bonus)
 		level_current.value += 1
 
 

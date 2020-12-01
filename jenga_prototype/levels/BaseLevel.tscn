@@ -89,6 +89,30 @@ tracks/3/keys = {
 "update": 1,
 "values": [ 2 ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("EndHud:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("GameHUD:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=3]
 length = 0.5
@@ -127,6 +151,30 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("GameHUD:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("EndHud:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -200,7 +248,6 @@ offset = Vector2( 0, -91 )
 polygon = PoolVector2Array( -2880, 0, -2400, -315, 2400, -315, 2880, 0 )
 
 [node name="TargetLine" parent="." instance=ExtResource( 7 )]
-modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 960, 900 )
 
 [node name="Cups" type="Node2D" parent="."]
@@ -259,9 +306,9 @@ margin_top = -160.0
 margin_bottom = -56.0
 
 [node name="PauseMenu" parent="HUDLayer/GameHUD" instance=ExtResource( 10 )]
-visible = false
 
 [node name="EndHud" type="Control" parent="HUDLayer"]
+visible = false
 modulate = Color( 1, 1, 1, 0 )
 anchor_top = 1.0
 anchor_right = 1.0
@@ -280,6 +327,7 @@ margin_left = -200.0
 margin_top = -337.0
 margin_right = 200.0
 margin_bottom = -192.0
+mouse_filter = 2
 text = "Play again"
 
 [node name="eh_SceneChanger" type="Node" parent="HUDLayer/EndHud/RegularButton"]
@@ -297,6 +345,7 @@ margin_top = -184.0
 margin_right = 200.0
 margin_bottom = -38.9999
 rect_rotation = -5.0
+mouse_filter = 2
 text = "Credits"
 
 [node name="JengaDebugMenu" parent="HUDLayer" instance=ExtResource( 4 )]

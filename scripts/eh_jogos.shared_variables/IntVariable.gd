@@ -52,8 +52,10 @@ func _set_value(p_value: int) -> void:
 		is_first_run_in_session = false
 		if should_reset_value:
 			p_value = default_value
-	value = p_value
-	emit_signal("value_updated")
-	ResourceSaver.save(resource_path, self)
+	
+	if p_value != value:
+		value = p_value
+		emit_signal("value_updated")
+		ResourceSaver.save(resource_path, self)
 
 ### -----------------------------------------------------------------------------------------------

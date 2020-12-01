@@ -59,6 +59,10 @@ func update_zoom() -> void:
 	_tween.interpolate_property(self, "camera_level", camera_level, new_camera_level, 
 			0.3, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	_tween.start()
+	
+	yield(_tween, "tween_completed")
+	
+	Events.emit_signal("zoom_updated")
 
 
 func go_to_ending() -> void:

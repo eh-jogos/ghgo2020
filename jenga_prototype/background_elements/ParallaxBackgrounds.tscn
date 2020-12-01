@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://jenga_prototype/background_elements/Star.tscn" type="PackedScene" id=1]
 [ext_resource path="res://jenga_prototype/background_elements/ParallaxBackgrounds.gd" type="Script" id=2]
@@ -29,6 +29,7 @@
 [ext_resource path="res://jenga_prototype/background_elements/MovingCloud.tscn" type="PackedScene" id=27]
 [ext_resource path="res://jenga_prototype/background_elements/pngs/Nuvem-3.png" type="Texture" id=28]
 [ext_resource path="res://jenga_prototype/background_elements/pngs/Nuvem-2.png" type="Texture" id=29]
+[ext_resource path="res://jenga_prototype/background_elements/pngs/Monstro.png" type="Texture" id=30]
 
 [sub_resource type="Animation" id=1]
 resource_name = "idle"
@@ -554,6 +555,7 @@ region_rect = Rect2( 0, 0, 4320, 7696 )
 
 [node name="Monster" parent="Layer1/ParallaxLayer3" instance=ExtResource( 5 )]
 position = Vector2( -1492, 127.136 )
+texture = ExtResource( 30 )
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="Layer1"]
 position = Vector2( 960, 1080 )
@@ -613,8 +615,6 @@ __meta__ = {
 }
 
 [node name="Marca" type="Sprite" parent="Ending/Skin3"]
-z_index = 1
-z_as_relative = false
 texture = ExtResource( 9 )
 
 [node name="Skin2" type="Node2D" parent="Ending"]

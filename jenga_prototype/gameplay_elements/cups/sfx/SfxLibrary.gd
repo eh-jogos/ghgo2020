@@ -1,4 +1,5 @@
 # Write your doc string for this file here
+tool
 class_name SfxLibrary
 extends Node
 

@@ -3,30 +3,31 @@
 [ext_resource path="res://scripts/state_machines/StateMachine.gd" type="Script" id=1]
 [ext_resource path="res://jenga_prototype/shared_variables/float_scale_factor.tres" type="Resource" id=2]
 [ext_resource path="res://jenga_prototype/shared_variables/nodepath_main_camera.tres" type="Resource" id=3]
-[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/sfx_glass_hit_v5.wav" type="AudioStream" id=4]
-[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/sfx_glass_fit_v1.wav" type="AudioStream" id=5]
-[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/sfx_glass_hit_v4.wav" type="AudioStream" id=6]
-[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/sfx_glass_table_v2.wav" type="AudioStream" id=7]
-[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/sfx_glass_hit_v6.wav" type="AudioStream" id=8]
-[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/sfx_glass_fit_v6.wav" type="AudioStream" id=9]
-[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/sfx_glass_fit_v4.wav" type="AudioStream" id=10]
-[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/sfx_glass_fit_v2.wav" type="AudioStream" id=11]
-[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/sfx_glass_hit_v1.wav" type="AudioStream" id=12]
-[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/sfx_glass_table_v4.wav" type="AudioStream" id=13]
-[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/sfx_glass_table_v1.wav" type="AudioStream" id=14]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/sfx_glass_hit_v5.wav" type="AudioStream" id=4]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/sfx_glass_fit_v1.wav" type="AudioStream" id=5]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/sfx_glass_hit_v4.wav" type="AudioStream" id=6]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/sfx_glass_table_v2.wav" type="AudioStream" id=7]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/sfx_glass_hit_v6.wav" type="AudioStream" id=8]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/sfx_glass_fit_v6.wav" type="AudioStream" id=9]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/sfx_glass_fit_v4.wav" type="AudioStream" id=10]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/sfx_glass_fit_v2.wav" type="AudioStream" id=11]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/sfx_glass_hit_v1.wav" type="AudioStream" id=12]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/sfx_glass_table_v4.wav" type="AudioStream" id=13]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/sfx_glass_table_v1.wav" type="AudioStream" id=14]
 [ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/SfxLibrary.gd" type="Script" id=15]
 [ext_resource path="res://jenga_prototype/gameplay_elements/cups/BaseCup.gd" type="Script" id=16]
 [ext_resource path="res://jenga_prototype/gameplay_elements/cups/states/Draging.gd" type="Script" id=17]
 [ext_resource path="res://jenga_prototype/gameplay_elements/cups/states/Dropped.gd" type="Script" id=18]
 [ext_resource path="res://jenga_prototype/gameplay_elements/cups/states/Spawn.gd" type="Script" id=19]
-[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/sfx_glass_table_v3.wav" type="AudioStream" id=20]
-[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/sfx_glass_table_v7.wav" type="AudioStream" id=21]
-[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/sfx_glass_hit_v2.wav" type="AudioStream" id=22]
-[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/sfx_glass_table_v6.wav" type="AudioStream" id=23]
-[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/sfx_glass_table_v5.wav" type="AudioStream" id=24]
-[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/sfx_glass_hit_v3.wav" type="AudioStream" id=25]
-[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/sfx_glass_fit_v3.wav" type="AudioStream" id=26]
-[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/sfx_glass_fit_v5.wav" type="AudioStream" id=27]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/sfx_glass_table_v3.wav" type="AudioStream" id=20]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/sfx_glass_table_v7.wav" type="AudioStream" id=21]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/sfx_glass_hit_v2.wav" type="AudioStream" id=22]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/sfx_glass_table_v6.wav" type="AudioStream" id=23]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/sfx_glass_table_v5.wav" type="AudioStream" id=24]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/sfx_glass_hit_v3.wav" type="AudioStream" id=25]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/sfx_glass_fit_v3.wav" type="AudioStream" id=26]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/sfx_glass_fit_v5.wav" type="AudioStream" id=27]
+
 
 [sub_resource type="PhysicsMaterial" id=1]
 rough = true
@@ -138,9 +139,6 @@ collision_mask = 2048
 modulate = Color( 0.266667, 0, 1, 1 )
 polygon = PoolVector2Array( -43, -9, 43, -9, 37, 26, -37, 26 )
 
-[node name="BreakTimer" type="Timer" parent="BreakArea"]
-one_shot = true
-
 [node name="SfxHit" type="Node" parent="."]
 script = ExtResource( 15 )
 
@@ -242,4 +240,3 @@ script = ExtResource( 18 )
 [connection signal="body_entered" from="SfxFitDetector" to="." method="_on_SfxFitDetector_body_entered"]
 [connection signal="body_entered" from="BreakArea" to="." method="_on_BreakArea_body_entered"]
 [connection signal="body_exited" from="BreakArea" to="." method="_on_BreakArea_body_exited"]
-[connection signal="timeout" from="BreakArea/BreakTimer" to="." method="_on_BreakTimer_timeout"]
