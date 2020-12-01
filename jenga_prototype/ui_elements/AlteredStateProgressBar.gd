@@ -17,6 +17,7 @@ var altered_state_level: int = 0
 var altered_state_factor: FloatVariable
 var subdivision_max_value: IntVariable
 var subdivision_increment_step: IntVariable
+var nodepath_progress_bar: NodePathVariable
 
 #--- private variables - order: export > normal var > onready -------------------------------------
 
@@ -75,7 +76,6 @@ func decrement_altered_progress(p_decrement) -> void:
 	var new_level = int(lifetime_value / subdivision_max_value.value)
 	if new_level < altered_state_level:
 		altered_state_level -= 1
-		_level_label.text = str(altered_state_level)
 		Events.emit_signal("altered_level_decreased")
 	
 	var new_value: = 0.0
@@ -87,7 +87,18 @@ func decrement_altered_progress(p_decrement) -> void:
 	else:
 		new_value = lifetime_value
 	
-	value = new_value
+	if new_value <= value:
+		_tween.interpolate_property(self, "value", value, new_value, 
+				0.5, Tween.TRANS_LINEAR, Tween.EASE_IN)
+		_tween.start()
+	else:
+		_tween.interpolate_property(self, "value", value, 0, 
+				0.25, Tween.TRANS_LINEAR, Tween.EASE_IN)
+		_tween.interpolate_property(self, "value", max_value, new_value, 
+				0.25, Tween.TRANS_LINEAR, Tween.EASE_IN, 0.25)
+		_tween.interpolate_property(_level_label, "altered_value", _level_label.altered_value,
+				altered_state_level, 0.01, Tween.TRANS_LINEAR, Tween.EASE_OUT, 0.25)
+		_tween.start()
 
 
 func reset_progress_bar_to(p_value: int) -> void:
@@ -122,6 +133,9 @@ func reset_progress_bar_to(p_value: int) -> void:
 ### Private Methods -------------------------------------------------------------------------------
 
 func _setup_shared_variables() -> void:
+	nodepath_progress_bar = _resource_preloader.get_resource("nodepath_progress_bar")
+	nodepath_progress_bar.value = get_path()
+	
 	altered_state_factor = _resource_preloader.get_resource("altered_factor")
 	value = altered_state_factor.value
 	
@@ -161,7 +175,7 @@ func _on_Events_cup_drinked() -> void:
 	
 	if new_level > altered_state_level:
 		altered_state_level = new_level
-		_level_label.text = str(altered_state_level)
+		_level_label.altered_value = altered_state_level
 		Events.emit_signal("altered_level_raised")
 
 

@@ -20,3 +20,6 @@ signal altered_level_decreased
 
 # warning-ignore:unused_signal
 signal cup_drinked
+
+# warning-ignore:unused_signal
+signal zoom_updated

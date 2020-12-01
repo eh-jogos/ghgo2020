@@ -17,13 +17,21 @@ var sensibility: FloatVariable
 var camera: Camera2D
 var camera_level: FloatVariable
 
+var effect_bottle: Sprite
+
 #--- private variables - order: export > normal var > onready -------------------------------------
+
+var _path_progress_bar: NodePathVariable
+var _progress_bar: ProgressBar
 
 var _target_line_path: NodePathVariable
 var _guide_path: NodePathVariable
 var _target_line_guide: Control
 
 var _camera_path: NodePathVariable
+
+var _levels_list: ArrayVariable
+var _level_current: IntVariable
 
 onready var _timer: Timer = $Timer
 onready var _tween: Tween = $Tween
@@ -41,11 +49,9 @@ func _ready():
 
 func _process(_delta):
 	if _target_line_guide and camera:
-		var canvas_transform = get_canvas_transform()
-		var canvas_origin = -canvas_transform.origin.y * camera.zoom.y
-		var guide_position = _target_line_guide.rect_global_position.y * camera.zoom.y
+		var final_position = _convert_from_hud_position(_target_line_guide.rect_global_position)
 		scale = camera.zoom
-		global_position.y = canvas_origin + guide_position
+		global_position.y = final_position.y
 
 ### -----------------------------------------------------------------------------------------------
 
@@ -79,9 +85,20 @@ func is_cup_in_rest(cup: BaseCup) -> bool:
 
 ### Private Methods -------------------------------------------------------------------------------
 
+func _convert_from_hud_position(hud_position: Vector2) -> Vector2:
+	var canvas_transform = get_canvas_transform()
+	var canvas_origin = -canvas_transform.origin * camera.zoom
+	var reference_position = hud_position * camera.zoom
+	var final_position = canvas_origin + reference_position
+	
+	return final_position
+
 
 func _setup_shared_variables() -> void:
 	sensibility = _resources.get_resource("target_line_sensibility")
+	_levels_list = _resources.get_resource("levels_list")
+	_level_current = _resources.get_resource("level_current")
+	
 	_guide_path = _resources.get_resource("target_line_guide")
 	_camera_path = _resources.get_resource("main_camera")
 	
@@ -96,6 +113,9 @@ func _setup_shared_variables() -> void:
 	if not camera:
 		_camera_path.connect_to(self, "_on_camera_path_value_updated")
 	
+	_path_progress_bar = _resources.get_resource("progress_bar")
+	_progress_bar = get_node_or_null(_path_progress_bar.value)
+
 
 func _on_guide_path_value_updated() -> void:
 	_target_line_guide = get_node_or_null(_guide_path.value)
@@ -103,5 +123,48 @@ func _on_guide_path_value_updated() -> void:
 
 func _on_camera_path_value_updated() -> void:
 	camera = get_node_or_null(_camera_path.value)
+
+
+func _on_TargetLine_level_completed():
+	if not Events.is_connected("zoom_updated", self, "_on_Events_zoom_updated"):
+		Events.connect("zoom_updated", self, "_on_Events_zoom_updated")
+
+
+func _on_Events_zoom_updated() -> void:
+	print("BOTTLE ANIMATION")
+	effect_bottle = $Line/Tag/Bottle.duplicate()
+	$Line/Tag.add_child(effect_bottle, true)
+	var bottle_position = effect_bottle.global_position
+	effect_bottle.set_as_toplevel(true)
+	effect_bottle.global_position = bottle_position
+	effect_bottle.scale *= camera.zoom
+	
+	if not _progress_bar:
+		_progress_bar = get_node(_path_progress_bar.value)
+	
+	var final_position = _convert_from_hud_position(_progress_bar.rect_global_position)
+	final_position += _progress_bar.rect_size/2 * camera.zoom
+	
+	var duration = 0.8
+	
+	_tween.interpolate_property(effect_bottle, "global_position", effect_bottle.global_position, 
+			final_position, duration, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+
+	_tween.interpolate_property(effect_bottle, "scale", effect_bottle.scale, 
+			effect_bottle.scale*2, duration/2, Tween.TRANS_QUAD, Tween.EASE_OUT)
+	_tween.interpolate_property(effect_bottle, "scale", effect_bottle.scale*2, 
+			effect_bottle.scale/2, duration/2, Tween.TRANS_QUAD, Tween.EASE_IN, duration/2)
+
+	_tween.interpolate_property(effect_bottle, "modulate:a", effect_bottle.modulate.a, 1.0,
+			duration/2, Tween.TRANS_QUAD, Tween.EASE_OUT)
+	_tween.interpolate_property(effect_bottle, "modulate:a", 1.0, 0.0,
+			duration/2, Tween.TRANS_QUAD, Tween.EASE_IN, duration/2)
+	_tween.start()
+	
+	yield(_tween, "tween_all_completed")
+	
+	effect_bottle.queue_free()
+	var previous_level: LevelData = _levels_list.value[_level_current.value - 1]
+	_progress_bar.decrement_altered_progress(previous_level.altered_bar_win_bonus)
 
 ### -----------------------------------------------------------------------------------------------
