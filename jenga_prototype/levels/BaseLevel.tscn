@@ -41,11 +41,10 @@ rough = true
 bounce = 1.0
 absorbent = true
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 1250.68, 207.261 )
 
-[sub_resource type="Animation" id=2]
-resource_name = "BASE"
+[sub_resource type="Animation" id=3]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("GameHUD:modulate")
@@ -120,7 +119,7 @@ tracks/5/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=4]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("GameHUD:modulate")
@@ -183,7 +182,7 @@ tracks/4/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=5]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("EndHud:modulate")
@@ -252,7 +251,7 @@ texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BarTable"]
 position = Vector2( 0, 187 )
-shape = SubResource( 5 )
+shape = SubResource( 2 )
 
 [node name="TargetLine" parent="." instance=ExtResource( 7 )]
 position = Vector2( 960, 900 )
@@ -326,6 +325,7 @@ __meta__ = {
 _node_path_variable = ExtResource( 34 )
 
 [node name="ColorRect" type="ColorRect" parent="HUDLayer/GameHUD/TableGuide"]
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -384,9 +384,9 @@ margin_bottom = 0.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="HUDLayer"]
 autoplay = "BASE"
-anims/BASE = SubResource( 2 )
-anims/hide_hud = SubResource( 3 )
-anims/show_end_hud = SubResource( 4 )
+anims/BASE = SubResource( 3 )
+anims/hide_hud = SubResource( 4 )
+anims/show_end_hud = SubResource( 5 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 2
