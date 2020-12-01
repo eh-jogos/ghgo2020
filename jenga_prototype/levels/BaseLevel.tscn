@@ -397,6 +397,7 @@ _next_scene_path = "res://jenga_prototype/screens/drink_selection/DrinkSelection
 transition_data = ExtResource( 30 )
 
 [node name="CreditsButton" parent="HUDLayer/EndHud" instance=ExtResource( 31 )]
+visible = false
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5

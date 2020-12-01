@@ -1,0 +1,82 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://jenga_prototype/background_elements/MovingExtras/animations/base_idle.tres" type="Animation" id=1]
+[ext_resource path="res://jenga_prototype/background_elements/MovingExtras/BaseMovingExtra.gd" type="Script" id=2]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 68.0
+height = 222.0
+
+[sub_resource type="Animation" id=2]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "invert_movement"
+} ]
+}
+
+[node name="BaseMovingExtra" type="KinematicBody2D"]
+collision_layer = 2147549184
+collision_mask = 2147516416
+script = ExtResource( 2 )
+speed = 1500.0
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 1, 1.05 )
+offset = Vector2( 0, -189 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -179 )
+shape = SubResource( 1 )
+disabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "idle"
+anims/fade_in = SubResource( 2 )
+anims/fade_out = SubResource( 3 )
+anims/idle = ExtResource( 1 )
+next/fade_in = "idle"
+
+[node name="ExtraArea" type="Area2D" parent="."]
+collision_layer = 2147614720
+collision_mask = 131072
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExtraArea"]
+position = Vector2( 0, -179 )
+shape = SubResource( 1 )

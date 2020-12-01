@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://jenga_prototype/background_elements/Star.tscn" type="PackedScene" id=1]
 [ext_resource path="res://jenga_prototype/background_elements/ParallaxBackgrounds.gd" type="Script" id=2]
@@ -31,6 +31,14 @@
 [ext_resource path="res://jenga_prototype/background_elements/pngs/Nuvem-2.png" type="Texture" id=29]
 [ext_resource path="res://jenga_prototype/background_elements/pngs/Rua.png" type="Texture" id=30]
 [ext_resource path="res://jenga_prototype/background_elements/pngs/Poste.png" type="Texture" id=31]
+[ext_resource path="res://jenga_prototype/background_elements/MovingExtras/ExtraPunk1.tscn" type="PackedScene" id=32]
+[ext_resource path="res://jenga_prototype/background_elements/MovingExtras/ExtraGirl1.tscn" type="PackedScene" id=33]
+[ext_resource path="res://jenga_prototype/background_elements/MovingExtras/ExtraThey1.tscn" type="PackedScene" id=34]
+[ext_resource path="res://jenga_prototype/background_elements/MovingExtras/ExtraBike1.tscn" type="PackedScene" id=35]
+[ext_resource path="res://jenga_prototype/background_elements/ReverseArea.gd" type="Script" id=36]
+[ext_resource path="res://jenga_prototype/background_elements/MovingExtras/ExtraCar1.tscn" type="PackedScene" id=37]
+[ext_resource path="res://jenga_prototype/background_elements/MovingExtras/ExtraCar2.tscn" type="PackedScene" id=38]
+[ext_resource path="res://jenga_prototype/background_elements/MovingExtras/ExtraTruck1.tscn" type="PackedScene" id=39]
 
 [sub_resource type="Animation" id=1]
 resource_name = "idle"
@@ -48,6 +56,12 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Vector2( 1, 1 ), Vector2( 1.25, 1.1 ) ]
 }
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 9179.65, 200 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 1404.93, 500 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 8107.97, 189.045 )
@@ -561,6 +575,19 @@ position = Vector2( -1492, 127.136 )
 position = Vector2( 960, 1080 )
 z_index = 1
 
+[node name="Vehicles" type="Node2D" parent="Layer1/ParallaxLayer2"]
+scale = Vector2( 1.2, 1.2 )
+
+[node name="ExtraCar1" parent="Layer1/ParallaxLayer2/Vehicles" instance=ExtResource( 37 )]
+position = Vector2( 1860.2, 0 )
+
+[node name="ExtraCar2" parent="Layer1/ParallaxLayer2/Vehicles" instance=ExtResource( 38 )]
+position = Vector2( -3030.65, 0 )
+
+[node name="ExtraCar3" parent="Layer1/ParallaxLayer2/Vehicles" instance=ExtResource( 39 )]
+position = Vector2( -4451.15, 0 )
+facing = 1
+
 [node name="Greenery" type="Node2D" parent="Layer1/ParallaxLayer2"]
 
 [node name="Bushes1" type="Sprite" parent="Layer1/ParallaxLayer2/Greenery"]
@@ -580,6 +607,47 @@ flip_h = true
 position = Vector2( 2733.15, -211.428 )
 texture = ExtResource( 3 )
 flip_h = true
+
+[node name="People" type="Node2D" parent="Layer1/ParallaxLayer2"]
+
+[node name="ExtraGirl1" parent="Layer1/ParallaxLayer2/People" instance=ExtResource( 33 )]
+position = Vector2( 1409.81, 0 )
+collision_layer = 2147483648
+collision_mask = 2147581952
+
+[node name="ExtraGirl2" parent="Layer1/ParallaxLayer2/People" instance=ExtResource( 33 )]
+position = Vector2( -5280.37, 0 )
+collision_layer = 2147483648
+collision_mask = 2147581952
+facing = 1
+
+[node name="ExtraPunk1" parent="Layer1/ParallaxLayer2/People" instance=ExtResource( 32 )]
+position = Vector2( -1266.14, 0 )
+collision_layer = 2147483648
+collision_mask = 2147581952
+
+[node name="ExtraPunk2" parent="Layer1/ParallaxLayer2/People" instance=ExtResource( 32 )]
+position = Vector2( 2403.65, 0 )
+collision_layer = 2147483648
+collision_mask = 2147581952
+facing = 1
+
+[node name="ExtraThey1" parent="Layer1/ParallaxLayer2/People" instance=ExtResource( 34 )]
+position = Vector2( -4606.58, 0 )
+collision_layer = 2147483648
+collision_mask = 2147581952
+facing = 1
+
+[node name="ExtraBike1" parent="Layer1/ParallaxLayer2/People" instance=ExtResource( 35 )]
+position = Vector2( 4061.16, 0 )
+collision_layer = 2147483648
+collision_mask = 2147581952
+
+[node name="ExtraBike2" parent="Layer1/ParallaxLayer2/People" instance=ExtResource( 35 )]
+position = Vector2( -2523.31, 0 )
+collision_layer = 2147483648
+collision_mask = 2147581952
+facing = 1
 
 [node name="Park" type="Sprite" parent="Layer1/ParallaxLayer2"]
 self_modulate = Color( 1, 0.933333, 0.756863, 1 )
@@ -606,6 +674,14 @@ color = Color( 0.466667, 0.47451, 0.411765, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="ExtrasGround" type="StaticBody2D" parent="Layer1/ParallaxLayer2"]
+position = Vector2( 0, 200 )
+collision_layer = 2147516416
+collision_mask = 32768
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Layer1/ParallaxLayer2/ExtrasGround"]
+shape = SubResource( 6 )
 
 [node name="LightPosts" type="Node2D" parent="Layer1/ParallaxLayer2"]
 
@@ -648,6 +724,25 @@ texture = ExtResource( 31 )
 [node name="LightPost13" type="Sprite" parent="Layer1/ParallaxLayer2/LightPosts"]
 position = Vector2( -5563.49, -225.949 )
 texture = ExtResource( 31 )
+
+[node name="ReverseArea" type="Area2D" parent="Layer1/ParallaxLayer2"]
+position = Vector2( -6065.15, -443.499 )
+collision_layer = 131072
+collision_mask = 131072
+script = ExtResource( 36 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Layer1/ParallaxLayer2/ReverseArea"]
+position = Vector2( -941.804, 0 )
+shape = SubResource( 7 )
+
+[node name="ReverseArea2" type="Area2D" parent="Layer1/ParallaxLayer2"]
+position = Vector2( 5770.88, -443.499 )
+collision_layer = 131072
+collision_mask = 131072
+script = ExtResource( 36 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Layer1/ParallaxLayer2/ReverseArea2"]
+shape = SubResource( 7 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 visible = false
