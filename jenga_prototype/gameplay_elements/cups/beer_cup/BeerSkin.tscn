@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://jenga_prototype/shared_variables/int_cups_drinked.tres" type="Resource" id=1]
 [ext_resource path="res://jenga_prototype/gameplay_elements/cups/CupSkin.gd" type="Script" id=2]
@@ -6,14 +6,18 @@
 [ext_resource path="res://jenga_prototype/gameplay_elements/cups/beer_cup/pngs/Copo-cerveja-meio.png" type="Texture" id=4]
 [ext_resource path="res://jenga_prototype/gameplay_elements/cups/beer_cup/pngs/Copo-base-fundo.png" type="Texture" id=5]
 [ext_resource path="res://jenga_prototype/gameplay_elements/cups/beer_cup/animations/beer_cup_drink.tres" type="Animation" id=6]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/SfxLibrary.gd" type="Script" id=7]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/swallow/sfx_swallow_v2.wav" type="AudioStream" id=8]
 [ext_resource path="res://jenga_prototype/gameplay_elements/cups/milk_shake_cup/pngs/ShakeMask.png" type="Texture" id=9]
 [ext_resource path="res://jenga_prototype/gameplay_elements/cups/milk_shake_cup/animations/shake_cup_BASE.tres" type="Animation" id=10]
 [ext_resource path="res://jenga_prototype/gameplay_elements/cups/milk_shake_cup/animations/shake_cup_spawn.tres" type="Animation" id=11]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/swallow/sfx_swallow_v1.wav" type="AudioStream" id=12]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/swallow/sfx_swallow_v4.wav" type="AudioStream" id=13]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/swallow/sfx_swallow_v3.wav" type="AudioStream" id=14]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/swallow/sfx_swallow_v5.wav" type="AudioStream" id=15]
 
 [node name="Skin" type="Node2D"]
-scale = Vector2( 1e-05, 1e-05 )
 script = ExtResource( 2 )
-custom_scale = Vector2( 0, 0 )
 drink_count = ExtResource( 1 )
 
 [node name="CupBase" type="Sprite" parent="."]
@@ -21,9 +25,10 @@ texture = ExtResource( 5 )
 
 [node name="Liquid" type="Sprite" parent="."]
 light_mask = 2
+position = Vector2( 0, 192.984 )
 texture = ExtResource( 4 )
 region_enabled = true
-region_rect = Rect2( 0, 0, 968, 1496 )
+region_rect = Rect2( 0, 0, 968, 1110.03 )
 
 [node name="Light2D" type="Light2D" parent="."]
 texture = ExtResource( 9 )
@@ -43,4 +48,27 @@ autoplay = "BASE"
 anims/BASE = ExtResource( 10 )
 anims/drink = ExtResource( 6 )
 anims/spawn = ExtResource( 11 )
+
+[node name="SfxSwallow" type="Node" parent="."]
+script = ExtResource( 7 )
+
+[node name="Swallow1" type="AudioStreamPlayer" parent="SfxSwallow"]
+stream = ExtResource( 12 )
+bus = "Sfx"
+
+[node name="Swallow2" type="AudioStreamPlayer" parent="SfxSwallow"]
+stream = ExtResource( 8 )
+bus = "Sfx"
+
+[node name="Swallow3" type="AudioStreamPlayer" parent="SfxSwallow"]
+stream = ExtResource( 14 )
+bus = "Sfx"
+
+[node name="Swallow4" type="AudioStreamPlayer" parent="SfxSwallow"]
+stream = ExtResource( 13 )
+bus = "Sfx"
+
+[node name="Swallow5" type="AudioStreamPlayer" parent="SfxSwallow"]
+stream = ExtResource( 15 )
+bus = "Sfx"
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

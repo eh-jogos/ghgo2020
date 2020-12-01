@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/sfx_lvl5_plastic_table_bottom_v3.wav-51b8755419560b29c3fea8eadc1dde5f.sample"
+
+[deps]
+
+source_file="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/lvl5-6/sfx_lvl5_plastic_table_bottom_v3.wav"
+dest_files=[ "res://.import/sfx_lvl5_plastic_table_bottom_v3.wav-51b8755419560b29c3fea8eadc1dde5f.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

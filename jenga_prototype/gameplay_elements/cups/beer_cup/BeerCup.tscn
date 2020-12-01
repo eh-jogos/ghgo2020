@@ -1,8 +1,64 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=60 format=2]
 
 [ext_resource path="res://jenga_prototype/gameplay_elements/cups/BaseCup.tscn" type="PackedScene" id=1]
 [ext_resource path="res://jenga_prototype/gameplay_elements/cups/beer_cup/BeerSkin.tscn" type="PackedScene" id=2]
 [ext_resource path="res://jenga_prototype/gameplay_elements/cups/milk_shake_cup/ShakeCup.gd" type="Script" id=3]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/lvl1-4/sfx_glass_table_v2.wav" type="AudioStream" id=4]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/lvl1-4/sfx_glass_hit_v3.wav" type="AudioStream" id=5]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/lvl1-4/sfx_glass_hit_v4.wav" type="AudioStream" id=6]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/lvl7/sfx_lvl7_glass_hit_v3.wav" type="AudioStream" id=7]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/lvl1-4/sfx_glass_table_v6.wav" type="AudioStream" id=8]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/lvl1-4/sfx_glass_table_v7.wav" type="AudioStream" id=9]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/lvl1-4/sfx_glass_hit_v2.wav" type="AudioStream" id=10]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/lvl1-4/sfx_glass_table_v1.wav" type="AudioStream" id=11]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/lvl1-4/sfx_glass_table_v5.wav" type="AudioStream" id=12]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/lvl1-4/sfx_glass_table_v4.wav" type="AudioStream" id=13]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/lvl1-4/sfx_glass_fit_v3.wav" type="AudioStream" id=14]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/lvl1-4/sfx_glass_fit_v6.wav" type="AudioStream" id=15]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/lvl1-4/sfx_glass_hit_v6.wav" type="AudioStream" id=16]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/lvl1-4/sfx_glass_fit_v2.wav" type="AudioStream" id=17]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/lvl1-4/sfx_glass_hit_v1.wav" type="AudioStream" id=18]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/lvl1-4/sfx_glass_fit_v1.wav" type="AudioStream" id=19]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/lvl1-4/sfx_glass_hit_v5.wav" type="AudioStream" id=20]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/lvl1-4/sfx_glass_fit_v4.wav" type="AudioStream" id=21]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/lvl1-4/sfx_glass_fit_v5.wav" type="AudioStream" id=22]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/lvl1-4/sfx_glass_table_v3.wav" type="AudioStream" id=23]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/lvl7/sfx_lvl7_glass_hit_v4.wav" type="AudioStream" id=24]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/lvl5-6/sfx_lvl5_glass_table_v4.wav" type="AudioStream" id=26]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/lvl5-6/sfx_lvl5_glass_fit_v4.wav" type="AudioStream" id=27]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/lvl7/sfx_lvl7_glass_fit_v5.wav" type="AudioStream" id=28]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/lvl5-6/sfx_lvl5_glass_hit_v3.wav" type="AudioStream" id=29]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/lvl5-6/sfx_lvl5_glass_hit_v1.wav" type="AudioStream" id=30]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/lvl7/sfx_lvl7_glass_table_v2.wav" type="AudioStream" id=31]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/lvl5-6/sfx_lvl5_glass_fit_v1.wav" type="AudioStream" id=32]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/lvl5-6/sfx_lvl5_glass_fit_v5.wav" type="AudioStream" id=33]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/lvl5-6/sfx_lvl5_glass_table_v5.wav" type="AudioStream" id=34]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/lvl5-6/sfx_lvl5_glass_table_v1.wav" type="AudioStream" id=35]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/lvl5-6/sfx_lvl5_glass_hit_v5.wav" type="AudioStream" id=36]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/lvl5-6/sfx_lvl5_glass_hit_v2.wav" type="AudioStream" id=37]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/lvl5-6/sfx_lvl5_glass_hit_v4.wav" type="AudioStream" id=38]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/lvl5-6/sfx_lvl5_glass_hit_v6.wav" type="AudioStream" id=39]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/lvl7/sfx_lvl7_glass_table_v3.wav" type="AudioStream" id=40]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/lvl7/sfx_lvl7_glass_table_v4.wav" type="AudioStream" id=41]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/lvl5-6/sfx_lvl5_glass_table_v2.wav" type="AudioStream" id=42]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/lvl5-6/sfx_lvl5_glass_table_v6.wav" type="AudioStream" id=43]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/lvl7/sfx_lvl7_glass_table_v6.wav" type="AudioStream" id=44]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/lvl7/sfx_lvl7_glass_table_v5.wav" type="AudioStream" id=45]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/lvl5-6/sfx_lvl5_glass_table_v3.wav" type="AudioStream" id=46]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/lvl5-6/sfx_lvl5_glass_fit_v2.wav" type="AudioStream" id=47]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/lvl5-6/sfx_lvl5_glass_table_v7.wav" type="AudioStream" id=48]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/lvl7/sfx_lvl7_glass_hit_v1.wav" type="AudioStream" id=49]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/lvl7/sfx_lvl7_glass_table_v1.wav" type="AudioStream" id=50]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/lvl7/sfx_lvl7_glass_fit_v1.wav" type="AudioStream" id=51]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/lvl7/sfx_lvl7_glass_fit_v3.wav" type="AudioStream" id=52]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/lvl5-6/sfx_lvl5_glass_fit_v6.wav" type="AudioStream" id=53]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/lvl5-6/sfx_lvl5_glass_fit_v3.wav" type="AudioStream" id=54]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/lvl7/sfx_lvl7_glass_fit_v6.wav" type="AudioStream" id=55]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/lvl7/sfx_lvl7_glass_hit_v6.wav" type="AudioStream" id=56]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/lvl7/sfx_lvl7_glass_fit_v2.wav" type="AudioStream" id=57]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/lvl7/sfx_lvl7_glass_hit_v5.wav" type="AudioStream" id=58]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/lvl7/sfx_lvl7_glass_fit_v4.wav" type="AudioStream" id=59]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/glass/lvl7/sfx_lvl7_glass_hit_v2.wav" type="AudioStream" id=60]
 
 [node name="ShakeCup" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
@@ -45,12 +101,253 @@ visible = false
 polygon = PoolVector2Array( -485, -750, 485, -750, 485, 750, -485, 750 )
 
 [node name="SfxCollision" parent="SfxHitDetector" index="0"]
-visible = false
-polygon = PoolVector2Array( -550, -815, 550, -815, 550, 815, -550, 815 )
+polygon = PoolVector2Array( -475, -660, 475, -660, 475, 660, -475, 660 )
 
 [node name="SfxFitArea" parent="SfxFitDetector" index="0"]
 polygon = PoolVector2Array( -330, -520, 330, -520, 310, -280, -310, -280 )
 
 [node name="BreakPolygon" parent="BreakArea" index="0"]
 polygon = PoolVector2Array( -290, -100, 290, -100, 275, 100, -275, 100 )
+
+[node name="lvl4" type="Node" parent="SfxHit" index="0"]
+
+[node name="SfxHit1" type="AudioStreamPlayer" parent="SfxHit/lvl4" index="0"]
+stream = ExtResource( 18 )
+bus = "Sfx"
+
+[node name="SfxHit2" type="AudioStreamPlayer" parent="SfxHit/lvl4" index="1"]
+stream = ExtResource( 10 )
+bus = "Sfx"
+
+[node name="SfxHit3" type="AudioStreamPlayer" parent="SfxHit/lvl4" index="2"]
+stream = ExtResource( 5 )
+bus = "Sfx"
+
+[node name="SfxHit4" type="AudioStreamPlayer" parent="SfxHit/lvl4" index="3"]
+stream = ExtResource( 6 )
+bus = "Sfx"
+
+[node name="SfxHit5" type="AudioStreamPlayer" parent="SfxHit/lvl4" index="4"]
+stream = ExtResource( 20 )
+bus = "Sfx"
+
+[node name="SfxHit6" type="AudioStreamPlayer" parent="SfxHit/lvl4" index="5"]
+stream = ExtResource( 16 )
+bus = "Sfx"
+
+[node name="lvl6" type="Node" parent="SfxHit" index="1"]
+
+[node name="SfxHit1" type="AudioStreamPlayer" parent="SfxHit/lvl6" index="0"]
+stream = ExtResource( 30 )
+bus = "Sfx"
+
+[node name="SfxHit2" type="AudioStreamPlayer" parent="SfxHit/lvl6" index="1"]
+stream = ExtResource( 37 )
+bus = "Sfx"
+
+[node name="SfxHit3" type="AudioStreamPlayer" parent="SfxHit/lvl6" index="2"]
+stream = ExtResource( 29 )
+bus = "Sfx"
+
+[node name="SfxHit4" type="AudioStreamPlayer" parent="SfxHit/lvl6" index="3"]
+stream = ExtResource( 38 )
+bus = "Sfx"
+
+[node name="SfxHit5" type="AudioStreamPlayer" parent="SfxHit/lvl6" index="4"]
+stream = ExtResource( 36 )
+bus = "Sfx"
+
+[node name="SfxHit6" type="AudioStreamPlayer" parent="SfxHit/lvl6" index="5"]
+stream = ExtResource( 39 )
+bus = "Sfx"
+
+[node name="lvl7" type="Node" parent="SfxHit" index="2"]
+
+[node name="SfxHit1" type="AudioStreamPlayer" parent="SfxHit/lvl7" index="0"]
+stream = ExtResource( 49 )
+bus = "Sfx"
+
+[node name="SfxHit2" type="AudioStreamPlayer" parent="SfxHit/lvl7" index="1"]
+stream = ExtResource( 60 )
+bus = "Sfx"
+
+[node name="SfxHit3" type="AudioStreamPlayer" parent="SfxHit/lvl7" index="2"]
+stream = ExtResource( 7 )
+bus = "Sfx"
+
+[node name="SfxHit4" type="AudioStreamPlayer" parent="SfxHit/lvl7" index="3"]
+stream = ExtResource( 24 )
+bus = "Sfx"
+
+[node name="SfxHit5" type="AudioStreamPlayer" parent="SfxHit/lvl7" index="4"]
+stream = ExtResource( 58 )
+bus = "Sfx"
+
+[node name="SfxHit6" type="AudioStreamPlayer" parent="SfxHit/lvl7" index="5"]
+stream = ExtResource( 56 )
+bus = "Sfx"
+
+[node name="lvl4" type="Node" parent="SfxTable" index="0"]
+
+[node name="SfxTable1" type="AudioStreamPlayer" parent="SfxTable/lvl4" index="0"]
+stream = ExtResource( 11 )
+bus = "Sfx"
+
+[node name="SfxTable2" type="AudioStreamPlayer" parent="SfxTable/lvl4" index="1"]
+stream = ExtResource( 4 )
+bus = "Sfx"
+
+[node name="SfxTable3" type="AudioStreamPlayer" parent="SfxTable/lvl4" index="2"]
+stream = ExtResource( 23 )
+bus = "Sfx"
+
+[node name="SfxTable4" type="AudioStreamPlayer" parent="SfxTable/lvl4" index="3"]
+stream = ExtResource( 13 )
+bus = "Sfx"
+
+[node name="SfxTable5" type="AudioStreamPlayer" parent="SfxTable/lvl4" index="4"]
+stream = ExtResource( 12 )
+bus = "Sfx"
+
+[node name="SfxTable6" type="AudioStreamPlayer" parent="SfxTable/lvl4" index="5"]
+stream = ExtResource( 8 )
+bus = "Sfx"
+
+[node name="SfxTable7" type="AudioStreamPlayer" parent="SfxTable/lvl4" index="6"]
+stream = ExtResource( 9 )
+bus = "Sfx"
+
+[node name="lvl6" type="Node" parent="SfxTable" index="1"]
+
+[node name="SfxTable1" type="AudioStreamPlayer" parent="SfxTable/lvl6" index="0"]
+stream = ExtResource( 35 )
+bus = "Sfx"
+
+[node name="SfxTable2" type="AudioStreamPlayer" parent="SfxTable/lvl6" index="1"]
+stream = ExtResource( 42 )
+bus = "Sfx"
+
+[node name="SfxTable3" type="AudioStreamPlayer" parent="SfxTable/lvl6" index="2"]
+stream = ExtResource( 46 )
+bus = "Sfx"
+
+[node name="SfxTable4" type="AudioStreamPlayer" parent="SfxTable/lvl6" index="3"]
+stream = ExtResource( 26 )
+bus = "Sfx"
+
+[node name="SfxTable5" type="AudioStreamPlayer" parent="SfxTable/lvl6" index="4"]
+stream = ExtResource( 34 )
+bus = "Sfx"
+
+[node name="SfxTable6" type="AudioStreamPlayer" parent="SfxTable/lvl6" index="5"]
+stream = ExtResource( 43 )
+bus = "Sfx"
+
+[node name="SfxTable7" type="AudioStreamPlayer" parent="SfxTable/lvl6" index="6"]
+stream = ExtResource( 48 )
+bus = "Sfx"
+
+[node name="lvl7" type="Node" parent="SfxTable" index="2"]
+
+[node name="SfxTable1" type="AudioStreamPlayer" parent="SfxTable/lvl7" index="0"]
+stream = ExtResource( 50 )
+bus = "Sfx"
+
+[node name="SfxTable2" type="AudioStreamPlayer" parent="SfxTable/lvl7" index="1"]
+stream = ExtResource( 31 )
+bus = "Sfx"
+
+[node name="SfxTable3" type="AudioStreamPlayer" parent="SfxTable/lvl7" index="2"]
+stream = ExtResource( 40 )
+bus = "Sfx"
+
+[node name="SfxTable4" type="AudioStreamPlayer" parent="SfxTable/lvl7" index="3"]
+stream = ExtResource( 41 )
+bus = "Sfx"
+
+[node name="SfxTable5" type="AudioStreamPlayer" parent="SfxTable/lvl7" index="4"]
+stream = ExtResource( 45 )
+bus = "Sfx"
+
+[node name="SfxTable6" type="AudioStreamPlayer" parent="SfxTable/lvl7" index="5"]
+stream = ExtResource( 44 )
+bus = "Sfx"
+
+[node name="lvl4" type="Node" parent="SfxFit" index="0"]
+
+[node name="SfxFit1" type="AudioStreamPlayer" parent="SfxFit/lvl4" index="0"]
+stream = ExtResource( 19 )
+bus = "Sfx"
+
+[node name="SfxFit2" type="AudioStreamPlayer" parent="SfxFit/lvl4" index="1"]
+stream = ExtResource( 17 )
+bus = "Sfx"
+
+[node name="SfxFit3" type="AudioStreamPlayer" parent="SfxFit/lvl4" index="2"]
+stream = ExtResource( 14 )
+bus = "Sfx"
+
+[node name="SfxFit4" type="AudioStreamPlayer" parent="SfxFit/lvl4" index="3"]
+stream = ExtResource( 21 )
+bus = "Sfx"
+
+[node name="SfxFit5" type="AudioStreamPlayer" parent="SfxFit/lvl4" index="4"]
+stream = ExtResource( 22 )
+bus = "Sfx"
+
+[node name="SfxFit6" type="AudioStreamPlayer" parent="SfxFit/lvl4" index="5"]
+stream = ExtResource( 15 )
+bus = "Sfx"
+
+[node name="lvl6" type="Node" parent="SfxFit" index="1"]
+
+[node name="SfxFit1" type="AudioStreamPlayer" parent="SfxFit/lvl6" index="0"]
+stream = ExtResource( 32 )
+bus = "Sfx"
+
+[node name="SfxFit2" type="AudioStreamPlayer" parent="SfxFit/lvl6" index="1"]
+stream = ExtResource( 47 )
+bus = "Sfx"
+
+[node name="SfxFit3" type="AudioStreamPlayer" parent="SfxFit/lvl6" index="2"]
+stream = ExtResource( 54 )
+bus = "Sfx"
+
+[node name="SfxFit4" type="AudioStreamPlayer" parent="SfxFit/lvl6" index="3"]
+stream = ExtResource( 27 )
+bus = "Sfx"
+
+[node name="SfxFit5" type="AudioStreamPlayer" parent="SfxFit/lvl6" index="4"]
+stream = ExtResource( 33 )
+bus = "Sfx"
+
+[node name="SfxFit6" type="AudioStreamPlayer" parent="SfxFit/lvl6" index="5"]
+stream = ExtResource( 53 )
+bus = "Sfx"
+
+[node name="lvl7" type="Node" parent="SfxFit" index="2"]
+
+[node name="SfxFit1" type="AudioStreamPlayer" parent="SfxFit/lvl7" index="0"]
+stream = ExtResource( 51 )
+bus = "Sfx"
+
+[node name="SfxFit2" type="AudioStreamPlayer" parent="SfxFit/lvl7" index="1"]
+stream = ExtResource( 57 )
+bus = "Sfx"
+
+[node name="SfxFit3" type="AudioStreamPlayer" parent="SfxFit/lvl7" index="2"]
+stream = ExtResource( 52 )
+bus = "Sfx"
+
+[node name="SfxFit4" type="AudioStreamPlayer" parent="SfxFit/lvl7" index="3"]
+stream = ExtResource( 59 )
+bus = "Sfx"
+
+[node name="SfxFit5" type="AudioStreamPlayer" parent="SfxFit/lvl7" index="4"]
+stream = ExtResource( 28 )
+bus = "Sfx"
+
+[node name="SfxFit6" type="AudioStreamPlayer" parent="SfxFit/lvl7" index="5"]
+stream = ExtResource( 55 )
+bus = "Sfx"
 [connection signal="body_entered" from="CupSides" to="." method="_on_CupSides_body_entered"]

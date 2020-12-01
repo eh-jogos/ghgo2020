@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://jenga_prototype/shared_variables/altered_status/float_altered_factor.tres" type="Resource" id=1]
 [ext_resource path="res://jenga_prototype/ui_elements/AlteredStateProgressBar.gd" type="Script" id=2]
@@ -10,6 +10,16 @@
 [ext_resource path="res://jenga_prototype/ui_elements/altered_state_proigress_bar/pngs/Top-bar.png" type="Texture" id=8]
 [ext_resource path="res://jenga_prototype/shared_variables/altered_state_bar/nodepath_progress_bar.tres" type="Resource" id=9]
 [ext_resource path="res://jenga_prototype/ui_elements/AlteredLevel.gd" type="Script" id=10]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/SfxLibrary.gd" type="Script" id=11]
+[ext_resource path="res://jenga_prototype/ui_elements/altered_state_proigress_bar/sfx/sfx_burp_v6.wav" type="AudioStream" id=12]
+[ext_resource path="res://jenga_prototype/ui_elements/altered_state_proigress_bar/sfx/sfx_long_burp_v1.wav" type="AudioStream" id=13]
+[ext_resource path="res://jenga_prototype/ui_elements/altered_state_proigress_bar/sfx/sfx_burp_v5.wav" type="AudioStream" id=14]
+[ext_resource path="res://jenga_prototype/ui_elements/altered_state_proigress_bar/sfx/sfx_burp_v7.wav" type="AudioStream" id=15]
+[ext_resource path="res://jenga_prototype/ui_elements/altered_state_proigress_bar/sfx/sfx_burp_v1.wav" type="AudioStream" id=16]
+[ext_resource path="res://jenga_prototype/ui_elements/altered_state_proigress_bar/sfx/sfx_burp_v4.wav" type="AudioStream" id=17]
+[ext_resource path="res://jenga_prototype/ui_elements/altered_state_proigress_bar/sfx/sfx_long_burp_v2.wav" type="AudioStream" id=18]
+[ext_resource path="res://jenga_prototype/ui_elements/altered_state_proigress_bar/sfx/sfx_burp_v2.wav" type="AudioStream" id=19]
+[ext_resource path="res://jenga_prototype/ui_elements/altered_state_proigress_bar/sfx/sfx_burp_v3.wav" type="AudioStream" id=20]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.839216, 0.0431373, 0.321569, 1 )
@@ -118,6 +128,7 @@ margin_left = -582.0
 margin_top = 70.0
 margin_right = -152.0
 margin_bottom = 116.0
+mouse_filter = 2
 custom_styles/fg = SubResource( 1 )
 custom_styles/bg = SubResource( 2 )
 max_value = 10.0
@@ -139,6 +150,7 @@ margin_left = -13.0
 margin_top = -31.0
 margin_right = 547.0
 margin_bottom = 123.0
+mouse_filter = 2
 texture = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -151,6 +163,7 @@ margin_left = -4.0
 margin_top = -2.0
 margin_right = 4.0
 margin_bottom = 2.0
+mouse_filter = 2
 custom_constants/separation = 54
 script = ExtResource( 3 )
 __meta__ = {
@@ -201,3 +214,60 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="SfxAlteredLv1" type="Node" parent="."]
+script = ExtResource( 11 )
+
+[node name="Altered1" type="AudioStreamPlayer" parent="SfxAlteredLv1"]
+stream = ExtResource( 16 )
+bus = "Sfx"
+
+[node name="Altered2" type="AudioStreamPlayer" parent="SfxAlteredLv1"]
+stream = ExtResource( 19 )
+bus = "Sfx"
+
+[node name="Altered3" type="AudioStreamPlayer" parent="SfxAlteredLv1"]
+stream = ExtResource( 20 )
+bus = "Sfx"
+
+[node name="SfxAlteredLv2" type="Node" parent="."]
+script = ExtResource( 11 )
+
+[node name="Altered3" type="AudioStreamPlayer" parent="SfxAlteredLv2"]
+stream = ExtResource( 20 )
+bus = "Sfx"
+
+[node name="Altered4" type="AudioStreamPlayer" parent="SfxAlteredLv2"]
+stream = ExtResource( 17 )
+bus = "Sfx"
+
+[node name="Altered5" type="AudioStreamPlayer" parent="SfxAlteredLv2"]
+stream = ExtResource( 14 )
+bus = "Sfx"
+
+[node name="Altered6" type="AudioStreamPlayer" parent="SfxAlteredLv2"]
+stream = ExtResource( 12 )
+bus = "Sfx"
+
+[node name="Altered7" type="AudioStreamPlayer" parent="SfxAlteredLv2"]
+stream = ExtResource( 15 )
+bus = "Sfx"
+
+[node name="SfxAlteredLv3" type="Node" parent="."]
+script = ExtResource( 11 )
+
+[node name="Altered6" type="AudioStreamPlayer" parent="SfxAlteredLv3"]
+stream = ExtResource( 12 )
+bus = "Sfx"
+
+[node name="Altered7" type="AudioStreamPlayer" parent="SfxAlteredLv3"]
+stream = ExtResource( 15 )
+bus = "Sfx"
+
+[node name="Altered8" type="AudioStreamPlayer" parent="SfxAlteredLv3"]
+stream = ExtResource( 13 )
+bus = "Sfx"
+
+[node name="Altered9" type="AudioStreamPlayer" parent="SfxAlteredLv3"]
+stream = ExtResource( 18 )
+bus = "Sfx"

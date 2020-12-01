@@ -23,3 +23,8 @@ signal cup_drinked
 
 # warning-ignore:unused_signal
 signal zoom_updated
+
+# warning-ignore:unused_signal
+signal ground_collided
+# warning-ignore:unused_signal
+signal cup_collided

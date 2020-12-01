@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/sfx_long_burp_v1.wav-422f9ba0f2fcb61770963a16e7a4e02b.sample"
+
+[deps]
+
+source_file="res://jenga_prototype/ui_elements/altered_state_proigress_bar/sfx/sfx_long_burp_v1.wav"
+dest_files=[ "res://.import/sfx_long_burp_v1.wav-422f9ba0f2fcb61770963a16e7a4e02b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

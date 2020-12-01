@@ -176,6 +176,12 @@ func _on_Events_cup_drinked() -> void:
 	if new_level > altered_state_level:
 		altered_state_level = new_level
 		_level_label.altered_value = altered_state_level
+		if altered_state_level <= 2:
+			$SfxAlteredLv1.play()
+		elif altered_state_level <= 5:
+			$SfxAlteredLv2.play()
+		else:
+			$SfxAlteredLv3.play()
 		Events.emit_signal("altered_level_raised")
 
 

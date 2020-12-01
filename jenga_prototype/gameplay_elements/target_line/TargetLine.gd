@@ -145,7 +145,7 @@ func _on_Events_zoom_updated() -> void:
 	var final_position = _convert_from_hud_position(_progress_bar.rect_global_position)
 	final_position += _progress_bar.rect_size/2 * camera.zoom
 	
-	var duration = 0.8
+	var duration = 0.5
 	
 	_tween.interpolate_property(effect_bottle, "global_position", effect_bottle.global_position, 
 			final_position, duration, Tween.TRANS_LINEAR, Tween.EASE_OUT)

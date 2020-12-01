@@ -19,6 +19,9 @@ export var cup_type_shared_variable: Resource
 
 #--- private variables - order: export > normal var > onready -------------------------------------
 
+onready var _panel =$VBoxContainer/Panel
+onready var _label =$VBoxContainer/Label
+
 ### -----------------------------------------------------------------------------------------------
 
 
@@ -34,8 +37,12 @@ func _process(_delta) -> void:
 			modulate = COLOR_PRESSED
 		else:
 			modulate = COLOR_HOVER
+		_panel.self_modulate.a = 1
+		_label.self_modulate.a = 1
 	else:
 		modulate = COLOR_NORMAL
+		_panel.self_modulate.a = 0.5
+		_label.self_modulate.a = 0.5
 	
 
 ### -----------------------------------------------------------------------------------------------

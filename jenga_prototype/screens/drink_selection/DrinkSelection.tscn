@@ -1,0 +1,199 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://fonts/IsidoraSoftBlackItalic_92.tres" type="DynamicFont" id=1]
+[ext_resource path="res://jenga_prototype/shared_variables/bool_is_milkshake.tres" type="Resource" id=2]
+[ext_resource path="res://fonts/IsidoraSoftBlackItalic_84.tres" type="DynamicFont" id=3]
+[ext_resource path="res://addons/eh_jogos.transitions/transitions_data/sweep_up.tres" type="Resource" id=4]
+[ext_resource path="res://addons/eh_jogos.transitions/custom_nodes/eh_SceneChanger.gd" type="Script" id=5]
+[ext_resource path="res://jenga_prototype/screens/DrinkButton.gd" type="Script" id=6]
+[ext_resource path="res://jenga_prototype/screens/drink_selection/pngs/Beer.png" type="Texture" id=7]
+[ext_resource path="res://jenga_prototype/screens/drink_selection/pngs/Button_left.png" type="Texture" id=8]
+[ext_resource path="res://jenga_prototype/screens/drink_selection/pngs/Background.png" type="Texture" id=9]
+[ext_resource path="res://jenga_prototype/screens/drink_selection/pngs/Button.png" type="Texture" id=10]
+[ext_resource path="res://jenga_prototype/screens/drink_selection/pngs/Shake.png" type="Texture" id=11]
+[ext_resource path="res://jenga_prototype/screens/drink_selection/DrinkSelection.gd" type="Script" id=12]
+
+[node name="ColorRect" type="TextureRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 9 )
+expand = true
+stretch_mode = 7
+script = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 0.3
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = -4
+custom_constants/shadow_offset_y = 5
+text = "Choose your poison:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_top = 324.0
+margin_right = 40.0
+margin_bottom = 364.0
+
+[node name="MilkshakeContainer" type="Control" parent="."]
+anchor_top = 0.3
+anchor_right = 0.5
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BeerButton" type="Button" parent="MilkshakeContainer"]
+self_modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.85
+anchor_top = 0.05
+anchor_right = 0.85
+anchor_bottom = 0.05
+margin_left = -486.0
+margin_top = 0.200001
+margin_bottom = 542.2
+keep_pressed_outside = true
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+cup_type_shared_variable = ExtResource( 2 )
+
+[node name="eh_SceneChanger" type="Node" parent="MilkshakeContainer/BeerButton"]
+script = ExtResource( 5 )
+_next_scene_path = "res://jenga_prototype/levels/BaseLevel.tscn"
+transition_data = ExtResource( 4 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MilkshakeContainer/BeerButton"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -209.5
+margin_top = -240.0
+margin_right = 209.5
+margin_bottom = 240.0
+mouse_filter = 2
+custom_constants/separation = 30
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="TextureRect" parent="MilkshakeContainer/BeerButton/VBoxContainer"]
+margin_right = 441.0
+margin_bottom = 390.0
+rect_min_size = Vector2( 350, 350 )
+rect_pivot_offset = Vector2( 220, 0 )
+mouse_filter = 2
+size_flags_horizontal = 4
+texture = ExtResource( 8 )
+
+[node name="Cup" type="TextureRect" parent="MilkshakeContainer/BeerButton/VBoxContainer/Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -76.5
+margin_top = -269.5
+margin_right = 236.5
+margin_bottom = 125.5
+mouse_filter = 2
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MilkshakeContainer/BeerButton/VBoxContainer"]
+margin_top = 420.0
+margin_right = 441.0
+margin_bottom = 532.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0.239216, 0.137255, 0.235294, 1 )
+text = "Beer"
+align = 1
+
+[node name="BeerContainer" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 0.3
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MilkshakeButton" type="Button" parent="BeerContainer"]
+self_modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.15
+anchor_top = 0.05
+anchor_right = 0.15
+anchor_bottom = 0.05
+margin_top = 0.200001
+margin_right = 486.0
+margin_bottom = 542.2
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+is_milkshake = true
+cup_type_shared_variable = ExtResource( 2 )
+
+[node name="eh_SceneChanger" type="Node" parent="BeerContainer/MilkshakeButton"]
+script = ExtResource( 5 )
+_next_scene_path = "res://jenga_prototype/levels/BaseLevel.tscn"
+transition_data = ExtResource( 4 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BeerContainer/MilkshakeButton"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -209.5
+margin_top = -240.0
+margin_right = 209.5
+margin_bottom = 240.0
+mouse_filter = 2
+custom_constants/separation = 30
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="TextureRect" parent="BeerContainer/MilkshakeButton/VBoxContainer"]
+margin_right = 441.0
+margin_bottom = 390.0
+rect_min_size = Vector2( 350, 350 )
+mouse_filter = 2
+size_flags_horizontal = 4
+texture = ExtResource( 10 )
+
+[node name="Cup" type="TextureRect" parent="BeerContainer/MilkshakeButton/VBoxContainer/Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -248.0
+margin_top = -275.5
+margin_right = 88.0
+margin_bottom = 131.5
+mouse_filter = 2
+texture = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="BeerContainer/MilkshakeButton/VBoxContainer"]
+margin_top = 420.0
+margin_right = 441.0
+margin_bottom = 532.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0.239216, 0.137255, 0.235294, 1 )
+text = "Milkshake"

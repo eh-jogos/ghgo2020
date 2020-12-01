@@ -184,7 +184,7 @@ text = "Restart game"
 
 [node name="eh_SceneChanger" type="Node" parent="VBoxContainer/RestartButton"]
 script = ExtResource( 7 )
-_next_scene_path = "res://jenga_prototype/screens/DrinkSelection.tscn"
+_next_scene_path = "res://jenga_prototype/screens/drink_selection/DrinkSelection.tscn"
 transition_data = ExtResource( 9 )
 
 [node name="QuitButton" parent="VBoxContainer" instance=ExtResource( 1 )]

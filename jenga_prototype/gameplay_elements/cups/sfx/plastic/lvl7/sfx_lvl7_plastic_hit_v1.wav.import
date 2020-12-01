@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/sfx_lvl7_plastic_hit_v1.wav-96507be8998ce4c26f01c1d628c34a78.sample"
+
+[deps]
+
+source_file="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/lvl7/sfx_lvl7_plastic_hit_v1.wav"
+dest_files=[ "res://.import/sfx_lvl7_plastic_hit_v1.wav-96507be8998ce4c26f01c1d628c34a78.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

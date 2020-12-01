@@ -1,30 +1,74 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=70 format=2]
 
 [ext_resource path="res://jenga_prototype/gameplay_elements/cups/BaseCup.tscn" type="PackedScene" id=1]
 [ext_resource path="res://jenga_prototype/gameplay_elements/cups/milk_shake_cup/MilkShakeSkin.tscn" type="PackedScene" id=2]
 [ext_resource path="res://jenga_prototype/gameplay_elements/cups/milk_shake_cup/ShakeCup.gd" type="Script" id=3]
-[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/sfx_plastic_table_top_v1.wav" type="AudioStream" id=4]
-[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/sfx_plastic_fit_v5.wav" type="AudioStream" id=5]
-[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/sfx_plastic_table_top_v3.wav" type="AudioStream" id=6]
-[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/sfx_plastic_fit_v4.wav" type="AudioStream" id=7]
-[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/sfx_plastic_fit_v3.wav" type="AudioStream" id=8]
-[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/sfx_plastic_table_bottom_v1.wav" type="AudioStream" id=9]
-[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/sfx_plastic_hit_v8.wav" type="AudioStream" id=10]
-[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/sfx_plastic_fit_v1.wav" type="AudioStream" id=11]
-[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/sfx_plastic_hit_v4.wav" type="AudioStream" id=12]
-[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/sfx_plastic_hit_v3.wav" type="AudioStream" id=13]
-[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/sfx_plastic_hit_v7.wav" type="AudioStream" id=14]
-[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/sfx_plastic_table_bottom_v4.wav" type="AudioStream" id=15]
-[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/sfx_plastic_hit_v5.wav" type="AudioStream" id=16]
-[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/sfx_plastic_table_bottom_v3.wav" type="AudioStream" id=17]
-[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/sfx_plastic_hit_v1.wav" type="AudioStream" id=18]
-[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/sfx_plastic_table_top_v4.wav" type="AudioStream" id=19]
-[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/sfx_plastic_table_bottom_v2.wav" type="AudioStream" id=20]
-[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/sfx_plastic_table_top_v2.wav" type="AudioStream" id=21]
-[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/sfx_plastic_hit_v2.wav" type="AudioStream" id=22]
-[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/sfx_plastic_hit_v9.wav" type="AudioStream" id=23]
-[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/sfx_plastic_fit_v2.wav" type="AudioStream" id=24]
-[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/sfx_plastic_hit_v6.wav" type="AudioStream" id=25]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/lvl1-4/sfx_plastic_table_top_v1.wav" type="AudioStream" id=4]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/lvl1-4/sfx_plastic_fit_v5.wav" type="AudioStream" id=5]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/lvl1-4/sfx_plastic_table_top_v3.wav" type="AudioStream" id=6]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/lvl1-4/sfx_plastic_fit_v4.wav" type="AudioStream" id=7]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/lvl1-4/sfx_plastic_fit_v3.wav" type="AudioStream" id=8]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/lvl1-4/sfx_plastic_table_bottom_v1.wav" type="AudioStream" id=9]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/lvl1-4/sfx_plastic_hit_v8.wav" type="AudioStream" id=10]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/lvl1-4/sfx_plastic_fit_v1.wav" type="AudioStream" id=11]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/lvl1-4/sfx_plastic_hit_v4.wav" type="AudioStream" id=12]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/lvl1-4/sfx_plastic_hit_v3.wav" type="AudioStream" id=13]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/lvl1-4/sfx_plastic_hit_v7.wav" type="AudioStream" id=14]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/lvl1-4/sfx_plastic_table_bottom_v4.wav" type="AudioStream" id=15]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/lvl1-4/sfx_plastic_hit_v5.wav" type="AudioStream" id=16]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/lvl1-4/sfx_plastic_table_bottom_v3.wav" type="AudioStream" id=17]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/lvl1-4/sfx_plastic_hit_v1.wav" type="AudioStream" id=18]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/lvl1-4/sfx_plastic_table_top_v4.wav" type="AudioStream" id=19]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/lvl1-4/sfx_plastic_table_bottom_v2.wav" type="AudioStream" id=20]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/lvl1-4/sfx_plastic_table_top_v2.wav" type="AudioStream" id=21]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/lvl1-4/sfx_plastic_hit_v2.wav" type="AudioStream" id=22]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/lvl1-4/sfx_plastic_hit_v9.wav" type="AudioStream" id=23]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/lvl1-4/sfx_plastic_fit_v2.wav" type="AudioStream" id=24]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/lvl1-4/sfx_plastic_hit_v6.wav" type="AudioStream" id=25]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/SfxLibrary.gd" type="Script" id=26]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/lvl7/sfx_lvl7_plastic_hit_v2.wav" type="AudioStream" id=27]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/lvl5-6/sfx_lvl5_plastic_hit_v5.wav" type="AudioStream" id=28]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/lvl5-6/sfx_lvl5_plastic_hit_v7.wav" type="AudioStream" id=29]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/lvl5-6/sfx_lvl5_plastic_hit_v9.wav" type="AudioStream" id=30]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/lvl5-6/sfx_lvl5_plastic_table_top_v4.wav" type="AudioStream" id=31]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/lvl5-6/sfx_lvl5_plastic_hit_v3.wav" type="AudioStream" id=32]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/lvl7/sfx_lvl7_plastic_hit_v1.wav" type="AudioStream" id=33]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/lvl7/sfx_lvl7_plastic_table_top_v4.wav" type="AudioStream" id=34]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/lvl5-6/sfx_lvl5_plastic_table_bottom_v4.wav" type="AudioStream" id=35]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/lvl5-6/sfx_lvl5_plastic_table_top_v3.wav" type="AudioStream" id=36]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/lvl7/sfx_lvl7_plastic_table_bottom_v3.wav" type="AudioStream" id=37]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/lvl7/sfx_lvl7_plastic_fit_v1.wav" type="AudioStream" id=38]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/lvl7/sfx_lvl7_plastic_hit_v6.wav" type="AudioStream" id=39]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/lvl5-6/sfx_lvl5_plastic_fit_v5.wav" type="AudioStream" id=40]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/lvl7/sfx_lvl7_plastic_table_top_v1.wav" type="AudioStream" id=41]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/lvl7/sfx_lvl7_plastic_fit_v4.wav" type="AudioStream" id=42]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/lvl7/sfx_lvl7_plastic_hit_v5.wav" type="AudioStream" id=43]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/lvl5-6/sfx_lvl5_plastic_table_top_v2.wav" type="AudioStream" id=44]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/lvl7/sfx_lvl7_plastic_hit_v4.wav" type="AudioStream" id=45]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/lvl7/sfx_lvl7_plastic_hit_v7.wav" type="AudioStream" id=46]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/lvl7/sfx_lvl7_plastic_hit_v3.wav" type="AudioStream" id=47]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/lvl5-6/sfx_lvl5_plastic_fit_v3.wav" type="AudioStream" id=48]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/lvl7/sfx_lvl7_plastic_fit_v3.wav" type="AudioStream" id=49]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/lvl7/sfx_lvl7_plastic_table_bottom_v1.wav" type="AudioStream" id=50]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/lvl7/sfx_lvl7_plastic_table_top_v3.wav" type="AudioStream" id=51]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/lvl7/sfx_lvl7_plastic_hit_v8.wav" type="AudioStream" id=52]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/lvl7/sfx_lvl7_plastic_table_bottom_v4.wav" type="AudioStream" id=53]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/lvl7/sfx_lvl7_plastic_table_top_v2.wav" type="AudioStream" id=54]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/lvl7/sfx_lvl7_plastic_fit_v5.wav" type="AudioStream" id=55]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/lvl7/sfx_lvl7_plastic_hit_v9.wav" type="AudioStream" id=56]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/lvl5-6/sfx_lvl5_plastic_hit_v1.wav" type="AudioStream" id=57]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/lvl5-6/sfx_lvl5_plastic_hit_v4.wav" type="AudioStream" id=58]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/lvl5-6/sfx_lvl5_plastic_hit_v6.wav" type="AudioStream" id=59]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/lvl5-6/sfx_lvl5_plastic_hit_v2.wav" type="AudioStream" id=60]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/lvl5-6/sfx_lvl5_plastic_table_top_v1.wav" type="AudioStream" id=61]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/lvl5-6/sfx_lvl5_plastic_fit_v1.wav" type="AudioStream" id=62]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/lvl7/sfx_lvl7_plastic_fit_v2.wav" type="AudioStream" id=63]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/lvl5-6/sfx_lvl5_plastic_fit_v2.wav" type="AudioStream" id=64]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/lvl5-6/sfx_lvl5_plastic_fit_v4.wav" type="AudioStream" id=65]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/lvl5-6/sfx_lvl5_plastic_table_bottom_v1.wav" type="AudioStream" id=66]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/lvl5-6/sfx_lvl5_plastic_table_bottom_v3.wav" type="AudioStream" id=67]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/lvl5-6/sfx_lvl5_plastic_table_bottom_v2.wav" type="AudioStream" id=68]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/plastic/lvl5-6/sfx_lvl5_plastic_hit_v8.wav" type="AudioStream" id=69]
 
 [node name="ShakeCup" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
@@ -67,8 +111,7 @@ visible = false
 polygon = PoolVector2Array( -485, -750, 485, -750, 485, 750, -485, 750 )
 
 [node name="SfxCollision" parent="SfxHitDetector" index="0"]
-visible = false
-polygon = PoolVector2Array( -550, -815, 550, -815, 550, 815, -550, 815 )
+polygon = PoolVector2Array( -475, -660, 475, -660, 475, 660, -475, 660 )
 
 [node name="SfxFitArea" parent="SfxFitDetector" index="0"]
 polygon = PoolVector2Array( -330, -520, 330, -520, 310, -280, -310, -280 )
@@ -76,88 +119,334 @@ polygon = PoolVector2Array( -330, -520, 330, -520, 310, -280, -310, -280 )
 [node name="BreakPolygon" parent="BreakArea" index="0"]
 polygon = PoolVector2Array( -290, -100, 290, -100, 275, 100, -275, 100 )
 
-[node name="SfxHit1" parent="SfxHit" index="0"]
+[node name="lvl4" type="Node" parent="SfxHit" index="0"]
+
+[node name="SfxHit1" type="AudioStreamPlayer" parent="SfxHit/lvl4" index="0"]
 stream = ExtResource( 18 )
+bus = "Sfx"
 
-[node name="SfxHit2" parent="SfxHit" index="1"]
+[node name="SfxHit2" type="AudioStreamPlayer" parent="SfxHit/lvl4" index="1"]
 stream = ExtResource( 22 )
+bus = "Sfx"
 
-[node name="SfxHit3" parent="SfxHit" index="2"]
+[node name="SfxHit3" type="AudioStreamPlayer" parent="SfxHit/lvl4" index="2"]
 stream = ExtResource( 13 )
+bus = "Sfx"
 
-[node name="SfxHit4" parent="SfxHit" index="3"]
+[node name="SfxHit4" type="AudioStreamPlayer" parent="SfxHit/lvl4" index="3"]
 stream = ExtResource( 12 )
+bus = "Sfx"
 
-[node name="SfxHit5" parent="SfxHit" index="4"]
+[node name="SfxHit5" type="AudioStreamPlayer" parent="SfxHit/lvl4" index="4"]
 stream = ExtResource( 16 )
+bus = "Sfx"
 
-[node name="SfxHit6" parent="SfxHit" index="5"]
+[node name="SfxHit6" type="AudioStreamPlayer" parent="SfxHit/lvl4" index="5"]
 stream = ExtResource( 25 )
+bus = "Sfx"
 
-[node name="SfxHit7" type="AudioStreamPlayer" parent="SfxHit" index="6"]
+[node name="SfxHit7" type="AudioStreamPlayer" parent="SfxHit/lvl4" index="6"]
 stream = ExtResource( 14 )
 bus = "Sfx"
 __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="SfxHit8" type="AudioStreamPlayer" parent="SfxHit" index="7"]
+[node name="SfxHit8" type="AudioStreamPlayer" parent="SfxHit/lvl4" index="7"]
 stream = ExtResource( 10 )
 bus = "Sfx"
 __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="SfxHit9" type="AudioStreamPlayer" parent="SfxHit" index="8"]
+[node name="SfxHit9" type="AudioStreamPlayer" parent="SfxHit/lvl4" index="8"]
 stream = ExtResource( 23 )
 bus = "Sfx"
 __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="SfxTable1" parent="SfxTable" index="0"]
+[node name="lvl6" type="Node" parent="SfxHit" index="1"]
+
+[node name="SfxHit1" type="AudioStreamPlayer" parent="SfxHit/lvl6" index="0"]
+stream = ExtResource( 57 )
+bus = "Sfx"
+
+[node name="SfxHit2" type="AudioStreamPlayer" parent="SfxHit/lvl6" index="1"]
+stream = ExtResource( 60 )
+bus = "Sfx"
+
+[node name="SfxHit3" type="AudioStreamPlayer" parent="SfxHit/lvl6" index="2"]
+stream = ExtResource( 32 )
+bus = "Sfx"
+
+[node name="SfxHit4" type="AudioStreamPlayer" parent="SfxHit/lvl6" index="3"]
+stream = ExtResource( 58 )
+bus = "Sfx"
+
+[node name="SfxHit5" type="AudioStreamPlayer" parent="SfxHit/lvl6" index="4"]
+stream = ExtResource( 28 )
+bus = "Sfx"
+
+[node name="SfxHit6" type="AudioStreamPlayer" parent="SfxHit/lvl6" index="5"]
+stream = ExtResource( 59 )
+bus = "Sfx"
+
+[node name="SfxHit7" type="AudioStreamPlayer" parent="SfxHit/lvl6" index="6"]
+stream = ExtResource( 29 )
+bus = "Sfx"
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="SfxHit8" type="AudioStreamPlayer" parent="SfxHit/lvl6" index="7"]
+stream = ExtResource( 69 )
+bus = "Sfx"
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="SfxHit9" type="AudioStreamPlayer" parent="SfxHit/lvl6" index="8"]
+stream = ExtResource( 30 )
+bus = "Sfx"
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="lvl7" type="Node" parent="SfxHit" index="2"]
+
+[node name="SfxHit1" type="AudioStreamPlayer" parent="SfxHit/lvl7" index="0"]
+stream = ExtResource( 33 )
+bus = "Sfx"
+
+[node name="SfxHit2" type="AudioStreamPlayer" parent="SfxHit/lvl7" index="1"]
+stream = ExtResource( 27 )
+bus = "Sfx"
+
+[node name="SfxHit3" type="AudioStreamPlayer" parent="SfxHit/lvl7" index="2"]
+stream = ExtResource( 47 )
+bus = "Sfx"
+
+[node name="SfxHit4" type="AudioStreamPlayer" parent="SfxHit/lvl7" index="3"]
+stream = ExtResource( 45 )
+bus = "Sfx"
+
+[node name="SfxHit5" type="AudioStreamPlayer" parent="SfxHit/lvl7" index="4"]
+stream = ExtResource( 43 )
+bus = "Sfx"
+
+[node name="SfxHit6" type="AudioStreamPlayer" parent="SfxHit/lvl7" index="5"]
+stream = ExtResource( 39 )
+bus = "Sfx"
+
+[node name="SfxHit7" type="AudioStreamPlayer" parent="SfxHit/lvl7" index="6"]
+stream = ExtResource( 46 )
+bus = "Sfx"
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="SfxHit8" type="AudioStreamPlayer" parent="SfxHit/lvl7" index="7"]
+stream = ExtResource( 52 )
+bus = "Sfx"
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="SfxHit9" type="AudioStreamPlayer" parent="SfxHit/lvl7" index="8"]
+stream = ExtResource( 56 )
+bus = "Sfx"
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="lvl4" type="Node" parent="SfxTable" index="0"]
+
+[node name="SfxTable1" type="AudioStreamPlayer" parent="SfxTable/lvl4" index="0"]
 stream = ExtResource( 9 )
+bus = "Sfx"
 
-[node name="SfxTable2" parent="SfxTable" index="1"]
+[node name="SfxTable2" type="AudioStreamPlayer" parent="SfxTable/lvl4" index="1"]
 stream = ExtResource( 20 )
+bus = "Sfx"
 
-[node name="SfxTable3" parent="SfxTable" index="2"]
+[node name="SfxTable3" type="AudioStreamPlayer" parent="SfxTable/lvl4" index="2"]
 stream = ExtResource( 17 )
+bus = "Sfx"
 
-[node name="SfxTable4" parent="SfxTable" index="3"]
+[node name="SfxTable4" type="AudioStreamPlayer" parent="SfxTable/lvl4" index="3"]
 stream = ExtResource( 15 )
+bus = "Sfx"
 
-[node name="SfxTable5" parent="SfxTable" index="4"]
+[node name="SfxTable5" type="AudioStreamPlayer" parent="SfxTable/lvl4" index="4"]
 stream = ExtResource( 4 )
+bus = "Sfx"
 
-[node name="SfxTable6" parent="SfxTable" index="5"]
+[node name="SfxTable6" type="AudioStreamPlayer" parent="SfxTable/lvl4" index="5"]
 stream = ExtResource( 21 )
+bus = "Sfx"
 
-[node name="SfxTable7" parent="SfxTable" index="6"]
+[node name="SfxTable7" type="AudioStreamPlayer" parent="SfxTable/lvl4" index="6"]
 stream = ExtResource( 6 )
+bus = "Sfx"
 
-[node name="SfxTable8" type="AudioStreamPlayer" parent="SfxTable" index="7"]
+[node name="SfxTable8" type="AudioStreamPlayer" parent="SfxTable/lvl4" index="7"]
 stream = ExtResource( 19 )
 bus = "Sfx"
 __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="SfxFit1" parent="SfxFit" index="0"]
-stream = ExtResource( 11 )
+[node name="lvl6" type="Node" parent="SfxTable" index="1"]
 
-[node name="SfxFit2" parent="SfxFit" index="1"]
+[node name="SfxTable1" type="AudioStreamPlayer" parent="SfxTable/lvl6" index="0"]
+stream = ExtResource( 66 )
+bus = "Sfx"
+
+[node name="SfxTable2" type="AudioStreamPlayer" parent="SfxTable/lvl6" index="1"]
+stream = ExtResource( 68 )
+bus = "Sfx"
+
+[node name="SfxTable3" type="AudioStreamPlayer" parent="SfxTable/lvl6" index="2"]
+stream = ExtResource( 67 )
+bus = "Sfx"
+
+[node name="SfxTable4" type="AudioStreamPlayer" parent="SfxTable/lvl6" index="3"]
+stream = ExtResource( 35 )
+bus = "Sfx"
+
+[node name="SfxTable5" type="AudioStreamPlayer" parent="SfxTable/lvl6" index="4"]
+stream = ExtResource( 61 )
+bus = "Sfx"
+
+[node name="SfxTable6" type="AudioStreamPlayer" parent="SfxTable/lvl6" index="5"]
+stream = ExtResource( 44 )
+bus = "Sfx"
+
+[node name="SfxTable7" type="AudioStreamPlayer" parent="SfxTable/lvl6" index="6"]
+stream = ExtResource( 36 )
+bus = "Sfx"
+
+[node name="SfxTable8" type="AudioStreamPlayer" parent="SfxTable/lvl6" index="7"]
+stream = ExtResource( 31 )
+bus = "Sfx"
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="lvl7" type="Node" parent="SfxTable" index="2"]
+
+[node name="SfxTable1" type="AudioStreamPlayer" parent="SfxTable/lvl7" index="0"]
+stream = ExtResource( 50 )
+bus = "Sfx"
+
+[node name="SfxTable2" type="AudioStreamPlayer" parent="SfxTable/lvl7" index="1"]
+stream = ExtResource( 20 )
+bus = "Sfx"
+
+[node name="SfxTable3" type="AudioStreamPlayer" parent="SfxTable/lvl7" index="2"]
+stream = ExtResource( 37 )
+bus = "Sfx"
+
+[node name="SfxTable4" type="AudioStreamPlayer" parent="SfxTable/lvl7" index="3"]
+stream = ExtResource( 53 )
+bus = "Sfx"
+
+[node name="SfxTable5" type="AudioStreamPlayer" parent="SfxTable/lvl7" index="4"]
+stream = ExtResource( 41 )
+bus = "Sfx"
+
+[node name="SfxTable6" type="AudioStreamPlayer" parent="SfxTable/lvl7" index="5"]
+stream = ExtResource( 54 )
+bus = "Sfx"
+
+[node name="SfxTable7" type="AudioStreamPlayer" parent="SfxTable/lvl7" index="6"]
+stream = ExtResource( 51 )
+bus = "Sfx"
+
+[node name="SfxTable8" type="AudioStreamPlayer" parent="SfxTable/lvl7" index="7"]
+stream = ExtResource( 34 )
+bus = "Sfx"
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="lvl4" type="Node" parent="SfxFit" index="0"]
+
+[node name="SfxFit1" type="AudioStreamPlayer" parent="SfxFit/lvl4" index="0"]
+stream = ExtResource( 11 )
+bus = "Sfx"
+
+[node name="SfxFit2" type="AudioStreamPlayer" parent="SfxFit/lvl4" index="1"]
 stream = ExtResource( 24 )
+bus = "Sfx"
 
-[node name="SfxFit3" parent="SfxFit" index="2"]
+[node name="SfxFit3" type="AudioStreamPlayer" parent="SfxFit/lvl4" index="2"]
 stream = ExtResource( 8 )
+bus = "Sfx"
 
-[node name="SfxFit4" parent="SfxFit" index="3"]
+[node name="SfxFit4" type="AudioStreamPlayer" parent="SfxFit/lvl4" index="3"]
 stream = ExtResource( 7 )
+bus = "Sfx"
 
-[node name="SfxFit5" parent="SfxFit" index="4"]
+[node name="SfxFit5" type="AudioStreamPlayer" parent="SfxFit/lvl4" index="4"]
 stream = ExtResource( 5 )
+bus = "Sfx"
 
-[node name="SfxFit6" parent="SfxFit" index="5"]
+[node name="SfxFit6" type="AudioStreamPlayer" parent="SfxFit/lvl4" index="5"]
 stream = ExtResource( 11 )
+bus = "Sfx"
+
+[node name="lvl6" type="Node" parent="SfxFit" index="1"]
+
+[node name="SfxFit1" type="AudioStreamPlayer" parent="SfxFit/lvl6" index="0"]
+stream = ExtResource( 62 )
+bus = "Sfx"
+
+[node name="SfxFit2" type="AudioStreamPlayer" parent="SfxFit/lvl6" index="1"]
+stream = ExtResource( 64 )
+bus = "Sfx"
+
+[node name="SfxFit3" type="AudioStreamPlayer" parent="SfxFit/lvl6" index="2"]
+stream = ExtResource( 48 )
+bus = "Sfx"
+
+[node name="SfxFit4" type="AudioStreamPlayer" parent="SfxFit/lvl6" index="3"]
+stream = ExtResource( 65 )
+bus = "Sfx"
+
+[node name="SfxFit5" type="AudioStreamPlayer" parent="SfxFit/lvl6" index="4"]
+stream = ExtResource( 40 )
+bus = "Sfx"
+
+[node name="lvl7" type="Node" parent="SfxFit" index="2"]
+
+[node name="SfxFit1" type="AudioStreamPlayer" parent="SfxFit/lvl7" index="0"]
+stream = ExtResource( 38 )
+bus = "Sfx"
+
+[node name="SfxFit2" type="AudioStreamPlayer" parent="SfxFit/lvl7" index="1"]
+stream = ExtResource( 63 )
+bus = "Sfx"
+
+[node name="SfxFit3" type="AudioStreamPlayer" parent="SfxFit/lvl7" index="2"]
+stream = ExtResource( 49 )
+bus = "Sfx"
+
+[node name="SfxFit4" type="AudioStreamPlayer" parent="SfxFit/lvl7" index="3"]
+stream = ExtResource( 42 )
+bus = "Sfx"
+
+[node name="SfxFit5" type="AudioStreamPlayer" parent="SfxFit/lvl7" index="4"]
+stream = ExtResource( 55 )
+bus = "Sfx"
+
+[node name="SfxHit2" type="Node" parent="." index="13"]
+script = ExtResource( 26 )
+
+[node name="SfxFit2" type="Node" parent="." index="14"]
+script = ExtResource( 26 )
+
+[node name="SfxTable2" type="Node" parent="." index="15"]
+script = ExtResource( 26 )
 [connection signal="body_entered" from="CupSides" to="." method="_on_CupSides_body_entered"]
