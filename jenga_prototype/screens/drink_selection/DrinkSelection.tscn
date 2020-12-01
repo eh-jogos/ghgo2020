@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://fonts/IsidoraSoftBlackItalic_92.tres" type="DynamicFont" id=1]
 [ext_resource path="res://jenga_prototype/shared_variables/bool_is_milkshake.tres" type="Resource" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://jenga_prototype/screens/drink_selection/pngs/Background.png" type="Texture" id=9]
 [ext_resource path="res://jenga_prototype/screens/drink_selection/pngs/Button.png" type="Texture" id=10]
 [ext_resource path="res://jenga_prototype/screens/drink_selection/pngs/Shake.png" type="Texture" id=11]
+[ext_resource path="res://jenga_prototype/screens/drink_selection/DrinkSelection.gd" type="Script" id=12]
 
 [node name="ColorRect" type="TextureRect"]
 anchor_right = 1.0
@@ -18,6 +19,7 @@ anchor_bottom = 1.0
 texture = ExtResource( 9 )
 expand = true
 stretch_mode = 7
+script = ExtResource( 12 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
