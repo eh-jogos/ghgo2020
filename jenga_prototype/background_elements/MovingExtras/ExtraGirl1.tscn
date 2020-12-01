@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://jenga_prototype/background_elements/MovingExtras/animations/vehicle_idle.tres" type="Animation" id=1]
+[ext_resource path="res://jenga_prototype/background_elements/MovingExtras/BaseMovingExtra.tscn" type="PackedScene" id=2]
+[ext_resource path="res://jenga_prototype/background_elements/pngs/Pessoa_1.png" type="Texture" id=3]
+
+[node name="ExtraGirl1" instance=ExtResource( 2 )]
+speed = 2000.0
+
+[node name="Sprite" parent="." index="0"]
+scale = Vector2( 1.04614, 1.01845 )
+texture = ExtResource( 3 )
+
+[node name="AnimationPlayer" parent="." index="2"]
+autoplay = "people_idle"
+anims/people_idle = ExtResource( 1 )
+next/fade_in = "people_idle"
