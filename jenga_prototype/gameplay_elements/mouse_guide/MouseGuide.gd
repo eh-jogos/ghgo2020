@@ -15,6 +15,7 @@ const HALF_CIRCLE = PI
 
 export var texture_empty: Texture
 export var texture_grab: Texture
+export var texture_ending: Texture
 
 var is_full: = false setget _set_is_full
 
@@ -102,6 +103,12 @@ func decrease_altered_factor() -> void:
 			altered_factor.value - altered_increment.value, 
 			0.5, Tween.TRANS_LINEAR, Tween.EASE_IN)
 	_tween.start()
+
+
+func set_thumbs_up() -> void:
+	texture = texture_ending
+	if _cursor:
+		_cursor.texture = texture_ending
 
 ### -----------------------------------------------------------------------------------------------
 
