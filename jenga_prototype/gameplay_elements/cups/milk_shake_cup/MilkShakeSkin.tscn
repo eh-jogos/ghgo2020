@@ -95,16 +95,21 @@ script = ExtResource( 13 )
 
 [node name="Swallow1" type="AudioStreamPlayer" parent="SfxSwallow"]
 stream = ExtResource( 19 )
+bus = "Sfx"
 
 [node name="Swallow2" type="AudioStreamPlayer" parent="SfxSwallow"]
 stream = ExtResource( 18 )
+bus = "Sfx"
 
 [node name="Swallow3" type="AudioStreamPlayer" parent="SfxSwallow"]
 stream = ExtResource( 21 )
+bus = "Sfx"
 
 [node name="Swallow4" type="AudioStreamPlayer" parent="SfxSwallow"]
 stream = ExtResource( 20 )
+bus = "Sfx"
 
 [node name="Swallow5" type="AudioStreamPlayer" parent="SfxSwallow"]
 stream = ExtResource( 22 )
+bus = "Sfx"
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
