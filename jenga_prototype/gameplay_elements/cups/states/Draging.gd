@@ -30,9 +30,9 @@ func unhandled_input(event: InputEvent) -> void:
 			_state_machine.transition_to("Dropped")
 			get_tree().set_input_as_handled()
 	if event.is_action_pressed("jenga_rotate_clockwise"):
-		_cup.main_rigid_body.rotation_degrees += 6
+		_cup.main_rigid_body.rotation_degrees += 15
 	elif event.is_action_pressed("jenga_rotate_anti_clockwise"):
-		_cup.main_rigid_body.rotation_degrees -= 6
+		_cup.main_rigid_body.rotation_degrees -= 15
 
 
 func physics_process(_delta: float) -> void:
