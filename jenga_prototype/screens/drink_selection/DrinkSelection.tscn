@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://fonts/IsidoraSoftBlackItalic_92.tres" type="DynamicFont" id=1]
 [ext_resource path="res://jenga_prototype/shared_variables/bool_is_milkshake.tres" type="Resource" id=2]
@@ -12,6 +12,95 @@
 [ext_resource path="res://jenga_prototype/screens/drink_selection/pngs/Button.png" type="Texture" id=10]
 [ext_resource path="res://jenga_prototype/screens/drink_selection/pngs/Shake.png" type="Texture" id=11]
 [ext_resource path="res://jenga_prototype/screens/drink_selection/DrinkSelection.gd" type="Script" id=12]
+[ext_resource path="res://resources/Logo.png" type="Texture" id=13]
+
+[sub_resource type="Animation" id=1]
+resource_name = "start"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Logo:rect_size")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.8, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 778, 662 ), Vector2( 778, 662 ), Vector2( 260, 221 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Logo:rect_position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.8, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 571, 242 ), Vector2( 571, 242 ), Vector2( 830, 813 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Label:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("MilkshakeContainer:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("BeerContainer:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("MilkshakeContainer:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("BeerContainer:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
 
 [node name="ColorRect" type="TextureRect"]
 anchor_right = 1.0
@@ -25,6 +114,7 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 0.3
 custom_fonts/font = ExtResource( 1 )
@@ -46,6 +136,7 @@ margin_right = 40.0
 margin_bottom = 364.0
 
 [node name="MilkshakeContainer" type="Control" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 anchor_top = 0.3
 anchor_right = 0.5
 anchor_bottom = 1.0
@@ -123,6 +214,7 @@ text = "Beer"
 align = 1
 
 [node name="BeerContainer" type="Control" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.5
 anchor_top = 0.3
 anchor_right = 1.0
@@ -197,3 +289,23 @@ margin_bottom = 532.0
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.239216, 0.137255, 0.235294, 1 )
 text = "Milkshake"
+
+[node name="Logo" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -326.327
+margin_top = -699.828
+margin_right = 326.326
+margin_bottom = -144.542
+texture = ExtResource( 13 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "start"
+anims/start = SubResource( 1 )
