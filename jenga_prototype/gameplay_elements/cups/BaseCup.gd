@@ -29,8 +29,6 @@ onready var sfx_hits: SfxLibrary = $SfxHit
 onready var sfx_table: SfxLibrary = $SfxTable
 onready var sfx_fit: SfxLibrary = $SfxFit
 
-onready var break_timer: Timer = $BreakArea/BreakTimer
-
 onready var cup_detector: Area2D = $CupDetector
 onready var cup_detector_polygon: CollisionPolygon2D = $CupDetector/CollisionPolygon2D
 onready var main_rigid_body: RigidBody2D = $CupSides
@@ -227,14 +225,5 @@ func _on_BreakArea_body_entered(body):
 			if joint is PinJoint2D:
 				joint.node_a = main_rigid_body.get_path()
 				joint.node_b = body.get_path()
-
-
-func _on_BreakTimer_timeout():
-	var break_area: Area2D = $BreakArea as Area2D
-	for body in break_area.get_overlapping_bodies():
-		if body.is_in_group("cup"):
-			var rigid_body: RigidBody2D = body as RigidBody2D
-			rigid_body.apply_impulse(Vector2.ZERO, Vector2.UP.rotated(rotation) * 2000 * _scale_factor.value  * _camera.zoom.y)
-	queue_free()
 
 ### -----------------------------------------------------------------------------------------------
