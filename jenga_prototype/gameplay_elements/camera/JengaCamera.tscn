@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://jenga_prototype/gameplay_elements/camera/JengaCamera.gd" type="Script" id=1]
 [ext_resource path="res://jenga_prototype/shared_variables/nodepath_main_camera.tres" type="Resource" id=2]
 [ext_resource path="res://jenga_prototype/shared_variables/float_camera_level.tres" type="Resource" id=3]
 [ext_resource path="res://jenga_prototype/shared_variables/target_line/nodepath_target_line.tres" type="Resource" id=4]
+[ext_resource path="res://jenga_prototype/gameplay_elements/cups/sfx/SfxLibrary.gd" type="Script" id=5]
+[ext_resource path="res://jenga_prototype/gameplay_elements/camera/sfx/sfx_whoosh_v1.wav" type="AudioStream" id=6]
+[ext_resource path="res://jenga_prototype/gameplay_elements/camera/sfx/sfx_whoosh_v2.wav" type="AudioStream" id=7]
+[ext_resource path="res://jenga_prototype/gameplay_elements/camera/sfx/sfx_whoosh_v3.wav" type="AudioStream" id=8]
 
 [node name="JengaCamera" type="Camera2D"]
 position = Vector2( 960, 540 )
@@ -18,3 +22,18 @@ __meta__ = {
 resources = [ PoolStringArray( "camera_level", "main_camera", "target_line" ), [ ExtResource( 3 ), ExtResource( 2 ), ExtResource( 4 ) ] ]
 
 [node name="Tween" type="Tween" parent="."]
+
+[node name="SfxSwoosh" type="Node" parent="."]
+script = ExtResource( 5 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="SfxSwoosh"]
+stream = ExtResource( 6 )
+bus = "Sfx"
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="SfxSwoosh"]
+stream = ExtResource( 7 )
+bus = "Sfx"
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="SfxSwoosh"]
+stream = ExtResource( 8 )
+bus = "Sfx"
